@@ -10,7 +10,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
     public class StorageManager
     {
-        private SqlConnect conn;
+        private SqlConnection conn;
 
 
     }
