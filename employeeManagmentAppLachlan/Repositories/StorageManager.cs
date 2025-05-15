@@ -12,6 +12,24 @@ namespace employeeManagmentAppLachlan.Repositories
     {
         private SqlConnection conn;
 
-
+        public StorageManager(string connectionString)
+        {
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                Console.WriteLine("Connection succsesfull");
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("The connections is Unsuccessfull");
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("The connections is Unsuccessfull");
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
