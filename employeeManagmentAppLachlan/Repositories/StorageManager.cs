@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using employeeManagmentAppLachlan.Model;
 using Microsoft.Data.SqlClient;
 
 namespace employeeManagmentAppLachlan.Repositories
@@ -13,6 +14,7 @@ namespace employeeManagmentAppLachlan.Repositories
         private SqlConnection conn;
 
         public StorageManager(string connectionString)
+            
         {
             try
             {
@@ -29,6 +31,16 @@ namespace employeeManagmentAppLachlan.Repositories
             {
                 Console.WriteLine("The connections is Unsuccessfull");
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        public List<LocationTblLocation> GetLocationsTblLocations()
+        {
+            List<LocationTblLocation> locations = new List<LocationTblLocation>();
+            string sqlString = "SELECT * From Location.tblLocation";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+
             }
         }
     }
