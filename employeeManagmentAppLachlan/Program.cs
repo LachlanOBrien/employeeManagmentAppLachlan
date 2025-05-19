@@ -1,4 +1,5 @@
-﻿using employeeManagmentAppLachlan.Repositories;
+﻿using employeeManagmentAppLachlan.Model;
+using employeeManagmentAppLachlan.Repositories;
 
 namespace employeeManagmentAppLachlan
 {
@@ -11,6 +12,13 @@ namespace employeeManagmentAppLachlan
             Console.WriteLine("Hello, World!");
             string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EmployeeManagment;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             storageManager = new StorageManager(connectionString);
+
+        }
+
+        private static void ViewLocationTblLocation()
+        {
+            List<LocationTblLocation> LocationTblLocation = storageManager.GetLocationTblLocations();
+            
         }
     }
 }

@@ -40,7 +40,15 @@ namespace employeeManagmentAppLachlan.Repositories
             string sqlString = "SELECT * From Location.tblLocation";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
-
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int LocationLocation_ID = Convert.ToInt32(reader["Location_ID"]);
+                        string Location_Name = reader["Location_Name"].ToString();
+                        locations.Add(new LocationTblLocation(LocationLocation_ID, Location_Name));
+                    }
+                }
             }
             return locations;
         }
