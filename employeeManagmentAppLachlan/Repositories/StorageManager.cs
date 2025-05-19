@@ -34,7 +34,7 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
-        public List<LocationTblLocation> GetLocationsTblLocations()
+        public List<LocationTblLocation> GetLocationTblLocations()
         {
             List<LocationTblLocation> locations = new List<LocationTblLocation>();
             string sqlString = "SELECT * From Location.tblLocation";
@@ -42,6 +42,7 @@ namespace employeeManagmentAppLachlan.Repositories
             {
 
             }
+            return locations;
         }
     }
 }

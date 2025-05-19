@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace employeeManagmentAppLachlan.Model
 {
-    internal class LocationTblLocation
+    public class LocationTblLocation
     {
         /*  private string Location_Name;
           private int Location_id;
