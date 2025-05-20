@@ -1,5 +1,6 @@
 ﻿using employeeManagmentAppLachlan.Model;
 using employeeManagmentAppLachlan.Repositories;
+using employeeManagmentAppLachlan.View;
 
 namespace employeeManagmentAppLachlan
 {
@@ -12,15 +13,11 @@ namespace employeeManagmentAppLachlan
         {
             Console.WriteLine("Hello, World!");
             string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
-            storageManager = new StorageManager(connectionString);
 
             storageManager = new StorageManager(connectionString);
-            //get list from storage manager
-            List<LocationTblLocation> locationTblLocations = storageManager.GetLocationTblLocations();
-            foreach (LocationTblLocation location in locationTblLocations)
-            {
-                Console.WriteLine($"{"Location ID: "+location.Location_ID}\t{"Location Name: "+location.Location_Name}");
-            }
+            consoleView View = new consoleView();
+            View.DisplayMenu();
+            string choice = View.GetInput();
         }
     }
 }

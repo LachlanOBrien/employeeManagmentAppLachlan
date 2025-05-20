@@ -23,5 +23,10 @@ namespace employeeManagmentAppLachlan.View
                 Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
             }
         }
+
+        public string GetInput()
+        {
+            return Console.ReadLine();
+        }
     }
 }
