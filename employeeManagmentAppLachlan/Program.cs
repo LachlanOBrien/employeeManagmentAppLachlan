@@ -19,7 +19,7 @@ namespace employeeManagmentAppLachlan
             List<LocationTblLocation> locationTblLocations = storageManager.GetLocationTblLocations();
             foreach (LocationTblLocation location in locationTblLocations)
             {
-                Console.WriteLine($"{location.Location_ID}\t{location.Location_Name}");
+                Console.WriteLine($"{"Location ID: "+location.Location_ID}\t{"Location Name: "+location.Location_Name}");
             }
         }
     }
