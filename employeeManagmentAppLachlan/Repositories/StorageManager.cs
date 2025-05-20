@@ -13,8 +13,8 @@ namespace employeeManagmentAppLachlan.Repositories
     {
         private SqlConnection conn;
 
-        public StorageManager(string connectionString)
-            
+        public StorageManager(string connectionString) 
+
         {
             try
             {
@@ -44,9 +44,9 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     while (reader.Read())
                     {
-                        int LocationLocation_ID = Convert.ToInt32(reader["Location_ID"]);
-                        string Location_Name = reader["Location_Name"].ToString();
-                        locations.Add(new LocationTblLocation(LocationLocation_ID, Location_Name));
+                        int Location_ID = Convert.ToInt32(reader["LocationID"]);
+                        string Location_Name = reader["LocationName"].ToString();
+                        locations.Add(new LocationTblLocation(Location_ID, Location_Name));
                     }
                 }
             }
