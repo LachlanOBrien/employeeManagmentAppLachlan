@@ -5,8 +5,7 @@ using employeeManagmentAppLachlan.View;
 namespace employeeManagmentAppLachlan
 {
     public class Program //saved in onedrive>docc>12tpi>C#>oop>employeeManagmentAppLachlan OR .......oop>WorkPLS
-                         // .mdf is saved in the DB folder onedrive>docc>12tpi>sql>DB
-    {
+    {                    // .mdf is saved in the DB folder onedrive>docc>12tpi>sql>DB
         private static StorageManager storageManager;
 
         static void Main(string[] args)
@@ -25,11 +24,24 @@ namespace employeeManagmentAppLachlan
                     {
                         List<LocationTblLocation> locations = storageManager.GetLocationTblLocations();
                         View.DisplayLocations(locations);
-                    }
-                    break;
+                    }break;
+                case "2":
+                    {
+                        UpdateLocationName();
+                    }break;
+                case "3":
+                    {
+                        insertNewLocation();
+                    }break;
+                case "4":
+                    {
+                        DeleteLocationByName();
+                    }break;
+
                 default:
-                    Console.WriteLine("Invalid option please try again.");
-                    break;
+                    {
+                        Console.WriteLine("Invalid option please try again.");
+                    }break;
             }
 
         }

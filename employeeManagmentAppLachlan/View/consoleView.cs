@@ -12,8 +12,12 @@ namespace employeeManagmentAppLachlan.View
         public string DisplayMenu()
         {
             Console.WriteLine("Welcome to the Employee Managment Menu");
+            Console.WriteLine("Choose an option from 1-4");
             Console.WriteLine("Menu: ");
-            Console.WriteLine("1 View All recors in Location.TblLocation");
+            Console.WriteLine("1: View All records in Location.TblLocation");
+            Console.WriteLine("2: Update a Location's name by LocationID");
+            Console.WriteLine("3: Insert a new Location");
+            Console.WriteLine("4: Delete a brand by Location name");
 
             return Console.ReadLine();
         }
