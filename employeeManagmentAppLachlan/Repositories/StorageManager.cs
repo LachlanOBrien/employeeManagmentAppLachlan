@@ -55,7 +55,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
         public int UpdateLocationName(int LocationID, string LocationName)
         {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocation SET Location_Name = @LocationName Where Location_ID = @LocationID", conn))
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocation SET LocationName = @LocationName Where LocationID = @LocationID", conn))
             {
                 cmd.Parameters.AddWithValue("@LocationName", LocationName);
                 cmd.Parameters.AddWithValue("@LocationID", LocationID);
