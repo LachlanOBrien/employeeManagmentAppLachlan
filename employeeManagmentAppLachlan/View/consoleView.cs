@@ -9,11 +9,13 @@ namespace employeeManagmentAppLachlan.View
 {
     public class consoleView
     {
-        public void DisplayMenu()
+        public string DisplayMenu()
         {
             Console.WriteLine("Welcome to the Employee Managment Menu");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1 View All recors in Location.TblLocation");
+
+            return Console.ReadLine();
         }
 
         public void DisplayLocations(List<LocationTblLocation> locationTblLocations)
@@ -24,9 +26,5 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
-        public string GetInput()
-        {
-            return Console.ReadLine();
-        }
     }
 }

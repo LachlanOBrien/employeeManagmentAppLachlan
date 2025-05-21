@@ -17,7 +17,21 @@ namespace employeeManagmentAppLachlan
             storageManager = new StorageManager(connectionString);
             consoleView View = new consoleView();
             View.DisplayMenu();
-            string choice = View.GetInput();
+            string choice = View.DisplayMenu();
+
+            switch (choice)
+            {
+                case "1":
+                    {
+                        List<LocationTblLocation> locations = storageManager.GetLocationTblLocations();
+                        View.DisplayLocations(locations);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid option please try again.");
+                    break;
+            }
+
         }
     }
 }
