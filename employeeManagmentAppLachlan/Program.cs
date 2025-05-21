@@ -7,6 +7,7 @@ namespace employeeManagmentAppLachlan
     public class Program //saved in onedrive>docc>12tpi>C#>oop>employeeManagmentAppLachlan OR .......oop>WorkPLS
     {                    // .mdf is saved in the DB folder onedrive>docc>12tpi>sql>DB
         private static StorageManager storageManager;
+        private static consoleView view;
 
         static void Main(string[] args)
         {
@@ -14,16 +15,15 @@ namespace employeeManagmentAppLachlan
             string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
             storageManager = new StorageManager(connectionString);
-            consoleView View = new consoleView();
-            View.DisplayMenu();
-            string choice = View.DisplayMenu();
+            view.DisplayMenu();
+            string choice = view.DisplayMenu();
 
             switch (choice)
             {
                 case "1":
                     {
                         List<LocationTblLocation> locations = storageManager.GetLocationTblLocations();
-                        View.DisplayLocations(locations);
+                        view.DisplayLocations(locations);
                     }break;
                 case "2":
                     {
@@ -31,11 +31,11 @@ namespace employeeManagmentAppLachlan
                     }break;
                 case "3":
                     {
-                        insertNewLocation();
+                        //insertNewLocation();
                     }break;
                 case "4":
                     {
-                        DeleteLocationByName();
+                        //DeleteLocationByName();
                     }break;
 
                 default:
@@ -49,11 +49,11 @@ namespace employeeManagmentAppLachlan
         private static void UpdateLocationName()
         {
             view.DisplayMessage("Enter the Location_id to update");
-            int LocationID = view.GetIntInput;
-            View.DisplayMessage("Enter the Location Name");
-            string LocationName = view.getInput();
-            int rowsAffected = storageManager.UpdateLocationName(int LocationID, string LocationName);
-            View.DisplayMessage($"Rows affected {rowsAffected}");
+            int LocationID = view.GetIntInput();
+            view.DisplayMessage("Enter the Location Name");
+            string LocationName = view.GetInput();
+            int rowsAffected = storageManager.UpdateLocationName(LocationID, LocationName);
+            view.DisplayMessage($"Rows affected {rowsAffected}");
         }
     }
 }
