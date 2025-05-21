@@ -45,5 +45,15 @@ namespace employeeManagmentAppLachlan
             }
 
         }
+
+        private static void UpdateLocationName()
+        {
+            view.DisplayMessage("Enter the Location_id to update");
+            int LocationID = view.GetIntInput;
+            View.DisplayMessage("Enter the Location Name");
+            string LocationName = view.getInput();
+            int rowsAffected = storageManager.UpdateLocationName(int LocationID, string LocationName);
+            View.DisplayMessage($"Rows affected {rowsAffected}");
+        }
     }
 }

@@ -52,5 +52,16 @@ namespace employeeManagmentAppLachlan.Repositories
             }
             return locations;
         }
+
+        public int UpdateLocationName(int LocationID, string LocationName)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocation SET Location_Name = @LocationName Where Location_ID = @LocationID", conn))
+            {
+                cmd.Parameters.AddWithValue("@LocationName", LocationName);
+                cmd.Parameters.AddWithValue("@LocationID", LocationID);
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
     }
 }
