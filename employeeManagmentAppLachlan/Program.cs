@@ -71,6 +71,13 @@ namespace employeeManagmentAppLachlan
             view.DisplayMessage($"new Location inserted with ID {generateID}");
         }
 
-        
+        public static void DeleteByName()
+        {
+            view.DisplayMessage("Enter the Location Name to delete");
+            string locationName = view.GetInput();
+            int rowsaffected = storageManager.DeleteLocationByName(locationName);
+            view.DisplayMessage($"Rows affected{rowsaffected}");
+        }
+
     }
 }

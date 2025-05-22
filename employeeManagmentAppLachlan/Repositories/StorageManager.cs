@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,8 +68,25 @@ namespace employeeManagmentAppLachlan.Repositories
         {
             using (SqlCommand cmd = new SqlCommand($"INSERT INTO Location.tblLocation (LocationName) VALUES (@LocationName); SELECT SCOPE_IDENTITY(); ", conn))
             {
-                cmd.Parameters.AddWithValue("@LocationName",LocationName.Location_Name);
+                cmd.Parameters.AddWithValue("@LocationName", LocationName.Location_Name);
                 return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+        public int DeleteLocationByName(string LocationName)
+        {
+            using (SqlCommand cmd = new SqlCommand($"DELETE FROM Location.tblLocation WHERE LocationName = @LocationName", conn))
+            {
+                cmd.Parameters.AddWithValue($"@LocationName", LocationName);
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void CloseConnection()
+        {
+            if (conn != null && conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+                Console.WriteLine("connection closed");
             }
         }
     }
