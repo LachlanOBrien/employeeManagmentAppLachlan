@@ -24,24 +24,29 @@ namespace employeeManagmentAppLachlan
                     {
                         List<LocationTblLocation> locations = storageManager.GetLocationTblLocations();
                         view.DisplayLocations(locations);
-                    }break;
+                    }
+                    break;
                 case "2":
                     {
                         UpdateLocationName();
-                    }break;
+                    }
+                    break;
                 case "3":
                     {
-                        //insertNewLocation();
-                    }break;
+                        InsertNewLocation();
+                    }
+                    break;
                 case "4":
                     {
                         //DeleteLocationByName();
-                    }break;
+                    }
+                    break;
 
                 default:
                     {
                         Console.WriteLine("Invalid option please try again.");
-                    }break;
+                    }
+                    break;
             }
 
         }
@@ -55,5 +60,17 @@ namespace employeeManagmentAppLachlan
             int rowsAffected = storageManager.UpdateLocationName(LocationID, LocationName);
             view.DisplayMessage($"Rows affected {rowsAffected}");
         }
+
+        private static void InsertNewLocation()
+        {
+            view.DisplayMessage("Enter the new Location Name");
+            string locationName = view.GetInput();
+            int locationID = 0;
+            LocationTblLocation location1 = new LocationTblLocation(locationID, locationName);
+            int generateID = storageManager.InsertLocation(location1);
+            view.DisplayMessage($"new Location inserted with ID {generateID}");
+        }
+
+        
     }
 }

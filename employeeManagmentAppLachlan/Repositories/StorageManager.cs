@@ -53,7 +53,7 @@ namespace employeeManagmentAppLachlan.Repositories
             return locations;
         }
 
-        public int UpdateLocationName(int LocationID, string LocationName)
+        public int UpdateLocationName(int LocationID, string LocationName)//change it from searching id to name
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocation SET LocationName = @LocationName Where LocationID = @LocationID", conn))
             {
@@ -63,5 +63,13 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+        public int InsertLocation(LocationTblLocation LocationName)
+        {
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO Location.tblLocation (LocationName) VALUES (@LocationName); SELECT SCOPE_IDENTITY(); ", conn))
+            {
+                cmd.Parameters.AddWithValue("@LocationName",LocationName.Location_Name);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
     }
 }
