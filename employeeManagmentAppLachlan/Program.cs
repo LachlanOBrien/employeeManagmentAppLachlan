@@ -38,7 +38,7 @@ namespace employeeManagmentAppLachlan
                     break;
                 case "4":
                     {
-                        //DeleteLocationByName();
+                        DeleteByName();
                     }
                     break;
 
@@ -76,7 +76,7 @@ namespace employeeManagmentAppLachlan
             view.DisplayMessage("Enter the Location Name to delete");
             string locationName = view.GetInput();
             int rowsaffected = storageManager.DeleteLocationByName(locationName);
-            view.DisplayMessage($"Rows affected{rowsaffected}");
+            view.DisplayMessage($"Rows affected: {rowsaffected}");
         }
 
     }
