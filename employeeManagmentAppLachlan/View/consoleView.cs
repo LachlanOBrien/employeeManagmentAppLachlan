@@ -9,7 +9,7 @@ namespace employeeManagmentAppLachlan.View
 {
     public class consoleView
     {
-        public string TblDisplayMenu()
+      /*  public string TblDisplayMenu()
         {
             Console.WriteLine("Welcome to the Employee Managment Menu");
             Console.WriteLine("Choose an option from 1-9");
@@ -25,7 +25,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("9.tblLocationCity ");
             return Console.ReadLine();
         }
-        /* public string tblEmployeeContactDiplayMenu()
+         public string tblEmployeeContactDiplayMenu()
         {
             Console.Clear();
             Console.WriteLine("Welcome to tblEmployeeContact");
