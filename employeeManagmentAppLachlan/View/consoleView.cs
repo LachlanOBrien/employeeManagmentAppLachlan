@@ -9,7 +9,7 @@ namespace employeeManagmentAppLachlan.View
 {
     public class consoleView
     {
-        public string TblDisplayMenu()
+       public void TblDisplayMenu()
         {
             Console.WriteLine("Welcome to the Employee Managment Menu");
             Console.WriteLine("Choose an option from 1-9");
@@ -23,7 +23,6 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("7.tblLocation ");
             Console.WriteLine("8.tblLocationAdress");
             Console.WriteLine("9.tblLocationCity ");
-            return Console.ReadLine();
         }
         /*
          public string tblEmployeeContactDiplayMenu()
@@ -38,7 +37,8 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("4: Delete a brand by Location name");
             return Console.ReadLine();
         }*/
-         public string DisplayMenu()
+        
+         public void DisplayMenu()
         {
             Console.WriteLine("Welcome to the Employee Managment Menu");
             Console.WriteLine("Choose an option from 1-4");
@@ -48,7 +48,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("3: Insert a new Location");
             Console.WriteLine("4: Delete a brand by Location name");
 
-            return Console.ReadLine();
+            //return Console.ReadLine();
         }
 
     

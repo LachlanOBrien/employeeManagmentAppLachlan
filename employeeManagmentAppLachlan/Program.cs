@@ -1,6 +1,7 @@
 ﻿using employeeManagmentAppLachlan.Model;
 using employeeManagmentAppLachlan.Repositories;
 using employeeManagmentAppLachlan.View;
+using System.Threading.Channels;
 
 namespace employeeManagmentAppLachlan
 {
@@ -9,20 +10,23 @@ namespace employeeManagmentAppLachlan
             private static StorageManager storageManager;
             private static consoleView view;
 
-            static void Main(string[] args)
-            {
-                Console.WriteLine("Hello, World!");
-                string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\GAMING LACHY\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\GAMING LACHY\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
-                storageManager = new StorageManager(connectionString);
-                view = new consoleView();
-                string tblchoice = view.TblDisplayMenu();
-                string choice = view.DisplayMenu();                 
-                bool Notvalid = true;
+            storageManager = new StorageManager(connectionString);
+            view = new consoleView();
+           // string tblchoice = view.TblDisplayMenu();
+           // string choice = view.DisplayMenu();
+            bool Notvalid = true;
+            string tblchoice;
+            string choice;
 
             do
             {
                 view.TblDisplayMenu();
+                tblchoice = Console.ReadLine();
                 switch (tblchoice)
                 {
                     case "1":
@@ -90,31 +94,32 @@ namespace employeeManagmentAppLachlan
             } while (Notvalid);
 
             do
+            {
+                choice = Console.ReadLine();
+                switch (choice)
                 {
-                    switch (choice)
-                    {
-                        case "1":
+                    case "1":
                         {
                             List<LocationTblLocation> locations = storageManager.GetLocationTblLocations();
                             view.DisplayLocations(locations);
                             Notvalid = false;
                         }
                         break;
-                        case "2":
+                    case "2":
                         {
                             UpdateLocationName();
                             Notvalid = false;
 
                         }
                         break;
-                        case "3":
+                    case "3":
                         {
                             InsertNewLocation();
                             Notvalid = false;
 
                         }
                         break;
-                        case "4":
+                    case "4":
                         {
                             DeleteByName();
                             Notvalid = false;
@@ -122,17 +127,17 @@ namespace employeeManagmentAppLachlan
                         }
                         break;
 
-                        default:
+                    default:
                         {
                             Console.WriteLine("Invalid option please try again.");
                             Notvalid = true;
                         }
                         break;
                 }
-            }   while (Notvalid);
+            } while (Notvalid);
         }
 
-            private static void UpdateLocationName()
+        private static void UpdateLocationName()
             {
                 view.DisplayMessage("Enter the Location_id to update");
                 int LocationID = view.GetIntInput();
