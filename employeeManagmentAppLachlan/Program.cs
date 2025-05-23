@@ -22,6 +22,7 @@ namespace employeeManagmentAppLachlan
 
            do
             {
+                view.DisplayMenu();
                 switch (choice)
                 {
                     case "1":
