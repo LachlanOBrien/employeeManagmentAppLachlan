@@ -68,7 +68,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "7":
                         {
-                            view.DisplayMenu();
+                            view.tblEmployeeDiplayMenu();
                             Notvalid = false;
                         }
                         break;
