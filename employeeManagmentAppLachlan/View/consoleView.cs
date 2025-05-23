@@ -29,7 +29,7 @@ namespace employeeManagmentAppLachlan.View
         {
             Console.Clear();
             Console.WriteLine("Welcome to tblEmployeeContact");
-            Console.WriteLine("Choose an option from 1-4");
+            Console.WriteLine("Choose an option from 1-2");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in Employee.tblEmployeeContact");
             Console.WriteLine("2: Update an Employee's details by EmployeeID");
@@ -69,7 +69,7 @@ namespace employeeManagmentAppLachlan.View
         {
             Console.Clear();
             Console.WriteLine("Welcome to tblJobTittles");
-            Console.WriteLine("Choose an option from 1-2");
+            Console.WriteLine("Choose an option from 1-4");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in Employee.tblJobTittles");
             Console.WriteLine("2: Update a job title by jobtitleID");
@@ -81,7 +81,7 @@ namespace employeeManagmentAppLachlan.View
         {
             Console.Clear();
             Console.WriteLine("Welcome to tblDepartments");
-            Console.WriteLine("Choose an option from 1-2");
+            Console.WriteLine("Choose an option from 1-4");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in Location.tblDepartments");
             Console.WriteLine("2: Update a Departments by DepartmentsID");
@@ -93,7 +93,7 @@ namespace employeeManagmentAppLachlan.View
         {
             Console.Clear();
             Console.WriteLine("Welcome to tblLocation");
-            Console.WriteLine("Choose an option from 1-2");
+            Console.WriteLine("Choose an option from 1-4");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in Location.tblEmployeeLocations");
             Console.WriteLine("2: Update a location by locationID");
