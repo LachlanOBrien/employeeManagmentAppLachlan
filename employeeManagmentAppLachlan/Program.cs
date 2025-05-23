@@ -17,38 +17,48 @@ namespace employeeManagmentAppLachlan
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
             string choice = view.DisplayMenu();
+            bool NotValid = true;
 
-            switch (choice)
+
+           do
             {
-                case "1":
-                    {
-                        List<LocationTblLocation> locations = storageManager.GetLocationTblLocations();
-                        view.DisplayLocations(locations);
-                    }
-                    break;
-                case "2":
-                    {
-                        UpdateLocationName();
-                    }
-                    break;
-                case "3":
-                    {
-                        InsertNewLocation();
-                    }
-                    break;
-                case "4":
-                    {
-                        DeleteByName();
-                    }
-                    break;
+                switch (choice)
+                {
+                    case "1":
+                        {
+                            List<LocationTblLocation> locations = storageManager.GetLocationTblLocations();
+                            view.DisplayLocations(locations);
+                            NotValid = false;
+                        }
+                        break;
+                    case "2":
+                        {
+                            UpdateLocationName();
+                            NotValid = false;
+                        }
+                        break;
+                    case "3":
+                        {
+                            InsertNewLocation();
+                            NotValid = false;
+                        }
+                        break;
+                    case "4":
+                        {
+                            DeleteByName();
+                            NotValid = false;
+                        }
+                        break;
 
-                default:
-                    {
-                        Console.WriteLine("Invalid option please try again.");
-                    }
-                    break;
-            }
-
+                    default:
+                        {
+                            Console.WriteLine("Invalid option please try again.");
+                            NotValid = false;
+                        }
+                        break;
+                }
+            } while (NotValid);
+            
         }
 
         private static void UpdateLocationName()
