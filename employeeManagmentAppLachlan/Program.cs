@@ -31,56 +31,56 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            //DiplayMenu();
+                            view.tblEmployeeContact();
                             Notvalid = false;
 
                         }
                         break;
                     case "2":
                         {
-                            //DiplayMenu();
+                            view.tblEmployeeLocations();
                             Notvalid = false;
                         }
                         break;
                     case "3":
                         {
-                            //DiplayMenu();
+                            view.tblEmployeesDetails();
                             Notvalid = false;
                         }
                         break;
                     case "4":
                         {
-                            //DiplayMenu();
+                            view.tblEmployeeWage();
                             Notvalid = false;
                         }
                         break;
                     case "5":
                         {
-                            //DiplayMenu();
+                            view.tblJobTittles();
                             Notvalid = false;
                         }
                         break;
                     case "6":
                         {
-                            //DiplayMenu();
+                            view.tblDepartments();
                             Notvalid = false;
                         }
                         break;
                     case "7":
                         {
-                            view.tblEmployeeDiplayMenu();
+                            view.tblLocation();
                             Notvalid = false;
                         }
                         break;
                     case "8":
                         {
-                            //DiplayMenu();
+                            view.tblLocationAdress();
                             Notvalid = false;
                         }
                         break;
                     case "9":
                         {
-                            //DiplayMenu();
+                            view.tblLocationCity();
                             Notvalid = false;
                         }
                         break;
