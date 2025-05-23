@@ -16,13 +16,81 @@ namespace employeeManagmentAppLachlan
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
-            string choice = view.DisplayMenu();
+            string choice = view.tblEmployeeContactDiplayMenu();
+            string tblChoice = view.TblDisplayMenu();
             bool NotValid = true;
 
-
-           do
+            do
             {
-                view.DisplayMenu();
+                view.TblDisplayMenu();
+                switch (tblChoice)
+                {
+                    case "1":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    case "2":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    case "3":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    case "4":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    case "5":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    case "6":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    case "7":
+                        {
+                            view.tblEmployeeContactDiplayMenu();
+                            NotValid = false;
+                        }
+                        break;
+                    case "8":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    case "9":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    default:
+                        {
+                            Console.WriteLine("Invalid option please try again.");
+                            NotValid = false;
+                        }
+                        break;
+                }
+            } while (NotValid);
+           
+            do
+            {
+                view.tblEmployeeContactDiplayMenu();
                 switch (choice)
                 {
                     case "1":
