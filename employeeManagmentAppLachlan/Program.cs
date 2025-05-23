@@ -70,6 +70,48 @@ namespace employeeManagmentAppLachlan
                         {
                             view.tblLocation();
                             Notvalid = false;
+                            do
+                            {
+                                choice = Console.ReadLine();
+                                switch (choice)
+                                {
+                                    case "1":
+                                        {
+                                            List<LocationTblLocation> locations = storageManager.GetLocationTblLocations();
+                                            view.DisplayLocations(locations);
+                                            Notvalid = false;
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            UpdateLocationName();
+                                            Notvalid = false;
+
+                                        }
+                                        break;
+                                    case "3":
+                                        {
+                                            InsertNewLocation();
+                                            Notvalid = false;
+
+                                        }
+                                        break;
+                                    case "4":
+                                        {
+                                            DeleteByName();
+                                            Notvalid = false;
+
+                                        }
+                                        break;
+
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            Notvalid = true;
+                                        }
+                                        break;
+                                }
+                            } while (Notvalid);
                         }
                         break;
                     case "8":
@@ -93,48 +135,7 @@ namespace employeeManagmentAppLachlan
                 }
             } while (Notvalid);
 
-            do
-            {
-                choice = Console.ReadLine();
-                switch (choice)
-                {
-                    case "1":
-                        {
-                            List<LocationTblLocation> locations = storageManager.GetLocationTblLocations();
-                            view.DisplayLocations(locations);
-                            Notvalid = false;
-                        }
-                        break;
-                    case "2":
-                        {
-                            UpdateLocationName();
-                            Notvalid = false;
 
-                        }
-                        break;
-                    case "3":
-                        {
-                            InsertNewLocation();
-                            Notvalid = false;
-
-                        }
-                        break;
-                    case "4":
-                        {
-                            DeleteByName();
-                            Notvalid = false;
-
-                        }
-                        break;
-
-                    default:
-                        {
-                            Console.WriteLine("Invalid option please try again.");
-                            Notvalid = true;
-                        }
-                        break;
-                }
-            } while (Notvalid);
         }
 
         private static void UpdateLocationName()
