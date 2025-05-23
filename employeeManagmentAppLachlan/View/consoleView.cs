@@ -25,8 +25,9 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("9.tblLocationCity ");
             return Console.ReadLine();
         }
-        public string tblEmployeeContactDiplayMenu()
+        /* public string tblEmployeeContactDiplayMenu()
         {
+            Console.Clear();
             Console.WriteLine("Welcome to tblEmployeeContact");
             Console.WriteLine("Choose an option from 1-4");
             Console.WriteLine("Menu: ");
@@ -35,8 +36,8 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("3: Insert a new Location");
             Console.WriteLine("4: Delete a brand by Location name");
             return Console.ReadLine();
-        }
-        /* public string DisplayMenu()
+        }*/
+         public string DisplayMenu()
         {
             Console.WriteLine("Welcome to the Employee Managment Menu");
             Console.WriteLine("Choose an option from 1-4");
@@ -47,8 +48,9 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("4: Delete a brand by Location name");
 
             return Console.ReadLine();
-        }*/
+        }
 
+    
         public void DisplayLocations(List<LocationTblLocation> locationTblLocations)
         {
             foreach (LocationTblLocation location in locationTblLocations)

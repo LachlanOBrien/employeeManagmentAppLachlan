@@ -16,81 +16,13 @@ namespace employeeManagmentAppLachlan
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
-            string choice = view.tblEmployeeContactDiplayMenu();
-            string tblChoice = view.TblDisplayMenu();
+           // string tblChoice = view.TblDisplayMenu();
+            string choice = view.DisplayMenu();
             bool NotValid = true;
 
             do
             {
-                view.TblDisplayMenu();
-                switch (tblChoice)
-                {
-                    case "1":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    case "2":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    case "3":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    case "4":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    case "5":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    case "6":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    case "7":
-                        {
-                            view.tblEmployeeContactDiplayMenu();
-                            NotValid = false;
-                        }
-                        break;
-                    case "8":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    case "9":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    default:
-                        {
-                            Console.WriteLine("Invalid option please try again.");
-                            NotValid = false;
-                        }
-                        break;
-                }
-            } while (NotValid);
-           
-            do
-            {
-                view.tblEmployeeContactDiplayMenu();
+                view.DisplayMenu();
                 switch (choice)
                 {
                     case "1":
@@ -126,7 +58,8 @@ namespace employeeManagmentAppLachlan
                         }
                         break;
                 }
-            } while (NotValid);
+            } while (NotValid); 
+
             
         }
 
@@ -160,3 +93,77 @@ namespace employeeManagmentAppLachlan
 
     }
 }
+
+
+
+
+/*
+            do
+            {
+                view.TblDisplayMenu();
+                switch (tblChoice)
+                {
+                    case "1":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                            
+                        }
+                        break;
+                    case "2":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    case "3":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    case "4":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    case "5":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    case "6":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    case "7":
+                        {
+                            view.DisplayMenu();
+                            NotValid = false;
+                        }
+                        break;
+                    case "8":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    case "9":
+                        {
+                            //DiplayMenu();
+                            NotValid = true;
+                        }
+                        break;
+                    default:
+                        {
+                            Console.WriteLine("Invalid option please try again.");
+                            NotValid = false;
+                        }
+                        break;
+                }
+            } while (NotValid);
+           */
