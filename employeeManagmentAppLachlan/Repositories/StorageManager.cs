@@ -53,6 +53,25 @@ namespace employeeManagmentAppLachlan.Repositories
             }
             return locations;
         }
+        public List<EmployeeTblEmployeeContact> GetEmployeeTblEmployeeContacts()
+        {
+            List<EmployeeTblEmployeeContact> employeeContatct = new List<EmployeeTblEmployeeContact>();
+            string sqlString = "SELECT * FROM Employee.tblEmployeeContacts";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int employeid = Convert.ToInt32(reader["EmployeeID"]);
+                        string email = reader["Email"].ToString();
+                        string phonenumber = reader["Phonenumber"].ToString();
+                        employeeContatct.Add(new EmployeeTblEmployeeContact(employeid, email, phonenumber));
+                    }
+                }
+            }
+            return employeeContatct;
+        }
 
         public int UpdateLocationName(int LocationID, string LocationName)//change it from searching id to name
         {

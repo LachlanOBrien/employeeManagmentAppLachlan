@@ -10,9 +10,9 @@ namespace employeeManagmentAppLachlan.Model
     {
         public int employeeid { get; set; }
         public string email { get; set; }
-        public int phonenumber { get; set; }
+        public string phonenumber { get; set; }
 
-        public EmployeeTblEmployeeContact(int EmployeeID, string Email, int PhoneNumber)
+        public EmployeeTblEmployeeContact(int EmployeeID, string Email, string PhoneNumber)
         {
             employeeid = EmployeeID;
             email = Email;
