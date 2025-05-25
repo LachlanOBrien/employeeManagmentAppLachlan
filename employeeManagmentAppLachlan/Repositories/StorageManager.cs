@@ -78,7 +78,7 @@ namespace employeeManagmentAppLachlan.Repositories
         {
             List<EmployeeTblEmployeeLocations> employeeLocations = new List<EmployeeTblEmployeeLocations>();
             string sqlString = "SELECT * FROM Employee.tblEmployeeLocations";
-            using (SqlCommand cmd = new SqlCommand (sqlString, conn))
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -92,6 +92,29 @@ namespace employeeManagmentAppLachlan.Repositories
             }
             return employeeLocations;
         }
+
+        public List<EmployeeTblEmployeesDetails> GetEmployeeTblEmployeesDetails()
+        {
+            List<EmployeeTblEmployeesDetails> employeeDetails = new List<EmployeeTblEmployeesDetails>();
+            string sqlString = "SELECT * FROM Employee.tblEmployeesDetails";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
+                        string firstname = reader["FirstName"].ToString();
+                        string lastname = reader["LastName"].ToString();
+                        DateTime hiredate = Convert.ToDateTime(reader["HireDate"]);
+                        string gender = reader["Gender"].ToString();
+                        int jobid = Convert.ToInt32(reader["JobID"]);
+                    }
+                }
+            }
+            return employeeDetails;
+        }
+
 
         public int UpdateLocationName(int LocationID, string LocationName)//change it from searching id to name
         {
