@@ -35,24 +35,6 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
-        public List<LocationTblLocation> GetLocationTblLocations()
-        {
-            List<LocationTblLocation> locations = new List<LocationTblLocation>();
-            string sqlString = "SELECT * From Location.tblLocation";
-            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
-            {
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        int Location_ID = Convert.ToInt32(reader["LocationID"]);
-                        string Location_Name = reader["LocationName"].ToString();
-                        locations.Add(new LocationTblLocation(Location_ID, Location_Name));
-                    }
-                }
-            }
-            return locations;
-        }
        
         public List<EmployeeTblEmployeeContact> GetEmployeeTblEmployeeContacts()
         {
@@ -115,6 +97,120 @@ namespace employeeManagmentAppLachlan.Repositories
             return employeeDetails;
         }
 
+        public List<EmployeeTblEmployeeWage> GetEmployeeTblEmployeeWages()
+        {
+            List<EmployeeTblEmployeeWage> employeeWages = new List<EmployeeTblEmployeeWage>();
+            string sqlString = "SELECT * FROM Employee.tblEmployeeWage";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int employeeid = Convert.ToInt32(reader["EmployeeID"]);
+                        int jobtitleid = Convert.ToInt32(reader["JobtitleID"]);
+                        int wage = Convert.ToInt32(reader["Wage"]);
+                    }
+                }
+            }
+            return employeeWages;
+        }
+
+        public List<EmployeeTblJobTittles> GetEmployeeTblJobTittles()
+        {
+            List<EmployeeTblJobTittles> jobTittles = new List<EmployeeTblJobTittles>();
+            string sqlString = "SELECT * FROM Employee.tblJobTittles";
+            using (SqlCommand cmd = new SqlCommand(sqlString,conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int jobtitleid = Convert.ToInt32(reader["jobtitleID"]);
+                        string JobtitleName = Convert.ToInt32(reader["JobtitleName"]);
+                    }
+                }
+            }
+            return jobTittles;
+        }
+
+        public List<LocationTblDepartments> GetLocationTblDepartments()
+        {
+            List<LocationTblDepartments> Departments = new List<LocationTblDepartments>();
+            string sqlString = "SELECT * FROM Location.tblDepartments";
+            using (SqlCommand cmd = new SqlCommand(sqlString,conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int LocationID = Convert.ToInt32(reader["LocationID"]);
+                        string deparments = (reader["Departments"]).ToString();
+                        int managersID = Convert.ToInt32(reader["ManagersID"]);
+                    }
+                }
+            }
+            return Departments;
+        }
+
+        public List<LocationTblLocation> GetLocationTblLocations()
+        {
+            List<LocationTblLocation> locations = new List<LocationTblLocation>();
+            string sqlString = "SELECT * From Location.tblLocation";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int Location_ID = Convert.ToInt32(reader["LocationID"]);
+                        string Location_Name = reader["LocationName"].ToString();
+                        locations.Add(new LocationTblLocation(Location_ID, Location_Name));
+                    }
+                }
+            }
+            return locations;
+        }
+
+        public List<LocationTblLocationAdress> GetLocationTblLocationAdresses()
+        {
+            List<LocationTblLocationAdress> locationAdresses = new List<LocationTblLocationAdress>();
+            string sqlString = "SELECT * FROM Location.tblLocationAdress";
+            using (SqlCommand cmd = new SqlCommand(sqlString,conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int LocationID = Convert.ToInt32(reader["LocationID"]);
+                        int cityID = Convert.ToInt32(reader["CityID"]);
+                        string country = reader["country"].ToString();
+                    }
+                }
+            }
+            return locationAdresses;
+        }
+
+        public List<LocationTblLocationCity> GetLocationTblLocationCities()
+        {
+            List<LocationTblLocationCity> locationCities = new List<LocationTblLocationCity>();
+            string sqlString = "SELECT * FROM Location.tblLocationCity";
+            using (SqlCommand cmd = new SqlCommand(sqlString,conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int CityID = Convert.ToInt32(reader["CityID"]);
+                        string suburb = reader["suburb"].ToString();
+                        string postcode = reader["postcode"].ToString();
+                        string street = reader["street"].ToString();
+                        string city = reader["city"].ToString();
+                    }
+                }
+            }
+            return locationCities;
+        }
 
         public int UpdateLocationName(int LocationID, string LocationName)//change it from searching id to name
         {
