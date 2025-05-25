@@ -127,7 +127,7 @@ namespace employeeManagmentAppLachlan.Repositories
                     while (reader.Read())
                     {
                         int jobtitleid = Convert.ToInt32(reader["jobtitleID"]);
-                        string JobtitleName = Convert.ToInt32(reader["JobtitleName"]);
+                        string JobtitleName = reader["JobtitleName"].ToString();
                     }
                 }
             }
