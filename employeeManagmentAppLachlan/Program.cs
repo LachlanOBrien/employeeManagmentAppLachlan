@@ -111,7 +111,7 @@ namespace employeeManagmentAppLachlan
                                 switch (choice)
                                 {
                                     case "1":
-                                        {
+                                        { // doesnt display the list
                                             List<EmployeeTblEmployeesDetails> employee = storageManager.GetEmployeeTblEmployeesDetails();
                                             view.DisplaytblEmployeesDetails(employee);
                                             Notvalid = false;
