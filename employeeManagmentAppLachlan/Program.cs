@@ -101,7 +101,7 @@ namespace employeeManagmentAppLachlan
                             } while (Notvalid);
                         }
                         break;
-                    case "3":
+                    case "3": //doesnt display
                         {
                             view.tblEmployeesDetails();
                             Notvalid = false;
@@ -135,7 +135,7 @@ namespace employeeManagmentAppLachlan
                             } while (Notvalid);
                         }
                         break;
-                    case "4":
+                    case "4":// doesnt display
                         {
                             view.tblEmployeeWage();
                             Notvalid = false;
@@ -169,7 +169,7 @@ namespace employeeManagmentAppLachlan
                             } while (Notvalid);
                         }
                         break;
-                    case "5":
+                    case "5":// doesnt display
                         {
                             view.tblJobTittles();
                             Notvalid = false;
@@ -203,7 +203,7 @@ namespace employeeManagmentAppLachlan
                             } while (Notvalid);
                         }
                         break;
-                    case "6":
+                    case "6":// doesnt display
                         {
                             view.tblDepartments();
                             Notvalid = false;
@@ -285,7 +285,7 @@ namespace employeeManagmentAppLachlan
                             } while (Notvalid);
                         }
                         break;
-                    case "8":
+                    case "8": // doesnt display
                         {
                             view.tblLocationAdress();
                             Notvalid = false;
