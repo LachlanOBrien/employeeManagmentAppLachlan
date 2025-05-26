@@ -71,30 +71,170 @@ namespace employeeManagmentAppLachlan
                         {
                             view.tblEmployeeLocations();
                             Notvalid = false;
+                            do
+                            {
+                                choice = Console.ReadLine();
+                                switch (choice)
+                                {
+                                    case "1":
+                                        {
+                                            List<EmployeeTblEmployeeLocations> employee = storageManager.GetEmployeeTblEmployeeLocations();
+                                            view.DisplaytblEmployeeLocations(employee);
+                                            Notvalid = false;
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            //UpdateLocationName();
+                                            Notvalid = false;
+
+                                        }
+                                        break;
+
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            Notvalid = true;
+                                        }
+                                        break;
+                                }
+                            } while (Notvalid);
                         }
                         break;
                     case "3":
                         {
                             view.tblEmployeesDetails();
                             Notvalid = false;
+                            do
+                            {
+                                choice = Console.ReadLine();
+                                switch (choice)
+                                {
+                                    case "1":
+                                        {
+                                            List<EmployeeTblEmployeesDetails> employee = storageManager.GetEmployeeTblEmployeesDetails();
+                                            view.DisplaytblEmployeesDetails(employee);
+                                            Notvalid = false;
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            //UpdateLocationName();
+                                            Notvalid = false;
+
+                                        }
+                                        break;
+
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            Notvalid = true;
+                                        }
+                                        break;
+                                }
+                            } while (Notvalid);
                         }
                         break;
                     case "4":
                         {
                             view.tblEmployeeWage();
                             Notvalid = false;
+                            do
+                            {
+                                choice = Console.ReadLine();
+                                switch (choice)
+                                {
+                                    case "1":
+                                        {
+                                            List<EmployeeTblEmployeeWage> employee = storageManager.GetEmployeeTblEmployeeWages();
+                                            view.DisplaytblEmployeeWage(employee);
+                                            Notvalid = false;
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            //UpdateLocationName();
+                                            Notvalid = false;
+
+                                        }
+                                        break;
+
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            Notvalid = true;
+                                        }
+                                        break;
+                                }
+                            } while (Notvalid);
                         }
                         break;
                     case "5":
                         {
                             view.tblJobTittles();
                             Notvalid = false;
+                            do
+                            {
+                                choice = Console.ReadLine();
+                                switch (choice)
+                                {
+                                    case "1":
+                                        {
+                                            List<EmployeeTblJobTittles> jobTittle = storageManager.GetEmployeeTblJobTittles();
+                                            view.DisplaytblJobTittles(jobTittle);
+                                            Notvalid = false;
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            //UpdateLocationName();
+                                            Notvalid = false;
+
+                                        }
+                                        break;
+
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            Notvalid = true;
+                                        }
+                                        break;
+                                }
+                            } while (Notvalid);
                         }
                         break;
                     case "6":
                         {
                             view.tblDepartments();
                             Notvalid = false;
+                            do
+                            {
+                                choice = Console.ReadLine();
+                                switch (choice)
+                                {
+                                    case "1":
+                                        {
+                                            List<LocationTblDepartments> locations = storageManager.GetLocationTblDepartments();
+                                            view.DisplaytblDepartments(locations);
+                                            Notvalid = false;
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                           // UpdateLocationName();
+                                            Notvalid = false;
+
+                                        }
+                                        break;
+
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            Notvalid = true;
+                                        }
+                                        break;
+                                }
+                            } while (Notvalid);
                         }
                         break;
                     case "7":
@@ -115,21 +255,21 @@ namespace employeeManagmentAppLachlan
                                         break;
                                     case "2":
                                         {
-                                            UpdateLocationName();
+                                           // UpdateLocationName();
                                             Notvalid = false;
 
                                         }
                                         break;
                                     case "3":
                                         {
-                                            InsertNewLocation();
+                                           // InsertNewLocation();
                                             Notvalid = false;
 
                                         }
                                         break;
                                     case "4":
                                         {
-                                            DeleteByName();
+                                           // DeleteByName();
                                             Notvalid = false;
 
                                         }
@@ -149,12 +289,68 @@ namespace employeeManagmentAppLachlan
                         {
                             view.tblLocationAdress();
                             Notvalid = false;
+                            do
+                            {
+                                choice = Console.ReadLine();
+                                switch (choice)
+                                {
+                                    case "1":
+                                        {
+                                            List<LocationTblLocationAdress> locations = storageManager.GetLocationTblLocationAdresses();
+                                            view.DisplaytblLocationAdress(locations);
+                                            Notvalid = false;
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            // UpdateLocationName();
+                                            Notvalid = false;
+
+                                        }
+                                        break;
+
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            Notvalid = true;
+                                        }
+                                        break;
+                                }
+                            } while (Notvalid);
                         }
                         break;
                     case "9":
                         {
                             view.tblLocationCity();
                             Notvalid = false;
+                            do
+                            {
+                                choice = Console.ReadLine();
+                                switch (choice)
+                                {
+                                    case "1":
+                                        {
+                                            List<LocationTblLocationCity> locations = storageManager.GetLocationTblLocationCities();
+                                            view.DisplaytblLocationCity(locations);
+                                            Notvalid = false;
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            //UpdateLocationName();
+                                            Notvalid = false;
+
+                                        }
+                                        break;
+
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            Notvalid = true;
+                                        }
+                                        break;
+                                }
+                            } while (Notvalid);
                         }
                         break;
                     default:
@@ -199,115 +395,3 @@ namespace employeeManagmentAppLachlan
 
         }
     }
-
-/*
-            do
-            {
-                if (choice == "1")
-                {
-                    List<LocationTblLocation> locations = storageManager.GetLocationTblLocations();
-                    view.DisplayLocations(locations);
-                }
-                else
-                {
-                    if (choice == "2")
-                    {
-                        UpdateLocationName();
-                    }
-                    else
-                    {
-                        if (choice == "3")
-                        {
-                            InsertNewLocation();
-                        }
-                        else
-                        {
-                            if (choice == "4")
-                            {
-                                DeleteByName();
-                            }
-                            else
-                            {
-                                Notvalid = false;
-                                Console.WriteLine("Invalid option please try again.");
-                            }
-                        }
-                    }
-                }
-            } while (Notvalid);                     
-        }
-    }*/
-
-
-
-/*
-
-            do
-            {
-                view.TblDisplayMenu();
-                switch (tblChoice)
-                {
-                    case "1":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                            
-                        }
-                        break;
-                    case "2":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    case "3":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    case "4":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    case "5":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    case "6":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    case "7":
-                        {
-                            view.DisplayMenu();
-                            NotValid = false;
-                        }
-                        break;
-                    case "8":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    case "9":
-                        {
-                            //DiplayMenu();
-                            NotValid = true;
-                        }
-                        break;
-                    default:
-                        {
-                            Console.WriteLine("Invalid option please try again.");
-                            NotValid = false;
-                        }
-                        break;
-                }
-            } while (NotValid);
-           */
