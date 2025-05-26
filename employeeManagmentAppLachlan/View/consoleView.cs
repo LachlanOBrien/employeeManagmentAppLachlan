@@ -121,14 +121,75 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("2: Update a location by locationID");
         }
 
+        public void DisplaytblEmployeeContact(List<EmployeeTblEmployeeContact> employeeTblEmployeeContacts)
+        {
+            foreach (EmployeeTblEmployeeContact employee in employeeTblEmployeeContacts)
+            {
+                Console.WriteLine($"{"Employee ID: " + employee.employeeid}\t{"Email: " + employee.email}\t{"Phone Number: " + employee.phonenumber}");
+            }
+        }
+        
+        public void DisplaytblEmployeeLocations(List<EmployeeTblEmployeeLocations> employeeTblEmployeeLocations)
+        {
+            foreach (EmployeeTblEmployeeLocations employee in employeeTblEmployeeLocations)
+            {
+                Console.WriteLine($"{"Employee ID: " + employee.employeeid}\t{"Location ID: " + employee.locationid}");
+            }
+        }
 
+        public void DisplaytblEmployeesDetails(List<EmployeeTblEmployeesDetails> employeeTblEmployeesDetails)
+        {
+            foreach (EmployeeTblEmployeesDetails employee in employeeTblEmployeesDetails)
+            {
+                Console.WriteLine($"{"Employee ID: " + employee.employeeid}\t{"First Name: " + employee.firstname}\t{"Last Name: " + employee.lastname}\t{"Gender: " + employee.gender}\t{"Job ID: " + employee.jobid}");
+            }
+        }
 
+        public void DisplaytblEmployeeWage(List<EmployeeTblEmployeeWage> employeeTblEmployeeWages)
+        {
+            foreach (EmployeeTblEmployeeWage employee in employeeTblEmployeeWages)
+            {
+                Console.WriteLine($"{"Employee ID: " + employee.employeeid}\t{"Job title ID: " + employee.jobtitleid}\t{"Wage: " + employee.wage}");
+            }
+        }
+
+        public void DisplaytblJobTittles(List<EmployeeTblJobTittles> jobTblJobTittles)
+        {
+            foreach (EmployeeTblJobTittles jobTittle in jobTblJobTittles)
+            {
+                Console.WriteLine($"{"Job title ID: " + jobTittle.jobtitleid}\t{"Job title Name: " + jobTittle.jobtitlename}");
+            }
+        }
+
+        public void DisplaytblDepartments(List<LocationTblDepartments> locationTblDepartments)
+        {
+            foreach (LocationTblDepartments location in locationTblDepartments)
+            {
+                Console.WriteLine($"{"location ID: " + location.locationid}\t{"Departments: " + location.department}\t{"Managers ID: " + location.managersid}");
+            }
+        }
 
         public void DisplayLocations(List<LocationTblLocation> locationTblLocations)
         {
             foreach (LocationTblLocation location in locationTblLocations)
             {
                 Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+            }
+        }
+
+        public void DisplaytblLocationAdress(List<LocationTblLocationAdress> locationTblLocationAdresses)
+        {
+            foreach (LocationTblLocationAdress location in locationTblLocationAdresses)
+            {
+                Console.WriteLine($"{"location ID: " + location.locationid}\t{"city ID: " + location.cityid}\t{"Country: " + location.country}");
+            }
+        }
+
+        public void DisplaytblLocationCity(List<LocationTblLocationCity> locationTblLocationCities)
+        {
+            foreach (LocationTblLocationCity city in locationTblLocationCities)
+            {
+                Console.WriteLine($"{"City ID: " + city.City_ID}\t{"Suburb: " + city.suburb}\t{"Post Code: " + city.postcode}\t{"Street: " + city.street}\t{"City: " + city.city}");
             }
         }
 
