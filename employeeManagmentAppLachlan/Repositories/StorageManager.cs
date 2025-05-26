@@ -39,7 +39,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<EmployeeTblEmployeeContact> GetEmployeeTblEmployeeContacts()
         {
             List<EmployeeTblEmployeeContact> employeeContatct = new List<EmployeeTblEmployeeContact>();
-            string sqlString = "SELECT * FROM Employee.tblEmployeeContacts";
+            string sqlString = "SELECT * FROM Employee.tblEmployeeContact";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())

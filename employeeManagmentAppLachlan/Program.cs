@@ -36,6 +36,34 @@ namespace employeeManagmentAppLachlan
                         {
                             view.tblEmployeeContact();
                             Notvalid = false;
+                            do
+                            {
+                                choice = Console.ReadLine();
+                                switch (choice)
+                                {
+                                    case "1":
+                                        {
+                                            List<EmployeeTblEmployeeContact> employee = storageManager.GetEmployeeTblEmployeeContacts();
+                                            view.DisplaytblEmployeeContact(employee);
+                                            Notvalid = false;
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            //UpdateLocationName();
+                                            Notvalid = false;
+
+                                        }
+                                        break;
+
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            Notvalid = true;
+                                        }
+                                        break;
+                                }
+                            } while (Notvalid);
 
                         }
                         break;
