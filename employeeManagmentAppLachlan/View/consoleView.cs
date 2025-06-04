@@ -114,7 +114,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("1: View All records in Location.tblLocationAdress");
             Console.WriteLine("2: Update a location by locationID");
         }
-        
+
         public void tblLocationCity()
         {
             Console.Clear();
@@ -123,6 +123,11 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in Location.tblLocationCity");
             Console.WriteLine("2: Update a location by locationID");
+        }
+        public void displayusername()
+        {
+            Console.Clear();
+            Console.WriteLine("enter your UserName");
         }
 
         static void PrintLine()
@@ -189,6 +194,16 @@ namespace employeeManagmentAppLachlan.View
                 PrintLine();
                 PrintRow($"{employee.employeeid}", $"{employee.locationid}");
                 PrintLine();
+            }
+        }
+
+        public void DisplaytblEmployeeRoles(List<EmployeeTblEmployeeRole> employeeTblEmployeeRoles)
+        {
+            foreach (EmployeeTblEmployeeRole employee in employeeTblEmployeeRoles)
+            {
+                Console.WriteLine(employee.username + employee.password);
+                
+                
             }
         }
 

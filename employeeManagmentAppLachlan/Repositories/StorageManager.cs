@@ -1,11 +1,12 @@
-﻿using System;
+﻿using employeeManagmentAppLachlan.Model;
+using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using employeeManagmentAppLachlan.Model;
-using Microsoft.Data.SqlClient;
 
 namespace employeeManagmentAppLachlan.Repositories
 {
@@ -74,6 +75,73 @@ namespace employeeManagmentAppLachlan.Repositories
             }
             return employeeLocations;
         }
+
+        /*  public string getUserPass(int EmployeeID)
+          {
+              /*string username = "";
+              string sqlString = "SELECT Username FROM Employee.tblEmployeeRole WHERE EmployeeID = @EmployeeID";
+              using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+              {
+                  using (SqlDataReader reader = cmd.ExecuteReader())
+                  {
+                      while (reader.Read())
+                      {
+                          int
+                      }
+                  }
+              }
+              EmployeeID = 3;
+              string username = "";
+              using (SqlCommand cmd = new SqlCommand($"SELECT Username, Password FROM Employee.tblEmployeeRole WHERE EmployeeID =  @EmployeeID", conn))
+              {
+                  cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
+              }
+              Console.WriteLine(username);
+              return username;
+          }*/
+        public string getUserPass(int EmployeeID)
+        {
+            string username = "";
+            string password = "";
+
+            using (SqlCommand cmd = new SqlCommand("SELECT Username, Password FROM Employee.tblEmployeeRole WHERE EmployeeID = @EmployeeID", conn))
+            {
+                cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        username = reader["Username"].ToString();
+                        password = reader["Password"].ToString(); 
+                        Console.WriteLine("Username: " + username);
+                        Console.WriteLine("Password: " + password);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No user found with EmployeeID = " + EmployeeID);
+                    }
+                }
+            }
+
+            //return username + password ;
+            return username;
+        }
+
+
+
+        /*
+        public int UpdateLocationName(int LocationID, string LocationName)//change it from searching id to name
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocation SET LocationName = @LocationName Where LocationID = @LocationID", conn))
+            {
+                cmd.Parameters.AddWithValue("@LocationName", LocationName);
+                cmd.Parameters.AddWithValue("@LocationID", LocationID);
+                return cmd.ExecuteNonQuery();
+            }
+        }
+        */
+
 
         public List<EmployeeTblEmployeeRole> GetEmployeeTblEmployeeRoles()
         {

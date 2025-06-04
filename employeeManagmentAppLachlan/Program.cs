@@ -1,6 +1,7 @@
 ﻿using employeeManagmentAppLachlan.Model;
 using employeeManagmentAppLachlan.Repositories;
 using employeeManagmentAppLachlan.View;
+using Microsoft.Data.SqlClient;
 using System.Threading.Channels;
 
 namespace employeeManagmentAppLachlan
@@ -19,8 +20,8 @@ namespace employeeManagmentAppLachlan
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
-           // string tblchoice = view.TblDisplayMenu();
-           // string choice = view.DisplayMenu();
+            // string tblchoice = view.TblDisplayMenu();
+            // string choice = view.DisplayMenu();
             bool Notvalid = true;
             string tblchoice;
             string choice;
@@ -38,94 +39,104 @@ namespace employeeManagmentAppLachlan
             tbl 9
             */
 
-            do
-            {
-                view.TblDisplayMenu();
-                tblchoice = Console.ReadLine();
-                switch (tblchoice)
-                {
-                    case "1":
-                        {
-                            view.tblEmployeeContact();
-                            Notvalid = false;
-                            displaySwitch1();
+            //storageManager.GetEmployeeTblEmployeeRoles();
+            //List<EmployeeTblEmployeeRole> employee = storageManager.GetEmployeeTblEmployeeRoles();
+            //view.DisplaytblEmployeeRoles(employee);
+
+            Getusername();
+            string username = storageManager.getUserPass();
+            //string password = storageManager.getUserPass();
 
 
-                        }
-                        break;
-                    case "2":
-                        {
-                            view.tblEmployeeLocations();
-                            Notvalid = false;
-                            displaySwitch2();
+            /* do
+             {
+                 view.TblDisplayMenu();
+                 tblchoice = Console.ReadLine();
+                 switch (tblchoice)
+                 {
+                     case "1":
+                         {
+                             view.tblEmployeeContact();
+                             Notvalid = false;
+                             displaySwitch1();
 
-                        }
-                        break;
-                    case "3": //doesnt display
-                        {
-                            view.tblEmployeesDetails();
-                            Notvalid = false;
-                            displaySwitch3();
 
-                        }
-                        break;
-                    case "4":// doesnt display
-                        {
-                            view.tblEmployeeWage();
-                            Notvalid = false;
-                            displaySwitch4();
+                         }
+                         break;
+                     case "2":
+                         {
+                             view.tblEmployeeLocations();
+                             Notvalid = false;
+                             displaySwitch2();
 
-                        }
-                        break;
-                    case "5":// doesnt display
-                        {
-                            view.tblJobTittles();
-                            Notvalid = false;
-                            displaySwitch5();
+                         }
+                         break;
+                     case "3": //doesnt display
+                         {
+                             view.tblEmployeesDetails();
+                             Notvalid = false;
+                             displaySwitch3();
 
-                        }
-                        break;
-                    case "6":// doesnt display
-                        {
-                            view.tblDepartments();
-                            Notvalid = false;
-                            displaySwitch6();
+                         }
+                         break;
+                     case "4":// doesnt display
+                         {
+                             view.tblEmployeeWage();
+                             Notvalid = false;
+                             displaySwitch4();
 
-                        }
-                        break;
-                    case "7":
-                        {
-                            view.tblLocation();
-                            Notvalid = false;
-                            displaySwitch7();
+                         }
+                         break;
+                     case "5":// doesnt display
+                         {
+                             view.tblJobTittles();
+                             Notvalid = false;
+                             displaySwitch5();
 
-                        }
-                        break;
-                    case "8": // doesnt display
-                        {
-                            view.tblLocationAdress();
-                            Notvalid = false;
-                            displaySwitch8();
+                         }
+                         break;
+                     case "6":// doesnt display
+                         {
+                             view.tblDepartments();
+                             Notvalid = false;
+                             displaySwitch6();
 
-                        }
-                        break;
-                    case "9":
-                        {
-                            view.tblLocationCity();
-                            Notvalid = false;
-                            displaySwitch9();
+                         }
+                         break;
+                     case "7":
+                         {
+                             view.tblLocation();
+                             Notvalid = false;
+                             displaySwitch7();
 
-                        }
-                        break;
-                    default:
-                        {
-                            Console.WriteLine("Invalid option please try again.");
-                            Notvalid = false;
-                        }
-                        break;
-                }
-            } while (Notvalid);
+                         }
+                         break;
+                     case "8": // doesnt display
+                         {
+                             view.tblLocationAdress();
+                             Notvalid = false;
+                             displaySwitch8();
+
+                         }
+                         break;
+                     case "9":
+                         {
+                             view.tblLocationCity();
+                             Notvalid = false;
+                             displaySwitch9();
+
+                         }
+                         break;
+                     default:
+                         {
+                             Console.WriteLine("Invalid option please try again.");
+                             Notvalid = false;
+                         }
+                         break;
+                 }
+             } while (Notvalid);  */
         }
+
 
         public static void displaySwitch1()
         {
@@ -475,5 +486,12 @@ namespace employeeManagmentAppLachlan
                 view.DisplayMessage($"Rows affected: {rowsaffected}");
             }
 
-        }
+            public static void Getusername()
+            {
+                view.displayusername();
+                int EmployeeID = view.GetIntInput();
+                storageManager.getUserPass(EmployeeID);
+            }
+
+    }
     }
