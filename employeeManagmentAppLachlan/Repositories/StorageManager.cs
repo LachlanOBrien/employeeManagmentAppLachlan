@@ -1,4 +1,5 @@
 ﻿using employeeManagmentAppLachlan.Model;
+using employeeManagmentAppLachlan.View;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,12 @@ namespace employeeManagmentAppLachlan.Repositories
     public class StorageManager
     {
         private SqlConnection conn;
+        private static consoleView view;
+        //possibly change it so it filter by username later so the user doesnt have to so it then gets the username and then gets the password that relates to that username then we can relate it to the users input and check if its a match and if it is then let them in with some work to get the admin and then display the proper switch case / method
+        // also might have to split this method into 2. 1 for username, 1 for password so the return isnt returning 2 variables then i can declare each variable with their own method.
+        //return username + password ;
 
         public StorageManager(string connectionString) 
-
         {
             try
             {
@@ -76,56 +80,27 @@ namespace employeeManagmentAppLachlan.Repositories
             return employeeLocations;
         }
 
-        /*  public string getUserPass(int EmployeeID)
-          {
-              /*string username = "";
-              string sqlString = "SELECT Username FROM Employee.tblEmployeeRole WHERE EmployeeID = @EmployeeID";
-              using (SqlCommand cmd = new SqlCommand(sqlString, conn))
-              {
-                  using (SqlDataReader reader = cmd.ExecuteReader())
-                  {
-                      while (reader.Read())
-                      {
-                          int
-                      }
-                  }
-              }
-              EmployeeID = 3;
-              string username = "";
-              using (SqlCommand cmd = new SqlCommand($"SELECT Username, Password FROM Employee.tblEmployeeRole WHERE EmployeeID =  @EmployeeID", conn))
-              {
-                  cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
-              }
-              Console.WriteLine(username);
-              return username;
-          }*/
-        public string getUserPass(int EmployeeID)
+        public string getUserName(int EmployeeID)
         {
+            // string password = "";
             string username = "";
-            string password = "";
+            string sqlString = "SELECT Username FROM Employee.tblEmployeeRole WHERE EmployeeID = @EmployeeID";
 
-            using (SqlCommand cmd = new SqlCommand("SELECT Username, Password FROM Employee.tblEmployeeRole WHERE EmployeeID = @EmployeeID", conn))
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
-
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         username = reader["Username"].ToString();
-                        password = reader["Password"].ToString(); 
+                        //password = reader["Password"].ToString(); 
                         Console.WriteLine("Username: " + username);
-                        Console.WriteLine("Password: " + password);
-                    }
-                    else
-                    {
-                        Console.WriteLine("No user found with EmployeeID = " + EmployeeID);
+                        //Console.WriteLine("Password: " + password);;
+                        //return username;
                     }
                 }
             }
-            //possibly change it so it filter by username later so the user doesnt have to so it then gets the username and then gets the password that relates to that username then we can relate it to the users input and check if its a match and if it is then let them in with some work to get the admin and then display the proper switch case / method
-            // also might have to split this method into 2. 1 for username, 1 for password so the return isnt returning 2 variables then i can declare each variable with their own method.
-            //return username + password ;
             return username;
         }
 

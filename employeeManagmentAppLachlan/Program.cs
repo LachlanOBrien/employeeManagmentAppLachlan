@@ -15,13 +15,12 @@ namespace employeeManagmentAppLachlan
         {
             Console.WriteLine("Hello, World!");
             //scl connectionString
-            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\GAMING LACHY\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            //home connectionString
+            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\GAMING LACHY\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
-            // string tblchoice = view.TblDisplayMenu();
-            // string choice = view.DisplayMenu();
             bool Notvalid = true;
             string tblchoice;
             string choice;
@@ -39,16 +38,12 @@ namespace employeeManagmentAppLachlan
             tbl 9
             */
 
-            //storageManager.GetEmployeeTblEmployeeRoles();
-            //List<EmployeeTblEmployeeRole> employee = storageManager.GetEmployeeTblEmployeeRoles();
-            //view.DisplaytblEmployeeRoles(employee);
-
-            Getusername();
-            string username = storageManager.getUserPass();
-            //string password = storageManager.getUserPass();
+            string username;
+            username = Getusername();
+            Console.WriteLine("username is" + username);
 
 
-            /* do commented out for testing purposes uncomment later to use the program 
+            /* do .commented out for testing purposes uncomment later to use the program 
              {
                  view.TblDisplayMenu();
                  tblchoice = Console.ReadLine();
@@ -486,11 +481,13 @@ namespace employeeManagmentAppLachlan
                 view.DisplayMessage($"Rows affected: {rowsaffected}");
             }
 
-            public static void Getusername()
+            public static string Getusername()
             {
                 view.displayusername();
                 int EmployeeID = view.GetIntInput();
-                storageManager.getUserPass(EmployeeID);
+                storageManager.getUserName(EmployeeID);
+                string username = storageManager.getUserName(EmployeeID);
+                return username;
             }
 
     }
