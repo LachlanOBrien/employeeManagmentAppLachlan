@@ -1,4 +1,5 @@
 ﻿using employeeManagmentAppLachlan.Model;
+using employeeManagmentAppLachlan.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,9 @@ namespace employeeManagmentAppLachlan.View
 {
     public class consoleView //plan for adding thingys get the input for each field in employee schema and then spread it out to each table that requires it 
     {
-       public void TblDisplayMenu()
+        private static StorageManager storageManager;
+        static int tableWidth = 73;
+        public void TblDisplayMenu()
         {
             Console.WriteLine("Welcome to the Employee Managment Menu");
             Console.WriteLine("Choose an option from 1-9");
@@ -122,7 +125,6 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("2: Update a location by locationID");
         }
 
-        static int tableWidth = 73;
         static void PrintLine()
         {
             Console.WriteLine(new string('-', tableWidth));
