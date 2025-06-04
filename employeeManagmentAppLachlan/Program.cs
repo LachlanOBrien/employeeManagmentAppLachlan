@@ -48,7 +48,7 @@ namespace employeeManagmentAppLachlan
             //string password = storageManager.getUserPass();
 
 
-            /* do
+            /* do commented out for testing purposes uncomment later to use the program 
              {
                  view.TblDisplayMenu();
                  tblchoice = Console.ReadLine();

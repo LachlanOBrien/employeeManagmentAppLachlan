@@ -123,7 +123,7 @@ namespace employeeManagmentAppLachlan.Repositories
                     }
                 }
             }
-
+            //possibly change it so it filter by username later so the user doesnt have to so it then gets the username and then gets the password that relates to that username then we can relate it to the users input and check if its a match and if it is then let them in with some work to get the admin and then display the proper switch case / method
             //return username + password ;
             return username;
         }
