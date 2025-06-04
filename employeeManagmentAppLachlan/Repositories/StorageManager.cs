@@ -75,6 +75,29 @@ namespace employeeManagmentAppLachlan.Repositories
             return employeeLocations;
         }
 
+        public List<EmployeeTblEmployeeRole> GetEmployeeTblEmployeeRoles()
+        {
+            List<EmployeeTblEmployeeRole> employeeRole = new List<EmployeeTblEmployeeRole>();
+            string sqlString = "SELECT * FROM Employee.tblEmployeeRole";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        //int employeeid = Convert.ToInt32(reader["EmployeeID"]);
+                        //int locationid = Convert.ToInt32(reader["LocationID"]);
+                        int employeeID = Convert.ToInt32(reader["EmployeeID"]);
+                        string username = reader["Username"].ToString();
+                        string password = reader["Password"].ToString();
+                        int role = Convert.ToInt32(reader["role"]);
+                        employeeRole.Add(new EmployeeTblEmployeeRole(employeeID, username, password, role));
+                    }
+                }
+            }
+            return employeeRole;
+        }
+
         public List<EmployeeTblEmployeesDetails> GetEmployeeTblEmployeesDetails()
         {
             List<EmployeeTblEmployeesDetails> employeeDetails = new List<EmployeeTblEmployeesDetails>();
