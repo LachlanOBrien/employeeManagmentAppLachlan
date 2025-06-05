@@ -45,11 +45,20 @@ namespace employeeManagmentAppLachlan
             tbl 8
             tbl 9
             */
-            
-            string username;
-            username = Getusername();
-            Console.WriteLine("username is " + username);
 
+
+            view.displayusername();
+            int EmployeeID = view.GetIntInput();
+            string username = storageManager.getUserName(EmployeeID);
+            string password = storageManager.getPassword(EmployeeID);
+            int role = storageManager.getRole(EmployeeID);
+            Console.WriteLine("EmployeeID: " + EmployeeID);
+            Console.WriteLine("username: " + username);
+            Console.WriteLine("Password: " + password);
+            Console.WriteLine("role: " + role);
+
+
+            
 
             /* do .commented out for testing purposes uncomment later to use the program 
              {
@@ -471,31 +480,51 @@ namespace employeeManagmentAppLachlan
                 view.DisplayMessage($"Rows affected {rowsAffected}");
             }
 
-            private static void InsertNewLocation()
-            {
+        private static void InsertNewLocation()
+        {
                 view.DisplayMessage("Enter the new Location Name");
                 string locationName = view.GetInput();
                 int locationID = 0;
                 LocationTblLocation location1 = new LocationTblLocation(locationID, locationName);
                 int generateID = storageManager.InsertLocation(location1);
                 view.DisplayMessage($"new Location inserted with ID {generateID}");
-            }
+        }
 
-            public static void DeleteByName()
-            {
+        public static void DeleteByName()
+        {
                 view.DisplayMessage("Enter the Location Name to delete");
                 string locationName = view.GetInput();
                 int rowsaffected = storageManager.DeleteLocationByName(locationName);
                 view.DisplayMessage($"Rows affected: {rowsaffected}");
-            }
+        }
 
-            public static string Getusername()
-            {
+       /* public static int getEmployeeID()
+        {
+            view.displayusername();
+            int EmployeeID = view.GetIntInput();
+            //int employeeID = storageManager.get
+            return EmployeeID;
+        }
+
+        public static string Getusername()
+        {
                 view.displayusername();
                 int EmployeeID = view.GetIntInput();
                 string username = storageManager.getUserName(EmployeeID);
                 return username;
-            }
+        }
 
+        public static string GetPassword()
+        {
+            string password =
+            return password;
+        }
+
+        public static int GetRole()
+        {
+            int Role = 
+            return Role;
+        }
+       */
     }
-    }
+}
