@@ -88,17 +88,17 @@ namespace employeeManagmentAppLachlan.Repositories
             return employeeLocations;
         }
 
-        public string getUserName(int EmployeeID)
+       /* public string getUserName(string Username)
         {
             user user = new user();
             string password = "";
             string username = "";
             int Role = 0;
-            string sqlString = "SELECT * FROM Employee.tblEmployeeRole WHERE EmployeeID = @EmployeeID";
+            string sqlString = "SELECT * FROM Employee.tblEmployeeRole WHERE Username = @Username";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
-                cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
+                cmd.Parameters.AddWithValue("@Username", username);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -116,19 +116,40 @@ namespace employeeManagmentAppLachlan.Repositories
             }
             user.username = username;
             user.password = password;
-            user.EmployeeID = EmployeeID;
+            //user.EmployeeID = EmployeeID;
             user.role = Role;
             return username;
-        }
+        }*/ 
 
-        public string getPassword(int EmployeeID)
+        public int getEmployeeID(string Username)
         {
-            string password = "";
-            string sqlString = "SELECT Password FROM Employee.tblEmployeeRole WHERE EmployeeID = @EmployeeID";
+            int username = 0;
+            string sqlString = "SELECT EmployeeID FROM Employee.tblEmployeeRole WHERE Username = @Username";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
-                cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
+                cmd.Parameters.AddWithValue("@Username", Username);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        username = Convert.ToInt32(reader["EmployeeID"]);
+                        //Console.WriteLine("Password: " + password);
+
+                    }
+                }
+            }
+            return username;
+        }
+
+        public string getPassword(string Username)
+        {
+            string password = "";
+            string sqlString = "SELECT Password FROM Employee.tblEmployeeRole WHERE Username = @Username";
+
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                cmd.Parameters.AddWithValue("@Username", Username);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -142,14 +163,14 @@ namespace employeeManagmentAppLachlan.Repositories
             return password;
         }
 
-        public int getRole(int EmployeeID)
+        public int getRole(string Username)
         {
             int Role = 0;
-            string sqlString = "SELECT Role FROM Employee.tblEmployeeRole WHERE EmployeeID = @EmployeeID";
+            string sqlString = "SELECT Role FROM Employee.tblEmployeeRole WHERE Username = @Username";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
-                cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
+                cmd.Parameters.AddWithValue("@Username", Username);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
