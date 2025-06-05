@@ -29,6 +29,11 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("9.tblLocationCity ");
         }
 
+        public void EmployeeDisplayMenu()
+        {
+            Console.WriteLine("employeeMenu");
+        }
+
         public void tblEmployeeContact()
         {
             Console.Clear();

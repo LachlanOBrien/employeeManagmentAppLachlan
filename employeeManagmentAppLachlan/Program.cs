@@ -26,7 +26,8 @@ namespace employeeManagmentAppLachlan
             string tblchoice;
             string choice;
             bool loop = true;
-            bool loginbool = true;
+            bool logInBool = true;
+            string employeeChoice;
 
             Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
             int role = Convert.ToInt32(Console.ReadLine());
@@ -51,17 +52,28 @@ namespace employeeManagmentAppLachlan
                 //{
                     if (role == 1)
                     {
-                        loginbool = false;
+                        logInBool = false;
+                        Console.Clear();    
                         Console.WriteLine("HAHA pleb employee");
-
+                        view.EmployeeDisplayMenu();
+                        employeeChoice = Console.ReadLine();
+                        switch (employeeChoice)
+                        {
+                            default:
+                            {
+                            Console.WriteLine("Invalid option please try again.");
+                            Notvalid = false;
+                            }
+                            break;
+                        }
                     }
                     else
                     {
                         if (role == 2)
                         {
-                            loginbool = false;
-                    Console.Clear();
-                    Console.WriteLine("welcome admin");
+                            logInBool = false;
+                            Console.Clear();
+                            Console.WriteLine("welcome admin");
                             do
                             {
                                 do
