@@ -27,19 +27,6 @@ namespace employeeManagmentAppLachlan
             string choice;
             bool loop = true;
             bool loginbool = true;
-            /*
-            works
-            tbl1
-            tbl2
-            tbl7
-            dont 
-            tbl 3
-            tbl 4
-            tbl 5
-            tbl 6
-            tbl 8
-            tbl 9
-            */
 
             Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
             int role = Convert.ToInt32(Console.ReadLine());
