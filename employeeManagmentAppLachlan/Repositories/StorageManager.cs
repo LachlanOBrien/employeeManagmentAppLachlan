@@ -1,24 +1,19 @@
-﻿using employeeManagmentAppLachlan.Model;
+﻿using Azure;
+using employeeManagmentAppLachlan.Model;
 using employeeManagmentAppLachlan.View;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlTypes;
+using System.Diagnostics.Metrics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace employeeManagmentAppLachlan.Repositories
 {
-
-    public class user
-    {
-        public int EmployeeID { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public int role { get; set; }
-    }
 
     public class StorageManager
     {
@@ -240,6 +235,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         DateTime hiredate = Convert.ToDateTime(reader["HireDate"]);
                         string gender = reader["Gender"].ToString();
                         int jobid = Convert.ToInt32(reader["JobID"]);
+                        employeeDetails.Add(new EmployeeTblEmployeesDetails(EmployeeID, firstname, lastname, hiredate, gender, jobid));
                     }
                 }
             }
@@ -259,6 +255,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         int employeeid = Convert.ToInt32(reader["EmployeeID"]);
                         int jobtitleid = Convert.ToInt32(reader["JobtitleID"]);
                         int wage = Convert.ToInt32(reader["Wage"]);
+                        employeeWages.Add(new EmployeeTblEmployeeWage(employeeid, jobtitleid, wage));
                     }
                 }
             }
@@ -277,6 +274,7 @@ namespace employeeManagmentAppLachlan.Repositories
                     {
                         int jobtitleid = Convert.ToInt32(reader["jobtitleID"]);
                         string JobtitleName = reader["JobtitleName"].ToString();
+                        jobTittles.Add(new EmployeeTblJobTittles(jobtitleid, JobtitleName));
                     }
                 }
             }
@@ -296,6 +294,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         int LocationID = Convert.ToInt32(reader["LocationID"]);
                         string deparments = (reader["Departments"]).ToString();
                         int managersID = Convert.ToInt32(reader["ManagersID"]);
+                        Departments.Add(new LocationTblDepartments(LocationID, deparments, managersID));
                     }
                 }
             }
@@ -334,6 +333,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         int LocationID = Convert.ToInt32(reader["LocationID"]);
                         int cityID = Convert.ToInt32(reader["CityID"]);
                         string country = reader["country"].ToString();
+                        locationAdresses.Add(new LocationTblLocationAdress(LocationID, cityID,country));
                     }
                 }
             }
@@ -355,6 +355,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         string postcode = reader["postcode"].ToString();
                         string street = reader["street"].ToString();
                         string city = reader["city"].ToString();
+                        locationCities.Add(new LocationTblLocationCity(CityID, suburb, postcode,street,city));
                     }
                 }
             }

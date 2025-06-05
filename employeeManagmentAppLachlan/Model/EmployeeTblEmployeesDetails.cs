@@ -11,11 +11,11 @@ namespace employeeManagmentAppLachlan.Model
         public int employeeid { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
-        public DateOnly hiredate { get; set; }
+        public DateTime hiredate { get; set; }
         public string gender { get; set; }
         public int jobid { get; set; }
 
-        public EmployeeTblEmployeesDetails(int EmployeeID, string FirstName, string LastName, DateOnly HireDate, string Gender, int JobID)
+        public EmployeeTblEmployeesDetails(int EmployeeID, string FirstName, string LastName, DateTime HireDate, string Gender, int JobID)
         {
             employeeid = EmployeeID;
             firstname = FirstName;
