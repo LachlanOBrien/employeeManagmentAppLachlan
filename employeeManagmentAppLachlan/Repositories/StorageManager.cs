@@ -12,6 +12,14 @@ using System.Threading.Tasks;
 namespace employeeManagmentAppLachlan.Repositories
 {
 
+    public class user
+    {
+        public int EmployeeID { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public int role { get; set; }
+    }
+
     public class StorageManager
     {
         private SqlConnection conn;
@@ -82,9 +90,11 @@ namespace employeeManagmentAppLachlan.Repositories
 
         public string getUserName(int EmployeeID)
         {
-            // string password = "";
+            user user = new user();
+            string password = "";
             string username = "";
-            string sqlString = "SELECT Username FROM Employee.tblEmployeeRole WHERE EmployeeID = @EmployeeID";
+            int Role = 0;
+            string sqlString = "SELECT * FROM Employee.tblEmployeeRole WHERE EmployeeID = @EmployeeID";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -93,14 +103,21 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     while (reader.Read())
                     {
+                        // EmployeeID = Convert.ToInt32(reader["Role"]);
                         username = reader["Username"].ToString();
-                        //password = reader["Password"].ToString(); 
+                        password = reader["Password"].ToString();
+                        Role = Convert.ToInt32(reader["Role"]);
+                        Console.WriteLine("EmployeeID: " + EmployeeID);
                         Console.WriteLine("Username: " + username);
-                        //Console.WriteLine("Password: " + password);;
-                        //return username;
+                        Console.WriteLine("Password: " + password);
+                        Console.WriteLine("Role: " + Role);
                     }
                 }
             }
+            user.username = username;
+            user.password = password;
+            user.EmployeeID = EmployeeID;
+            user.role = Role;
             return username;
         }
 
@@ -118,6 +135,7 @@ namespace employeeManagmentAppLachlan.Repositories
         }
         */
 
+       
 
         public List<EmployeeTblEmployeeRole> GetEmployeeTblEmployeeRoles()
         {
@@ -136,6 +154,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         string password = reader["Password"].ToString();
                         int role = Convert.ToInt32(reader["role"]);
                         employeeRole.Add(new EmployeeTblEmployeeRole(employeeID, username, password, role));
+
                     }
                 }
             }

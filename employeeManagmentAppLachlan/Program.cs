@@ -6,13 +6,21 @@ using System.Threading.Channels;
 
 namespace employeeManagmentAppLachlan
 {
-        public class Program //saved in onedrive>docc>12tpi>C#>oop>employeeManagmentAppLachlan OR .......oop>WorkPLS
+    public class user
+    {
+        public int EmployeeID { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public int role { get; set; }
+    }
+    public class Program //saved in onedrive>docc>12tpi>C#>oop>employeeManagmentAppLachlan OR .......oop>WorkPLS
         {                    // .mdf is saved in the DB folder onedrive>docc>12tpi>sql>DB
             private static StorageManager storageManager;
             private static consoleView view;
 
         static void Main(string[] args)
         {
+           
             Console.WriteLine("Hello, World!");
             //scl connectionString
             //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
@@ -37,7 +45,7 @@ namespace employeeManagmentAppLachlan
             tbl 8
             tbl 9
             */
-
+            
             string username;
             username = Getusername();
             Console.WriteLine("username is " + username);
