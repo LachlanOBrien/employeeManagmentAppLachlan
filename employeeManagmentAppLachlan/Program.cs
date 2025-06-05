@@ -32,6 +32,7 @@ namespace employeeManagmentAppLachlan
             bool Notvalid = true;
             string tblchoice;
             string choice;
+            bool loop = true;
             /*
             works
             tbl1
@@ -47,6 +48,7 @@ namespace employeeManagmentAppLachlan
             */
 
 
+            /*
             //view.displayusername();
             //int EmployeeID = view.GetIntInput();
             //string username = storageManager.getUserName(username);
@@ -56,16 +58,21 @@ namespace employeeManagmentAppLachlan
             int EmployeeID = storageManager.getEmployeeID(inputedUsername);
             string password = storageManager.getPassword(inputedUsername);
             int role = storageManager.getRole(inputedUsername);
-            Console.WriteLine("EmployeeID: " + EmployeeID);
-            Console.WriteLine("username: " + Username);
-            Console.WriteLine("Password: " + password);
-            Console.WriteLine("role: " + role);
             Console.WriteLine("Please enter your Password");
             string inputedPassword = Console.ReadLine();
+            // Console.WriteLine("EmployeeID: " + EmployeeID);
+            //Console.WriteLine("username: " + Username);
+            // Console.WriteLine("Password: " + password);
+            // Console.WriteLine("role: " + role);
+            uncomment if you want to use the log in function and the if statement 
+            */
 
-            if (inputedUsername == Username && inputedPassword == password)
-            {
-                if (role == 1)
+            Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
+            int role = Convert.ToInt32(Console.ReadLine());
+
+            //if (inputedUsername == Username && inputedPassword == password)
+            //{
+            if (role == 1)
                 {
                     Console.WriteLine("HAHA pleb employee");
                 }
@@ -73,104 +80,116 @@ namespace employeeManagmentAppLachlan
                 {
                     if (role == 2)
                     {
-                        do //commented out for testing purposes uncomment later to use the program 
+                        Console.Clear();
+                        Console.WriteLine("welcome admin");
+                        do
                         {
-                            view.TblDisplayMenu();
-                            tblchoice = Console.ReadLine();
-                            switch (tblchoice)
+                            do
                             {
-                                case "1":
-                                    {
-                                        view.tblEmployeeContact();
-                                        Notvalid = false;
-                                        displaySwitch1();
+                                view.TblDisplayMenu();
+                                tblchoice = Console.ReadLine();
+                                switch (tblchoice)
+                                {
+                                    case "1":
+                                        {
+                                            view.tblEmployeeContact();
+                                            Notvalid = false;
+                                            displaySwitch1();
 
 
-                                    }
-                                    break;
-                                case "2":
-                                    {
-                                        view.tblEmployeeLocations();
-                                        Notvalid = false;
-                                        displaySwitch2();
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            view.tblEmployeeLocations();
+                                            Notvalid = false;
+                                            displaySwitch2();
 
-                                    }
-                                    break;
-                                case "3": //doesnt display
-                                    {
-                                        view.tblEmployeesDetails();
-                                        Notvalid = false;
-                                        displaySwitch3();
+                                        }
+                                        break;
+                                    case "3": //doesnt display
+                                        {
+                                            view.tblEmployeesDetails();
+                                            Notvalid = false;
+                                            displaySwitch3();
 
-                                    }
-                                    break;
-                                case "4":// doesnt display
-                                    {
-                                        view.tblEmployeeWage();
-                                        Notvalid = false;
-                                        displaySwitch4();
+                                        }
+                                        break;
+                                    case "4":// doesnt display
+                                        {
+                                            view.tblEmployeeWage();
+                                            Notvalid = false;
+                                            displaySwitch4();
 
-                                    }
-                                    break;
-                                case "5":// doesnt display
-                                    {
-                                        view.tblJobTittles();
-                                        Notvalid = false;
-                                        displaySwitch5();
+                                        }
+                                        break;
+                                    case "5":// doesnt display
+                                        {
+                                            view.tblJobTittles();
+                                            Notvalid = false;
+                                            displaySwitch5();
 
-                                    }
-                                    break;
-                                case "6":// doesnt display
-                                    {
-                                        view.tblDepartments();
-                                        Notvalid = false;
-                                        displaySwitch6();
+                                        }
+                                        break;
+                                    case "6":// doesnt display
+                                        {
+                                            view.tblDepartments();
+                                            Notvalid = false;
+                                            displaySwitch6();
 
-                                    }
-                                    break;
-                                case "7":
-                                    {
-                                        view.tblLocation();
-                                        Notvalid = false;
-                                        displaySwitch7();
+                                        }
+                                        break;
+                                    case "7":
+                                        {
+                                            view.tblLocation();
+                                            Notvalid = false;
+                                            displaySwitch7();
 
-                                    }
-                                    break;
-                                case "8": // doesnt display
-                                    {
-                                        view.tblLocationAdress();
-                                        Notvalid = false;
-                                        displaySwitch8();
+                                        }
+                                        break;
+                                    case "8": // doesnt display
+                                        {
+                                            view.tblLocationAdress();
+                                            Notvalid = false;
+                                            displaySwitch8();
 
-                                    }
-                                    break;
-                                case "9":
-                                    {
-                                        view.tblLocationCity();
-                                        Notvalid = false;
-                                        displaySwitch9();
+                                        }
+                                        break;
+                                    case "9":
+                                        {
+                                            view.tblLocationCity();
+                                            Notvalid = false;
+                                            displaySwitch9();
 
-                                    }
-                                    break;
-                                default:
-                                    {
-                                        Console.WriteLine("Invalid option please try again.");
-                                        Notvalid = false;
-                                    }
-                                    break;
+                                        }
+                                        break;
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            Notvalid = false;
+                                        }
+                                        break;
+                                }
+                            } while (Notvalid);
+                            Console.WriteLine("Do you wish to go back to the main menu enter Y/N");
+                            string choiceloopans = Console.ReadLine().ToUpper();
+                            if (choiceloopans == "Y")
+                            {
+                                loop = true; ;
                             }
-                        } while (Notvalid);
+                            else
+                            {
+                                loop = false;
+                            }
+                            Console.Clear();
+                        } while (loop);
                     }
                 }
-            }
-            else
-            {
-                Console.WriteLine("Please enter a valid Username and Password");
-            }
-
-
-
-
+           // }
+           // else
+           // {
+            //    Console.WriteLine("Please enter a valid Username and Password");
+           // }
         }
 
 
