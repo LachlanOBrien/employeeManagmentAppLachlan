@@ -43,44 +43,45 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
-       
-        public List<EmployeeTblEmployeeContact> GetEmployeeTblEmployeeContacts()
+        
+        public List<tblCityID> GetTblCityIDs()
         {
-            List<EmployeeTblEmployeeContact> employeeContatct = new List<EmployeeTblEmployeeContact>();
-            string sqlString = "SELECT * FROM Employee.tblEmployeeContact";
+            List<tblCityID> city = new List<tblCityID>();
+            string sqlString = "SELECT * FROM location.tblLocationCity";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        int employeeid = Convert.ToInt32(reader["EmployeeID"]);
-                        string email = reader["Email"].ToString();
-                        string phonenumber = reader["Phonenumber"].ToString();
-                        employeeContatct.Add(new EmployeeTblEmployeeContact(employeeid, email, phonenumber));
+                        int CityID = Convert.ToInt32(reader["CityID"]);
+                        string CityName = reader["CityName"].ToString();
+                        city.Add(new tblCityID(CityID, CityName));
                     }
                 }
             }
-            return employeeContatct;
+            return city;
         }
 
-        public List<EmployeeTblEmployeeLocations> GetEmployeeTblEmployeeLocations()
+        public List<tblDepartments> GetTblDepartments()
         {
-            List<EmployeeTblEmployeeLocations> employeeLocations = new List<EmployeeTblEmployeeLocations>();
-            string sqlString = "SELECT * FROM Employee.tblEmployeeLocations";
+            List<tblDepartments> departments = new List<tblDepartments>();
+            string sqlString = "SELECT * FROM Location.tblDepartment";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        int employeeid = Convert.ToInt32(reader["EmployeeID"]);
-                        int locationid = Convert.ToInt32(reader["LocationID"]);
-                        employeeLocations.Add(new EmployeeTblEmployeeLocations(employeeid, locationid));
+                        int LocationID = Convert.ToInt32(reader["LocationID"]);
+                        string Departments = reader["Departments"].ToString();
+                        int ManagersID = Convert.ToInt32(reader["ManagersID"]);
+                        int DepartmentID = Convert.ToInt32(reader["DepartmentID"]);
+                        departments.Add(new tblDepartments(LocationID, Departments,ManagersID,DepartmentID));
                     }
                 }
             }
-            return employeeLocations;
+            return departments;
         }
 
        /* public string getUserName(string Username)
@@ -195,34 +196,10 @@ namespace employeeManagmentAppLachlan.Repositories
 
 
 
-        public List<EmployeeTblEmployeeRole> GetEmployeeTblEmployeeRoles()
+        public List<tblEmployeeDetails> GetTblEmployeeDetails()
         {
-            List<EmployeeTblEmployeeRole> employeeRole = new List<EmployeeTblEmployeeRole>();
-            string sqlString = "SELECT * FROM Employee.tblEmployeeRole";
-            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
-            {
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        //int employeeid = Convert.ToInt32(reader["EmployeeID"]);
-                        //int locationid = Convert.ToInt32(reader["LocationID"]);
-                        int employeeID = Convert.ToInt32(reader["EmployeeID"]);
-                        string username = reader["Username"].ToString();
-                        string password = reader["Password"].ToString();
-                        int role = Convert.ToInt32(reader["role"]);
-                        employeeRole.Add(new EmployeeTblEmployeeRole(employeeID, username, password, role));
-
-                    }
-                }
-            }
-            return employeeRole;
-        }
-
-        public List<EmployeeTblEmployeesDetails> GetEmployeeTblEmployeesDetails()
-        {
-            List<EmployeeTblEmployeesDetails> employeeDetails = new List<EmployeeTblEmployeesDetails>();
-            string sqlString = "SELECT * FROM Employee.tblEmployeesDetails";
+            List<tblEmployeeDetails> employeeDetails = new List<tblEmployeeDetails>();
+            string sqlString = "SELECT * FROM Employee.tblEmployeeDetails";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -230,21 +207,47 @@ namespace employeeManagmentAppLachlan.Repositories
                     while (reader.Read())
                     {
                         int EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
-                        string firstname = reader["FirstName"].ToString();
-                        string lastname = reader["LastName"].ToString();
-                        DateTime hiredate = Convert.ToDateTime(reader["HireDate"]);
-                        string gender = reader["Gender"].ToString();
-                        int jobid = Convert.ToInt32(reader["JobID"]);
-                        employeeDetails.Add(new EmployeeTblEmployeesDetails(EmployeeID, firstname, lastname, hiredate, gender, jobid));
+                        string Firstname = reader["Firstname"].ToString();
+                        string Lastname = reader["Lastname"].ToString();
+                        DateTime Hiredate = Convert.ToDateTime(reader["HireDate"]);
+                        string Gender = reader["Gender"].ToString();
+                        int JobID = Convert.ToInt32(reader["JobID"]);
+                        int RoleID = Convert.ToInt32(reader["Role"]);
+                        string Username = reader["Username"].ToString();
+                        string Password = reader["Password"].ToString();
+                        string Active = reader["Active"].ToString();
+                        string Email = reader["Email"].ToString();
+                        int PhoneNumber = Convert.ToInt32(reader["Phonenumber"]);
+                        int Wage = Convert.ToInt32(reader["Wage"]);
+                        employeeDetails.Add(new tblEmployeeDetails(EmployeeID, Firstname,  Lastname,  Hiredate,  Gender,  JobID,  RoleID,  Username, Password, Active,  Email,  PhoneNumber,  Wage));
                     }
                 }
             }
             return employeeDetails;
         }
 
-        public List<EmployeeTblEmployeeWage> GetEmployeeTblEmployeeWages()
+        public List<tblEmployeeLocations> GetTblEmployeeLocations()
         {
-            List<EmployeeTblEmployeeWage> employeeWages = new List<EmployeeTblEmployeeWage>();
+            List<tblEmployeeLocations> employeeLocations = new List<tblEmployeeLocations>();
+            string sqlString = "SELECT * FROM Employee.tblEmployeeLocations";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
+                        int LocationID = Convert.ToInt32(reader["LocationID"]);
+                        employeeLocations.Add(new tblEmployeeLocations(EmployeeID,LocationID));
+                    }
+                }
+            }
+            return employeeLocations;
+        }
+
+        public List<tblEmployeeRoleName> GetTblEmployeeRoleNames()
+        {
+            List<tblEmployeeRoleName> EmployeeRole = new List<tblEmployeeRoleName>();
             string sqlString = "SELECT * FROM Employee.tblEmployeeWage";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -252,19 +255,18 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     while (reader.Read())
                     {
-                        int employeeid = Convert.ToInt32(reader["EmployeeID"]);
-                        int jobtitleid = Convert.ToInt32(reader["JobtitleID"]);
-                        int wage = Convert.ToInt32(reader["Wage"]);
-                        employeeWages.Add(new EmployeeTblEmployeeWage(employeeid, jobtitleid, wage));
+                        int RoleID = Convert.ToInt32(reader["RoleID"]);
+                        string RoleName = reader["RoleName"].ToString();
+                        EmployeeRole.Add(new tblEmployeeRoleName(RoleID, RoleName));
                     }
                 }
             }
-            return employeeWages;
+            return EmployeeRole;
         }
 
-        public List<EmployeeTblJobTittles> GetEmployeeTblJobTittles()
+        public List<tblJobtitle> GetEmployeeTblJobTittles()
         {
-            List<EmployeeTblJobTittles> jobTittles = new List<EmployeeTblJobTittles>();
+            List<tblJobtitle> jobTittles = new List<tblJobtitle>();
             string sqlString = "SELECT * FROM Employee.tblJobTittles";
             using (SqlCommand cmd = new SqlCommand(sqlString,conn))
             {
@@ -274,17 +276,17 @@ namespace employeeManagmentAppLachlan.Repositories
                     {
                         int jobtitleid = Convert.ToInt32(reader["jobtitleID"]);
                         string JobtitleName = reader["JobtitleName"].ToString();
-                        jobTittles.Add(new EmployeeTblJobTittles(jobtitleid, JobtitleName));
+                        jobTittles.Add(new tblJobtitle(jobtitleid, JobtitleName));
                     }
                 }
             }
             return jobTittles;
         }
 
-        public List<LocationTblDepartments> GetLocationTblDepartments()
+        public List<tblLocation> GetTblLocations()
         {
-            List<LocationTblDepartments> Departments = new List<LocationTblDepartments>();
-            string sqlString = "SELECT * FROM Location.tblDepartments";
+            List<tblLocation> locations = new List<tblLocation>();
+            string sqlString = "SELECT * FROM Location.tblLocation";
             using (SqlCommand cmd = new SqlCommand(sqlString,conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -292,57 +294,60 @@ namespace employeeManagmentAppLachlan.Repositories
                     while (reader.Read())
                     {
                         int LocationID = Convert.ToInt32(reader["LocationID"]);
-                        string deparments = (reader["Departments"]).ToString();
-                        int managersID = Convert.ToInt32(reader["ManagersID"]);
-                        Departments.Add(new LocationTblDepartments(LocationID, deparments, managersID));
-                    }
-                }
-            }
-            return Departments;
-        }
-
-        public List<LocationTblLocation> GetLocationTblLocations()
-        {
-            List<LocationTblLocation> locations = new List<LocationTblLocation>();
-            string sqlString = "SELECT * From Location.tblLocation";
-            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
-            {
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        int Location_ID = Convert.ToInt32(reader["LocationID"]);
-                        string Location_Name = reader["LocationName"].ToString();
-                        locations.Add(new LocationTblLocation(Location_ID, Location_Name));
+                        string LocationName = (reader["LocationName"]).ToString();
+                        int CountryID = Convert.ToInt32(reader["CountryID"]);
+                        int SuburbID = Convert.ToInt32(reader["SuburubID"]);
+                        int StreetID = Convert.ToInt32(reader["StreetID"]);
+                        int CityID = Convert.ToInt32(reader["CityID"]);
+                        int StreetNumber = Convert.ToInt32(reader["StreetNumber"]);
+                        locations.Add(new tblLocation(LocationID,  LocationName,  CountryID,  SuburbID, StreetID, CityID, StreetNumber));
                     }
                 }
             }
             return locations;
         }
 
-        public List<LocationTblLocationAdress> GetLocationTblLocationAdresses()
+        public List<tblLocationCountry> GetTblLocationCountries()
         {
-            List<LocationTblLocationAdress> locationAdresses = new List<LocationTblLocationAdress>();
-            string sqlString = "SELECT * FROM Location.tblLocationAdress";
-            using (SqlCommand cmd = new SqlCommand(sqlString,conn))
+            List<tblLocationCountry> LocationCountry = new List<tblLocationCountry>();
+            string sqlString = "SELECT * From Location.tblLocationCountry";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        int LocationID = Convert.ToInt32(reader["LocationID"]);
-                        int cityID = Convert.ToInt32(reader["CityID"]);
-                        string country = reader["country"].ToString();
-                        locationAdresses.Add(new LocationTblLocationAdress(LocationID, cityID,country));
+                        int CountryID = Convert.ToInt32(reader["CountryID"]);
+                        string CountryName = reader["CountryName"].ToString();
+                        LocationCountry.Add(new tblLocationCountry(CountryID, CountryName));
                     }
                 }
             }
-            return locationAdresses;
+            return LocationCountry;
         }
 
-        public List<LocationTblLocationCity> GetLocationTblLocationCities()
+        public List<tblStreetID> GetTblStreetIDs()
         {
-            List<LocationTblLocationCity> locationCities = new List<LocationTblLocationCity>();
+            List<tblStreetID> street = new List<tblStreetID>();
+            string sqlString = "SELECT * From Location.tblLocationStreet";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int StreetID = Convert.ToInt32(reader["StreetID"]);
+                        string StreetName = reader["StreetName"].ToString();
+                        street.Add(new tblStreetID(StreetID, StreetName));
+                    }
+                }
+            }
+            return street;
+        }
+
+        public List<tblSubrubID> GetTblSubrubIDs()
+        {
+            List<tblSubrubID> subrub = new List<tblSubrubID>();
             string sqlString = "SELECT * FROM Location.tblLocationCity";
             using (SqlCommand cmd = new SqlCommand(sqlString,conn))
             {
@@ -350,16 +355,33 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     while (reader.Read())
                     {
-                        int CityID = Convert.ToInt32(reader["CityID"]);
-                        string suburb = reader["suburb"].ToString();
-                        string postcode = reader["postcode"].ToString();
-                        string street = reader["street"].ToString();
-                        string city = reader["city"].ToString();
-                        locationCities.Add(new LocationTblLocationCity(CityID, suburb, postcode,street,city));
+                        int SubrubID = Convert.ToInt32(reader["SuburbID"]);
+                        string SuburbName = reader["SuburbName"].ToString();
+                        int Postcode = Convert.ToInt32(reader["PostCode"]);
+                        subrub.Add(new tblSubrubID(SubrubID,SuburbName,Postcode));
                     }
                 }
             }
-            return locationCities;
+            return subrub;
+        }
+
+        public List<tblLocationDepartment> GetTblLocationDepartments()
+        {
+            List<tblLocationDepartment> locationDepartments = new List<tblLocationDepartment>();
+            string sqlString = "SELECT * From Location.tblLocation";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int LocationID = Convert.ToInt32(reader["LocationID"]);
+                        int DepartMentID = Convert.ToInt32(reader["DepartMentID"]);
+                        locationDepartments.Add(new tblLocationDepartment(LocationID, DepartMentID));
+                    }
+                }
+            }
+            return locationDepartments;
         }
 
         public int UpdateLocationName(int LocationID, string LocationName)//change it from searching id to name
