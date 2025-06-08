@@ -166,11 +166,11 @@ namespace employeeManagmentAppLachlan.View
                 return text.PadRight(width - (width - text.Length) / 2).PadLeft(width);
             }
         }
-        public void DisplaytblEmployeeContact(List<EmployeeTblEmployeeContact> employeeTblEmployeeContacts)
+        public void DisplayCity(List<tblCityID> CityID)
         {
            
             PrintLine();
-            PrintRow("employee ID ", " email", " phonenumber");
+            PrintRow("City ID ", " City Name");
             /* Console.Clear();
             PrintLine();
             PrintRow("Column 1", "Column 2", "Column 3", "Column 4");
@@ -179,127 +179,115 @@ namespace employeeManagmentAppLachlan.View
             PrintRow("test", "test", "test", "test");
             PrintLine();
              Console.ReadLine(); */
-            foreach (EmployeeTblEmployeeContact employee in employeeTblEmployeeContacts)
+            foreach (tblCityID City in CityID)
             {
 
                 //Console.WriteLine($"{"Employee ID: " + employee.employeeid}\t\t{"Email: " + employee.email}\t\t{"Phone Number: " + employee.phonenumber}");
                 //Console.WriteLine($"{ employee.employeeid}\t\t{ + employee.email}\t\t{ + employee.phonenumber}");
                 PrintLine();
-                PrintRow($"{employee.employeeid}", $"{employee.email}", $"{employee.phonenumber}");
+                PrintRow($"{City.cityID}", $"{City.cityName}");
                 PrintLine();
             }
         }
         
-        public void DisplaytblEmployeeLocations(List<EmployeeTblEmployeeLocations> employeeTblEmployeeLocations)
+        public void DisplayStreetID(List<tblStreetID> streetID)
         {
             PrintLine();
-            PrintRow(" Employee ID ", " Location ID");
-            foreach (EmployeeTblEmployeeLocations employee in employeeTblEmployeeLocations)
+            PrintRow(" Street ID ", " Street Name");
+            foreach (tblStreetID street in streetID)
             {
                 PrintLine();
-                PrintRow($"{employee.employeeid}", $"{employee.locationid}");
+                PrintRow($"{street.streetID}", $"{street.streetName}");
                 PrintLine();
             }
         }
 
-        public void DisplaytblEmployeeRoles(List<EmployeeTblEmployeeRole> employeeTblEmployeeRoles)
-        {
-            foreach (EmployeeTblEmployeeRole employee in employeeTblEmployeeRoles)
-            {
-                Console.WriteLine(employee.username + employee.password);
-                
-                
-            }
-        }
-
-        public void DisplaytblEmployeesDetails(List<EmployeeTblEmployeesDetails> employeeTblEmployeesDetails)
+        public void DisplaySubrub(List<tblSubrubID> subrubID)
         {
             PrintLine();
-            PrintRow("employee ID ", " firstname", " lastname", " gender", " jobid");
-            foreach (EmployeeTblEmployeesDetails employee in employeeTblEmployeesDetails)
+            PrintRow(" suburb ID ", " subrub Name", " post code");
+            foreach (tblSubrubID subrub in subrubID)
             {
                 PrintLine();
-                PrintRow($"{employee.employeeid}", $"{employee.firstname}", $"{employee.lastname}", $"{employee.gender}", $"{employee.jobid}");
+                PrintRow($"{subrub.suburbID}", $"{subrub.suburbName}", $"{subrub.postcode}");
                 PrintLine();
-                //Console.WriteLine($"{"Employee ID: " + employee.employeeid}\t{"First Name: " + employee.firstname}\t{"Last Name: " + employee.lastname}\t{"Gender: " + employee.gender}\t{"Job ID: " + employee.jobid}");
+
             }
         }
 
-        public void DisplaytblEmployeeWage(List<EmployeeTblEmployeeWage> employeeTblEmployeeWages)
+        public void DisplayCountry(List<tblLocationCountry> countryID)
         {
             PrintLine();
-            PrintRow("employee ID ", " email", " wage");
-            foreach (EmployeeTblEmployeeWage employee in employeeTblEmployeeWages)
+            PrintRow("Country ID ", " Country Name");
+            foreach (tblLocationCountry country in countryID)
             {
                 PrintLine();
-                PrintRow($"{employee.employeeid}", $"{employee.jobtitleid}", $"{employee.wage}");
+                PrintRow($"{country.countryId}", $"{country.countryName}");
                 PrintLine();
-                //Console.WriteLine($"{"Employee ID: " + employee.employeeid}\t{"Job title ID: " + employee.jobtitleid}\t{"Wage: " + employee.wage}");
             }
         }
 
-        public void DisplaytblJobTittles(List<EmployeeTblJobTittles> jobTblJobTittles)
+        public void DisplayLocation(List<tblLocation> locations)
+        {
+            PrintLine();
+            PrintRow("Location ID ", " Location Name", " CountryID", " SuburbID", " StreetID", " CityID", " StreetNumber");
+            foreach (tblLocation location in locations)
+            {
+                PrintLine();
+                PrintRow($"{location.locationID}", $"{location.locationName}", $"{location.countryID}", $"{location.suburbID}", $"{location.streetID}", $"{location.cityID}", $"{location.streetNumber}");
+                PrintLine();
+            }
+        }
+
+        public void DisplaytblJobTittles(List<tblJobtitle> jobtitles)
         {
             PrintLine();
             PrintRow("jobtitle ID ", " jobtitlename");
-            foreach (EmployeeTblJobTittles jobTittle in jobTblJobTittles)
+            foreach (tblJobtitle jobTittle in jobtitles)
             {
                 PrintLine();
-                PrintRow($"{jobTittle.jobtitleid}", $"{jobTittle.jobtitlename}");
+                PrintRow($"{jobTittle.jobtitleID}", $"{jobTittle.jobtitleName}");
                 PrintLine();
                // Console.WriteLine($"{"Job title ID: " + jobTittle.jobtitleid}\t{"Job title Name: " + jobTittle.jobtitlename}");
             }
         }
 
-        public void DisplaytblDepartments(List<LocationTblDepartments> locationTblDepartments)
+        public void DisplayRoleNames(List<tblEmployeeRoleName> Roles)
         {
             PrintLine();
-            PrintRow("location ID ", " department", " managers ID");
-            foreach (LocationTblDepartments location in locationTblDepartments)
+            PrintRow("Role ID ", " Role Name");
+            foreach (tblEmployeeRoleName role in Roles)
             {
                 PrintLine();
-                PrintRow($"{location.locationid}", $"{location.department}", $"{location.managersid}");
+                PrintRow($"{role.roleID}", $"{role.roleName}");
                 PrintLine();
                 //Console.WriteLine($"{"location ID: " + location.locationid}\t{"Departments: " + location.department}\t{"Managers ID: " + location.managersid}");
             }
         }
 
-        public void DisplayLocations(List<LocationTblLocation> locationTblLocations)
+        public void DisplayEmployeeDetails(List<tblEmployeeDetails> details)
         {
             PrintLine();
-            PrintRow("location ID ", " Location Name");
-            foreach (LocationTblLocation location in locationTblLocations)
+            PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
+            foreach (tblEmployeeDetails detail in details)
             {
                 PrintLine();
-                PrintRow($"{location.Location_ID}", $"{location.Location_Name}");
+                PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
                 PrintLine();
                 //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
             }
         }
 
-        public void DisplaytblLocationAdress(List<LocationTblLocationAdress> locationTblLocationAdresses)
+        public void DisplayDepartments(List<tblDepartments> departments)
         {
             PrintLine();
-            PrintRow("location ID ", " city ID ", " country ");
-            foreach (LocationTblLocationAdress location in locationTblLocationAdresses)
+            PrintRow("location ID ", " department ", " managers ID ", " Department ID ");
+            foreach (tblDepartments department in departments)
             {
                 PrintLine();
-                PrintRow($"{location.locationid}", $"{location.cityid}", $"{location.country}");
+                PrintRow($"{department.locationID}", $"{department.department}", $"{department.managersID}", $"{department.departmentID}");
                 PrintLine();
                 //Console.WriteLine($"{"location ID: " + location.locationid}\t{"city ID: " + location.cityid}\t{"Country: " + location.country}");
-            }
-        }
-
-        public void DisplaytblLocationCity(List<LocationTblLocationCity> locationTblLocationCities)
-        {
-            PrintLine();
-            PrintRow("City ID ", " suburb", " postcode", " suburb ", " street ", "city");
-            foreach (LocationTblLocationCity city in locationTblLocationCities)
-            {
-                PrintLine();
-                PrintRow($"{city.City_ID}", $"{city.suburb}", $"{city.postcode}", $"{city.suburb}", $"{city.street}", $"{city.city}");
-                PrintLine();
-                //Console.WriteLine($"{"City ID: " + city.City_ID}\t{"Suburb: " + city.suburb}\t{"Post Code: " + city.postcode}\t{"Street: " + city.street}\t{"City: " + city.city}");
             }
         }
 

@@ -394,7 +394,7 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
-        public int InsertLocation(LocationTblLocation LocationName)
+        /*public int InsertLocation(LocationTblLocation LocationName)
         {
             using (SqlCommand cmd = new SqlCommand($"INSERT INTO Location.tblLocation (LocationName) VALUES (@LocationName); SELECT SCOPE_IDENTITY(); ", conn))
             {
@@ -409,7 +409,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 cmd.Parameters.AddWithValue($"@LocationName", LocationName);
                 return cmd.ExecuteNonQuery();
             }
-        }
+        }*/
 
         public void CloseConnection()
         {

@@ -84,7 +84,7 @@ namespace employeeManagmentAppLachlan
                                     {
                                         case "1":
                                             {
-                                                view.tblEmployeeContact();
+                                                //view.tblEmployeeContact();
                                                 Notvalid = false;
                                                 displaySwitch1();
 
@@ -93,7 +93,7 @@ namespace employeeManagmentAppLachlan
                                             break;
                                         case "2":
                                             {
-                                                view.tblEmployeeLocations();
+                                                //view.tblEmployeeLocations();
                                                 Notvalid = false;
                                                 displaySwitch2();
 
@@ -101,7 +101,7 @@ namespace employeeManagmentAppLachlan
                                             break;
                                         case "3": //doesnt display
                                             {
-                                                view.tblEmployeesDetails();
+                                                //view.tblEmployeesDetails();
                                                 Notvalid = false;
                                                 displaySwitch3();
 
@@ -109,7 +109,7 @@ namespace employeeManagmentAppLachlan
                                             break;
                                         case "4":// doesnt display
                                             {
-                                                view.tblEmployeeWage();
+                                                //view.tblEmployeeWage();
                                                 Notvalid = false;
                                                 displaySwitch4();
 
@@ -117,7 +117,7 @@ namespace employeeManagmentAppLachlan
                                             break;
                                         case "5":// doesnt display
                                             {
-                                                view.tblJobTittles();
+                                                //view.tblJobTittles();
                                                 Notvalid = false;
                                                 displaySwitch5();
 
@@ -125,7 +125,7 @@ namespace employeeManagmentAppLachlan
                                             break;
                                         case "6":// doesnt display
                                             {
-                                                view.tblDepartments();
+                                                //view.tblDepartments();
                                                 Notvalid = false;
                                                 displaySwitch6();
 
@@ -133,7 +133,7 @@ namespace employeeManagmentAppLachlan
                                             break;
                                         case "7":
                                             {
-                                                view.tblLocation();
+                                                //view.tblLocation();
                                                 Notvalid = false;
                                                 displaySwitch7();
 
@@ -141,7 +141,7 @@ namespace employeeManagmentAppLachlan
                                             break;
                                         case "8": // doesnt display
                                             {
-                                                view.tblLocationAdress();
+                                                //view.tblLocationAdress();
                                                 Notvalid = false;
                                                 displaySwitch8();
 
@@ -149,7 +149,7 @@ namespace employeeManagmentAppLachlan
                                             break;
                                         case "9":
                                             {
-                                                view.tblLocationCity();
+                                                //view.tblLocationCity();
                                                 Notvalid = false;
                                                 displaySwitch9();
 
@@ -198,8 +198,8 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<EmployeeTblEmployeeContact> employee = storageManager.GetEmployeeTblEmployeeContacts();
-                            view.DisplaytblEmployeeContact(employee);
+                            List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
+                            view.DisplayEmployeeDetails(employee);
                             Notvalid = false;
                         }
                         break;
@@ -232,8 +232,8 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<EmployeeTblEmployeeLocations> employee = storageManager.GetEmployeeTblEmployeeLocations();
-                            view.DisplaytblEmployeeLocations(employee);
+                            List<tblLocation> locations = storageManager.GetTblLocations();
+                            view.DisplayLocation(locations);
                             Notvalid = false;
                         }
                         break;
@@ -266,8 +266,8 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         { // doesnt display the list
-                            List<EmployeeTblEmployeesDetails> employeedetails = storageManager.GetEmployeeTblEmployeesDetails();
-                            view.DisplaytblEmployeesDetails(employeedetails);
+                            List<tblEmployeeRoleName> roleNames = storageManager.GetTblEmployeeRoleNames();
+                            view.DisplayRoleNames(roleNames);
                             //List<EmployeeTblEmployeesDetails> employee1 = storageManager.GetEmployeeTblEmployeesDetails();
                             //view.DisplaytblEmployeesDetails(employee1);
                             Notvalid = false;
@@ -302,8 +302,8 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<EmployeeTblEmployeeWage> employee = storageManager.GetEmployeeTblEmployeeWages();
-                            view.DisplaytblEmployeeWage(employee);
+                            List<tblDepartments> departments = storageManager.GetTblDepartments();
+                            view.DisplayDepartments(departments);
                             Notvalid = false;
                         }
                         break;
@@ -336,7 +336,7 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<EmployeeTblJobTittles> jobTittle = storageManager.GetEmployeeTblJobTittles();
+                            List<tblJobtitle> jobTittle = storageManager.GetEmployeeTblJobTittles();
                             view.DisplaytblJobTittles(jobTittle);
                             Notvalid = false;
                         }
@@ -370,8 +370,8 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<LocationTblDepartments> locations = storageManager.GetLocationTblDepartments();
-                            view.DisplaytblDepartments(locations);
+                            List<tblLocationCountry> countries = storageManager.GetTblLocationCountries();
+                            view.DisplayCountry(countries);
                             Notvalid = false;
                         }
                         break;
@@ -404,8 +404,8 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<LocationTblLocation> locations = storageManager.GetLocationTblLocations();
-                            view.DisplayLocations(locations);
+                            List<tblStreetID> streetIDs = storageManager.GetTblStreetIDs();
+                            view.DisplayStreetID(streetIDs);
                             Notvalid = false;
                         }
                         break;
@@ -452,8 +452,8 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<LocationTblLocationAdress> locations = storageManager.GetLocationTblLocationAdresses();
-                            view.DisplaytblLocationAdress(locations);
+                            List<tblSubrubID> subrubIDs = storageManager.GetTblSubrubIDs();
+                            view.DisplaySubrub(subrubIDs);
                             Notvalid = false;
                         }
                         break;
@@ -486,8 +486,8 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<LocationTblLocationCity> locations = storageManager.GetLocationTblLocationCities();
-                            view.DisplaytblLocationCity(locations);
+                            List<tblCityID> cityIDs = storageManager.GetTblCityIDs();
+                            view.DisplayCity(cityIDs);
                             Notvalid = false;
                         }
                         break;
@@ -509,7 +509,7 @@ namespace employeeManagmentAppLachlan
             } while (Notvalid);
         }
 
-        private static void UpdateLocationName()
+       /* private static void UpdateLocationName()
             {
                 view.DisplayMessage("Enter the Location_id to update");
                 int LocationID = view.GetIntInput();
@@ -535,7 +535,7 @@ namespace employeeManagmentAppLachlan
                 string locationName = view.GetInput();
                 int rowsaffected = storageManager.DeleteLocationByName(locationName);
                 view.DisplayMessage($"Rows affected: {rowsaffected}");
-        }
+        }*/ 
 
        /* public static int getEmployeeID()
         {
