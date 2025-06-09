@@ -199,7 +199,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblEmployeeDetails> GetTblEmployeeDetails()
         {
             List<tblEmployeeDetails> employeeDetails = new List<tblEmployeeDetails>();
-            string sqlString = "SELECT * FROM Employee.tblEmployeeDetails";
+            string sqlString = "SELECT * FROM Employee.tblEmployeesDetails";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())

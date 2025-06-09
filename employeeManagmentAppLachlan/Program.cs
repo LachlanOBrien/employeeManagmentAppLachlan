@@ -16,9 +16,9 @@ namespace employeeManagmentAppLachlan
            
             Console.WriteLine("Hello, World!");
             //scl connectionString
-            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             //home connectionString
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\GAMING LACHY\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\GAMING LACHY\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
@@ -85,6 +85,8 @@ namespace employeeManagmentAppLachlan
                                         case "1":
                                             {
                                                 //view.tblEmployeeContact();
+                                                view.tblEmployeesDetails();
+                                                // display details
                                                 Notvalid = false;
                                                 displaySwitch1();
 
@@ -93,39 +95,40 @@ namespace employeeManagmentAppLachlan
                                             break;
                                         case "2":
                                             {
-                                                //view.tblEmployeeLocations();
+                                                view.tblEmployeeLocations();
+                                                //display location
                                                 Notvalid = false;
                                                 displaySwitch2();
 
                                             }
                                             break;
-                                        case "3": //doesnt display
+                                        case "3": 
                                             {
-                                                //view.tblEmployeesDetails();
+                                                view.tblRoleName();
                                                 Notvalid = false;
                                                 displaySwitch3();
 
                                             }
                                             break;
-                                        case "4":// doesnt display
+                                        case "4":
                                             {
-                                                //view.tblEmployeeWage();
+                                                view.tblDepartments();
                                                 Notvalid = false;
                                                 displaySwitch4();
 
                                             }
                                             break;
-                                        case "5":// doesnt display
+                                        case "5":
                                             {
-                                                //view.tblJobTittles();
+                                                view.tblJobTittles();
                                                 Notvalid = false;
                                                 displaySwitch5();
 
                                             }
                                             break;
-                                        case "6":// doesnt display
+                                        case "6":
                                             {
-                                                //view.tblDepartments();
+                                                view.tblLocationCountry();        
                                                 Notvalid = false;
                                                 displaySwitch6();
 
@@ -133,23 +136,22 @@ namespace employeeManagmentAppLachlan
                                             break;
                                         case "7":
                                             {
-                                                //view.tblLocation();
+                                                view.tblStreet();
                                                 Notvalid = false;
                                                 displaySwitch7();
 
                                             }
                                             break;
-                                        case "8": // doesnt display
+                                        case "8":
                                             {
-                                                //view.tblLocationAdress();
+                                                view.tblSuburb();
                                                 Notvalid = false;
                                                 displaySwitch8();
-
                                             }
                                             break;
                                         case "9":
                                             {
-                                                //view.tblLocationCity();
+                                                view.tblCity();
                                                 Notvalid = false;
                                                 displaySwitch9();
 
