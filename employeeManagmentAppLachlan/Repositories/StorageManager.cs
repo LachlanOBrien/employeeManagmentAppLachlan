@@ -66,7 +66,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblDepartments> GetTblDepartments()
         {
             List<tblDepartments> departments = new List<tblDepartments>();
-            string sqlString = "SELECT * FROM Location.tblDepartment";
+            string sqlString = "SELECT * FROM Location.tblDepartments";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -248,7 +248,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblEmployeeRoleName> GetTblEmployeeRoleNames()
         {
             List<tblEmployeeRoleName> EmployeeRole = new List<tblEmployeeRoleName>();
-            string sqlString = "SELECT * FROM Employee.tblEmployeeWage";
+            string sqlString = "SELECT * FROM Employee.tblEmployeeRoleName";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -296,7 +296,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         int LocationID = Convert.ToInt32(reader["LocationID"]);
                         string LocationName = (reader["LocationName"]).ToString();
                         int CountryID = Convert.ToInt32(reader["CountryID"]);
-                        int SuburbID = Convert.ToInt32(reader["SuburubID"]);
+                        int SuburbID = Convert.ToInt32(reader["SuburbID"]);
                         int StreetID = Convert.ToInt32(reader["StreetID"]);
                         int CityID = Convert.ToInt32(reader["CityID"]);
                         int StreetNumber = Convert.ToInt32(reader["StreetNumber"]);
@@ -348,7 +348,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblSubrubID> GetTblSubrubIDs()
         {
             List<tblSubrubID> subrub = new List<tblSubrubID>();
-            string sqlString = "SELECT * FROM Location.tblLocationCity";
+            string sqlString = "SELECT * FROM Location.tblLocationSubrub";
             using (SqlCommand cmd = new SqlCommand(sqlString,conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -356,7 +356,7 @@ namespace employeeManagmentAppLachlan.Repositories
                     while (reader.Read())
                     {
                         int SubrubID = Convert.ToInt32(reader["SuburbID"]);
-                        string SuburbName = reader["SuburbName"].ToString();
+                        string SuburbName = reader["Subrub"].ToString();
                         int Postcode = Convert.ToInt32(reader["PostCode"]);
                         subrub.Add(new tblSubrubID(SubrubID,SuburbName,Postcode));
                     }
