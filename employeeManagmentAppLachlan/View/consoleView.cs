@@ -12,7 +12,7 @@ namespace employeeManagmentAppLachlan.View
     public class consoleView //plan for adding thingys get the input for each field in employee schema and then spread it out to each table that requires it 
     {
         private static StorageManager storageManager;
-        static int tableWidth = 73;
+        static int tableWidth = 232;
         public void TblDisplayMenu()
         {
             Console.WriteLine("Welcome to the Employee Managment Menu");
@@ -300,11 +300,11 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
-        public void DisplayEmpEmployeeDetails(List<empTblEmployeeDetails> empDetails)
+        public void DisplayEmpEmployeeDetails(List<empTblEmployeeDetails> employeeDetails)
         {
             PrintLine();
             PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
-            foreach (empTblEmployeeDetails EmpDetail in empDetails)
+            foreach (empTblEmployeeDetails EmpDetail in employeeDetails)
             {
                 PrintLine();
                 PrintRow($"{EmpDetail.employeeID}", $"{EmpDetail.firstname}", $"{EmpDetail.lastname}", $"{EmpDetail.hireDate}", $"{EmpDetail.gender}", $"{EmpDetail.jobID}", $"{EmpDetail.roleID}", $"{EmpDetail.active}", $"{EmpDetail.email}", $"{EmpDetail.phonenumber}", $"{EmpDetail.wage}");

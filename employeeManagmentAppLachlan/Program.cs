@@ -18,9 +18,9 @@ namespace employeeManagmentAppLachlan
 
             Console.WriteLine("Hello, World!");
             //scl connectionString
-            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\EMPLOYEEMANAGMENT.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DATABASE2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             //home connectionString
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=database2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=database2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
@@ -30,7 +30,8 @@ namespace employeeManagmentAppLachlan
             bool loop = true;
             bool logInBool = true;
             string employeeChoice;
-
+            
+            //temp log in / role function
             Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
             int role = Convert.ToInt32(Console.ReadLine());
             //do
@@ -58,7 +59,8 @@ namespace employeeManagmentAppLachlan
                 Console.Clear();
                 Console.WriteLine("HAHA pleb employee");
                 view.EmployeeDisplayMenu();
-                view.DisplayEmpEmployeeDetails();
+                
+                //view.DisplayEmpEmployeeDetails();
                 employeeChoice = Console.ReadLine();
                 switch (employeeChoice)
                 {

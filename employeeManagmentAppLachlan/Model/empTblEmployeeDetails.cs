@@ -17,12 +17,12 @@ namespace employeeManagmentAppLachlan.Model
         public int roleID { get; }
         public string userName { get; set; }
         public string password { get; set; }
-        public string active { get; }
+        public bool active { get; }
         public string email { get; set; }
         public int phonenumber { get; set; }
         public int wage { get;  }
 
-        public empTblEmployeeDetails(int EmployeeID, string Firstname, string Lastname, DateTime Hiredate, string Gender, int JobID, int RoleID, string Username, string Password, string Active, string Email, int PhoneNumber, int Wage)
+        public empTblEmployeeDetails(int EmployeeID, string Firstname, string Lastname, DateTime Hiredate, string Gender, int JobID, int RoleID, string Username, string Password, bool Active, string Email, int PhoneNumber, int Wage)
         {
             employeeID = EmployeeID;
             firstname = Firstname;

@@ -215,7 +215,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         int RoleID = Convert.ToInt32(reader["RoleID"]);
                         string Username = reader["Username"].ToString();
                         string Password = reader["Password"].ToString();
-                        string Active = reader["Active"].ToString();
+                        bool Active = Convert.ToBoolean(reader["Active"]);
                         string Email = reader["Email"].ToString();
                         int PhoneNumber = Convert.ToInt32(reader["Phonenumber"]);
                         int Wage = Convert.ToInt32(reader["Wage"]);
@@ -391,9 +391,10 @@ namespace employeeManagmentAppLachlan.Repositories
             string sqlString = "SELECT * FROM Employee.tblEmployeesDetails Where EmployeeID = @EmployeeID2";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
+                cmd.Parameters.AddWithValue("@EmployeeID2", EmployeeID2);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    cmd.Parameters.AddWithValue("@EmployeeID2", EmployeeID2);
+                    
                     while (reader.Read())
                     {
                         int EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
@@ -405,7 +406,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         int RoleID = Convert.ToInt32(reader["RoleID"]);
                         string Username = reader["Username"].ToString();
                         string Password = reader["Password"].ToString();
-                        string Active = reader["Active"].ToString();
+                        bool Active = Convert.ToBoolean(reader["Active"]);
                         string Email = reader["Email"].ToString();
                         int PhoneNumber = Convert.ToInt32(reader["Phonenumber"]);
                         int Wage = Convert.ToInt32(reader["Wage"]);
