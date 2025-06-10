@@ -300,6 +300,19 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
+        public void DisplayEmpEmployeeDetails(List<empTblEmployeeDetails> empDetails)
+        {
+            PrintLine();
+            PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
+            foreach (empTblEmployeeDetails EmpDetail in empDetails)
+            {
+                PrintLine();
+                PrintRow($"{EmpDetail.employeeID}", $"{EmpDetail.firstname}", $"{EmpDetail.lastname}", $"{EmpDetail.hireDate}", $"{EmpDetail.gender}", $"{EmpDetail.jobID}", $"{EmpDetail.roleID}", $"{EmpDetail.active}", $"{EmpDetail.email}", $"{EmpDetail.phonenumber}", $"{EmpDetail.wage}");
+                PrintLine();
+
+            }
+        }
+
         public void DisplayMessage(string message)
         {
             Console.WriteLine(message);

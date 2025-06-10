@@ -120,7 +120,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int getEmployeeID(string Username)
         {
             int username = 0;
-            string sqlString = "SELECT EmployeeID FROM Employee.tblEmployeeRole WHERE Username = @Username";
+            string sqlString = "SELECT EmployeeID FROM Employee.tblEmployeesDetails WHERE Username = @Username";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -141,7 +141,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public string getPassword(string Username)
         {
             string password = "";
-            string sqlString = "SELECT Password FROM Employee.tblEmployeeRole WHERE Username = @Username";
+            string sqlString = "SELECT Password FROM Employee.tblEmployeesDetails WHERE Username = @Username";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -162,7 +162,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int getRole(string Username)
         {
             int Role = 0;
-            string sqlString = "SELECT Role FROM Employee.tblEmployeeRole WHERE Username = @Username";
+            string sqlString = "SELECT RoleID FROM Employee.tblEmployeesDetails WHERE Username = @Username";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -382,6 +382,38 @@ namespace employeeManagmentAppLachlan.Repositories
                 }
             }
             return locationDepartments;
+        }
+
+        public List<empTblEmployeeDetails> GetempTblEmployeeDetails()
+        {
+            int EmployeeID2 = 1;//change to the employeeid of the logged in user
+            List<empTblEmployeeDetails> empEmployeeDetails = new List<empTblEmployeeDetails>();
+            string sqlString = "SELECT * FROM Employee.tblEmployeesDetails Where EmployeeID = @EmployeeID2";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    cmd.Parameters.AddWithValue("@EmployeeID2", EmployeeID2);
+                    while (reader.Read())
+                    {
+                        int EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
+                        string Firstname = reader["Firstname"].ToString();
+                        string Lastname = reader["Lastname"].ToString();
+                        DateTime Hiredate = Convert.ToDateTime(reader["HireDate"]);
+                        string Gender = reader["Gender"].ToString();
+                        int JobID = Convert.ToInt32(reader["JobID"]);
+                        int RoleID = Convert.ToInt32(reader["RoleID"]);
+                        string Username = reader["Username"].ToString();
+                        string Password = reader["Password"].ToString();
+                        string Active = reader["Active"].ToString();
+                        string Email = reader["Email"].ToString();
+                        int PhoneNumber = Convert.ToInt32(reader["Phonenumber"]);
+                        int Wage = Convert.ToInt32(reader["Wage"]);
+                        empEmployeeDetails.Add(new empTblEmployeeDetails(EmployeeID, Firstname, Lastname, Hiredate, Gender, JobID, RoleID, Username, Password, Active, Email, PhoneNumber, Wage));
+                    }
+                }
+            }
+            return empEmployeeDetails;
         }
 
         public int UpdateLocationName(int LocationID, string LocationName)//change it from searching id to name example 

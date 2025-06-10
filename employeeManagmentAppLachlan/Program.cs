@@ -11,7 +11,7 @@ namespace employeeManagmentAppLachlan
         private static StorageManager storageManager;
         private static consoleView view;
         
-         //get explanation on how to convert the bit from the database into a true or false 
+         //get explanation on how to convert the bit from the database into a true or false running assumption read the result of the bit then if statement to declare if 1 then true if 0 then false and just delcare it as an int in the list. 
          
         static void Main(string[] args)
         {
@@ -36,7 +36,7 @@ namespace employeeManagmentAppLachlan
             //do
             //{
 
-            /* Console.WriteLine("Enter your Username");
+             /*Console.WriteLine("Enter your Username");
              string inputedUsername = Console.ReadLine();
              string Username = inputedUsername;
              int EmployeeID = storageManager.getEmployeeID(inputedUsername);
@@ -58,6 +58,7 @@ namespace employeeManagmentAppLachlan
                 Console.Clear();
                 Console.WriteLine("HAHA pleb employee");
                 view.EmployeeDisplayMenu();
+                view.DisplayEmpEmployeeDetails();
                 employeeChoice = Console.ReadLine();
                 switch (employeeChoice)
                 {
