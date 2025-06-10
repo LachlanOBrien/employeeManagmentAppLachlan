@@ -212,7 +212,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         DateTime Hiredate = Convert.ToDateTime(reader["HireDate"]);
                         string Gender = reader["Gender"].ToString();
                         int JobID = Convert.ToInt32(reader["JobID"]);
-                        int RoleID = Convert.ToInt32(reader["Role"]);
+                        int RoleID = Convert.ToInt32(reader["RoleID"]);
                         string Username = reader["Username"].ToString();
                         string Password = reader["Password"].ToString();
                         string Active = reader["Active"].ToString();
@@ -384,7 +384,7 @@ namespace employeeManagmentAppLachlan.Repositories
             return locationDepartments;
         }
 
-        public int UpdateLocationName(int LocationID, string LocationName)//change it from searching id to name
+        public int UpdateLocationName(int LocationID, string LocationName)//change it from searching id to name example 
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocation SET LocationName = @LocationName Where LocationID = @LocationID", conn))
             {
@@ -393,6 +393,57 @@ namespace employeeManagmentAppLachlan.Repositories
                 return cmd.ExecuteNonQuery();
             }
         }
+
+        public string UpdateRoleName(string RoleName,string RoleNameChange)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeeRoleName SET RoleName = @RoleNameChange Where RoleName = @RoleName", conn))
+            {
+                cmd.Parameters.AddWithValue("@RoleName", RoleName);
+                cmd.Parameters.AddWithValue("@RoleNameChange", RoleNameChange);
+                return cmd.ExecuteNonQuery().ToString();
+            }
+        }
+
+        public string UpdateJobTitle(string JobTitle, string JobTitleChange)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblJobTitles SET JobTitleName = @JobTitleChange Where JobTitle = @JobTitle", conn))
+            {
+                cmd.Parameters.AddWithValue("@JobTitle", JobTitle);
+                cmd.Parameters.AddWithValue("@JobTitleChange", JobTitleChange);
+                return cmd.ExecuteNonQuery().ToString();
+            }
+        }
+        public string UpdateLocationCountry(string CountryName, string CountryNameChange)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationCountry SET CountryName = @CountryName Where CountryName = @CountryName", conn))
+            {
+                cmd.Parameters.AddWithValue("@CountryName", CountryName);
+                cmd.Parameters.AddWithValue("@CountryNameChange", CountryNameChange);
+                return cmd.ExecuteNonQuery().ToString();
+            }
+        }
+        public string UpdateLocationStreet(string StreetName, string StreetNameChange)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationStreet SET StreetName = @StreetName Where StreetName = @StreetName", conn))
+            {
+                cmd.Parameters.AddWithValue("@StreetName", StreetName);
+                cmd.Parameters.AddWithValue("@StreetNameChange", StreetNameChange);
+                return cmd.ExecuteNonQuery().ToString();
+            }
+        }
+
+        public string UpdateLocationCity(string CityName, string CityNameChange)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationStreet SET CityName = @CityName Where CityName = @CityName", conn))
+            {
+                cmd.Parameters.AddWithValue("@CityName", CityName);
+                cmd.Parameters.AddWithValue("@CityNameChange", CityNameChange);
+                return cmd.ExecuteNonQuery().ToString();
+            }
+        }
+
+
+
 
         /*public int InsertLocation(LocationTblLocation LocationName)
         {
