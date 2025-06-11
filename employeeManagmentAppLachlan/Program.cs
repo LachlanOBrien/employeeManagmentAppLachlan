@@ -2,6 +2,7 @@
 using employeeManagmentAppLachlan.Repositories;
 using employeeManagmentAppLachlan.View;
 using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
 using System.Data;
 using System.Numerics;
 using System.Threading.Channels;
@@ -12,6 +13,7 @@ namespace employeeManagmentAppLachlan
     {                    // .mdf is saved in the DB folder onedrive>docc>12tpi>sql>DB
         private static StorageManager storageManager;
         private static consoleView view;
+        static int role;
 
         //get explanation on how to convert the bit from the database into a true or false running assumption read the result of the bit then if statement to declare if 1 then true if 0 then false and just delcare it as an int in the list. 
         //have display show active or inactive yes
@@ -36,30 +38,25 @@ namespace employeeManagmentAppLachlan
             string employeeChoice;
 
             //temp log in / role function
-            //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
-            //int role = Convert.ToInt32(Console.ReadLine());
-            //SwitchMain(role);
-            //do
-            //{
-
-            Console.WriteLine("Enter your Username");
-            string inputedUsername = Console.ReadLine();
-            string Username = inputedUsername;
-            int EmployeeID = storageManager.getEmployeeID(inputedUsername);
-            string password = storageManager.getPassword(inputedUsername);
-            int role = storageManager.getRole(inputedUsername);
-            Console.WriteLine("Please enter your Password");
-            string inputedPassword = Console.ReadLine();
-            Console.Clear();
-            // Console.WriteLine("EmployeeID: " + EmployeeID);
-            //Console.WriteLine("username: " + Username);
-            // Console.WriteLine("Password: " + password);
-            // Console.WriteLine("role: " + role);
-
-
-
+            Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
+            role = Convert.ToInt32(Console.ReadLine());
+            SwitchMain(role);           
+/*
             do
             {
+                Console.WriteLine("Enter your Username");
+                string inputedUsername = Console.ReadLine();
+                string Username = inputedUsername;
+                int EmployeeID = storageManager.getEmployeeID(inputedUsername);
+                string password = storageManager.getPassword(inputedUsername);
+                role = storageManager.getRole(inputedUsername);
+                Console.WriteLine("Please enter your Password");
+                string inputedPassword = Console.ReadLine();
+                Console.Clear();
+                // Console.WriteLine("EmployeeID: " + EmployeeID);
+                //Console.WriteLine("username: " + Username);
+                // Console.WriteLine("Password: " + password);
+                // Console.WriteLine("role: " + role);
                 if (inputedUsername == Username && inputedPassword == password)
                 {
                     SwitchMain(role);
@@ -70,7 +67,7 @@ namespace employeeManagmentAppLachlan
                     logInBool = true;
                 }
             } while (logInBool);
-        }
+*/      }
 
 
         public static void SwitchMain(int Role)
@@ -246,6 +243,20 @@ namespace employeeManagmentAppLachlan
 
                         }
                         break;
+                    case "4":
+                        {
+                            //insert();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "5":
+                        {
+                            SwitchMain(role);
+                            Notvalid = false;
+
+                        }
+                        break;
 
                     default:
                         {
@@ -285,7 +296,22 @@ namespace employeeManagmentAppLachlan
                             DeleteLocation();
                             Notvalid = false;
 
-                        } break;
+                        }
+                        break;
+                    case "4":
+                        {
+                            //insert();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "5":
+                        {
+                            SwitchMain(role);
+                            Notvalid = false;
+
+                        }
+                        break;
 
                     default:
                         {
@@ -325,6 +351,20 @@ namespace employeeManagmentAppLachlan
                     case "3":
                         {
                             DeleteRoleName();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "4":
+                        {
+                            //insert();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "5":
+                        {
+                            SwitchMain(role);
                             Notvalid = false;
 
                         }
@@ -370,6 +410,20 @@ namespace employeeManagmentAppLachlan
 
                         }
                         break;
+                    case "4":
+                        {
+                            //insert();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "5":
+                        {
+                            SwitchMain(role);
+                            Notvalid = false;
+
+                        }
+                        break;
 
                     default:
                         {
@@ -411,6 +465,20 @@ namespace employeeManagmentAppLachlan
 
                         }
                         break;
+                    case "4":
+                        {
+                            //insert();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "5":
+                        {
+                            SwitchMain(role);
+                            Notvalid = false;
+
+                        }
+                        break;
                     default:
                         {
                             Console.WriteLine("Invalid option please try again.");
@@ -447,6 +515,20 @@ namespace employeeManagmentAppLachlan
                     case "3":
                         {
                             DeleteCountry();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "4":
+                        {
+                            //insert();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "5":
+                        {
+                            SwitchMain(role);
                             Notvalid = false;
 
                         }
@@ -494,7 +576,14 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "4":
                         {
-                            // DeleteByName();
+                            //insert();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "5":
+                        {
+                            SwitchMain(role);
                             Notvalid = false;
 
                         }
@@ -536,6 +625,20 @@ namespace employeeManagmentAppLachlan
                     case "3":
                         {
                             DeleteSuburb();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "4":
+                        {
+                            //insert();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "5":
+                        {
+                            SwitchMain(role);
                             Notvalid = false;
 
                         }
@@ -590,7 +693,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "5":
                         {
-                            //insert();
+                            SwitchMain(role);
                             Notvalid = false;
 
                         }
