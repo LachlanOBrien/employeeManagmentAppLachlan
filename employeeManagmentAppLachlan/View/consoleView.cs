@@ -34,7 +34,44 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("employeeMenu");
         }
 
+        public void DisplayUpdateEmployeeDetails()
+        {
+            Console.WriteLine("What Feild do you wish to update");
+            Console.WriteLine("Choose an option from 1-5");
+            Console.WriteLine("1: First Name");
+            Console.WriteLine("2: Last Name");
+            Console.WriteLine("3: Gender");
+            Console.WriteLine("4: Email");
+            Console.WriteLine("5: Phonenumber");
+        }
 
+        public void DisplayUpdateLocation()
+        {
+            Console.WriteLine("What Feild do you wish to update");
+            Console.WriteLine("Choose an option from 1-6");
+            Console.WriteLine("1: Location Name");
+            Console.WriteLine("2: City ID");
+            Console.WriteLine("3: Suburb ID");
+            Console.WriteLine("4: Street ID");
+            Console.WriteLine("5: Country ID");
+            Console.WriteLine("6: Street Number");
+        }
+
+        public void DisplayUpdatesubrub()
+        {
+            Console.WriteLine("What Feild do you wish to update");
+            Console.WriteLine("Choose an option from 1-5");
+            Console.WriteLine("1: subrub Name");
+            Console.WriteLine("2: Post Code");
+        }
+
+        public void DisplayUpdateDept()
+        {
+            Console.WriteLine("What Feild do you wish to update");
+            Console.WriteLine("Choose an option from 1-5");
+            Console.WriteLine("1: Department Name");
+            Console.WriteLine("2: Managers ID");
+        }
 
         public void tblEmployeeLocations()
         {
@@ -290,13 +327,12 @@ namespace employeeManagmentAppLachlan.View
         public void DisplayDepartments(List<tblDepartments> departments)
         {
             PrintLine();
-            PrintRow("location ID ", " department ", " managers ID ", " Department ID ", " Active");
+            PrintRow(" department ", " managers ID ", " Department ID ", " Active");
             foreach (tblDepartments department in departments)
             {
                 PrintLine();
-                PrintRow($"{department.locationID}", $"{department.department}", $"{department.managersID}", $"{department.departmentID}", $"{department.active}");
+                PrintRow($"{department.department}", $"{department.managersID}", $"{department.departmentID}", $"{department.active}");
                 PrintLine();
-                //Console.WriteLine($"{"location ID: " + location.locationid}\t{"city ID: " + location.cityid}\t{"Country: " + location.country}");
             }
         }
 

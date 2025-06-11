@@ -2,6 +2,7 @@
 using employeeManagmentAppLachlan.Repositories;
 using employeeManagmentAppLachlan.View;
 using Microsoft.Data.SqlClient;
+using System.Numerics;
 using System.Threading.Channels;
 
 namespace employeeManagmentAppLachlan
@@ -10,17 +11,19 @@ namespace employeeManagmentAppLachlan
     {                    // .mdf is saved in the DB folder onedrive>docc>12tpi>sql>DB
         private static StorageManager storageManager;
         private static consoleView view;
-        
-         //get explanation on how to convert the bit from the database into a true or false running assumption read the result of the bit then if statement to declare if 1 then true if 0 then false and just delcare it as an int in the list. 
-         
+
+        //get explanation on how to convert the bit from the database into a true or false running assumption read the result of the bit then if statement to declare if 1 then true if 0 then false and just delcare it as an int in the list. 
+        //have display show active or inactive yes
+        //make the querys???? yes
+
         static void Main(string[] args)
         {
 
             Console.WriteLine("Hello, World!");
             //scl connectionString
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DATABASE2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DATABASE2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             //home connectionString
-            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=database2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=database2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
@@ -212,7 +215,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "2":
                         {
-                            //UpdateLocationName();
+                            UpdateEmployeeDetails();
                             Notvalid = false;
 
                         }
@@ -246,7 +249,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "2":
                         {
-                            //UpdateLocationName();
+                            UpdateLocation();
                             Notvalid = false;
 
                         }
@@ -316,7 +319,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "2":
                         {
-                            //UpdateLocationName();
+                            UpdateDept();
                             Notvalid = false;
 
                         }
@@ -466,7 +469,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "2":
                         {
-                            // UpdateLocationName();
+                            Updatesubrub();
                             Notvalid = false;
 
                         }
@@ -573,16 +576,319 @@ namespace employeeManagmentAppLachlan
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
         /* tables to do
-            add the emp det
-            add the loc det
             add the subrub
             add the dept 
-            get clarification on how to it with multiple lines such as 
-            dept has multiple lines to update do you get a display method to ask what feild do you wish to update then call the update method for that.
-            get display the data from the table then ask them to enter the id or use a wildcard operator for name eg enter human and it would display human resources etc 
-            have display show active or inactive yes
-            make the querys???? yes 
         */
+
+        private static void UpdateEmployeeDetails()
+        {
+            bool loop = true;
+            do
+            {
+                view.DisplayUpdateEmployeeDetails();
+                string FieldChoice = view.GetInput();
+                switch (FieldChoice) // change the grammar error in the switch cases of update to update to and change of to that relates to the 
+                {
+                    case "1":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "FirstName";
+                            List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
+                            view.DisplayEmployeeDetails(employee);
+                            view.DisplayMessage("Enter the Employee ID that relates to the First Name you wish to update ");
+                            Console.WriteLine("(Refrence data above)");
+                            int EmployeeID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {EmployeeID}'s First Name to:");
+                            string FirstNameChange = view.GetInput();
+                            string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, FirstNameChange);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "2":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "LastName";
+                            List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
+                            view.DisplayEmployeeDetails(employee);
+                            view.DisplayMessage("Enter the Employee ID that relates to the Last Name you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int EmployeeID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {EmployeeID}'s Last Name to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "3":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "Gender";
+                            List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
+                            view.DisplayEmployeeDetails(employee);
+                            view.DisplayMessage("Enter the Employee ID that relates to the Employee's Gender you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int EmployeeID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {EmployeeID}'s Gender to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "4":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "Email";
+                            List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
+                            view.DisplayEmployeeDetails(employee);
+                            view.DisplayMessage("Enter the Employee ID that relates to the Email you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int EmployeeID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {EmployeeID}'s Gender to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "5":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "Phonenumber";
+                            List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
+                            view.DisplayEmployeeDetails(employee);
+                            view.DisplayMessage("Enter the Employee ID that relates to the Phonenumber you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int EmployeeID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {EmployeeID}'s Gender to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option please try again.");
+                        loop = true;
+                        break;
+                }
+            }
+            while (loop);
+        }
+
+        private static void UpdateLocation()
+        {
+            bool loop = true;
+            do
+            {
+                view.DisplayUpdateLocation();
+                string FieldChoice = view.GetInput();
+                switch (FieldChoice)
+                {
+                    case "1":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "LocationName";
+                            List<tblLocation> locations = storageManager.GetTblLocations();
+                            view.DisplayLocation(locations);
+                            view.DisplayMessage("Enter the Location ID that relates to the Location Name you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int LocationID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {LocationID}'s Name to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateLocation(FieldChoiceName, LocationID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "2":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "CityID";
+                            List<tblLocation> locations = storageManager.GetTblLocations();
+                            view.DisplayLocation(locations);
+                            List<tblCityID> cityIDs = storageManager.GetTblCityIDs();
+                            view.DisplayCity(cityIDs);
+                            view.DisplayMessage("Enter the Location ID that relates to the City ID you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int CityID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {CityID}'s ID to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateLocation(FieldChoiceName, CityID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "3":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "SuburbID";
+                            List<tblLocation> locations = storageManager.GetTblLocations();
+                            view.DisplayLocation(locations);
+                            List<tblSubrubID> subrubIDs = storageManager.GetTblSubrubIDs();
+                            view.DisplaySubrub(subrubIDs);
+                            view.DisplayMessage("Enter the Location ID that relates to the Suburb ID you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int SuburbID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {SuburbID}'s ID to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateLocation(FieldChoiceName, SuburbID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "4":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "StreetID";
+                            List<tblLocation> locations = storageManager.GetTblLocations();
+                            view.DisplayLocation(locations);
+                            List<tblStreetID> streetIDs = storageManager.GetTblStreetIDs();
+                            view.DisplayStreetID(streetIDs);
+                            view.DisplayMessage("Enter the Location ID that relates to the Street ID you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int StreetID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {StreetID}'s ID to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateLocation(FieldChoiceName, StreetID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "5":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "CountryID";
+                            List<tblLocation> locations = storageManager.GetTblLocations();
+                            view.DisplayLocation(locations);
+                            List<tblLocationCountry> countries = storageManager.GetTblLocationCountries();
+                            view.DisplayCountry(countries);
+                            view.DisplayMessage("Enter the Location ID that relates to the Country ID you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int CountryID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {CountryID}'s ID to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateLocation(FieldChoiceName, CountryID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "6":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "StreetNumber ";
+                            List<tblLocation> locations = storageManager.GetTblLocations();
+                            view.DisplayLocation(locations);
+                            List<tblLocationCountry> countries = storageManager.GetTblLocationCountries();
+                            view.DisplayCountry(countries);
+                            view.DisplayMessage("Enter the Location ID that relates to the Street Number  you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int StreetNumber = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {StreetNumber}'s ID to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateLocation(FieldChoiceName, StreetNumber, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option please try again.");
+                        loop = true;
+                        break;
+                }
+            }
+            while (loop);
+        }
+
+        private static void Updatesubrub()
+        {
+            bool loop = true;
+            do
+            {
+                view.DisplayUpdatesubrub();
+                string FieldChoice = view.GetInput();
+                switch (FieldChoice)
+                {
+                    case "1":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "Subrub";
+                            List<tblSubrubID> subrubIDs = storageManager.GetTblSubrubIDs();
+                            view.DisplaySubrub(subrubIDs);
+                            view.DisplayMessage("Enter the Suburb ID that relates to the Subrub Name you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int LocationID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {LocationID}'s Name to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.Updatesubrub(FieldChoiceName, LocationID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "2":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "PostCode";
+                            List<tblSubrubID> subrubIDs = storageManager.GetTblSubrubIDs();
+                            view.DisplaySubrub(subrubIDs);
+                            view.DisplayMessage("Enter the Suburb ID that relates to the Post Code you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int CityID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {CityID}'s ID to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.Updatesubrub(FieldChoiceName, CityID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option please try again.");
+                        loop = true;
+                        break;
+                }
+            }
+            while (loop);
+        }
+
+        private static void UpdateDept()
+        {
+            bool loop = true;
+            do
+            {
+                view.DisplayUpdateDept();
+                string FieldChoice = view.GetInput();
+                switch (FieldChoice)
+                {
+                    case "1":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "Departments";
+                            List<tblDepartments> departments = storageManager.GetTblDepartments();
+                            view.DisplayDepartments(departments);
+                            view.DisplayMessage("Enter the Department ID that relates to the Department Name you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int LocationID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {LocationID}'s Name to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateDept(FieldChoiceName, LocationID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "2":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "ManagersID";
+                            List<tblLocation> locations = storageManager.GetTblLocations();
+                            view.DisplayLocation(locations);
+                            view.DisplayMessage("Enter the Department ID that relates to the Managers ID you wish to update");
+                            Console.WriteLine("(Refrence data above)");
+                            int CityID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {CityID}'s ID to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateDept(FieldChoiceName, CityID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option please try again.");
+                        loop = true;
+                        break;
+                }
+            }
+            while (loop);
+        }
+
+
+
         private static void DeleteCity()
         {
             view.DisplayMessage("Enter the City Name to Delte");
@@ -595,15 +901,6 @@ namespace employeeManagmentAppLachlan
 
 
         /*
-        private static void UpdateLocationName()
-            {
-                view.DisplayMessage("Enter the Location_id to update");
-                int LocationID = view.GetIntInput();
-                view.DisplayMessage("Enter the Location Name");
-                string LocationName = view.GetInput();
-                int rowsAffected = storageManager.UpdateLocationName(LocationID, LocationName);
-                view.DisplayMessage($"Rows affected {rowsAffected}");
-            }
 
         private static void InsertNewLocation()
         {

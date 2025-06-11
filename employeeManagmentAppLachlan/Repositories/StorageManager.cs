@@ -1,4 +1,5 @@
 ﻿using Azure;
+using Azure.Core.GeoJson;
 using employeeManagmentAppLachlan.Model;
 using employeeManagmentAppLachlan.View;
 using Microsoft.Data.SqlClient;
@@ -12,6 +13,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace employeeManagmentAppLachlan.Repositories
 {
@@ -75,12 +77,11 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     while (reader.Read())
                     {
-                        int LocationID = Convert.ToInt32(reader["LocationID"]);
                         string Departments = reader["Departments"].ToString();
                         int ManagersID = Convert.ToInt32(reader["ManagersID"]);
                         int DepartmentID = Convert.ToInt32(reader["DepartmentID"]);
                         bool Active = Convert.ToBoolean(reader["Active"]);
-                        departments.Add(new tblDepartments(LocationID, Departments,ManagersID,DepartmentID, Active));
+                        departments.Add(new tblDepartments(Departments,ManagersID,DepartmentID, Active));
                     }
                 }
             }
@@ -355,18 +356,18 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblSubrubID> GetTblSubrubIDs()
         {
             List<tblSubrubID> subrub = new List<tblSubrubID>();
-            string sqlString = "SELECT * FROM Location.tblLocationSuburb";
+            string sqlString = "SELECT * FROM Location.tblLocationSuburb";  
             using (SqlCommand cmd = new SqlCommand(sqlString,conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
+                    /*string[] suburbColumns = new string[reader.FieldCount];
                     for (int col = 0; col < reader.FieldCount; col++)
                     {
-                        Console.WriteLine("====================");
-                        Console.WriteLine(reader.GetName(col).ToString());         // Gets the column name
-                        Console.WriteLine(reader.GetFieldType(col).ToString());    // Gets the column type
-                        Console.WriteLine(reader.GetDataTypeName(col).ToString()); // Gets the column database type
-                    }
+                        suburbColumns[col] = reader.GetName(col);
+                        Console.WriteLine(suburbColumns[col]);
+                    }*/ 
+
                     while (reader.Read())
                     {
                         int SubrubID = Convert.ToInt32(reader["SuburbID"]);
@@ -462,6 +463,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 return cmd.ExecuteNonQuery().ToString();
             }
         }
+
         public string UpdateLocationCountry(string CountryName, string CountryNameChange)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationCountry SET CountryName = @CountryName Where CountryName = @CountryName", conn))
@@ -471,6 +473,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 return cmd.ExecuteNonQuery().ToString();
             }
         }
+
         public string UpdateLocationStreet(string StreetName, string StreetNameChange)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationStreet SET StreetName = @StreetName Where StreetName = @StreetName", conn))
@@ -490,6 +493,50 @@ namespace employeeManagmentAppLachlan.Repositories
                 return cmd.ExecuteNonQuery().ToString();
             }
         }
+
+        public string UpdateEmployeeDetails(string fieldChoice, int EmployeeID, string Change)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeesDetails SET @fieldChoice = @Change Where EmployeeID = @EmployeeID", conn))
+            {
+                cmd.Parameters.AddWithValue("@fieldChoice", fieldChoice);
+                cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
+                cmd.Parameters.AddWithValue("@Change", Change);
+                return cmd.ExecuteNonQuery().ToString();
+            }
+        }
+
+        public string UpdateLocation(string fieldChoice, int LocationID, string Change)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocation SET @fieldChoice = @Change Where LocationID = @LocationID", conn))
+            {
+                cmd.Parameters.AddWithValue("@fieldChoice", fieldChoice);
+                cmd.Parameters.AddWithValue("@LocationID", LocationID);
+                cmd.Parameters.AddWithValue("@Change", Change);
+                return cmd.ExecuteNonQuery().ToString();
+            }
+        }
+
+        public string Updatesubrub(string fieldChoice, int LocationID, string Change)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationSubrub SET @fieldChoice = @Change Where LocationID = @LocationID", conn))
+            {
+                cmd.Parameters.AddWithValue("@fieldChoice", fieldChoice);
+                cmd.Parameters.AddWithValue("@LocationID", LocationID);
+                cmd.Parameters.AddWithValue("@Change", Change);
+                return cmd.ExecuteNonQuery().ToString();
+            }
+        }
+        public string UpdateDept(string fieldChoice, int LocationID, string Change)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblDepartments SET @fieldChoice = @Change Where LocationID = @LocationID", conn))
+            {
+                cmd.Parameters.AddWithValue("@fieldChoice", fieldChoice);
+                cmd.Parameters.AddWithValue("@LocationID", LocationID);
+                cmd.Parameters.AddWithValue("@Change", Change);
+                return cmd.ExecuteNonQuery().ToString();
+            }
+        }
+
 
         public string DeleteCity(string CityName)
         {
@@ -519,6 +566,11 @@ namespace employeeManagmentAppLachlan.Repositories
                 return cmd.ExecuteNonQuery();
             }
         }*/
+
+        public string[] test(string abcd)
+        {
+            return new[] { abcd };
+        }
 
         public void CloseConnection()
         {
