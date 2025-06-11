@@ -505,6 +505,13 @@ namespace employeeManagmentAppLachlan
 
                         }
                         break;
+                    case "3":
+                        {
+                            DeleteCity();
+                            Notvalid = false;
+
+                        }
+                        break;
 
                     default:
                         {
@@ -573,6 +580,16 @@ namespace employeeManagmentAppLachlan
             get clarification on how to it with multiple lines such as 
             dept has multiple lines to update do you get a display method to ask what feild do you wish to update then call the update method for that.
         */
+        private static void DeleteCity()
+        {
+            view.DisplayMessage("Enter the City Name to Delte");
+            string CityName = view.GetInput();
+            string rowsAffected = storageManager.DeleteCity(CityName);
+            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+        }
+
+
+
 
         /*
         private static void UpdateLocationName()

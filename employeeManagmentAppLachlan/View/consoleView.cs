@@ -135,8 +135,8 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in tbl City");
             Console.WriteLine("2: Update a City by CityID");
-            Console.WriteLine("3: Insert a new City");
-            Console.WriteLine("4: Delete a City by City ID");
+            Console.WriteLine("3: Delete a new City by City Name");
+            Console.WriteLine("4: Insert a new City");
         }
         public void displayusername()
         {

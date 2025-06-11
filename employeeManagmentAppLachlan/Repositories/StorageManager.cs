@@ -482,6 +482,15 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+        public string DeleteCity(string CityName)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationCity SET Active = 0 WHERE CityName = @CityName", conn))
+            {
+                cmd.Parameters.AddWithValue("@CityName", CityName);
+                return cmd.ExecuteNonQuery().ToString();
+            }
+        }
+
 
 
 
