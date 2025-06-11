@@ -11,11 +11,13 @@ namespace employeeManagmentAppLachlan.Model
         public int suburbID { get; set; }
         public string suburbName { get; set; }
         public int postcode { get; set; }
-        public tblSubrubID(int SuburbID, string SuburbName, int Postcode)
+        public bool active { get; set; }
+        public tblSubrubID(int SuburbID, string SuburbName, int Postcode, bool Active)
         {
             suburbID = SuburbID;
             suburbName = SuburbName;
             postcode = Postcode;
+            active = Active;
         }
     }
 }

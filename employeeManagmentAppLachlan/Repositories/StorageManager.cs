@@ -56,7 +56,8 @@ namespace employeeManagmentAppLachlan.Repositories
                     {
                         int CityID = Convert.ToInt32(reader["CityID"]);
                         string CityName = reader["CityName"].ToString();
-                        city.Add(new tblCityID(CityID, CityName));
+                        bool Active = Convert.ToBoolean(reader["Active"]);
+                        city.Add(new tblCityID(CityID, CityName, Active));
                     }
                 }
             }
@@ -77,7 +78,8 @@ namespace employeeManagmentAppLachlan.Repositories
                         string Departments = reader["Departments"].ToString();
                         int ManagersID = Convert.ToInt32(reader["ManagersID"]);
                         int DepartmentID = Convert.ToInt32(reader["DepartmentID"]);
-                        departments.Add(new tblDepartments(LocationID, Departments,ManagersID,DepartmentID));
+                        bool Active = Convert.ToBoolean(reader["Active"]);
+                        departments.Add(new tblDepartments(LocationID, Departments,ManagersID,DepartmentID, Active));
                     }
                 }
             }
@@ -276,7 +278,8 @@ namespace employeeManagmentAppLachlan.Repositories
                     {
                         int jobtitleid = Convert.ToInt32(reader["jobtitleID"]);
                         string JobtitleName = reader["JobtitleName"].ToString();
-                        jobTittles.Add(new tblJobtitle(jobtitleid, JobtitleName));
+                        bool Active = Convert.ToBoolean(reader["Active"]);
+                        jobTittles.Add(new tblJobtitle(jobtitleid, JobtitleName, Active));
                     }
                 }
             }
@@ -300,7 +303,8 @@ namespace employeeManagmentAppLachlan.Repositories
                         int StreetID = Convert.ToInt32(reader["StreetID"]);
                         int CityID = Convert.ToInt32(reader["CityID"]);
                         int StreetNumber = Convert.ToInt32(reader["StreetNumber"]);
-                        locations.Add(new tblLocation(LocationID,  LocationName,  CountryID,  SuburbID, StreetID, CityID, StreetNumber));
+                        bool Active = Convert.ToBoolean(reader["Active"]);
+                        locations.Add(new tblLocation(LocationID,  LocationName,  CountryID,  SuburbID, StreetID, CityID, StreetNumber, Active));
                     }
                 }
             }
@@ -319,7 +323,8 @@ namespace employeeManagmentAppLachlan.Repositories
                     {
                         int CountryID = Convert.ToInt32(reader["CountryID"]);
                         string CountryName = reader["CountryName"].ToString();
-                        LocationCountry.Add(new tblLocationCountry(CountryID, CountryName));
+                        bool Active = Convert.ToBoolean(reader["Active"]);
+                        LocationCountry.Add(new tblLocationCountry(CountryID, CountryName, Active));
                     }
                 }
             }
@@ -338,7 +343,8 @@ namespace employeeManagmentAppLachlan.Repositories
                     {
                         int StreetID = Convert.ToInt32(reader["StreetID"]);
                         string StreetName = reader["StreetName"].ToString();
-                        street.Add(new tblStreetID(StreetID, StreetName));
+                        bool Active = Convert.ToBoolean(reader["Active"]);
+                        street.Add(new tblStreetID(StreetID, StreetName, Active));
                     }
                 }
             }
@@ -358,7 +364,8 @@ namespace employeeManagmentAppLachlan.Repositories
                         int SubrubID = Convert.ToInt32(reader["SuburbID"]);
                         string SuburbName = reader["Subrub"].ToString();
                         int Postcode = Convert.ToInt32(reader["PostCode"]);
-                        subrub.Add(new tblSubrubID(SubrubID,SuburbName,Postcode));
+                        bool Active = Convert.ToBoolean(reader["Active"]);
+                        subrub.Add(new tblSubrubID(SubrubID,SuburbName,Postcode,Active));
                     }
                 }
             }

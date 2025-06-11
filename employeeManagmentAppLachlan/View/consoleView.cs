@@ -179,7 +179,7 @@ namespace employeeManagmentAppLachlan.View
         {
            
             PrintLine();
-            PrintRow("City ID ", " City Name");
+            PrintRow("City ID ", " City Name", "Active");
             /* Console.Clear();
             PrintLine();
             PrintRow("Column 1", "Column 2", "Column 3", "Column 4");
@@ -194,7 +194,7 @@ namespace employeeManagmentAppLachlan.View
                 //Console.WriteLine($"{"Employee ID: " + employee.employeeid}\t\t{"Email: " + employee.email}\t\t{"Phone Number: " + employee.phonenumber}");
                 //Console.WriteLine($"{ employee.employeeid}\t\t{ + employee.email}\t\t{ + employee.phonenumber}");
                 PrintLine();
-                PrintRow($"{City.cityID}", $"{City.cityName}");
+                PrintRow($"{City.cityID}", $"{City.cityName}", $"{City.active}");
                 PrintLine();
             }
         }
@@ -202,11 +202,11 @@ namespace employeeManagmentAppLachlan.View
         public void DisplayStreetID(List<tblStreetID> streetID)
         {
             PrintLine();
-            PrintRow(" Street ID ", " Street Name");
+            PrintRow(" Street ID ", " Street Name", " Active");
             foreach (tblStreetID street in streetID)
             {
                 PrintLine();
-                PrintRow($"{street.streetID}", $"{street.streetName}");
+                PrintRow($"{street.streetID}", $"{street.streetName}", $"{street.active}");
                 PrintLine();
             }
         }
@@ -214,11 +214,11 @@ namespace employeeManagmentAppLachlan.View
         public void DisplaySubrub(List<tblSubrubID> subrubID)
         {
             PrintLine();
-            PrintRow(" suburb ID ", " subrub Name", " post code");
+            PrintRow(" suburb ID ", " subrub Name", " post code", " Active");
             foreach (tblSubrubID subrub in subrubID)
             {
                 PrintLine();
-                PrintRow($"{subrub.suburbID}", $"{subrub.suburbName}", $"{subrub.postcode}");
+                PrintRow($"{subrub.suburbID}", $"{subrub.suburbName}", $"{subrub.postcode}", $"{subrub.active}");
                 PrintLine();
 
             }
@@ -227,11 +227,11 @@ namespace employeeManagmentAppLachlan.View
         public void DisplayCountry(List<tblLocationCountry> countryID)
         {
             PrintLine();
-            PrintRow("Country ID ", " Country Name");
+            PrintRow("Country ID ", " Country Name", " Active");
             foreach (tblLocationCountry country in countryID)
             {
                 PrintLine();
-                PrintRow($"{country.countryId}", $"{country.countryName}");
+                PrintRow($"{country.countryId}", $"{country.countryName}", $"{country.active}");
                 PrintLine();
             }
         }
@@ -239,11 +239,11 @@ namespace employeeManagmentAppLachlan.View
         public void DisplayLocation(List<tblLocation> locations)
         {
             PrintLine();
-            PrintRow("Location ID ", " Location Name", " CountryID", " SuburbID", " StreetID", " CityID", " StreetNumber");
+            PrintRow("Location ID ", " Location Name", " CountryID", " SuburbID", " StreetID", " CityID", " StreetNumber", " Active");
             foreach (tblLocation location in locations)
             {
                 PrintLine();
-                PrintRow($"{location.locationID}", $"{location.locationName}", $"{location.countryID}", $"{location.suburbID}", $"{location.streetID}", $"{location.cityID}", $"{location.streetNumber}");
+                PrintRow($"{location.locationID}", $"{location.locationName}", $"{location.countryID}", $"{location.suburbID}", $"{location.streetID}", $"{location.cityID}", $"{location.streetNumber}", $"{location.active}");
                 PrintLine();
             }
         }
@@ -251,11 +251,11 @@ namespace employeeManagmentAppLachlan.View
         public void DisplaytblJobTittles(List<tblJobtitle> jobtitles)
         {
             PrintLine();
-            PrintRow("jobtitle ID ", " jobtitlename");
+            PrintRow("jobtitle ID ", " jobtitlename", "Active ");
             foreach (tblJobtitle jobTittle in jobtitles)
             {
                 PrintLine();
-                PrintRow($"{jobTittle.jobtitleID}", $"{jobTittle.jobtitleName}");
+                PrintRow($"{jobTittle.jobtitleID}", $"{jobTittle.jobtitleName}", $"{jobTittle.active}");
                 PrintLine();
                // Console.WriteLine($"{"Job title ID: " + jobTittle.jobtitleid}\t{"Job title Name: " + jobTittle.jobtitlename}");
             }
@@ -290,11 +290,11 @@ namespace employeeManagmentAppLachlan.View
         public void DisplayDepartments(List<tblDepartments> departments)
         {
             PrintLine();
-            PrintRow("location ID ", " department ", " managers ID ", " Department ID ");
+            PrintRow("location ID ", " department ", " managers ID ", " Department ID ", " Active");
             foreach (tblDepartments department in departments)
             {
                 PrintLine();
-                PrintRow($"{department.locationID}", $"{department.department}", $"{department.managersID}", $"{department.departmentID}");
+                PrintRow($"{department.locationID}", $"{department.department}", $"{department.managersID}", $"{department.departmentID}", $"{department.active}");
                 PrintLine();
                 //Console.WriteLine($"{"location ID: " + location.locationid}\t{"city ID: " + location.cityid}\t{"Country: " + location.country}");
             }

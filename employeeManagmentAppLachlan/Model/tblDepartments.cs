@@ -12,13 +12,15 @@ namespace employeeManagmentAppLachlan.Model
         public string department { get; set; }
         public int managersID { get; set; }
         public int departmentID { get; set; }
+        public bool active { get; set; }
 
-        public tblDepartments(int LocationID, string Department, int ManagersID, int DepartmentID)
+        public tblDepartments(int LocationID, string Department, int ManagersID, int DepartmentID, bool Active)
         {
             locationID = LocationID;
             department = Department;
             managersID = ManagersID;
             departmentID = DepartmentID;
+            active = Active;
         }
     }
 }

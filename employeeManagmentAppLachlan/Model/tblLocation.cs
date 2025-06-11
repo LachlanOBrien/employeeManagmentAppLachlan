@@ -15,8 +15,9 @@ namespace employeeManagmentAppLachlan.Model
         public int streetID { get; set; }
         public int cityID { get; set; }
         public int streetNumber { get; set; }
+        public bool active { get; set; }
 
-        public tblLocation(int LocationID, string LocationName, int CountryID, int SuburbID, int StreetID, int CityID, int StreetNumber)
+        public tblLocation(int LocationID, string LocationName, int CountryID, int SuburbID, int StreetID, int CityID, int StreetNumber, bool Active)
         {
             locationID = LocationID;
             locationName = LocationName;
@@ -25,6 +26,7 @@ namespace employeeManagmentAppLachlan.Model
             streetID = StreetID;
             cityID = CityID;
             streetNumber = StreetNumber;
+            active = Active;
         }
     }
 }

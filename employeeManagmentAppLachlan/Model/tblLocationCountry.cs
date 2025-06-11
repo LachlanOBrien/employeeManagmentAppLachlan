@@ -10,11 +10,12 @@ namespace employeeManagmentAppLachlan.Model
     {
         public int countryId { get; set; }
         public string countryName { get; set; }
-
-        public tblLocationCountry(int CountryID, string Countryname)
+        public bool active { get; set; }
+        public tblLocationCountry(int CountryID, string Countryname, bool Active)
         {
             countryId = CountryID;
             countryName = Countryname;
+            active = Active;
         }
     }
 }

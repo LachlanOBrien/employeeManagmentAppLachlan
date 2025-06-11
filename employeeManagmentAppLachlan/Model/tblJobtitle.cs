@@ -10,11 +10,14 @@ namespace employeeManagmentAppLachlan.Model
     {
         public int jobtitleID { get; set; }
         public string jobtitleName { get; set; }
+        
+        public bool active { get; set; }
 
-        public tblJobtitle(int JobtitleID, string JobtitleName)
+        public tblJobtitle(int JobtitleID, string JobtitleName, bool Active)
         {
             jobtitleID = JobtitleID;
             jobtitleName = JobtitleName;
+            active = Active;
         }
     }
 }

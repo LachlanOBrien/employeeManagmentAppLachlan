@@ -10,10 +10,12 @@ namespace employeeManagmentAppLachlan.Model
     {
         public int cityID { get; set; }
         public string cityName { get; set; }
-        public tblCityID(int CityID, string CityName)
+        public bool active { get; set; }
+        public tblCityID(int CityID, string CityName, bool Active)
         {
             cityID = CityID;
             cityName = CityName;
+            active = Active;
         }
     }
 }
