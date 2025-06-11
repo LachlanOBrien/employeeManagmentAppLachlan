@@ -33,27 +33,27 @@ namespace employeeManagmentAppLachlan
             bool loop = true;
             bool logInBool = true;
             string employeeChoice;
-            
+
             //temp log in / role function
             Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
             int role = Convert.ToInt32(Console.ReadLine());
             //do
             //{
 
-             /*Console.WriteLine("Enter your Username");
-             string inputedUsername = Console.ReadLine();
-             string Username = inputedUsername;
-             int EmployeeID = storageManager.getEmployeeID(inputedUsername);
-             string password = storageManager.getPassword(inputedUsername);
-             int role = storageManager.getRole(inputedUsername);
-             Console.WriteLine("Please enter your Password");
-             string inputedPassword = Console.ReadLine();
-             Console.Clear();
-             // Console.WriteLine("EmployeeID: " + EmployeeID);
-             //Console.WriteLine("username: " + Username);
-             // Console.WriteLine("Password: " + password);
-             // Console.WriteLine("role: " + role);
-             */
+            /*Console.WriteLine("Enter your Username");
+            string inputedUsername = Console.ReadLine();
+            string Username = inputedUsername;
+            int EmployeeID = storageManager.getEmployeeID(inputedUsername);
+            string password = storageManager.getPassword(inputedUsername);
+            int role = storageManager.getRole(inputedUsername);
+            Console.WriteLine("Please enter your Password");
+            string inputedPassword = Console.ReadLine();
+            Console.Clear();
+            // Console.WriteLine("EmployeeID: " + EmployeeID);
+            //Console.WriteLine("username: " + Username);
+            // Console.WriteLine("Password: " + password);
+            // Console.WriteLine("role: " + role);
+            */
             //if (inputedUsername == Username && inputedPassword == password)
             //{
             if (role == 1)
@@ -62,7 +62,7 @@ namespace employeeManagmentAppLachlan
                 Console.Clear();
                 Console.WriteLine("HAHA pleb employee");
                 view.EmployeeDisplayMenu();
-                
+
                 //view.DisplayEmpEmployeeDetails();
                 employeeChoice = Console.ReadLine();
                 switch (employeeChoice)
@@ -220,6 +220,13 @@ namespace employeeManagmentAppLachlan
 
                         }
                         break;
+                    case "3":
+                        {
+                            DeleteEmployeeDetails();
+                            Notvalid = false;
+
+                        }
+                        break;
 
                     default:
                         {
@@ -254,6 +261,12 @@ namespace employeeManagmentAppLachlan
 
                         }
                         break;
+                    case "3":
+                        {
+                            DeleteLocation();
+                            Notvalid = false;
+
+                        } break;
 
                     default:
                         {
@@ -275,7 +288,7 @@ namespace employeeManagmentAppLachlan
                 switch (choice)
                 {
                     case "1":
-                        { // doesnt display the list
+                        {
                             List<tblEmployeeRoleName> roleNames = storageManager.GetTblEmployeeRoleNames();
                             view.DisplayRoleNames(roleNames);
                             //List<EmployeeTblEmployeesDetails> employee1 = storageManager.GetEmployeeTblEmployeesDetails();
@@ -286,6 +299,13 @@ namespace employeeManagmentAppLachlan
                     case "2":
                         {
                             UpdateRoleName();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "3":
+                        {
+                            DeleteRoleName();
                             Notvalid = false;
 
                         }
@@ -324,6 +344,13 @@ namespace employeeManagmentAppLachlan
 
                         }
                         break;
+                    case "3":
+                        {
+                            DeleteDepartment();
+                            Notvalid = false;
+
+                        }
+                        break;
 
                     default:
                         {
@@ -358,7 +385,13 @@ namespace employeeManagmentAppLachlan
 
                         }
                         break;
+                    case "3":
+                        {
+                            DeleteJobtitle();
+                            Notvalid = false;
 
+                        }
+                        break;
                     default:
                         {
                             Console.WriteLine("Invalid option please try again.");
@@ -388,6 +421,13 @@ namespace employeeManagmentAppLachlan
                     case "2":
                         {
                             UpdateLocationCountry();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "3":
+                        {
+                            DeleteCountry();
                             Notvalid = false;
 
                         }
@@ -428,7 +468,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "3":
                         {
-                            // InsertNewLocation();
+                            DeleteStreet();
                             Notvalid = false;
 
                         }
@@ -470,6 +510,13 @@ namespace employeeManagmentAppLachlan
                     case "2":
                         {
                             Updatesubrub();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "3":
+                        {
+                            DeleteSuburb();
                             Notvalid = false;
 
                         }
@@ -575,10 +622,6 @@ namespace employeeManagmentAppLachlan
             string rowsAffected = storageManager.UpdateLocationCity(CityName, CityNameChange);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-        /* tables to do
-            add the subrub
-            add the dept 
-        */
 
         private static void UpdateEmployeeDetails()
         {
@@ -891,13 +934,102 @@ namespace employeeManagmentAppLachlan
 
         private static void DeleteCity()
         {
-            view.DisplayMessage("Enter the City Name to Delte");
-            string CityName = view.GetInput();
-            string rowsAffected = storageManager.DeleteCity(CityName);
+            List<tblCityID> cityIDs = storageManager.GetTblCityIDs();
+            view.DisplayCity(cityIDs);
+            view.DisplayMessage("Enter the City id you wish to Delete");
+            Console.WriteLine("(Refrence data above)");
+            int CityName = view.GetIntInput();
+            int rowsAffected = storageManager.DeleteCity(CityName);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
 
+        private static void DeleteDepartment()
+        {
+            List<tblDepartments> departments = storageManager.GetTblDepartments();
+            view.DisplayDepartments(departments);
+            view.DisplayMessage("Enter the Department ID you wish to Delete");
+            Console.WriteLine("(Refrence data above)");
+            int DepartmentID = view.GetIntInput();
+            int rowsAffected = storageManager.DeleteDepartment(DepartmentID);
+            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+        }
 
+        private static void DeleteEmployeeDetails()
+        {
+            List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
+            view.DisplayEmployeeDetails(employee);
+            view.DisplayMessage("Enter the Employee ID you wish to Delete");
+            Console.WriteLine("(Refrence data above)");
+            int EmployeeID = view.GetIntInput();
+            int rowsAffected = storageManager.DeleteEmployeeDetails(EmployeeID);
+            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+        }
+
+        private static void DeleteRoleName()
+        {
+            List<tblEmployeeRoleName> roleNames = storageManager.GetTblEmployeeRoleNames();
+            view.DisplayRoleNames(roleNames);
+            view.DisplayMessage("Enter the Role ID you wish to Delete");
+            Console.WriteLine("(Refrence data above)");
+            int RoleID = view.GetIntInput();
+            int rowsAffected = storageManager.DeleteRoleName(RoleID);
+            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+        }
+
+        private static void DeleteJobtitle()
+        {
+            List<tblJobtitle> jobTittle = storageManager.GetEmployeeTblJobTittles();
+            view.DisplaytblJobTittles(jobTittle);
+            view.DisplayMessage("Enter the Job Title ID you wish to Delete");
+            Console.WriteLine("(Refrence data above)");
+            int JobTitleID = view.GetIntInput();
+            int rowsAffected = storageManager.DeleteJobtitle(JobTitleID);
+            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+        }
+
+        private static void DeleteStreet()
+        {
+            List<tblStreetID> streetIDs = storageManager.GetTblStreetIDs();
+            view.DisplayStreetID(streetIDs);
+            view.DisplayMessage("Enter the Street ID you wish to Delete");
+            Console.WriteLine("(Refrence data above)");
+            int StreetID = view.GetIntInput();
+            int rowsAffected = storageManager.DeleteStreet(StreetID);
+            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+        }
+
+        private static void DeleteSuburb()
+        {
+            List<tblSubrubID> subrubIDs = storageManager.GetTblSubrubIDs();
+            view.DisplaySubrub(subrubIDs);
+            view.DisplayMessage("Enter the Suburb ID you wish to Delete");
+            Console.WriteLine("(Refrence data above)");
+            int SuburbID = view.GetIntInput();
+            int rowsAffected = storageManager.DeleteSuburb(SuburbID);
+            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+        }
+
+        private static void DeleteCountry()
+        {
+            List<tblLocationCountry> countries = storageManager.GetTblLocationCountries();
+            view.DisplayCountry(countries);
+            view.DisplayMessage("Enter the Country ID you wish to Delete");
+            Console.WriteLine("(Refrence data above)");
+            int CountryID = view.GetIntInput();
+            int rowsAffected = storageManager.DeleteCountry(CountryID);
+            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+        }
+
+        private static void DeleteLocation()
+        {
+            List<tblLocation> locations = storageManager.GetTblLocations();
+            view.DisplayLocation(locations);
+            view.DisplayMessage("Enter the Location ID you wish to Delete");
+            Console.WriteLine("(Refrence data above)");
+            int LocationID = view.GetIntInput();
+            int rowsAffected = storageManager.DeleteLocation(LocationID);
+            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+        }
 
 
         /*

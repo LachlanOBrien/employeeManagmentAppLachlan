@@ -2,6 +2,7 @@
 using employeeManagmentAppLachlan.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -101,8 +102,8 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in Employee.tblJobTittles");
             Console.WriteLine("2: Update a job title by jobtitleID");
-            Console.WriteLine("3: Insert a new job title");
-            Console.WriteLine("4: Delete a job title by job title name");
+            Console.WriteLine("3: Delete a job title by job title name");
+            Console.WriteLine("4: Insert a new job title ");
         }
 
         public void tblDepartments()
@@ -113,8 +114,8 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in Location.tblDepartments");
             Console.WriteLine("2: Update a Departments by DepartmentsID");
-            Console.WriteLine("3: Insert a new Departments");
-            Console.WriteLine("4: Delete a Departments by Departments name");
+            Console.WriteLine("3: Delete a Departments by Departments name");
+            Console.WriteLine("4: Insert a new Departments ");
         }
         public void tblRoleName()
         {
@@ -124,8 +125,8 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in tbl Role Name");
             Console.WriteLine("2: Update a Role by RoleID");
-            Console.WriteLine("3: Insert a new Role");
-            Console.WriteLine("4: Delete a Role by Rolename");
+            Console.WriteLine("3: Delete a Role by Rolename");
+            Console.WriteLine("4: Insert a new Role ");
         }
 
         public void tblLocationCountry()
@@ -136,8 +137,8 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in tbl Location Country");
             Console.WriteLine("2: Update a country by countryID");
-            Console.WriteLine("3: Insert a new Country");
-            Console.WriteLine("4: Delete a Country by Country name");
+            Console.WriteLine("3: Delete a Country by Country name");
+            Console.WriteLine("4: Insert a new Country");
         }
 
         public void tblStreet()
@@ -148,8 +149,8 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in tbl Street");
             Console.WriteLine("2: Update a Street by StreetID");
-            Console.WriteLine("3: Insert a new Street");
-            Console.WriteLine("4: Delete a Street by Street ID");
+            Console.WriteLine("3: Delete a Street by Street ID");
+            Console.WriteLine("4: Insert a new Street");
         }
 
         public void tblSuburb()
@@ -160,8 +161,8 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in tbl Suburb");
             Console.WriteLine("2: Update a Suburb by SuburbID");
-            Console.WriteLine("3: Insert a new Suburb");
-            Console.WriteLine("4: Delete a Suburb by Suburb ID");
+            Console.WriteLine("3: Delete a Suburb by Suburb ID");
+            Console.WriteLine("4: Insert a new Suburb");
         }
 
         public void tblCity()
@@ -301,11 +302,11 @@ namespace employeeManagmentAppLachlan.View
         public void DisplayRoleNames(List<tblEmployeeRoleName> Roles)
         {
             PrintLine();
-            PrintRow("Role ID ", " Role Name");
+            PrintRow("Role ID ", " Role Name"," Active");
             foreach (tblEmployeeRoleName role in Roles)
             {
                 PrintLine();
-                PrintRow($"{role.roleID}", $"{role.roleName}");
+                PrintRow($"{role.roleID}", $"{role.roleName}", $"{role.active}");
                 PrintLine();
                 //Console.WriteLine($"{"location ID: " + location.locationid}\t{"Departments: " + location.department}\t{"Managers ID: " + location.managersid}");
             }
@@ -336,18 +337,6 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
-        public void DisplayEmpEmployeeDetails(List<empTblEmployeeDetails> employeeDetails)
-        {
-            PrintLine();
-            PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
-            foreach (empTblEmployeeDetails EmpDetail in employeeDetails)
-            {
-                PrintLine();
-                PrintRow($"{EmpDetail.employeeID}", $"{EmpDetail.firstname}", $"{EmpDetail.lastname}", $"{EmpDetail.hireDate}", $"{EmpDetail.gender}", $"{EmpDetail.jobID}", $"{EmpDetail.roleID}", $"{EmpDetail.active}", $"{EmpDetail.email}", $"{EmpDetail.phonenumber}", $"{EmpDetail.wage}");
-                PrintLine();
-
-            }
-        }
 
         public void DisplayMessage(string message)
         {

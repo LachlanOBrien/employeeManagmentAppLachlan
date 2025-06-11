@@ -261,7 +261,8 @@ namespace employeeManagmentAppLachlan.Repositories
                     {
                         int RoleID = Convert.ToInt32(reader["RoleID"]);
                         string RoleName = reader["RoleName"].ToString();
-                        EmployeeRole.Add(new tblEmployeeRoleName(RoleID, RoleName));
+                        bool Active = Convert.ToBoolean(reader["Active"]);
+                        EmployeeRole.Add(new tblEmployeeRoleName(RoleID, RoleName, Active));
                     }
                 }
             }
@@ -401,48 +402,7 @@ namespace employeeManagmentAppLachlan.Repositories
             return locationDepartments;
         }
 
-        public List<empTblEmployeeDetails> GetempTblEmployeeDetails()
-        {
-            int EmployeeID2 = 1;//change to the employeeid of the logged in user
-            List<empTblEmployeeDetails> empEmployeeDetails = new List<empTblEmployeeDetails>();
-            string sqlString = "SELECT * FROM Employee.tblEmployeesDetails Where EmployeeID = @EmployeeID2";
-            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
-            {
-                cmd.Parameters.AddWithValue("@EmployeeID2", EmployeeID2);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    
-                    while (reader.Read())
-                    {
-                        int EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
-                        string Firstname = reader["Firstname"].ToString();
-                        string Lastname = reader["Lastname"].ToString();
-                        DateTime Hiredate = Convert.ToDateTime(reader["HireDate"]);
-                        string Gender = reader["Gender"].ToString();
-                        int JobID = Convert.ToInt32(reader["JobID"]);
-                        int RoleID = Convert.ToInt32(reader["RoleID"]);
-                        string Username = reader["Username"].ToString();
-                        string Password = reader["Password"].ToString();
-                        bool Active = Convert.ToBoolean(reader["Active"]);
-                        string Email = reader["Email"].ToString();
-                        int PhoneNumber = Convert.ToInt32(reader["Phonenumber"]);
-                        int Wage = Convert.ToInt32(reader["Wage"]);
-                        empEmployeeDetails.Add(new empTblEmployeeDetails(EmployeeID, Firstname, Lastname, Hiredate, Gender, JobID, RoleID, Username, Password, Active, Email, PhoneNumber, Wage));
-                    }
-                }
-            }
-            return empEmployeeDetails;
-        }
-
-        public int UpdateLocationName(int LocationID, string LocationName)//change it from searching id to name example 
-        {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocation SET LocationName = @LocationName Where LocationID = @LocationID", conn))
-            {
-                cmd.Parameters.AddWithValue("@LocationName", LocationName);
-                cmd.Parameters.AddWithValue("@LocationID", LocationID);
-                return cmd.ExecuteNonQuery();
-            }
-        }
+       
 
         public string UpdateRoleName(string RoleName,string RoleNameChange)
         {
@@ -538,17 +498,86 @@ namespace employeeManagmentAppLachlan.Repositories
         }
 
 
-        public string DeleteCity(string CityName)
+        public int DeleteCity(int CityID)
         {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationCity SET Active = 0 WHERE CityName = @CityName", conn))
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationCity SET Active = 0 WHERE CityID = @CityID", conn))
             {
-                cmd.Parameters.AddWithValue("@CityName", CityName);
-                return cmd.ExecuteNonQuery().ToString();
+                cmd.Parameters.AddWithValue("@CityID", CityID);
+                return cmd.ExecuteNonQuery();
             }
         }
 
+        public int DeleteDepartment(int DepartmentID)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblDepartments SET Active = 0 WHERE DepartmentID = @DepartmentID", conn))
+            {
+                cmd.Parameters.AddWithValue("@DepartmentID", DepartmentID);
+                return cmd.ExecuteNonQuery();
+            }
+        }
 
+        public int DeleteEmployeeDetails(int EmployeeID)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeesDetails SET Active = 0 WHERE EmployeeID  = @EmployeeID ", conn))
+            {
+                cmd.Parameters.AddWithValue("@EmployeeID ", EmployeeID);
+                return cmd.ExecuteNonQuery();
+            }
+        }
 
+        public int DeleteRoleName(int RoleID)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeeRoleName SET Active = 0 WHERE RoleID  = @RoleID ", conn))
+            {
+                cmd.Parameters.AddWithValue("@RoleID ", RoleID);
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
+        public int DeleteJobtitle(int JobTitleID)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblJobTitles SET Active = 0 WHERE JobTitleID  = @JobTitleID ", conn))
+            {
+                cmd.Parameters.AddWithValue("@JobTitleID ", JobTitleID);
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
+        public int DeleteStreet(int StreetID)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationStreet SET Active = 0 WHERE StreetID  = @JobTitlStreetIDeID ", conn))
+            {
+                cmd.Parameters.AddWithValue("@StreetID ", StreetID);
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
+        public int DeleteSuburb(int SuburbID)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationSuburb SET Active = 0 WHERE SuburbID  = @SuburbID ", conn))
+            {
+                cmd.Parameters.AddWithValue("@SuburbID ", SuburbID);
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
+        public int DeleteCountry(int CountryID)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationCountry SET Active = 0 WHERE CountryID  = @CountryID ", conn))
+            {
+                cmd.Parameters.AddWithValue("@CountryID ", CountryID);
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
+        public int DeleteLocation(int LocationID)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocation SET Active = 0 WHERE LocationID  = @LocationID ", conn))
+            {
+                cmd.Parameters.AddWithValue("@LocationID ", LocationID);
+                return cmd.ExecuteNonQuery();
+            }
+        }
 
         /*public int InsertLocation(LocationTblLocation LocationName)
         {
