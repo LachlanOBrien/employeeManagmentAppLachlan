@@ -123,7 +123,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
         public int getEmployeeID(string Username)
         {
-            int username = 0;
+            int EmployeeID = 0;
             string sqlString = "SELECT EmployeeID FROM Employee.tblEmployeesDetails WHERE Username = @Username AND Active = 1";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
@@ -133,13 +133,13 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     while (reader.Read())
                     {
-                        username = Convert.ToInt32(reader["EmployeeID"]);
+                        EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
                         //Console.WriteLine("Password: " + password);
 
                     }
                 }
             }
-            return username;
+            return EmployeeID;
         }
 
         public string getPassword(string Username)
@@ -175,7 +175,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     while (reader.Read())
                     {
-                        Role = Convert.ToInt32(reader["Role"]);
+                        Role = Convert.ToInt32(reader["RoleID"]);
                         //Console.WriteLine("Role: " + Role);
 
                     }

@@ -2,6 +2,7 @@
 using employeeManagmentAppLachlan.Repositories;
 using employeeManagmentAppLachlan.View;
 using Microsoft.Data.SqlClient;
+using System.Data;
 using System.Numerics;
 using System.Threading.Channels;
 
@@ -35,12 +36,13 @@ namespace employeeManagmentAppLachlan
             string employeeChoice;
 
             //temp log in / role function
-            Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
-            int role = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
+            //int role = Convert.ToInt32(Console.ReadLine());
+            //SwitchMain(role);
             //do
             //{
 
-            /*Console.WriteLine("Enter your Username");
+            Console.WriteLine("Enter your Username");
             string inputedUsername = Console.ReadLine();
             string Username = inputedUsername;
             int EmployeeID = storageManager.getEmployeeID(inputedUsername);
@@ -53,9 +55,34 @@ namespace employeeManagmentAppLachlan
             //Console.WriteLine("username: " + Username);
             // Console.WriteLine("Password: " + password);
             // Console.WriteLine("role: " + role);
-            */
-            //if (inputedUsername == Username && inputedPassword == password)
-            //{
+
+
+
+            do
+            {
+                if (inputedUsername == Username && inputedPassword == password)
+                {
+                    SwitchMain(role);
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid Username and Password");
+                    logInBool = true;
+                }
+            } while (logInBool);
+        }
+
+
+        public static void SwitchMain(int Role)
+        {
+            int role = Role;
+            bool NotValidMain = true;
+            string tblchoice;
+            string choice;
+            bool loop = true;
+            bool logInBool = true;
+            string employeeChoice;
+
             if (role == 1)
             {
                 logInBool = false;
@@ -187,15 +214,7 @@ namespace employeeManagmentAppLachlan
                     } while (loop);
                 }
             }
-            /* }
-             else
-             {
-                 Console.WriteLine("Please enter a valid Username and Password");
-                 loginbool = true;
-             }
-         } while (loginbool);*/
         }
-
 
         public static void displaySwitch1()
         {
