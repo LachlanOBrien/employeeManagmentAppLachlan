@@ -199,7 +199,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
 
 
-        public List<tblEmployeeDetails> GetTblEmployeeDetails()
+        public List<tblEmployeeDetails> GetTblEmployeeDetails() // add an if state which changes the sql string for employee and admin 
         {
             List<tblEmployeeDetails> employeeDetails = new List<tblEmployeeDetails>();
             string sqlString = "SELECT * FROM Employee.tblEmployeesDetails";
@@ -355,21 +355,22 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblSubrubID> GetTblSubrubIDs()
         {
             List<tblSubrubID> subrub = new List<tblSubrubID>();
-            string sqlString = "SELECT * FROM Location.tblLocationSubrub";
+            string sqlString = "SELECT * FROM Location.tblLocationSuburb";
             using (SqlCommand cmd = new SqlCommand(sqlString,conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     for (int col = 0; col < reader.FieldCount; col++)
                     {
-                        Console.Write(reader.GetName(col).ToString());         // Gets the column name
-                        Console.Write(reader.GetFieldType(col).ToString());    // Gets the column type
-                        Console.Write(reader.GetDataTypeName(col).ToString()); // Gets the column database type
+                        Console.WriteLine("====================");
+                        Console.WriteLine(reader.GetName(col).ToString());         // Gets the column name
+                        Console.WriteLine(reader.GetFieldType(col).ToString());    // Gets the column type
+                        Console.WriteLine(reader.GetDataTypeName(col).ToString()); // Gets the column database type
                     }
                     while (reader.Read())
                     {
                         int SubrubID = Convert.ToInt32(reader["SuburbID"]);
-                        string SuburbName = reader["Subrub"].ToString();
+                        string SuburbName = reader["Suburb"].ToString();
                         int Postcode = Convert.ToInt32(reader["PostCode"]);
                         bool Active = Convert.ToBoolean(reader["Active"]);
                         subrub.Add(new tblSubrubID(SubrubID,SuburbName,Postcode,Active));
