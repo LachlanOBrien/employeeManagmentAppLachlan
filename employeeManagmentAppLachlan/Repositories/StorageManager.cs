@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace employeeManagmentAppLachlan.Repositories
 {
@@ -359,6 +360,12 @@ namespace employeeManagmentAppLachlan.Repositories
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
+                    for (int col = 0; col < reader.FieldCount; col++)
+                    {
+                        Console.Write(reader.GetName(col).ToString());         // Gets the column name
+                        Console.Write(reader.GetFieldType(col).ToString());    // Gets the column type
+                        Console.Write(reader.GetDataTypeName(col).ToString()); // Gets the column database type
+                    }
                     while (reader.Read())
                     {
                         int SubrubID = Convert.ToInt32(reader["SuburbID"]);
@@ -385,6 +392,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         int LocationID = Convert.ToInt32(reader["LocationID"]);
                         int DepartMentID = Convert.ToInt32(reader["DepartMentID"]);
                         locationDepartments.Add(new tblLocationDepartment(LocationID, DepartMentID));
+
                     }
                 }
             }

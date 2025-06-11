@@ -579,6 +579,9 @@ namespace employeeManagmentAppLachlan
             add the dept 
             get clarification on how to it with multiple lines such as 
             dept has multiple lines to update do you get a display method to ask what feild do you wish to update then call the update method for that.
+            get display the data from the table then ask them to enter the id or use a wildcard operator for name eg enter human and it would display human resources etc 
+            have display show active or inactive
+            make the querys????
         */
         private static void DeleteCity()
         {
