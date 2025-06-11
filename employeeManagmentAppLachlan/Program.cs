@@ -573,6 +573,9 @@ namespace employeeManagmentAppLachlan
             } while (Notvalid);
         }
 
+
+
+
         private static void UpdateRoleName()
         {
             view.DisplayMessage("Enter the Role Name to update");
@@ -1033,7 +1036,6 @@ namespace employeeManagmentAppLachlan
 
 
         /*
-
         private static void InsertNewLocation()
         {
                 view.DisplayMessage("Enter the new Location Name");
@@ -1044,41 +1046,6 @@ namespace employeeManagmentAppLachlan
                 view.DisplayMessage($"new Location inserted with ID {generateID}");
         }
 
-        public static void DeleteByName()
-        {
-                view.DisplayMessage("Enter the Location Name to delete");
-                string locationName = view.GetInput();
-                int rowsaffected = storageManager.DeleteLocationByName(locationName);
-                view.DisplayMessage($"Rows affected: {rowsaffected}");
-        }
-        */
-        /* public static int getEmployeeID()
-         {
-             view.displayusername();
-             int EmployeeID = view.GetIntInput();
-             //int employeeID = storageManager.get
-             return EmployeeID;
-         }
-
-         public static string Getusername()
-         {
-                 view.displayusername();
-                 int EmployeeID = view.GetIntInput();
-                 string username = storageManager.getUserName(EmployeeID);
-                 return username;
-         }
-
-         public static string GetPassword()
-         {
-             string password =
-             return password;
-         }
-
-         public static int GetRole()
-         {
-             int Role = 
-             return Role;
-         }
         */
     }
 }
