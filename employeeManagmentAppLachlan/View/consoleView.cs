@@ -78,103 +78,116 @@ namespace employeeManagmentAppLachlan.View
         {
             Console.Clear();
             Console.WriteLine("Welcome to EmployeeLocations");
-            Console.WriteLine("Choose an option from 1-2");
+            Console.WriteLine("Choose an option from 1-5");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in Employee.tblEmployeeLocations");
             Console.WriteLine("2: Update an employee's location by employeeID");
+            Console.WriteLine("3: Delete a Location by job title name");
+            Console.WriteLine("4: Insert a new Location ");
+            Console.WriteLine("5: Return to the Main Menu");
         }
 
         public void tblEmployeesDetails()
         {
             Console.Clear();
             Console.WriteLine("Welcome to EmployeesDetails");
-            Console.WriteLine("Choose an option from 1-2");
+            Console.WriteLine("Choose an option from 1-5");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in Employee.tblEmployeesDetails");
             Console.WriteLine("2: Update an employee's details by employeeID");
+            Console.WriteLine("3: Delete an Employee by Employee ID");
+            Console.WriteLine("4: Insert an new Employee ");
+            Console.WriteLine("5: Return to the Main Menu");
         }
 
         public void tblJobTittles()
         {
             Console.Clear();
             Console.WriteLine("Welcome to tblJobTittles");
-            Console.WriteLine("Choose an option from 1-4");
+            Console.WriteLine("Choose an option from 1-5");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in Employee.tblJobTittles");
             Console.WriteLine("2: Update a job title by jobtitleID");
             Console.WriteLine("3: Delete a job title by job title name");
             Console.WriteLine("4: Insert a new job title ");
+            Console.WriteLine("5: Return to the Main Menu");
         }
 
         public void tblDepartments()
         {
             Console.Clear();
             Console.WriteLine("Welcome to tblDepartments");
-            Console.WriteLine("Choose an option from 1-4");
+            Console.WriteLine("Choose an option from 1-5");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in Location.tblDepartments");
             Console.WriteLine("2: Update a Departments by DepartmentsID");
             Console.WriteLine("3: Delete a Departments by Departments name");
             Console.WriteLine("4: Insert a new Departments ");
+            Console.WriteLine("5: Return to the Main Menu");
         }
         public void tblRoleName()
         {
             Console.Clear();
             Console.WriteLine("Welcome to tbl Role Name");
-            Console.WriteLine("Choose an option from 1-4");
+            Console.WriteLine("Choose an option from 1-5");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in tbl Role Name");
             Console.WriteLine("2: Update a Role by RoleID");
             Console.WriteLine("3: Delete a Role by Rolename");
             Console.WriteLine("4: Insert a new Role ");
+            Console.WriteLine("5: Return to the Main Menu");
         }
 
         public void tblLocationCountry()
         {
             Console.Clear();
             Console.WriteLine("Welcome to tbl Location Country");
-            Console.WriteLine("Choose an option from 1-4");
+            Console.WriteLine("Choose an option from 1-5");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in tbl Location Country");
             Console.WriteLine("2: Update a country by countryID");
             Console.WriteLine("3: Delete a Country by Country name");
             Console.WriteLine("4: Insert a new Country");
+            Console.WriteLine("5: Return to the Main Menu");
         }
 
         public void tblStreet()
         {
             Console.Clear();
             Console.WriteLine("Welcome to tbl Street ");
-            Console.WriteLine("Choose an option from 1-4");
+            Console.WriteLine("Choose an option from 1-5");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in tbl Street");
             Console.WriteLine("2: Update a Street by StreetID");
             Console.WriteLine("3: Delete a Street by Street ID");
             Console.WriteLine("4: Insert a new Street");
+            Console.WriteLine("5: Return to the Main Menu");
         }
 
         public void tblSuburb()
         {
             Console.Clear();
             Console.WriteLine("Welcome to tbl Suburb ");
-            Console.WriteLine("Choose an option from 1-4");
+            Console.WriteLine("Choose an option from 1-5");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in tbl Suburb");
             Console.WriteLine("2: Update a Suburb by SuburbID");
             Console.WriteLine("3: Delete a Suburb by Suburb ID");
             Console.WriteLine("4: Insert a new Suburb");
+            Console.WriteLine("5: Return to the Main Menu");
         }
 
         public void tblCity()
         {
             Console.Clear();
             Console.WriteLine("Welcome to tbl City ");
-            Console.WriteLine("Choose an option from 1-4");
+            Console.WriteLine("Choose an option from 1-5");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in tbl City");
             Console.WriteLine("2: Update a City by CityID");
             Console.WriteLine("3: Delete a new City by City Name");
             Console.WriteLine("4: Insert a new City");
+            Console.WriteLine("5: Return to the Main Menu");
         }
         public void displayusername()
         {

@@ -21,13 +21,13 @@ namespace employeeManagmentAppLachlan
 
             Console.WriteLine("Hello, World!");
             //scl connectionString
-            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DATABASE2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DATABASE2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             //home connectionString
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=database2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=database2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
-            bool Notvalid = true;
+            bool NotValidMain = true;
             string tblchoice;
             string choice;
             bool loop = true;
@@ -70,7 +70,7 @@ namespace employeeManagmentAppLachlan
                     default:
                         {
                             Console.WriteLine("Invalid option please try again.");
-                            Notvalid = false;
+                            NotValidMain = false;
                         }
                         break;
                 }
@@ -95,7 +95,7 @@ namespace employeeManagmentAppLachlan
                                         //view.tblEmployeeContact();
                                         view.tblEmployeesDetails();
                                         // display details
-                                        Notvalid = false;
+                                        NotValidMain = false;
                                         displaySwitch1();
 
 
@@ -105,7 +105,7 @@ namespace employeeManagmentAppLachlan
                                     {
                                         view.tblEmployeeLocations();
                                         //display location
-                                        Notvalid = false;
+                                        NotValidMain = false;
                                         displaySwitch2();
 
                                     }
@@ -113,7 +113,7 @@ namespace employeeManagmentAppLachlan
                                 case "3":
                                     {
                                         view.tblRoleName();
-                                        Notvalid = false;
+                                        NotValidMain = false;
                                         displaySwitch3();
 
                                     }
@@ -121,7 +121,7 @@ namespace employeeManagmentAppLachlan
                                 case "4":
                                     {
                                         view.tblDepartments();
-                                        Notvalid = false;
+                                        NotValidMain = false;
                                         displaySwitch4();
 
                                     }
@@ -129,7 +129,7 @@ namespace employeeManagmentAppLachlan
                                 case "5":
                                     {
                                         view.tblJobTittles();
-                                        Notvalid = false;
+                                        NotValidMain = false;
                                         displaySwitch5();
 
                                     }
@@ -137,7 +137,7 @@ namespace employeeManagmentAppLachlan
                                 case "6":
                                     {
                                         view.tblLocationCountry();
-                                        Notvalid = false;
+                                        NotValidMain = false;
                                         displaySwitch6();
 
                                     }
@@ -145,7 +145,7 @@ namespace employeeManagmentAppLachlan
                                 case "7":
                                     {
                                         view.tblStreet();
-                                        Notvalid = false;
+                                        NotValidMain = false;
                                         displaySwitch7();
 
                                     }
@@ -153,14 +153,14 @@ namespace employeeManagmentAppLachlan
                                 case "8":
                                     {
                                         view.tblSuburb();
-                                        Notvalid = false;
+                                        NotValidMain = false;
                                         displaySwitch8();
                                     }
                                     break;
                                 case "9":
                                     {
                                         view.tblCity();
-                                        Notvalid = false;
+                                        NotValidMain = false;
                                         displaySwitch9();
 
                                     }
@@ -168,11 +168,11 @@ namespace employeeManagmentAppLachlan
                                 default:
                                     {
                                         Console.WriteLine("Invalid option please try again.");
-                                        Notvalid = false;
+                                        NotValidMain = false;
                                     }
                                     break;
                             }
-                        } while (Notvalid);
+                        } while (NotValidMain);
                         Console.WriteLine("Do you wish to go back to the main menu enter Y/N");
                         string choiceloopans = Console.ReadLine().ToUpper();
                         if (choiceloopans == "Y")
@@ -558,6 +558,20 @@ namespace employeeManagmentAppLachlan
                     case "3":
                         {
                             DeleteCity();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "4":
+                        {
+                            //insert();
+                            Notvalid = false;
+
+                        }
+                        break;
+                    case "5":
+                        {
+                            //insert();
                             Notvalid = false;
 
                         }

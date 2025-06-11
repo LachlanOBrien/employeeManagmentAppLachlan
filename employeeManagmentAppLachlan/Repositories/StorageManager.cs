@@ -50,7 +50,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblCityID> GetTblCityIDs()
         {
             List<tblCityID> city = new List<tblCityID>();
-            string sqlString = "SELECT * FROM location.tblLocationCity";
+            string sqlString = "SELECT * FROM location.tblLocationCity WHERE Active = 1";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -70,7 +70,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblDepartments> GetTblDepartments()
         {
             List<tblDepartments> departments = new List<tblDepartments>();
-            string sqlString = "SELECT * FROM Location.tblDepartments";
+            string sqlString = "SELECT * FROM Location.tblDepartments WHERE Active = 1";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -124,7 +124,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int getEmployeeID(string Username)
         {
             int username = 0;
-            string sqlString = "SELECT EmployeeID FROM Employee.tblEmployeesDetails WHERE Username = @Username";
+            string sqlString = "SELECT EmployeeID FROM Employee.tblEmployeesDetails WHERE Username = @Username AND Active = 1";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -145,7 +145,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public string getPassword(string Username)
         {
             string password = "";
-            string sqlString = "SELECT Password FROM Employee.tblEmployeesDetails WHERE Username = @Username";
+            string sqlString = "SELECT Password FROM Employee.tblEmployeesDetails WHERE Username = @Username AND Active = 1";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -166,7 +166,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int getRole(string Username)
         {
             int Role = 0;
-            string sqlString = "SELECT RoleID FROM Employee.tblEmployeesDetails WHERE Username = @Username";
+            string sqlString = "SELECT RoleID FROM Employee.tblEmployeesDetails WHERE Username = @Username AND Active = 1";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -203,7 +203,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblEmployeeDetails> GetTblEmployeeDetails() // add an if state which changes the sql string for employee and admin 
         {
             List<tblEmployeeDetails> employeeDetails = new List<tblEmployeeDetails>();
-            string sqlString = "SELECT * FROM Employee.tblEmployeesDetails";
+            string sqlString = "SELECT * FROM Employee.tblEmployeesDetails WHERE Active = 1";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -233,7 +233,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblEmployeeLocations> GetTblEmployeeLocations()
         {
             List<tblEmployeeLocations> employeeLocations = new List<tblEmployeeLocations>();
-            string sqlString = "SELECT * FROM Employee.tblEmployeeLocations";
+            string sqlString = "SELECT * FROM Employee.tblEmployeeLocations WHERE Active = 1";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -252,7 +252,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblEmployeeRoleName> GetTblEmployeeRoleNames()
         {
             List<tblEmployeeRoleName> EmployeeRole = new List<tblEmployeeRoleName>();
-            string sqlString = "SELECT * FROM Employee.tblEmployeeRoleName";
+            string sqlString = "SELECT * FROM Employee.tblEmployeeRoleName WHERE Active = 1";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -272,7 +272,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblJobtitle> GetEmployeeTblJobTittles()
         {
             List<tblJobtitle> jobTittles = new List<tblJobtitle>();
-            string sqlString = "SELECT * FROM Employee.tblJobTittles";
+            string sqlString = "SELECT * FROM Employee.tblJobTittles WHERE Active = 1";
             using (SqlCommand cmd = new SqlCommand(sqlString,conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -292,7 +292,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblLocation> GetTblLocations()
         {
             List<tblLocation> locations = new List<tblLocation>();
-            string sqlString = "SELECT * FROM Location.tblLocation";
+            string sqlString = "SELECT * FROM Location.tblLocation WHERE Active = 1";
             using (SqlCommand cmd = new SqlCommand(sqlString,conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -317,7 +317,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblLocationCountry> GetTblLocationCountries()
         {
             List<tblLocationCountry> LocationCountry = new List<tblLocationCountry>();
-            string sqlString = "SELECT * From Location.tblLocationCountry";
+            string sqlString = "SELECT * From Location.tblLocationCountry WHERE Active = 1";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -337,7 +337,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblStreetID> GetTblStreetIDs()
         {
             List<tblStreetID> street = new List<tblStreetID>();
-            string sqlString = "SELECT * From Location.tblLocationStreet";
+            string sqlString = "SELECT * From Location.tblLocationStreet WHERE Active = 1";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -357,7 +357,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblSubrubID> GetTblSubrubIDs()
         {
             List<tblSubrubID> subrub = new List<tblSubrubID>();
-            string sqlString = "SELECT * FROM Location.tblLocationSuburb";  
+            string sqlString = "SELECT * FROM Location.tblLocationSuburb WHERE Active = 1";  
             using (SqlCommand cmd = new SqlCommand(sqlString,conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -385,7 +385,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblLocationDepartment> GetTblLocationDepartments()
         {
             List<tblLocationDepartment> locationDepartments = new List<tblLocationDepartment>();
-            string sqlString = "SELECT * From Location.tblLocation";
+            string sqlString = "SELECT * From Location.tblLocation WHERE Active = 1";
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
