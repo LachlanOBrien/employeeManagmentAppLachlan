@@ -338,6 +338,19 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
+        public void DisplayempEmployeeDetails(List<tblEmployeeDetails> details)
+        {
+            PrintLine();
+            PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
+            foreach (tblEmployeeDetails detail in details)
+            {
+                PrintLine();
+                PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
+                PrintLine();
+                //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+            }
+        }
+
         public void DisplayDepartments(List<tblDepartments> departments)
         {
             PrintLine();

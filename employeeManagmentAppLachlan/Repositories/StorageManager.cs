@@ -230,6 +230,36 @@ namespace employeeManagmentAppLachlan.Repositories
             return employeeDetails;
         }
 
+        public List<tblEmployeeDetails> GetempTblEmployeeDetails() // add an if state which changes the sql string for employee and admin 
+        {
+            List<tblEmployeeDetails> employeeDetails = new List<tblEmployeeDetails>();
+            string sqlString = "SELECT * FROM Employee.tblEmployeesDetails WHERE Active = 1";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
+                        string Firstname = reader["Firstname"].ToString();
+                        string Lastname = reader["Lastname"].ToString();
+                        DateTime Hiredate = Convert.ToDateTime(reader["HireDate"]);
+                        string Gender = reader["Gender"].ToString();
+                        int JobID = Convert.ToInt32(reader["JobID"]);
+                        int RoleID = Convert.ToInt32(reader["RoleID"]);
+                        string Username = reader["Username"].ToString();
+                        string Password = reader["Password"].ToString();
+                        bool Active = Convert.ToBoolean(reader["Active"]);
+                        string Email = reader["Email"].ToString();
+                        int PhoneNumber = Convert.ToInt32(reader["Phonenumber"]);
+                        int Wage = Convert.ToInt32(reader["Wage"]);
+                        employeeDetails.Add(new tblEmployeeDetails(EmployeeID, Firstname, Lastname, Hiredate, Gender, JobID, RoleID, Username, Password, Active, Email, PhoneNumber, Wage));
+                    }
+                }
+            }
+            return employeeDetails;
+        }
+
         public List<tblEmployeeLocations> GetTblEmployeeLocations()
         {
             List<tblEmployeeLocations> employeeLocations = new List<tblEmployeeLocations>();
