@@ -262,7 +262,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "4":
                         {
-                            //insert();
+                            InsertEmployeeDetails();
                             Notvalid = false;
 
                         }
@@ -317,7 +317,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "4":
                         {
-                            //insert();
+                            InsertLocation();
                             Notvalid = false;
 
                         }
@@ -374,7 +374,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "4":
                         {
-                            //insert();
+                            InsertRoleName();
                             Notvalid = false;
 
                         }
@@ -429,7 +429,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "4":
                         {
-                            //insert();
+                            InsertDepartment();
                             Notvalid = false;
 
                         }
@@ -484,7 +484,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "4":
                         {
-                            //insert();
+                            InsertJobtitle();
                             Notvalid = false;
 
                         }
@@ -538,7 +538,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "4":
                         {
-                            //insert();
+                            InsertCountry();
                             Notvalid = false;
 
                         }
@@ -648,7 +648,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "4":
                         {
-                            //insert();
+                            InsertSuburb();
                             Notvalid = false;
 
                         }
@@ -703,7 +703,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "4":
                         {
-                            //insert();
+                            InsertCity();
                             Notvalid = false;
 
                         }
@@ -1193,12 +1193,56 @@ namespace employeeManagmentAppLachlan
 
         private static void InsertLocation()
         {
-
+            bool Active = true;
+            view.DisplayMessage("Enter the new Location Name");
+            string LocationName = view.GetInput();
+            view.DisplayMessage("Enter the Country ID's of the Location");
+            int CountryID = view.GetIntInput();
+            view.DisplayMessage("Enter the Suburb ID's of the Location");
+            int SuburbID = view.GetIntInput();
+            view.DisplayMessage("Enter the Street ID's of the Location");
+            int StreetID = view.GetIntInput();
+            view.DisplayMessage("Enter the City ID's of the Location");
+            int CityID = view.GetIntInput();
+            view.DisplayMessage("Enter the Street Number's of the Location");
+            int StreetNumber = view.GetIntInput();
+            int LocationID = 0;
+            tblLocation location1 = new tblLocation(LocationID, LocationName, CountryID, SuburbID, StreetID, CityID, StreetNumber, Active);
+            int GenerateID = storageManager.InsertLocation(LocationName, CountryID, SuburbID, StreetID, CityID, StreetNumber);
+            view.DisplayMessage($"new Location Created with ID {GenerateID}");
         }
 
         private static void InsertEmployeeDetails()
         {
-
+            bool Active = true;
+            view.DisplayMessage("Enter the First Name of the new Employee");
+            string FirstName = view.GetInput();
+            view.DisplayMessage("Enter the Last Name of the new Employee");
+            string LastName = view.GetInput();
+            view.DisplayMessage("Enter the Hire Date of New Employee");
+            DateTime HireDate = Convert.ToDateTime(Console.ReadLine());
+            view.DisplayMessage("Enter The Gender of the New Employee ");
+            view.DisplayMessage("F for a Female Employee \t M for a Male Employee");
+            string Gender = view.GetInput().ToUpper();
+            view.DisplayMessage("Enter the Job ID of the New Employee");
+            int JobID = view.GetIntInput();
+            view.DisplayMessage("Enter the Username of the New Employee");
+            string Username = view.GetInput();
+            view.DisplayMessage("Enter the Password of the New Employee ");
+            string Password = view.GetInput();
+            view.DisplayMessage("Enter the Role Of the New Employee");
+            view.DisplayMessage("1 For Employee\t 2 For Admin ");
+            int Role = view.GetIntInput();
+            view.DisplayMessage("Enter the Email of the New Employee");
+            string Email = view.GetInput();
+            view.DisplayMessage("Enter the Phone Number of the New Employee");
+            int Phonenumber = view.GetIntInput();
+            view.DisplayMessage("Enter the Wage for the New Employee");
+            int wage = view.GetIntInput();
+            int EmployeeID = 0;
+            tblEmployeeDetails location1 = new tblEmployeeDetails(EmployeeID, FirstName, LastName, HireDate, Gender, JobID, Role, Password, Username, Active, Email, Phonenumber, wage);
+            int GenerateID = storageManager.InsertEmployeeDetails(FirstName, LastName, HireDate, Gender, JobID, Role, Password, Username, Email, Phonenumber, wage);
+            view.DisplayMessage($"new Employee Created with ID {GenerateID}");
         }
 
         private static void InsertRoleName()
@@ -1214,12 +1258,26 @@ namespace employeeManagmentAppLachlan
 
         private static void InsertJobtitle()
         {
-
+            bool Active = true;
+            view.DisplayMessage("Enter the new Job Title Name");
+            string StreetName = view.GetInput();
+            int StreetID = 0;
+            tblJobtitle location1 = new tblJobtitle(StreetID, StreetName, Active);
+            int GenerateID = storageManager.InsertJobtitle(StreetName);
+            view.DisplayMessage($"new department Created with ID {GenerateID}");
         }
 
         private static void InsertDepartment()
         {
-
+            bool Active = true;
+            view.DisplayMessage("Enter the new Department Name");
+            string StreetName = view.GetInput();
+            view.DisplayMessage("Enter the Manager's Employee ID of the Department");
+            int postcode = view.GetIntInput();
+            int StreetID = 0;
+            tblDepartments location1 = new tblDepartments(StreetName, StreetID, postcode, Active);
+            int GenerateID = storageManager.InsertDepartment(StreetName, postcode);
+            view.DisplayMessage($"new department Created with ID {GenerateID}");
         }
 
         private static void InsertCity()
@@ -1246,7 +1304,15 @@ namespace employeeManagmentAppLachlan
 
         private static void InsertSuburb()
         {
-
+            bool Active = true;
+            view.DisplayMessage("Enter the new suburb Name");
+            string StreetName = view.GetInput();
+            view.DisplayMessage("Enter the Post Code of the suburb");
+            int postcode = view.GetIntInput();
+            int StreetID = 0;
+            tblSubrubID location1 = new tblSubrubID(StreetID, StreetName, postcode, Active);
+            int GenerateID = storageManager.InsertSuburb(StreetName, postcode);
+            view.DisplayMessage($"new subrub Created with ID {GenerateID}");
         }
 
         private static void InsertCountry()
@@ -1259,21 +1325,5 @@ namespace employeeManagmentAppLachlan
             int GenerateID = storageManager.InsertCountry(StreetName);
             view.DisplayMessage($"new Country Created with ID {GenerateID}");
         }
-
-
-
-
-        
-        private static void InsertNewLocation()
-        {
-                view.DisplayMessage("Enter the new Location Name");
-                string locationName = view.GetInput();
-                int locationID = 0;
-                LocationTblLocation location1 = new LocationTblLocation(locationID, locationName);
-                int generateID = storageManager.InsertLocation(location1);
-                view.DisplayMessage($"new Location inserted with ID {generateID}");
-        }
-
-        
     }
 }
