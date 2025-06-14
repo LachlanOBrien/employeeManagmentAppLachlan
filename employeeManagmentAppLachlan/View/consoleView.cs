@@ -18,21 +18,23 @@ namespace employeeManagmentAppLachlan.View
         {
             Console.WriteLine("Welcome to the Employee Managment Menu");
             Console.WriteLine("Choose an option from 1-9");
-            Console.WriteLine("Menu: ");
-            Console.WriteLine("1.tblEmployeesDetails ");
-            Console.WriteLine("2.tblEmployeeLocations ");
-            Console.WriteLine("3.tblRoleName ");
-            Console.WriteLine("4.tblDepartments ");
-            Console.WriteLine("5.tblJobTittles ");
-            Console.WriteLine("6.tblLocationCountry ");
-            Console.WriteLine("7.tblStreet ");
-            Console.WriteLine("8.tblSuburb");
-            Console.WriteLine("9.tblCity ");
+            Console.WriteLine("View the tables:");
+            Console.WriteLine("1: Employees Details ");
+            Console.WriteLine("2: Employee Locations ");
+            Console.WriteLine("3: Role Name ");
+            Console.WriteLine("4: Departments ");
+            Console.WriteLine("5: Job Tittles ");
+            Console.WriteLine("6: Country ");
+            Console.WriteLine("7: Street ");
+            Console.WriteLine("8: Suburb");
+            Console.WriteLine("9: City ");
         }
 
         public void EmployeeDisplayMenu()
         {
-            Console.WriteLine("employeeMenu");
+            Console.WriteLine("Welcome to the Employee Menu");
+            Console.WriteLine("Please choose an option from 1-1");
+            Console.WriteLine("1: View Your Infomation");
         }
 
         public void DisplayUpdateEmployeeDetails()
@@ -226,6 +228,20 @@ namespace employeeManagmentAppLachlan.View
                 return text.PadRight(width - (width - text.Length) / 2).PadLeft(width);
             }
         }
+        public void DisplayEmpEmployeeDetails(List<tblEmployeeDetails> details, int EmployeeID)
+        {
+            foreach (tblEmployeeDetails detail in details)
+            {
+                if (detail.employeeID == EmployeeID)
+                {
+                    PrintLine();
+                    PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
+                    PrintLine();
+                }
+            }
+        }
+
+
         public void DisplayCity(List<tblCityID> CityID)
         {
            

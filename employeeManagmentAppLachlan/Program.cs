@@ -14,8 +14,6 @@ namespace employeeManagmentAppLachlan
         private static StorageManager storageManager;
         private static consoleView view;
         static int role;
-
-        //get explanation on how to convert the bit from the database into a true or false running assumption read the result of the bit then if statement to declare if 1 then true if 0 then false and just delcare it as an int in the list. 
         //have display show active or inactive yes
         //make the querys???? yes
 
@@ -24,9 +22,9 @@ namespace employeeManagmentAppLachlan
 
             Console.WriteLine("Hello, World!");
             //scl connectionString
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DATABASE2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DATABASE2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             //home connectionString
-            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=database2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db2v2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
@@ -38,10 +36,9 @@ namespace employeeManagmentAppLachlan
             string employeeChoice;
 
             //temp log in / role function
-            Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
-            role = Convert.ToInt32(Console.ReadLine());
-            SwitchMain(role);           
-/*
+            //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
+            //role = Convert.ToInt32(Console.ReadLine());
+            //SwitchMainAdmin(); 
             do
             {
                 Console.WriteLine("Enter your Username");
@@ -59,7 +56,19 @@ namespace employeeManagmentAppLachlan
                 // Console.WriteLine("role: " + role);
                 if (inputedUsername == Username && inputedPassword == password)
                 {
-                    SwitchMain(role);
+                    if (role == 1)
+                    {
+                        logInBool = false;
+                        SwitchMainEmp(EmployeeID);
+                    }
+                    else
+                    {
+                        if (role == 2)
+                        {
+                            logInBool = false;    
+                            SwitchMainAdmin();
+                        }
+                    }
                 }
                 else
                 {
@@ -67,12 +76,11 @@ namespace employeeManagmentAppLachlan
                     logInBool = true;
                 }
             } while (logInBool);
-*/      }
+        }
 
-
-        public static void SwitchMain(int Role)
+        public static void SwitchMainAdmin()
         {
-            int role = Role;
+            //int role = Role;
             bool NotValidMain = true;
             string tblchoice;
             string choice;
@@ -80,17 +88,138 @@ namespace employeeManagmentAppLachlan
             bool logInBool = true;
             string employeeChoice;
 
-            if (role == 1)
+            logInBool = false;
+            Console.Clear();
+            Console.WriteLine("welcome admin");
+            do
             {
-                logInBool = false;
-                Console.Clear();
-                Console.WriteLine("HAHA pleb employee");
-                view.EmployeeDisplayMenu();
-
-                //view.DisplayEmpEmployeeDetails();
-                employeeChoice = Console.ReadLine();
-                switch (employeeChoice)
+                do
                 {
+                    view.TblDisplayMenu();
+                    tblchoice = Console.ReadLine();
+                    switch (tblchoice)
+                    {
+                        case "1":
+                            {
+                                //view.tblEmployeeContact();
+                                view.tblEmployeesDetails();
+                                // display details
+                                NotValidMain = false;
+                                displaySwitch1();
+
+
+                            }
+                            break;
+                        case "2":
+                            {
+                                view.tblEmployeeLocations();
+                                //display location
+                                NotValidMain = false;
+                                displaySwitch2();
+
+                            }
+                            break;
+                        case "3":
+                            {
+                                view.tblRoleName();
+                                NotValidMain = false;
+                                displaySwitch3();
+
+                            }
+                            break;
+                        case "4":
+                            {
+                                view.tblDepartments();
+                                NotValidMain = false;
+                                displaySwitch4();
+
+                            }
+                            break;
+                        case "5":
+                            {
+                                view.tblJobTittles();
+                                NotValidMain = false;
+                                displaySwitch5();
+
+                            }
+                            break;
+                        case "6":
+                            {
+                                view.tblLocationCountry();
+                                NotValidMain = false;
+                                displaySwitch6();
+
+                            }
+                            break;
+                        case "7":
+                            {
+                                view.tblStreet();
+                                NotValidMain = false;
+                                displaySwitch7();
+
+                            }
+                            break;
+                        case "8":
+                            {
+                                view.tblSuburb();
+                                NotValidMain = false;
+                                displaySwitch8();
+                            }
+                            break;
+                        case "9":
+                            {
+                                view.tblCity();
+                                NotValidMain = false;
+                                displaySwitch9();
+
+                            }
+                            break;
+                        default:
+                            {
+                                Console.WriteLine("Invalid option please try again.");
+                                NotValidMain = false;
+                            }
+                            break;
+                    }
+                } while (NotValidMain);
+                Console.WriteLine("Do you wish to go back to the main menu enter Y/N");
+                string choiceloopans = Console.ReadLine().ToUpper();
+                if (choiceloopans == "Y")
+                {
+                    loop = true; ;
+                }
+                else
+                {
+                    loop = false;
+                }
+                Console.Clear();
+            } while (loop);
+        }
+
+        public static void SwitchMainEmp(int EmployeeID)
+        {
+            string Choice;
+            bool NotValidMain = false;
+            int employeeID = EmployeeID;
+            Console.Clear();
+            Console.WriteLine("HAHA pleb employee");
+            do
+            {
+                view.EmployeeDisplayMenu();
+                Choice = Console.ReadLine();
+                switch (Choice)
+                {
+                    case "1":
+                        {
+                            List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
+                            view.DisplayEmpEmployeeDetails(employee, employeeID);
+                        }
+                        break;
+                    case "2":
+                        {
+                            SwitchMainEmp(employeeID);
+                        }
+                        break;
                     default:
                         {
                             Console.WriteLine("Invalid option please try again.");
@@ -98,119 +227,7 @@ namespace employeeManagmentAppLachlan
                         }
                         break;
                 }
-            }
-            else
-            {
-                if (role == 2)
-                {
-                    logInBool = false;
-                    Console.Clear();
-                    Console.WriteLine("welcome admin");
-                    do
-                    {
-                        do
-                        {
-                            view.TblDisplayMenu();
-                            tblchoice = Console.ReadLine();
-                            switch (tblchoice)
-                            {
-                                case "1":
-                                    {
-                                        //view.tblEmployeeContact();
-                                        view.tblEmployeesDetails();
-                                        // display details
-                                        NotValidMain = false;
-                                        displaySwitch1();
-
-
-                                    }
-                                    break;
-                                case "2":
-                                    {
-                                        view.tblEmployeeLocations();
-                                        //display location
-                                        NotValidMain = false;
-                                        displaySwitch2();
-
-                                    }
-                                    break;
-                                case "3":
-                                    {
-                                        view.tblRoleName();
-                                        NotValidMain = false;
-                                        displaySwitch3();
-
-                                    }
-                                    break;
-                                case "4":
-                                    {
-                                        view.tblDepartments();
-                                        NotValidMain = false;
-                                        displaySwitch4();
-
-                                    }
-                                    break;
-                                case "5":
-                                    {
-                                        view.tblJobTittles();
-                                        NotValidMain = false;
-                                        displaySwitch5();
-
-                                    }
-                                    break;
-                                case "6":
-                                    {
-                                        view.tblLocationCountry();
-                                        NotValidMain = false;
-                                        displaySwitch6();
-
-                                    }
-                                    break;
-                                case "7":
-                                    {
-                                        view.tblStreet();
-                                        NotValidMain = false;
-                                        displaySwitch7();
-
-                                    }
-                                    break;
-                                case "8":
-                                    {
-                                        view.tblSuburb();
-                                        NotValidMain = false;
-                                        displaySwitch8();
-                                    }
-                                    break;
-                                case "9":
-                                    {
-                                        view.tblCity();
-                                        NotValidMain = false;
-                                        displaySwitch9();
-
-                                    }
-                                    break;
-                                default:
-                                    {
-                                        Console.WriteLine("Invalid option please try again.");
-                                        NotValidMain = false;
-                                    }
-                                    break;
-                            }
-                        } while (NotValidMain);
-                        Console.WriteLine("Do you wish to go back to the main menu enter Y/N");
-                        string choiceloopans = Console.ReadLine().ToUpper();
-                        if (choiceloopans == "Y")
-                        {
-                            loop = true; ;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
-                        Console.Clear();
-                    } while (loop);
-                }
-            }
+            } while (NotValidMain = false);
         }
 
         public static void displaySwitch1()
@@ -252,7 +269,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "5":
                         {
-                            SwitchMain(role);
+                            SwitchMainAdmin();
                             Notvalid = false;
 
                         }
@@ -307,7 +324,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "5":
                         {
-                            SwitchMain(role);
+                            SwitchMainAdmin();
                             Notvalid = false;
 
                         }
@@ -364,7 +381,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "5":
                         {
-                            SwitchMain(role);
+                            SwitchMainAdmin();
                             Notvalid = false;
 
                         }
@@ -419,7 +436,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "5":
                         {
-                            SwitchMain(role);
+                            SwitchMainAdmin();
                             Notvalid = false;
 
                         }
@@ -474,7 +491,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "5":
                         {
-                            SwitchMain(role);
+                            SwitchMainAdmin();
                             Notvalid = false;
 
                         }
@@ -528,7 +545,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "5":
                         {
-                            SwitchMain(role);
+                            SwitchMainAdmin();
                             Notvalid = false;
 
                         }
@@ -583,7 +600,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "5":
                         {
-                            SwitchMain(role);
+                            SwitchMainAdmin();
                             Notvalid = false;
 
                         }
@@ -638,7 +655,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "5":
                         {
-                            SwitchMain(role);
+                            SwitchMainAdmin();
                             Notvalid = false;
 
                         }
@@ -693,7 +710,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "5":
                         {
-                            SwitchMain(role);
+                            SwitchMainAdmin();
                             Notvalid = false;
 
                         }
