@@ -65,7 +65,7 @@ namespace employeeManagmentAppLachlan
                     {
                         if (role == 2)
                         {
-                            logInBool = false;    
+                            logInBool = false;
                             SwitchMainAdmin();
                         }
                     }
@@ -593,7 +593,7 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "4":
                         {
-                            //insert();
+                            InsertStreet();
                             Notvalid = false;
 
                         }
@@ -1188,7 +1188,82 @@ namespace employeeManagmentAppLachlan
         }
 
 
-        /*
+
+
+
+        private static void InsertLocation()
+        {
+
+        }
+
+        private static void InsertEmployeeDetails()
+        {
+
+        }
+
+        private static void InsertRoleName()
+        {
+            bool Active = true;
+            view.DisplayMessage("Enter the new Role Name");
+            string StreetName = view.GetInput();
+            int StreetID = 0;
+            tblEmployeeRoleName location1 = new tblEmployeeRoleName(StreetID, StreetName, Active);
+            int GenerateID = storageManager.InsertRoleName(StreetName);
+            view.DisplayMessage($"new Role Created with ID {GenerateID}");
+        }
+
+        private static void InsertJobtitle()
+        {
+
+        }
+
+        private static void InsertDepartment()
+        {
+
+        }
+
+        private static void InsertCity()
+        {
+            bool Active = true;
+            view.DisplayMessage("Enter the new City Name");
+            string StreetName = view.GetInput();
+            int StreetID = 0;
+            tblCityID location1 = new tblCityID(StreetID, StreetName, Active);
+            int GenerateID = storageManager.InsertCity(StreetName);
+            view.DisplayMessage($"new City Created with ID {GenerateID}");
+        }
+
+        private static void InsertStreet()
+        {
+            bool Active = true;
+            view.DisplayMessage("Enter the new Street Name");
+            string StreetName = view.GetInput();
+            int StreetID = 0;
+            tblStreetID location1 = new tblStreetID(StreetID, StreetName, Active);
+            int GenerateID = storageManager.InsertStreet(StreetName);
+            view.DisplayMessage($"new Street Created with ID {GenerateID}");
+        }
+
+        private static void InsertSuburb()
+        {
+
+        }
+
+        private static void InsertCountry()
+        {
+            bool Active = true;
+            view.DisplayMessage("Enter the new Country Name");
+            string StreetName = view.GetInput();
+            int StreetID = 0;
+            tblLocationCountry location1 = new tblLocationCountry(StreetID, StreetName, Active);
+            int GenerateID = storageManager.InsertCountry(StreetName);
+            view.DisplayMessage($"new Country Created with ID {GenerateID}");
+        }
+
+
+
+
+        
         private static void InsertNewLocation()
         {
                 view.DisplayMessage("Enter the new Location Name");
@@ -1199,6 +1274,6 @@ namespace employeeManagmentAppLachlan
                 view.DisplayMessage($"new Location inserted with ID {generateID}");
         }
 
-        */
+        
     }
 }

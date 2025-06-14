@@ -10,6 +10,7 @@ using System.Data.SqlTypes;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -200,7 +201,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
 
 
-        public List<tblEmployeeDetails> GetTblEmployeeDetails() // add an if state which changes the sql string for employee and admin 
+        public List<tblEmployeeDetails> GetTblEmployeeDetails() 
         {
             List<tblEmployeeDetails> employeeDetails = new List<tblEmployeeDetails>();
             string sqlString = "SELECT * FROM Employee.tblEmployeesDetails WHERE Active = 1";
@@ -228,55 +229,6 @@ namespace employeeManagmentAppLachlan.Repositories
                 }
             }
             return employeeDetails;
-        }
-
-        public List<tblEmployeeDetails> GetempTblEmployeeDetails() // add an if state which changes the sql string for employee and admin 
-        {
-            List<tblEmployeeDetails> employeeDetails = new List<tblEmployeeDetails>();
-            string sqlString = "SELECT * FROM Employee.tblEmployeesDetails WHERE Active = 1";
-            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
-            {
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        int EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
-                        string Firstname = reader["Firstname"].ToString();
-                        string Lastname = reader["Lastname"].ToString();
-                        DateTime Hiredate = Convert.ToDateTime(reader["HireDate"]);
-                        string Gender = reader["Gender"].ToString();
-                        int JobID = Convert.ToInt32(reader["JobID"]);
-                        int RoleID = Convert.ToInt32(reader["RoleID"]);
-                        string Username = reader["Username"].ToString();
-                        string Password = reader["Password"].ToString();
-                        bool Active = Convert.ToBoolean(reader["Active"]);
-                        string Email = reader["Email"].ToString();
-                        int PhoneNumber = Convert.ToInt32(reader["Phonenumber"]);
-                        int Wage = Convert.ToInt32(reader["Wage"]);
-                        employeeDetails.Add(new tblEmployeeDetails(EmployeeID, Firstname, Lastname, Hiredate, Gender, JobID, RoleID, Username, Password, Active, Email, PhoneNumber, Wage));
-                    }
-                }
-            }
-            return employeeDetails;
-        }
-
-        public List<tblEmployeeLocations> GetTblEmployeeLocations()
-        {
-            List<tblEmployeeLocations> employeeLocations = new List<tblEmployeeLocations>();
-            string sqlString = "SELECT * FROM Employee.tblEmployeeLocations WHERE Active = 1";
-            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
-            {
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        int EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
-                        int LocationID = Convert.ToInt32(reader["LocationID"]);
-                        employeeLocations.Add(new tblEmployeeLocations(EmployeeID,LocationID));
-                    }
-                }
-            }
-            return employeeLocations;
         }
 
         public List<tblEmployeeRoleName> GetTblEmployeeRoleNames()
@@ -516,6 +468,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 return cmd.ExecuteNonQuery().ToString();
             }
         }
+
         public string UpdateDept(string fieldChoice, int LocationID, string Change)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblDepartments SET @fieldChoice = @Change Where LocationID = @LocationID", conn))
@@ -609,27 +562,128 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
-        /*public int InsertLocation(LocationTblLocation LocationName)
+
+
+
+
+
+        public int InsertLocation(string LocationName, int CountryID, int SuburbID, int StreetID, int CityID, int StreetNumber)
         {
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO Location.tblLocation (LocationName) VALUES (@LocationName); SELECT SCOPE_IDENTITY(); ", conn))
+            bool Active = true;
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO Location.tblLocation (locationName, CountryID, SuburbID, StreetID, CityID, StreetNumber, Active) VALUES (@RoleName ),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
             {
-                cmd.Parameters.AddWithValue("@LocationName", LocationName.Location_Name);
+                cmd.Parameters.AddWithValue("@LocationName ", LocationName);
+                cmd.Parameters.AddWithValue("@CountryID  ", CountryID);
+                cmd.Parameters.AddWithValue("@SuburbID", SuburbID); 
+                cmd.Parameters.AddWithValue("@StreetID ", StreetID);
+                cmd.Parameters.AddWithValue("@CityID  ", CityID);
+                cmd.Parameters.AddWithValue("@StreetNumber", StreetNumber);
+                cmd.Parameters.AddWithValue("@Active", Active);
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
-        public int DeleteLocationByName(string LocationName)
-        {
-            using (SqlCommand cmd = new SqlCommand($"DELETE FROM Location.tblLocation WHERE LocationName = @LocationName", conn))
-            {
-                cmd.Parameters.AddWithValue($"@LocationName", LocationName);
-                return cmd.ExecuteNonQuery();
-            }
-        }*/
 
-        public string[] test(string abcd)
+        public int InsertEmployeeDetails(string FirstName, string LastName, DateTime HireDate, string Gender, int JobID, int RoleID, string Username, string Password, string Email, int PhoneNumber, int Wage)
         {
-            return new[] { abcd };
+            bool Active = true;
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO Employee.tblEmployeesDetails (FirstName, LastName, Hiredate, Gender, JobID, Username, Password, RoleID, Active, Email, Phonenumber, Wage) VALUES (@FirstName, @LastName, @HireDate, @Gender, @JobID, @Username, @Password, @RoleID, @Active, @Email, @Phonenumber, @Wage); SELECT SCOPE_IDENTITY(); ", conn))
+            {
+                cmd.Parameters.AddWithValue("@FirstName  ", FirstName);
+                cmd.Parameters.AddWithValue("@LastName   ", LastName);
+                cmd.Parameters.AddWithValue("@HireDate ", HireDate); 
+                cmd.Parameters.AddWithValue("@Gender  ", Gender);
+                cmd.Parameters.AddWithValue("@JobID   ", JobID);
+                cmd.Parameters.AddWithValue("@Username ", Username); 
+                cmd.Parameters.AddWithValue("@Password  ", Password);
+                cmd.Parameters.AddWithValue("@RoleID   ", RoleID);
+                cmd.Parameters.AddWithValue("@Active", Active);
+                cmd.Parameters.AddWithValue("@Email  ", Email);
+                cmd.Parameters.AddWithValue("@PhoneNumber   ", PhoneNumber);
+                cmd.Parameters.AddWithValue("@Active", Active);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
         }
+
+        public int InsertRoleName(string RoleName)
+        {
+            bool Active = true;
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblEmployeeRoleName (RoleName ,Active ) VALUES (@RoleName ),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            {
+                cmd.Parameters.AddWithValue("@RoleName ", RoleName);
+                cmd.Parameters.AddWithValue("@Active", Active);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        public int InsertJobtitle(string JobTitleName)
+        {
+            bool Active = true;
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Employee.tblJobTitles  (JobTitleName ,Active ) VALUES (@JobTitleName),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            {
+                cmd.Parameters.AddWithValue("@JobTitleName  ", JobTitleName);
+                cmd.Parameters.AddWithValue("@Active", Active);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        public int InsertDepartment(string DepartmentName, int ManagersID)
+        {
+            bool Active = true;
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblDepartments  (DepartmentName ,Active ) VALUES (@RoleName ),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            {
+                cmd.Parameters.AddWithValue("@DepartmentName ", DepartmentName);
+                cmd.Parameters.AddWithValue("@ManagersID  ", ManagersID);
+                cmd.Parameters.AddWithValue("@Active", Active);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        public int InsertCity(string CityName)
+        {
+            bool Active = true;
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationCity  (CityName,Active ) VALUES (@CityName),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            {
+                cmd.Parameters.AddWithValue("@CityName", CityName);
+                cmd.Parameters.AddWithValue("@Active", Active);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        public int InsertStreet(string StreetName)
+        {
+            bool Active = true;
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationStreet (StreetName,Active ) VALUES (@StreetName),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            {
+                cmd.Parameters.AddWithValue("@StreetName", StreetName);
+                cmd.Parameters.AddWithValue("@Active", Active);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        public int InsertSuburb(string Suburb, int PostCode)
+        {
+            bool Active = true;
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationSuburb  (Suburb ,Active ,PostCode ) VALUES (@StreetName),(@Active),(@PostCode); SELECT SCOPE_IDENTITY(); ", conn))
+            {
+                cmd.Parameters.AddWithValue("@Suburb", Suburb);
+                cmd.Parameters.AddWithValue("@Active", Active);
+                cmd.Parameters.AddWithValue("@PostCode", PostCode);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        public int InsertCountry(string CountryName)
+        {
+            bool Active = true;
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationCountry (CountryName ,Active ) VALUES (@CountryName ),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            {
+                cmd.Parameters.AddWithValue("@CountryName ", CountryName);
+                cmd.Parameters.AddWithValue("@Active", Active);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+
 
         public void CloseConnection()
         {
