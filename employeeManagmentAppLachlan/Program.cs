@@ -14,8 +14,15 @@ namespace employeeManagmentAppLachlan
         private static StorageManager storageManager;
         private static consoleView view;
         static int role;
-        //have display show active or inactive yes
-        //make the querys???? yes
+        //to do list
+        /*
+            Make the querys for admins and employees
+            add the register funcation
+            add the try catches for where required
+            finish the emp switch case
+            add comments 
+            
+        */
 
         static void Main(string[] args)
         {
