@@ -46,43 +46,41 @@ namespace employeeManagmentAppLachlan
             //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
             //role = Convert.ToInt32(Console.ReadLine());
             //SwitchMainAdmin(); 
-            do
+            do          //loops the log in function untill they enter a valid username or password
             {
                 Console.WriteLine("Enter your Username");
-                string inputedUsername = Console.ReadLine();
-                string Username = inputedUsername;
-                int EmployeeID = storageManager.getEmployeeID(inputedUsername);
-                string password = storageManager.getPassword(inputedUsername);
-                role = storageManager.getRole(inputedUsername);
+                string inputedUsername = Console.ReadLine();// gets the username
+                string Username = inputedUsername; // gets the username 
+                int EmployeeID = storageManager.getEmployeeID(inputedUsername);//gets the username 
+                string password = storageManager.getPassword(inputedUsername);//gets the password
+                role = storageManager.getRole(inputedUsername);// gets the role 
                 Console.WriteLine("Please enter your Password");
-                string inputedPassword = Console.ReadLine();
+                string inputedPassword = Console.ReadLine(); // gets the inputted password
                 Console.Clear();
-                // Console.WriteLine("EmployeeID: " + EmployeeID);
-                //Console.WriteLine("username: " + Username);
-                // Console.WriteLine("Password: " + password);
-                // Console.WriteLine("role: " + role);
-                if (inputedUsername == Username && inputedPassword == password)
+                if (inputedUsername == Username && inputedPassword == password) // checks if the employees username and password are valid 
                 {
-                    if (role == 1)
+                    if (role == 1) // checks if they are an employee
                     {
-                        logInBool = false;
-                        SwitchMainEmp(EmployeeID);
+                        logInBool = false; // disables the loop
+                        SwitchMainEmp(EmployeeID); // displays the switch case for employees
                     }
                     else
                     {
-                        if (role == 2)
+                        if (role == 2) // checks if they are an admin
                         {
-                            logInBool = false;
-                            SwitchMainAdmin();
+                            logInBool = false; // disables the loop
+                            SwitchMainAdmin(); // displays the switchcases for amdmins
                         }
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Please enter a valid Username and Password");
+                    Console.WriteLine("Please enter a valid Username and Password");// gives the user a propper error message telling them to enter a valid username or password
                     logInBool = true;
                 }
             } while (logInBool);
+
+            storageManager.CloseConnection(); // closes the connection with the database.
         }
 
         public static void SwitchMainAdmin()

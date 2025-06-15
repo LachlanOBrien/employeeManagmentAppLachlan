@@ -44,81 +44,7 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
-        
-        public List<tblCityID> GetTblCityIDs()
-        {
-            List<tblCityID> city = new List<tblCityID>();
-            string sqlString = "SELECT * FROM location.tblLocationCity WHERE Active = 1";
-            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
-            {
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        int CityID = Convert.ToInt32(reader["CityID"]);
-                        string CityName = reader["CityName"].ToString();
-                        bool Active = Convert.ToBoolean(reader["Active"]);
-                        city.Add(new tblCityID(CityID, CityName, Active));
-                    }
-                }
-            }
-            return city;
-        }
-
-        public List<tblDepartments> GetTblDepartments()
-        {
-            List<tblDepartments> departments = new List<tblDepartments>();
-            string sqlString = "SELECT * FROM Location.tblDepartments WHERE Active = 1";
-            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
-            {
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        string Departments = reader["Departments"].ToString();
-                        int ManagersID = Convert.ToInt32(reader["ManagersID"]);
-                        int DepartmentID = Convert.ToInt32(reader["DepartmentID"]);
-                        bool Active = Convert.ToBoolean(reader["Active"]);
-                        departments.Add(new tblDepartments(Departments,ManagersID,DepartmentID, Active));
-                    }
-                }
-            }
-            return departments;
-        }
-
-       /* public string getUserName(string Username)
-        {
-            user user = new user();
-            string password = "";
-            string username = "";
-            int Role = 0;
-            string sqlString = "SELECT * FROM Employee.tblEmployeeRole WHERE Username = @Username";
-
-            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
-            {
-                cmd.Parameters.AddWithValue("@Username", username);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        // EmployeeID = Convert.ToInt32(reader["Role"]);
-                        username = reader["Username"].ToString();
-                        password = reader["Password"].ToString();
-                        Role = Convert.ToInt32(reader["Role"]);
-                        //Console.WriteLine("EmployeeID: " + EmployeeID);
-                       // Console.WriteLine("Username: " + username);
-//Console.WriteLine("Password: " + password);
-                        //Console.WriteLine("Role: " + Role);
-                    }
-                }
-            }
-            user.username = username;
-            user.password = password;
-            //user.EmployeeID = EmployeeID;
-            user.role = Role;
-            return username;
-        }*/ 
-
+        //gets the employees id and returns it in the method
         public int getEmployeeID(string Username)
         {
             int EmployeeID = 0;
@@ -140,6 +66,8 @@ namespace employeeManagmentAppLachlan.Repositories
             return EmployeeID;
         }
 
+
+        //gets the employees password and returns it in the method
         public string getPassword(string Username)
         {
             string password = "";
@@ -161,6 +89,8 @@ namespace employeeManagmentAppLachlan.Repositories
             return password;
         }
 
+
+        //gets the employee roles and returns it in the method
         public int getRole(string Username)
         {
             int Role = 0;
@@ -184,20 +114,52 @@ namespace employeeManagmentAppLachlan.Repositories
 
 
 
-        /*
-        public int UpdateLocationName(int LocationID, string LocationName)//change it from searching id to name
+        //gets the data from City and displays it in a list which can be refrenced
+        public List<tblCityID> GetTblCityIDs()
         {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocation SET LocationName = @LocationName Where LocationID = @LocationID", conn))
+            List<tblCityID> city = new List<tblCityID>();
+            string sqlString = "SELECT * FROM location.tblLocationCity WHERE Active = 1";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
-                cmd.Parameters.AddWithValue("@LocationName", LocationName);
-                cmd.Parameters.AddWithValue("@LocationID", LocationID);
-                return cmd.ExecuteNonQuery();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int CityID = Convert.ToInt32(reader["CityID"]);
+                        string CityName = reader["CityName"].ToString();
+                        bool Active = Convert.ToBoolean(reader["Active"]);
+                        city.Add(new tblCityID(CityID, CityName, Active));
+                    }
+                }
             }
+            return city;
         }
-        */
 
 
+        //gets the data from Departments and displays it in a list which can be refrenced
+        public List<tblDepartments> GetTblDepartments()
+        {
+            List<tblDepartments> departments = new List<tblDepartments>();
+            string sqlString = "SELECT * FROM Location.tblDepartments WHERE Active = 1";
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string Departments = reader["Departments"].ToString();
+                        int ManagersID = Convert.ToInt32(reader["ManagersID"]);
+                        int DepartmentID = Convert.ToInt32(reader["DepartmentID"]);
+                        bool Active = Convert.ToBoolean(reader["Active"]);
+                        departments.Add(new tblDepartments(Departments,ManagersID,DepartmentID, Active));
+                    }
+                }
+            }
+            return departments;
+        }
 
+
+        //gets the data from EmployeeDetail and displays it in a list which can be refrenced
         public List<tblEmployeeDetails> GetTblEmployeeDetails() 
         {
             List<tblEmployeeDetails> employeeDetails = new List<tblEmployeeDetails>();
@@ -228,6 +190,8 @@ namespace employeeManagmentAppLachlan.Repositories
             return employeeDetails;
         }
 
+
+        //gets the data from RoleNames and displays it in a list which can be refrenced
         public List<tblEmployeeRoleName> GetTblEmployeeRoleNames()
         {
             List<tblEmployeeRoleName> EmployeeRole = new List<tblEmployeeRoleName>();
@@ -248,6 +212,8 @@ namespace employeeManagmentAppLachlan.Repositories
             return EmployeeRole;
         }
 
+
+        //gets the data from JobTittles and displays it in a list which can be refrenced
         public List<tblJobtitle> GetEmployeeTblJobTittles()
         {
             List<tblJobtitle> jobTittles = new List<tblJobtitle>();
@@ -268,6 +234,8 @@ namespace employeeManagmentAppLachlan.Repositories
             return jobTittles;
         }
 
+
+        //gets the data from Locations and displays it in a list which can be refrenced
         public List<tblLocation> GetTblLocations()
         {
             List<tblLocation> locations = new List<tblLocation>();
@@ -293,6 +261,8 @@ namespace employeeManagmentAppLachlan.Repositories
             return locations;
         }
 
+
+        //gets the data from LocationCountries and displays it in a list which can be refrenced
         public List<tblLocationCountry> GetTblLocationCountries()
         {
             List<tblLocationCountry> LocationCountry = new List<tblLocationCountry>();
@@ -313,6 +283,8 @@ namespace employeeManagmentAppLachlan.Repositories
             return LocationCountry;
         }
 
+
+        //gets the data from Street and displays it in a list which can be refrenced
         public List<tblStreetID> GetTblStreetIDs()
         {
             List<tblStreetID> street = new List<tblStreetID>();
@@ -333,6 +305,8 @@ namespace employeeManagmentAppLachlan.Repositories
             return street;
         }
 
+
+        //gets the data from SubrubID and displays it in a list which can be refrenced
         public List<tblSubrubID> GetTblSubrubIDs()
         {
             List<tblSubrubID> subrub = new List<tblSubrubID>();
@@ -361,28 +335,9 @@ namespace employeeManagmentAppLachlan.Repositories
             return subrub;
         }
 
-        public List<tblLocationDepartment> GetTblLocationDepartments()
-        {
-            List<tblLocationDepartment> locationDepartments = new List<tblLocationDepartment>();
-            string sqlString = "SELECT * From Location.tblLocation WHERE Active = 1";
-            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
-            {
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        int LocationID = Convert.ToInt32(reader["LocationID"]);
-                        int DepartMentID = Convert.ToInt32(reader["DepartMentID"]);
-                        locationDepartments.Add(new tblLocationDepartment(LocationID, DepartMentID));
 
-                    }
-                }
-            }
-            return locationDepartments;
-        }
 
-       
-
+        //updates the RoleName table in the database
         public string UpdateRoleName(string RoleName,string RoleNameChange)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeeRoleName SET RoleName = @RoleNameChange Where RoleName = @RoleName", conn))
@@ -393,6 +348,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //updates the JobTitl table in the database
         public string UpdateJobTitle(string JobTitle, string JobTitleChange)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblJobTitles SET JobTitleName = @JobTitleChange Where JobTitle = @JobTitle", conn))
@@ -403,6 +360,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //updates the LocationCountry table in the database
         public string UpdateLocationCountry(string CountryName, string CountryNameChange)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationCountry SET CountryName = @CountryName Where CountryName = @CountryName", conn))
@@ -413,6 +372,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //updates the LocationStreet table in the database
         public string UpdateLocationStreet(string StreetName, string StreetNameChange)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationStreet SET StreetName = @StreetName Where StreetName = @StreetName", conn))
@@ -423,6 +384,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //updates the LocationCity table in the database
         public string UpdateLocationCity(string CityName, string CityNameChange)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationStreet SET CityName = @CityName Where CityName = @CityName", conn))
@@ -433,6 +396,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //updates the EmployeeDetails table in the database
         public string UpdateEmployeeDetails(string fieldChoice, int EmployeeID, string Change)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeesDetails SET @fieldChoice = @Change Where EmployeeID = @EmployeeID", conn))
@@ -444,6 +409,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //updates the Location table in the database
         public string UpdateLocation(string fieldChoice, int LocationID, string Change)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocation SET @fieldChoice = @Change Where LocationID = @LocationID", conn))
@@ -455,6 +422,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //updates the subrub table in the database
         public string Updatesubrub(string fieldChoice, int LocationID, string Change)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationSubrub SET @fieldChoice = @Change Where LocationID = @LocationID", conn))
@@ -466,6 +435,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //updates the Department table in the database
         public string UpdateDept(string fieldChoice, int LocationID, string Change)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblDepartments SET @fieldChoice = @Change Where LocationID = @LocationID", conn))
@@ -478,6 +449,8 @@ namespace employeeManagmentAppLachlan.Repositories
         }
 
 
+
+        //Deletes a City in the database
         public int DeleteCity(int CityID)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationCity SET Active = 0 WHERE CityID = @CityID", conn))
@@ -487,6 +460,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //Deletes a Department in the database
         public int DeleteDepartment(int DepartmentID)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblDepartments SET Active = 0 WHERE DepartmentID = @DepartmentID", conn))
@@ -496,6 +471,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //Deletes a EmployeeDetails in the database
         public int DeleteEmployeeDetails(int EmployeeID)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeesDetails SET Active = 0 WHERE EmployeeID  = @EmployeeID ", conn))
@@ -505,6 +482,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //Deletes a RoleName in the database
         public int DeleteRoleName(int RoleID)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeeRoleName SET Active = 0 WHERE RoleID  = @RoleID ", conn))
@@ -514,6 +493,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //Deletes a Jobtitle in the database
         public int DeleteJobtitle(int JobTitleID)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblJobTitles SET Active = 0 WHERE JobTitleID  = @JobTitleID ", conn))
@@ -523,6 +504,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //Deletes a Street in the database
         public int DeleteStreet(int StreetID)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationStreet SET Active = 0 WHERE StreetID  = @JobTitlStreetIDeID ", conn))
@@ -532,6 +515,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //Deletes a Suburb in the database
         public int DeleteSuburb(int SuburbID)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationSuburb SET Active = 0 WHERE SuburbID  = @SuburbID ", conn))
@@ -541,6 +526,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //Deletes a Country in the database
         public int DeleteCountry(int CountryID)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationCountry SET Active = 0 WHERE CountryID  = @CountryID ", conn))
@@ -550,6 +537,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //Deletes a Location in the database
         public int DeleteLocation(int LocationID)
         {
             using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocation SET Active = 0 WHERE LocationID  = @LocationID ", conn))
@@ -564,6 +553,8 @@ namespace employeeManagmentAppLachlan.Repositories
 
 
 
+
+        //creates a new Location in the database
         public int InsertLocation(string LocationName, int CountryID, int SuburbID, int StreetID, int CityID, int StreetNumber)
         {
             bool Active = true;
@@ -580,6 +571,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //creates a new EmployeeDetails in the database
         public int InsertEmployeeDetails(string FirstName, string LastName, DateTime HireDate, string Gender, int JobID, int RoleID, string Username, string Password, string Email, int PhoneNumber, int Wage)
         {
             bool Active = true;
@@ -601,6 +594,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //creates a new RoleName in the database
         public int InsertRoleName(string RoleName)
         {
             bool Active = true;
@@ -612,6 +607,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //creates a new Jobtitle in the database
         public int InsertJobtitle(string JobTitleName)
         {
             bool Active = true;
@@ -623,6 +620,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //creates a new Department in the database
         public int InsertDepartment(string DepartmentName, int ManagersID)
         {
             bool Active = true;
@@ -635,6 +634,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //creates a new City in the database
         public int InsertCity(string CityName)
         {
             bool Active = true;
@@ -646,6 +647,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //creates a new Street in the database
         public int InsertStreet(string StreetName)
         {
             bool Active = true;
@@ -657,6 +660,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //creates a new Suburb in the database
         public int InsertSuburb(string Suburb, int PostCode)
         {
             bool Active = true;
@@ -669,6 +674,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        //creates a new country in the database
         public int InsertCountry(string CountryName)
         {
             bool Active = true;
@@ -681,7 +688,7 @@ namespace employeeManagmentAppLachlan.Repositories
         }
 
 
-
+        //closes the connection if it is still open
         public void CloseConnection()
         {
             if (conn != null && conn.State == ConnectionState.Open)
