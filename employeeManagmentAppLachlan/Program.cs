@@ -18,10 +18,8 @@ namespace employeeManagmentAppLachlan
         /*
             Make the querys for admins and employees
             add the register funcation
-            add the try catches for where required
+            add the try catches where required
             finish the emp switch case
-            add comments 
-            
         */
 
         static void Main(string[] args)
@@ -83,6 +81,7 @@ namespace employeeManagmentAppLachlan
             storageManager.CloseConnection(); // closes the connection with the database.
         }
 
+        // the main switch case for the program.
         public static void SwitchMainAdmin()
         {
             //int role = Role;
@@ -200,7 +199,7 @@ namespace employeeManagmentAppLachlan
                 Console.Clear();
             } while (loop);
         }
-
+        // the switch case for employees 
         public static void SwitchMainEmp(int EmployeeID)
         {
             string Choice;
@@ -234,7 +233,7 @@ namespace employeeManagmentAppLachlan
                 }
             } while (NotValidMain = false);
         }
-
+        // displays the options for a table 
         public static void displaySwitch1()
         {
             string choice;
@@ -289,7 +288,7 @@ namespace employeeManagmentAppLachlan
                 }
             } while (Notvalid);
         }
-
+        // displays the options for a table 
         public static void displaySwitch2()
         {
             string choice;
@@ -344,7 +343,7 @@ namespace employeeManagmentAppLachlan
                 }
             } while (Notvalid);
         }
-
+        // displays the options for a table 
         public static void displaySwitch3()
         {
             string choice;
@@ -401,7 +400,7 @@ namespace employeeManagmentAppLachlan
                 }
             } while (Notvalid);
         }
-
+        // displays the options for a table 
         public static void displaySwitch4()
         {
             string choice;
@@ -456,7 +455,7 @@ namespace employeeManagmentAppLachlan
                 }
             } while (Notvalid);
         }
-
+        // displays the options for a table 
         public static void displaySwitch5()
         {
             string choice;
@@ -510,7 +509,7 @@ namespace employeeManagmentAppLachlan
                 }
             } while (Notvalid);
         }
-
+        // displays the options for a table 
         public static void displaySwitch6()
         {
             string choice;
@@ -565,7 +564,7 @@ namespace employeeManagmentAppLachlan
                 }
             } while (Notvalid);
         }
-
+        // displays the options for a table 
         public static void displaySwitch7()
         {
             string choice;
@@ -620,7 +619,7 @@ namespace employeeManagmentAppLachlan
                 }
             } while (Notvalid);
         }
-
+        // displays the options for a table 
         public static void displaySwitch8()
         {
             string choice;
@@ -675,7 +674,7 @@ namespace employeeManagmentAppLachlan
                 }
             } while (Notvalid);
         }
-
+        // displays the options for a table 
         public static void displaySwitch9()
         {
             string choice;
@@ -734,6 +733,7 @@ namespace employeeManagmentAppLachlan
 
 
 
+        //updates the RoleName table in the database
         private static void UpdateRoleName()
         {
             view.DisplayMessage("Enter the Role Name to update");
@@ -743,7 +743,7 @@ namespace employeeManagmentAppLachlan
             string rowsAffected = storageManager.UpdateRoleName(roleName, RoleNameChange);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-
+        //updates the JobTitle table in the database
         private static void UpdateJobTitle()
         {
             view.DisplayMessage("Enter the Job Title to update");
@@ -753,7 +753,7 @@ namespace employeeManagmentAppLachlan
             string rowsAffected = storageManager.UpdateJobTitle(JobTitle, JobTitleChange);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-
+        //updates the LocationStreet table in the database
         private static void UpdateLocationStreet()
         {
             view.DisplayMessage("Enter the Street Name to update");
@@ -763,7 +763,7 @@ namespace employeeManagmentAppLachlan
             string rowsAffected = storageManager.UpdateLocationStreet(StreetName, StreetNameChange);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-
+        //updates the Country table in the database
         private static void UpdateLocationCountry()
         {
             view.DisplayMessage("Enter the Country Name to update");
@@ -773,7 +773,7 @@ namespace employeeManagmentAppLachlan
             string rowsAffected = storageManager.UpdateLocationCountry(CountryName, CountryNameChange);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-
+        //updates the City table in the database
         private static void UpdateLocationCity()
         {
             view.DisplayMessage("Enter the City Name to update");
@@ -783,7 +783,7 @@ namespace employeeManagmentAppLachlan
             string rowsAffected = storageManager.UpdateLocationCity(CityName, CityNameChange);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-
+        //updates the EmployeeDetails table in the database
         private static void UpdateEmployeeDetails()
         {
             bool loop = true;
@@ -876,7 +876,7 @@ namespace employeeManagmentAppLachlan
             }
             while (loop);
         }
-
+        //updates the Location table in the database
         private static void UpdateLocation()
         {
             bool loop = true;
@@ -994,7 +994,7 @@ namespace employeeManagmentAppLachlan
             }
             while (loop);
         }
-
+        //updates the subrub table in the database
         private static void Updatesubrub()
         {
             bool loop = true;
@@ -1042,7 +1042,7 @@ namespace employeeManagmentAppLachlan
             }
             while (loop);
         }
-
+        //updates the Dept table in the database
         private static void UpdateDept()
         {
             bool loop = true;
@@ -1092,7 +1092,7 @@ namespace employeeManagmentAppLachlan
         }
 
 
-
+        //Deletes a Cityj in the database
         private static void DeleteCity()
         {
             List<tblCityID> cityIDs = storageManager.GetTblCityIDs();
@@ -1103,7 +1103,7 @@ namespace employeeManagmentAppLachlan
             int rowsAffected = storageManager.DeleteCity(CityName);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-
+        //Deletes a Department in the database
         private static void DeleteDepartment()
         {
             List<tblDepartments> departments = storageManager.GetTblDepartments();
@@ -1114,7 +1114,7 @@ namespace employeeManagmentAppLachlan
             int rowsAffected = storageManager.DeleteDepartment(DepartmentID);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-
+        //Deletes a EmployeeDetails in the database
         private static void DeleteEmployeeDetails()
         {
             List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
@@ -1125,7 +1125,7 @@ namespace employeeManagmentAppLachlan
             int rowsAffected = storageManager.DeleteEmployeeDetails(EmployeeID);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-
+        //Deletes a RoleName in the database
         private static void DeleteRoleName()
         {
             List<tblEmployeeRoleName> roleNames = storageManager.GetTblEmployeeRoleNames();
@@ -1136,7 +1136,7 @@ namespace employeeManagmentAppLachlan
             int rowsAffected = storageManager.DeleteRoleName(RoleID);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-
+        //Deletes a Jobtitle in the database
         private static void DeleteJobtitle()
         {
             List<tblJobtitle> jobTittle = storageManager.GetEmployeeTblJobTittles();
@@ -1147,7 +1147,7 @@ namespace employeeManagmentAppLachlan
             int rowsAffected = storageManager.DeleteJobtitle(JobTitleID);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-
+        //Deletes a ---- in the database
         private static void DeleteStreet()
         {
             List<tblStreetID> streetIDs = storageManager.GetTblStreetIDs();
@@ -1158,7 +1158,7 @@ namespace employeeManagmentAppLachlan
             int rowsAffected = storageManager.DeleteStreet(StreetID);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-
+        //Deletes a Suburb in the database
         private static void DeleteSuburb()
         {
             List<tblSubrubID> subrubIDs = storageManager.GetTblSubrubIDs();
@@ -1169,7 +1169,7 @@ namespace employeeManagmentAppLachlan
             int rowsAffected = storageManager.DeleteSuburb(SuburbID);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-
+        //Deletes a Country in the database
         private static void DeleteCountry()
         {
             List<tblLocationCountry> countries = storageManager.GetTblLocationCountries();
@@ -1180,7 +1180,7 @@ namespace employeeManagmentAppLachlan
             int rowsAffected = storageManager.DeleteCountry(CountryID);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-
+        //Deletes a Location in the database
         private static void DeleteLocation()
         {
             List<tblLocation> locations = storageManager.GetTblLocations();
@@ -1195,7 +1195,7 @@ namespace employeeManagmentAppLachlan
 
 
 
-
+        //creates a new Location in the database
         private static void InsertLocation()
         {
             bool Active = true;
@@ -1216,7 +1216,7 @@ namespace employeeManagmentAppLachlan
             int GenerateID = storageManager.InsertLocation(LocationName, CountryID, SuburbID, StreetID, CityID, StreetNumber);
             view.DisplayMessage($"new Location Created with ID {GenerateID}");
         }
-
+        //creates a new EmployeeDetails in the database
         private static void InsertEmployeeDetails()
         {
             bool Active = true;
@@ -1249,7 +1249,7 @@ namespace employeeManagmentAppLachlan
             int GenerateID = storageManager.InsertEmployeeDetails(FirstName, LastName, HireDate, Gender, JobID, Role, Password, Username, Email, Phonenumber, wage);
             view.DisplayMessage($"new Employee Created with ID {GenerateID}");
         }
-
+        //creates a new RoleName in the database
         private static void InsertRoleName()
         {
             bool Active = true;
@@ -1260,7 +1260,7 @@ namespace employeeManagmentAppLachlan
             int GenerateID = storageManager.InsertRoleName(StreetName);
             view.DisplayMessage($"new Role Created with ID {GenerateID}");
         }
-
+        //creates a new Jobtitle in the database
         private static void InsertJobtitle()
         {
             bool Active = true;
@@ -1271,7 +1271,7 @@ namespace employeeManagmentAppLachlan
             int GenerateID = storageManager.InsertJobtitle(StreetName);
             view.DisplayMessage($"new department Created with ID {GenerateID}");
         }
-
+        //creates a new Department in the database
         private static void InsertDepartment()
         {
             bool Active = true;
@@ -1284,7 +1284,7 @@ namespace employeeManagmentAppLachlan
             int GenerateID = storageManager.InsertDepartment(StreetName, postcode);
             view.DisplayMessage($"new department Created with ID {GenerateID}");
         }
-
+        //creates a new City in the database
         private static void InsertCity()
         {
             bool Active = true;
@@ -1295,7 +1295,7 @@ namespace employeeManagmentAppLachlan
             int GenerateID = storageManager.InsertCity(StreetName);
             view.DisplayMessage($"new City Created with ID {GenerateID}");
         }
-
+        //creates a new Street in the database
         private static void InsertStreet()
         {
             bool Active = true;
@@ -1306,7 +1306,7 @@ namespace employeeManagmentAppLachlan
             int GenerateID = storageManager.InsertStreet(StreetName);
             view.DisplayMessage($"new Street Created with ID {GenerateID}");
         }
-
+        //creates a new Suburb in the database
         private static void InsertSuburb()
         {
             bool Active = true;
@@ -1319,7 +1319,7 @@ namespace employeeManagmentAppLachlan
             int GenerateID = storageManager.InsertSuburb(StreetName, postcode);
             view.DisplayMessage($"new subrub Created with ID {GenerateID}");
         }
-
+        //creates a new Country in the database
         private static void InsertCountry()
         {
             bool Active = true;
