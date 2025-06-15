@@ -10,10 +10,12 @@ using System.Threading.Tasks;
 
 namespace employeeManagmentAppLachlan.View
 {
-    public class consoleView //plan for adding thingys get the input for each field in employee schema and then spread it out to each table that requires it 
+    public class consoleView  
     {
         private static StorageManager storageManager;
         static int tableWidth = 232;
+
+        // displays the admin menu  
         public void TblDisplayMenu()
         {
             Console.WriteLine("Welcome to the Employee Managment Menu");
@@ -29,7 +31,9 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("8: Suburb");
             Console.WriteLine("9: City ");
         }
-
+       
+        
+        // displays the employee text  
         public void EmployeeDisplayMenu()
         {
             Console.WriteLine("Welcome to the Employee Menu");
@@ -37,6 +41,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("1: View Your Infomation");
         }
 
+        //displays the options for the fields you can update in the table employee details 
         public void DisplayUpdateEmployeeDetails()
         {
             Console.WriteLine("What Feild do you wish to update");
@@ -48,6 +53,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("5: Phonenumber");
         }
 
+        //displays the options for the fields you can update in the table location
         public void DisplayUpdateLocation()
         {
             Console.WriteLine("What Feild do you wish to update");
@@ -60,6 +66,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("6: Street Number");
         }
 
+        //displays the options for the fields you can update in the table subrub
         public void DisplayUpdatesubrub()
         {
             Console.WriteLine("What Feild do you wish to update");
@@ -68,14 +75,18 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("2: Post Code");
         }
 
+        //displays the options for the fields you can update in the table department
         public void DisplayUpdateDept()
         {
             Console.WriteLine("What Feild do you wish to update");
-            Console.WriteLine("Choose an option from 1-5");
+            Console.WriteLine("Choose an option from 1-2");
             Console.WriteLine("1: Department Name");
             Console.WriteLine("2: Managers ID");
         }
 
+
+
+        //displays all the option for the admins in the table EmployeeLocations
         public void tblEmployeeLocations()
         {
             Console.Clear();
@@ -89,6 +100,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("5: Return to the Main Menu");
         }
 
+        //displays all the option for the admins in the table EmployeesDetails
         public void tblEmployeesDetails()
         {
             Console.Clear();
@@ -102,6 +114,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("5: Return to the Main Menu");
         }
 
+        //displays all the option for the admins in the table JobTittles
         public void tblJobTittles()
         {
             Console.Clear();
@@ -115,6 +128,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("5: Return to the Main Menu");
         }
 
+        //displays all the option for the admins in the table Departments
         public void tblDepartments()
         {
             Console.Clear();
@@ -127,6 +141,8 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("4: Insert a new Departments ");
             Console.WriteLine("5: Return to the Main Menu");
         }
+
+        //displays all the option for the admins in the table RoleName
         public void tblRoleName()
         {
             Console.Clear();
@@ -140,6 +156,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("5: Return to the Main Menu");
         }
 
+        //displays all the option for the admins in the table Country
         public void tblLocationCountry()
         {
             Console.Clear();
@@ -153,6 +170,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("5: Return to the Main Menu");
         }
 
+        //displays all the option for the admins in the table Street
         public void tblStreet()
         {
             Console.Clear();
@@ -166,6 +184,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("5: Return to the Main Menu");
         }
 
+        //displays all the option for the admins in the table Suburb
         public void tblSuburb()
         {
             Console.Clear();
@@ -179,6 +198,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("5: Return to the Main Menu");
         }
 
+        //displays all the option for the admins in the table City
         public void tblCity()
         {
             Console.Clear();
@@ -191,17 +211,15 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("4: Insert a new City");
             Console.WriteLine("5: Return to the Main Menu");
         }
-        public void displayusername()
-        {
-            Console.Clear();
-            Console.WriteLine("enter your UserName");
-        }
 
+
+        // displays the lines for the box that the data is displayed in
         static void PrintLine()
         {
             Console.WriteLine(new string('-', tableWidth));
         }
 
+        // displays the rows for the box that the data is displayed in 
         static void PrintRow(params string[] columns)
         {
             int width = (tableWidth - columns.Length) / columns.Length;
@@ -215,6 +233,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine(row);
         }
 
+        //aligns the text in the boxes for the display methods
         static string AlignCentre(string text, int width)
         {
             text = text.Length > width ? text.Substring(0, width - 3) + "..." : text;
@@ -228,6 +247,9 @@ namespace employeeManagmentAppLachlan.View
                 return text.PadRight(width - (width - text.Length) / 2).PadLeft(width);
             }
         }
+        
+        
+        //displays the employees data
         public void DisplayEmpEmployeeDetails(List<tblEmployeeDetails> details, int EmployeeID)
         {
             foreach (tblEmployeeDetails detail in details)
@@ -241,7 +263,7 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
-
+        //displays the data for the table City
         public void DisplayCity(List<tblCityID> CityID)
         {
            
@@ -265,7 +287,8 @@ namespace employeeManagmentAppLachlan.View
                 PrintLine();
             }
         }
-        
+
+        //displays the data for the table Street
         public void DisplayStreetID(List<tblStreetID> streetID)
         {
             PrintLine();
@@ -278,6 +301,7 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
+        //displays the data for the table Subrub
         public void DisplaySubrub(List<tblSubrubID> subrubID)
         {
             PrintLine();
@@ -291,6 +315,7 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
+        //displays the data for the table Country
         public void DisplayCountry(List<tblLocationCountry> countryID)
         {
             PrintLine();
@@ -303,6 +328,7 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
+        //displays the data for the table Location
         public void DisplayLocation(List<tblLocation> locations)
         {
             PrintLine();
@@ -315,6 +341,7 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
+        //displays the data for the table JobTittles
         public void DisplaytblJobTittles(List<tblJobtitle> jobtitles)
         {
             PrintLine();
@@ -328,6 +355,7 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
+        //displays the data for the table RoleNames
         public void DisplayRoleNames(List<tblEmployeeRoleName> Roles)
         {
             PrintLine();
@@ -341,6 +369,7 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
+        //displays the data for the table EmployeeDetails
         public void DisplayEmployeeDetails(List<tblEmployeeDetails> details)
         {
             PrintLine();
@@ -354,19 +383,7 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
-        public void DisplayempEmployeeDetails(List<tblEmployeeDetails> details)
-        {
-            PrintLine();
-            PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
-            foreach (tblEmployeeDetails detail in details)
-            {
-                PrintLine();
-                PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
-                PrintLine();
-                //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
-            }
-        }
-
+        //displays the data for the table Departments
         public void DisplayDepartments(List<tblDepartments> departments)
         {
             PrintLine();
@@ -380,16 +397,20 @@ namespace employeeManagmentAppLachlan.View
         }
 
 
+
+        // displays a message 
         public void DisplayMessage(string message)
         {
             Console.WriteLine(message);
         }
 
+        // gets the input of an string variable 
         public string GetInput()
         {
             return Console.ReadLine();
         }
 
+        //gets the input of an int variable 
         public int GetIntInput()
         {
             return int.Parse(Console.ReadLine());
