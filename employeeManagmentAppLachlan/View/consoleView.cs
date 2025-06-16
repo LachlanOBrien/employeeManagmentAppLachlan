@@ -25,7 +25,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("2: Employee Locations ");
             Console.WriteLine("3: Role Name ");
             Console.WriteLine("4: Departments ");
-            Console.WriteLine("5: Job Tittles ");
+            Console.WriteLine("5: Job Titles ");
             Console.WriteLine("6: Country ");
             Console.WriteLine("7: Street ");
             Console.WriteLine("8: Suburb");
@@ -118,7 +118,7 @@ namespace employeeManagmentAppLachlan.View
         public void tblJobTittles()
         {
             Console.Clear();
-            Console.WriteLine("Welcome to tblJobTittles");
+            Console.WriteLine("Welcome to tblJobTitles");
             Console.WriteLine("Choose an option from 1-5");
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: View All records in Employee.tblJobTittles");

@@ -186,17 +186,35 @@ namespace employeeManagmentAppLachlan
                             break;
                     }
                 } while (NotValidMain);
-                Console.WriteLine("Do you wish to go back to the main menu enter Y/N");
-                string choiceloopans = Console.ReadLine().ToUpper();
-                if (choiceloopans == "Y")
+                bool MainMenuLoop = true;
+                do
                 {
-                    loop = true; ;
-                }
-                else
-                {
-                    loop = false;
-                }
-                Console.Clear();
+                    Console.WriteLine("Do you wish to go back to the main menu enter Y/N");
+                    string choiceloopans = Console.ReadLine().ToUpper();
+                    switch (choiceloopans)
+                    {
+                        case "Y":
+                            {
+                                MainMenuLoop = false;
+                            }
+                            break;
+                        case "N":
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Good-Bye");
+                                MainMenuLoop = false;
+                                loop = false;
+                            }
+                            break;
+                        default:
+                            Console.WriteLine("Invalid option please try again.");
+                            NotValidMain = false;
+                            break;
+                    }
+
+
+
+                } while (MainMenuLoop);
             } while (loop);
         }
         // the switch case for employees 
