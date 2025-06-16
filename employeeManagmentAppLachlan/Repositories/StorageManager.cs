@@ -558,7 +558,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int InsertLocation(string LocationName, int CountryID, int SuburbID, int StreetID, int CityID, int StreetNumber)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO Location.tblLocation (locationName, CountryID, SuburbID, StreetID, CityID, StreetNumber, Active) VALUES (@RoleName ),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO Location.tblLocation (locationName, CountryID, SuburbID, StreetID, CityID, StreetNumber, Active) VALUES (@RoleName ,@Active); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@LocationName ", LocationName);
                 cmd.Parameters.AddWithValue("@CountryID  ", CountryID);
@@ -599,7 +599,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int InsertRoleName(string RoleName)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblEmployeeRoleName (RoleName ,Active ) VALUES (@RoleName ),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblEmployeeRoleName (RoleName ,Active ) VALUES (@RoleName ,@Active); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@RoleName ", RoleName);
                 cmd.Parameters.AddWithValue("@Active", Active);
@@ -612,7 +612,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int InsertJobtitle(string JobTitleName)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Employee.tblJobTitles  (JobTitleName ,Active ) VALUES (@JobTitleName),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Employee.tblJobTitles  (JobTitleName ,Active ) VALUES (@JobTitleName,@Active); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@JobTitleName  ", JobTitleName);
                 cmd.Parameters.AddWithValue("@Active", Active);
@@ -625,7 +625,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int InsertDepartment(string DepartmentName, int ManagersID)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblDepartments  (DepartmentName ,Active ) VALUES (@RoleName ),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblDepartments  (DepartmentName ,Active ) VALUES (@RoleName ,@Active); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@DepartmentName ", DepartmentName);
                 cmd.Parameters.AddWithValue("@ManagersID  ", ManagersID);
@@ -639,7 +639,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int InsertCity(string CityName)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationCity  (CityName,Active ) VALUES (@CityName),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationCity  (CityName,Active ) VALUES (@CityName,@Active); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@CityName", CityName);
                 cmd.Parameters.AddWithValue("@Active", Active);
@@ -652,7 +652,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int InsertStreet(string StreetName)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationStreet (StreetName,Active ) VALUES (@StreetName),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationStreet (StreetName,Active ) VALUES (@StreetName,@Active); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@StreetName", StreetName);
                 cmd.Parameters.AddWithValue("@Active", Active);
@@ -665,7 +665,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int InsertSuburb(string Suburb, int PostCode)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationSuburb  (Suburb ,Active ,PostCode ) VALUES (@StreetName),(@Active),(@PostCode); SELECT SCOPE_IDENTITY(); ", conn))
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationSuburb  (Suburb ,Active ,PostCode ) VALUES (@StreetName,@Active),(@PostCode); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@Suburb", Suburb);
                 cmd.Parameters.AddWithValue("@Active", Active);
