@@ -1110,7 +1110,7 @@ namespace employeeManagmentAppLachlan
         }
 
 
-        //Deletes a Cityj in the database
+        //Deletes a City in the database
         private static void DeleteCity()
         {
             List<tblCityID> cityIDs = storageManager.GetTblCityIDs();
@@ -1347,6 +1347,17 @@ namespace employeeManagmentAppLachlan
             tblLocationCountry location1 = new tblLocationCountry(StreetID, StreetName, Active);
             int GenerateID = storageManager.InsertCountry(StreetName);
             view.DisplayMessage($"new Country Created with ID {GenerateID}");
+
+
+            try
+            {
+                storageManager.InsertCountry(StreetName);
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("The connections is Unsuccessfull");
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

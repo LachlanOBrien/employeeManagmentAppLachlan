@@ -24,7 +24,7 @@ namespace employeeManagmentAppLachlan.Repositories
         private SqlConnection conn;
         private static consoleView view;
 
-        public StorageManager(string connectionString) 
+        public StorageManager(string connectionString)
         {
             try
             {
@@ -679,12 +679,31 @@ namespace employeeManagmentAppLachlan.Repositories
         public int InsertCountry(string CountryName)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationCountry (CountryName ,Active ) VALUES (@CountryName ),(@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationCountry (CountryName ,Active ) VALUES (@CountryName ,@Active); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@CountryName ", CountryName);
                 cmd.Parameters.AddWithValue("@Active", Active);
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
+
+            /*
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                Console.WriteLine("Connection succsesfull");
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("The connections is Unsuccessfull");
+                Console.WriteLine(e.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("The connections is Unsuccessfull");
+                Console.WriteLine(ex.Message);
+            }
+            */
         }
 
 
