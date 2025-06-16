@@ -685,25 +685,6 @@ namespace employeeManagmentAppLachlan.Repositories
                 cmd.Parameters.AddWithValue("@Active", Active);
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
-
-            /*
-            try
-            {
-                conn = new SqlConnection(connectionString);
-                conn.Open();
-                Console.WriteLine("Connection succsesfull");
-            }
-            catch (SqlException e)
-            {
-                Console.WriteLine("The connections is Unsuccessfull");
-                Console.WriteLine(e.Message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("The connections is Unsuccessfull");
-                Console.WriteLine(ex.Message);
-            }
-            */
         }
 
 
