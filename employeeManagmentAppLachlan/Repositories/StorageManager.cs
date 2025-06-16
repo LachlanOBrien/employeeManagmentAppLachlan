@@ -687,6 +687,17 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+        public int RegisterEmployee(string username,string password)
+        {
+            bool Active = true;
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Employee.tblEmployeesDetails(Username ,Password ) VALUES (@Username ,@Password); SELECT SCOPE_IDENTITY(); ", conn))
+            {
+                cmd.Parameters.AddWithValue("@Username ", username);
+                cmd.Parameters.AddWithValue("@Password", password);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
 
         //closes the connection if it is still open
         public void CloseConnection()

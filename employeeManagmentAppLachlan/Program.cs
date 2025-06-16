@@ -44,40 +44,49 @@ namespace employeeManagmentAppLachlan
             //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
             //role = Convert.ToInt32(Console.ReadLine());
             //SwitchMainAdmin(); 
-            do          //loops the log in function untill they enter a valid username or password
-            {
-                Console.WriteLine("Enter your Username");
-                string inputedUsername = Console.ReadLine();// gets the username
-                string Username = inputedUsername; // gets the username 
-                int EmployeeID = storageManager.getEmployeeID(inputedUsername);//gets the username 
-                string password = storageManager.getPassword(inputedUsername);//gets the password
-                role = storageManager.getRole(inputedUsername);// gets the role 
-                Console.WriteLine("Please enter your Password");
-                string inputedPassword = Console.ReadLine(); // gets the inputted password
-                Console.Clear();
-                if (inputedUsername == Username && inputedPassword == password) // checks if the employees username and password are valid 
-                {
-                    if (role == 1) // checks if they are an employee
-                    {
-                        logInBool = false; // disables the loop
-                        SwitchMainEmp(EmployeeID); // displays the switch case for employees
-                    }
-                    else
-                    {
-                        if (role == 2) // checks if they are an admin
-                        {
-                            logInBool = false; // disables the loop
-                            SwitchMainAdmin(); // displays the switchcases for amdmins
-                        }
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Please enter a valid Username and Password");// gives the user a propper error message telling them to enter a valid username or password
-                    logInBool = true;
-                }
-            } while (logInBool);
+            /*
+             do          //loops the log in function untill they enter a valid username or password
+             {
+                 Console.WriteLine("Enter your Username");
+                 string inputedUsername = Console.ReadLine();// gets the username
+                 string Username = inputedUsername; // gets the username 
+                 int EmployeeID = storageManager.getEmployeeID(inputedUsername);//gets the username 
+                 string password = storageManager.getPassword(inputedUsername);//gets the password
+                 role = storageManager.getRole(inputedUsername);// gets the role 
+                 Console.WriteLine("Please enter your Password");
+                 string inputedPassword = Console.ReadLine(); // gets the inputted password
+                 Console.Clear();
+                 if (inputedUsername == Username && inputedPassword == password) // checks if the employees username and password are valid 
+                 {
+                     if (role == 1) // checks if they are an employee
+                     {
+                         logInBool = false; // disables the loop
+                         SwitchMainEmp(EmployeeID); // displays the switch case for employees
+                     }
+                     else
+                     {
+                         if (role == 2) // checks if they are an admin
+                         {
+                             logInBool = false; // disables the loop
+                             SwitchMainAdmin(); // displays the switchcases for amdmins
+                         }
+                     }
+                 }
+                 else
+                 {
+                     Console.WriteLine("Please enter a valid Username and Password");// gives the user a propper error message telling them to enter a valid username or password
+                     logInBool = true;
+                 }
+             } while (logInBool);
+            */
+            Console.WriteLine("register function");// temp add a proper method 
+            Console.WriteLine("Enter A Username");
+            string RegUsername = view.GetInput();
+            Console.WriteLine("Enter A Password");
+            string RegPassword = view.GetInput();
 
+            int GenerateID = storageManager.RegisterEmployee(RegUsername,RegPassword);
+            view.DisplayMessage($"new Employee Created with ID {GenerateID}");
             storageManager.CloseConnection(); // closes the connection with the database.
         }
 
