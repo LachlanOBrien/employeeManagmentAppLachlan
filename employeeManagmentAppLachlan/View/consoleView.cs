@@ -15,10 +15,18 @@ namespace employeeManagmentAppLachlan.View
         private static StorageManager storageManager;
         static int tableWidth = 232;
 
+        public void MainMenu()
+        {
+            Console.WriteLine("Welcome to the Employee Managment Menu");
+            Console.WriteLine("Choose an option from 1-2");
+            Console.WriteLine("1: Log In");
+            Console.WriteLine("2. Register");
+        }
+
+
         // displays the admin menu  
         public void TblDisplayMenu()
         {
-            Console.WriteLine("Welcome to the Employee Managment Menu");
             Console.WriteLine("Choose an option from 1-9");
             Console.WriteLine("View the tables:");
             Console.WriteLine("1: Employees Details ");
@@ -265,7 +273,7 @@ namespace employeeManagmentAppLachlan.View
 
         public void DisplayadvancedQry()
         {
-            storageManager.advancedquery();
+            storageManager.advancedquery1();
         }
 
         //displays the data for the table City

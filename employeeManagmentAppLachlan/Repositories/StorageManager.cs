@@ -94,7 +94,7 @@ namespace employeeManagmentAppLachlan.Repositories
         }
 
 
-        public void advancedquery()
+        public void advancedquery1()
         {
             string sqlString = "SELECT Em.FirstName, Em.LastName, Em.HireDate, Em.Wage FROM Employee.tblEmployeesDetails as EM  where Active = 1 and (Em.Wage >= 80000.00 and Em.HireDate >= '2018-01-01') order by Em.FirstName, Em.LastName, Em.Wage, Em.HireDate;";
 

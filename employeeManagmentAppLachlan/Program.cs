@@ -38,49 +38,43 @@ namespace employeeManagmentAppLachlan
             bool loop = true;
             bool logInBool = true;
             string employeeChoice;
+            string MainChoice;
 
-            storageManager.advancedquery();
+
 
             //temp log in / role function
             //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
             //role = Convert.ToInt32(Console.ReadLine());
             //SwitchMainAdmin(); 
-            /*
-             do          //loops the log in function untill they enter a valid username or password
-             {
-                 Console.WriteLine("Enter your Username");
-                 string inputedUsername = Console.ReadLine();// gets the username
-                 string Username = inputedUsername; // gets the username 
-                 int EmployeeID = storageManager.getEmployeeID(inputedUsername);//gets the username 
-                 string password = storageManager.getPassword(inputedUsername);//gets the password
-                 role = storageManager.getRole(inputedUsername);// gets the role 
-                 Console.WriteLine("Please enter your Password");
-                 string inputedPassword = Console.ReadLine(); // gets the inputted password
-                 Console.Clear();
-                 if (inputedUsername == Username && inputedPassword == password) // checks if the employees username and password are valid 
-                 {
-                     if (role == 1) // checks if they are an employee
-                     {
-                         logInBool = false; // disables the loop
-                         SwitchMainEmp(EmployeeID); // displays the switch case for employees
-                     }
-                     else
-                     {
-                         if (role == 2) // checks if they are an admin
-                         {
-                             logInBool = false; // disables the loop
-                             SwitchMainAdmin(); // displays the switchcases for amdmins
-                         }
-                     }
-                 }
-                 else
-                 {
-                     Console.WriteLine("Please enter a valid Username and Password");// gives the user a propper error message telling them to enter a valid username or password
-                     logInBool = true;
-                 }
-             } while (logInBool);
+            view.MainMenu();
+            MainChoice = Console.ReadLine();
+            do
+            {
+                switch (MainChoice)
+                {
 
-            */
+                    case "1":
+                        {
+                            Console.Clear();
+                            LogIn();
+                            loop = false;
+                        }
+                        break;
+                    case "2":
+                        {
+                            Console.Clear();
+                            RegisterEmployee();
+                            loop = false;
+                        }
+                        break;
+                    default:
+                        {
+                            Console.WriteLine("Please enter a valid Username and Password");// gives the user a propper error message telling them to enter a valid username or password
+                            logInBool = true;
+                        }
+                        break;
+                }
+            } while (loop);
             storageManager.CloseConnection(); // closes the connection with the database.
         }
 
@@ -1361,6 +1355,51 @@ namespace employeeManagmentAppLachlan
             string RegPassword = view.GetInput();
             int GenerateID = storageManager.RegisterEmployee(RegUsername, RegPassword);
             view.DisplayMessage($"new Employee Created with ID {GenerateID}");
+        }
+
+        private static void LogIn()
+        {
+
+            bool NotValidMain = true;
+            string tblchoice;
+            string choice;
+            bool loop = true;
+            bool logInBool = true;
+            string employeeChoice;
+
+            do          //loops the log in function untill they enter a valid username or password
+             {
+                 Console.WriteLine("Enter your Username");
+                 string inputedUsername = Console.ReadLine();// gets the username
+                 string Username = inputedUsername; // gets the username 
+                 int EmployeeID = storageManager.getEmployeeID(inputedUsername);//gets the username 
+                 string password = storageManager.getPassword(inputedUsername);//gets the password
+                 role = storageManager.getRole(inputedUsername);// gets the role 
+                 Console.WriteLine("Please enter your Password");
+                 string inputedPassword = Console.ReadLine(); // gets the inputted password
+                 Console.Clear();
+                 if (inputedUsername == Username && inputedPassword == password) // checks if the employees username and password are valid 
+                 {
+                     if (role == 1) // checks if they are an employee
+                     {
+                         logInBool = false; // disables the loop
+                         SwitchMainEmp(EmployeeID); // displays the switch case for employees
+                     }
+                     else
+                     {
+                         if (role == 2) // checks if they are an admin
+                         {
+                             logInBool = false; // disables the loop
+                             SwitchMainAdmin(); // displays the switchcases for amdmins
+                         }
+                     }
+                 }
+                 else
+                 {
+                     Console.WriteLine("Please enter a valid Username and Password");// gives the user a propper error message telling them to enter a valid username or password
+                     logInBool = true;
+                 }
+             } while (logInBool);
         }
     }
 }
