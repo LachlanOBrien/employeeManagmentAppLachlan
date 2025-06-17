@@ -109,7 +109,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
         public void AdvancedQuery2() // possibly need to get the sql working before this query will work due to the bridging tables
         {
-            string sqlString = "Select Em.FirstName, Em.LastName, Em.HireDate, LC.CountryName   from Employee.tblEmployeesDetails as Em, Location.tblLocation as LO, Employee.tblEmployeeLocations AS EMLO, Location.tblLocationCountry AS LC  where EMLO.LocationID = LO.LocationID   and EMLO.EmployeeID = Em.EmployeeID and LC.CountryID = LO.CountryID    and (LC.CountryName = 'New Zealand' And Em.HireDate >= '2020-01-01')  order by 1,2,3,4;";
+            string sqlString = "Select Em.FirstName, Em.LastName, Em.HireDate, LC.CountryName   from Employee.tblEmployeesDetails as Em, Location.tblLocation as LO, Employee.tblEmployeeLocations AS EMLO, Location.tblLocationCountry AS LC  where EMLO.LocationID = LO.LocationID   and EMLO.EmployeeID = Em.EmployeeID and LC.CountryID = LO.CountryID   and (LC.CountryName = 'United Kingdom' And Em.HireDate >= '2019-03-09 16:05:07.123')   order by 1,2,3,4;";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -158,7 +158,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public void AdvancedQuery4()// possibly need to get the sql working before this query will work due to the bridging tables possibly need to change the where clause to change it from this to location to location country
             // smh need to link emp det > bridging table for location > location > coutry
         {
-            string sqlString = " Select EM.FirstName, EM.LastName, LC.CountryName   from Employee.tblEmployeesDetails as EM,Location.tblLocation AS LO, Employee.tblEmployeeLocations AS EMLO, Location.tblLocationCountry as LC  Where EMLO.EmployeeID = EM.EmployeeID   and EMLO.LocationID = LO.LocationID  and LO.CountryID = LC.Active    and (EM.Gender = 'F' and LC.CountryName ='Australia') Order by 1,2,3;";
+            string sqlString = " Select EM.FirstName, EM.LastName, LC.CountryName   from Employee.tblEmployeesDetails as EM,Location.tblLocation AS LO, Employee.tblEmployeeLocations AS EMLO, Location.tblLocationCountry as LC  Where EMLO.EmployeeID = EM.EmployeeID   and EMLO.LocationID = LO.LocationID  and LO.CountryID = LC.CountryID    and (EM.Gender = 'M' and LC.CountryName ='United States') Order by 1,2,3;";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
