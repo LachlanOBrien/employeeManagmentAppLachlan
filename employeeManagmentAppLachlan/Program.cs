@@ -27,9 +27,9 @@ namespace employeeManagmentAppLachlan
 
             Console.WriteLine("Hello, World!");
             //scl connectionString
-            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DATABASE2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DB2V2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             //home connectionString
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db2v2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db2v2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
@@ -40,11 +40,16 @@ namespace employeeManagmentAppLachlan
             bool logInBool = true;
             string employeeChoice;
 
+
+            // LET ME COMMIT 
+
+            storageManager.advancedquery();
+
             //temp log in / role function
             //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
             //role = Convert.ToInt32(Console.ReadLine());
             //SwitchMainAdmin(); 
-            /*
+            
              do          //loops the log in function untill they enter a valid username or password
              {
                  Console.WriteLine("Enter your Username");
@@ -78,7 +83,9 @@ namespace employeeManagmentAppLachlan
                      logInBool = true;
                  }
              } while (logInBool);
-            */
+            
+           
+            /*
             Console.WriteLine("register function");// temp add a proper method 
             Console.WriteLine("Enter A Username");
             string RegUsername = view.GetInput();
@@ -88,6 +95,7 @@ namespace employeeManagmentAppLachlan
             int GenerateID = storageManager.RegisterEmployee(RegUsername,RegPassword);
             view.DisplayMessage($"new Employee Created with ID {GenerateID}");
             storageManager.CloseConnection(); // closes the connection with the database.
+            */
         }
 
         // the main switch case for the program.

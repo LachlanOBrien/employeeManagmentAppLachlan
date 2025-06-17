@@ -35,7 +35,7 @@ namespace employeeManagmentAppLachlan.Repositories
             catch (SqlException e)
             {
                 Console.WriteLine("The connections is Unsuccessfull");
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.Message); 
             }
             catch (Exception ex)
             {
@@ -43,6 +43,30 @@ namespace employeeManagmentAppLachlan.Repositories
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public void advancedquery()
+        {
+            string sqlString = "SELECT Em.FirstName, Em.LastName, Em.HireDate, Em.Wage FROM Employee.tblEmployeesDetails as EM  where Active = 1 and (Em.Wage >= 80000.00 and Em.HireDate >= '2018-01-01') order by Em.FirstName, Em.LastName, Em.Wage, Em.HireDate;";
+
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int wage = Convert.ToInt32(reader["Wage"]);
+                        string firstName = reader["Firstname"].ToString();
+                        string LastName = reader["Lastname"].ToString();
+                        DateTime HireDat = Convert.ToDateTime(reader["HireDate"]);
+                        Console.WriteLine(wage);
+                        Console.WriteLine(firstName);
+                        Console.WriteLine(LastName);
+                        Console.WriteLine(HireDat);
+                    }
+                }
+            }
+        }
+
 
         //gets the employees id and returns it in the method
         public int getEmployeeID(string Username)
