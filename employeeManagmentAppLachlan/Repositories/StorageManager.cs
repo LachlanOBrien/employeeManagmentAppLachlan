@@ -82,7 +82,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
 
 
-
+        // gets the data from the advancedQuery1 and returns it as the return of the method 
         public void AdvancedQuery1()
         {
             string sqlString = "SELECT Em.FirstName, Em.LastName, Em.HireDate, Em.Wage FROM Employee.tblEmployeesDetails as EM  where Active = 1 and (Em.Wage >= 80000.00 and Em.HireDate >= '2018-01-01') order by Em.FirstName, Em.LastName, Em.Wage, Em.HireDate;";
@@ -106,8 +106,8 @@ namespace employeeManagmentAppLachlan.Repositories
                 }
             }
         }
-
-        public void AdvancedQuery2() // possibly need to get the sql working before this query will work due to the bridging tables
+        // gets the data from the advancedQuery2 and returns it as the return of the method 
+        public void AdvancedQuery2() 
         {
             string sqlString = "Select Em.FirstName, Em.LastName, Em.HireDate, LC.CountryName   from Employee.tblEmployeesDetails as Em, Location.tblLocation as LO, Employee.tblEmployeeLocations AS EMLO, Location.tblLocationCountry AS LC  where EMLO.LocationID = LO.LocationID   and EMLO.EmployeeID = Em.EmployeeID and LC.CountryID = LO.CountryID   and (LC.CountryName = 'United Kingdom' And Em.HireDate >= '2019-03-09 16:05:07.123')   order by 1,2,3,4;";
 
@@ -131,7 +131,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 }
             }
         }
-
+        // gets the data from the advancedQuery3 and returns it as the return of the method 
         public void AdvancedQuery3()
         {
             string sqlString = "Select EM.EmployeeID, EM.Gender, EM.Wage from Employee.tblEmployeesDetails as EM where  (Gender = 'M') order by 1,2,3; ";
@@ -154,8 +154,8 @@ namespace employeeManagmentAppLachlan.Repositories
                 }
             }
         }
-
-        public void AdvancedQuery4()// possibly need to get the sql working before this query will work due to the bridging tables possibly need to change the where clause to change it from this to location to location country
+        // gets the data from the advancedQuery4 and returns it as the return of the method 
+        public void AdvancedQuery4()
             // smh need to link emp det > bridging table for location > location > coutry
         {
             string sqlString = " Select EM.FirstName, EM.LastName, LC.CountryName   from Employee.tblEmployeesDetails as EM,Location.tblLocation AS LO, Employee.tblEmployeeLocations AS EMLO, Location.tblLocationCountry as LC  Where EMLO.EmployeeID = EM.EmployeeID   and EMLO.LocationID = LO.LocationID  and LO.CountryID = LC.CountryID    and (EM.Gender = 'M' and LC.CountryName ='United States') Order by 1,2,3;";
@@ -178,8 +178,8 @@ namespace employeeManagmentAppLachlan.Repositories
                 }
             }
         }
-
-        public void AdvancedQuery5()// need to update all the job titles and table names possibly 
+        // gets the data from the advancedQuery5 and returns it as the return of the method 
+        public void AdvancedQuery5()
         {
             string sqlString = " select EM.EmployeeID,EM.FirstName,EM.LastName,JT.JobtitleName  from Employee.tblEmployeesDetails as EM,Employee.tblJobTitles as JT where EM.JobID = JT.jobtitleID   and JobtitleName = ('Data Scientist')  order by 1,2,3,4;  ";
 
@@ -203,7 +203,7 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
-
+        // gets the data from the ComplexQuery1 and returns it as the return of the method 
         public void ComplexQuery1()
         {
             string sqlString = "select Count(ED.EmployeeID) as totalEmployees ,JT.jobtitleName  from Employee.tblEmployeesDetails as ED, Employee.tblJobTitles as JT where ED.JobID = JT.JobTitleID   and JT.JobtitleName = 'Software Engineer'  group by JobtitleName order by totalEmployees, JT.JobtitleName; ";
@@ -225,7 +225,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 }
             }
         }
-
+        // gets the data from the ComplexQuery2 and returns it as the return of the method
         public void ComplexQuery2()
         {
             string sqlString = "select Round(AVG(Wage),2) as avgWage    from Employee.tblEmployeesDetails   order by avgWage; ";
@@ -246,7 +246,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 }
             }
         }
-
+        // gets the data from the ComplexQuery3 and returns it as the return of the method
         public void ComplexQuery3()
         {
             string sqlString = "select Count(lo.LocationID) as totalLocation, LC.CountryName    from Location.tblLocation as LO, Location.tblLocationCountry as LC  where LO.CountryID = LC.CountryID and LC.CountryName = 'United Kingdom'      group by LC.CountryName order by totalLocation;";
@@ -268,7 +268,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 }
             }
         }
-
+        // gets the data from the ComplexQuery4 and returns it as the return of the method
         public void ComplexQuery4()
         {
             string sqlString = "select count(EmployeeID) AS total, Gender   from Employee.tblEmployeesDetails as ED    where gender = 'M'   group by gender order by total; ";
@@ -290,7 +290,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 }
             }
         }
-
+        // gets the data from the ComplexQuery5 and returns it as the return of the method
         public void ComplexQuery5()
         {
             string sqlString = "select distinct count(JobTitleName ) as total, ED.Wage,JT.JobTitleName   from Employee.tblJobTitles as JT, Employee.tblEmployeesDetails as ED where JT.JobTitleID = ED.JobID  and wage >= '90000.00'  Group by ED.Wage, JT.JobTitleName  order by 1,3,2; ";

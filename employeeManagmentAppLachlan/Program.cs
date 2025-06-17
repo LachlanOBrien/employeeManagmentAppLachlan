@@ -14,10 +14,6 @@ namespace employeeManagmentAppLachlan
         private static StorageManager storageManager;
         private static consoleView view;
         static int role;
-        //to do list
-        /*
-            add the validity check method 
-        */
 
 
 
@@ -45,24 +41,24 @@ namespace employeeManagmentAppLachlan
             //role = Convert.ToInt32(Console.ReadLine());
             //SwitchMainAdmin(); 
             
-            do
+            do // loops this until a valid option has been entered 
             {
-                view.MainMenu();
-                MainChoice = Console.ReadLine();
+                view.MainMenu(); // displays the option for the user 
+                MainChoice = Console.ReadLine(); // gets the users input 
                 switch (MainChoice)
                 {
 
                     case "1":
                         {
                             Console.Clear();
-                            LogIn();
+                            LogIn(); // calls the log in method 
                             loop = false;
                         }
                         break;
                     case "2":
                         {
                             Console.Clear();
-                            RegisterEmployee();
+                            RegisterEmployee(); // calls the register method 
                             loop = false;
                         }
                         break;
@@ -185,7 +181,7 @@ namespace employeeManagmentAppLachlan
                 }
             } while (NotValidMain = false);
         }
-
+        // the main switch for the updates 
         public static void DisplayUpdatesSwitch()
         {
             bool NotValidMain = false;
@@ -282,7 +278,7 @@ namespace employeeManagmentAppLachlan
                 
             } while (NotValidMain);
         }
-
+        // the switch cases for which qry the user wants to access 
         public static void DisplayQrySwitch()
         {
             bool Loop = true;
