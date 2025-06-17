@@ -293,6 +293,27 @@ namespace employeeManagmentAppLachlan.View
             storageManager.AdvancedQuery5();
         }
 
+        public void DisplayComplexQry1()
+        {
+            storageManager.ComplexQuery1();
+        }
+        public void DisplayComplexQry2()
+        {
+            storageManager.ComplexQuery2();
+        }
+        public void DisplayComplexQry3()
+        {
+            storageManager.ComplexQuery3();
+        }
+        public void DisplayComplexQry4()
+        {
+            storageManager.ComplexQuery4();
+        }
+        public void DisplayComplexQry5()
+        {
+            storageManager.ComplexQuery5();
+        }
+
         //displays the data for the table City
         public void DisplayCity(List<tblCityID> CityID)
         {
