@@ -17,7 +17,6 @@ namespace employeeManagmentAppLachlan
         //to do list
         /*
             add the validity check method 
-            finish the emp switch case
         */
 
 
