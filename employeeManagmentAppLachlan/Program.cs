@@ -21,6 +21,10 @@ namespace employeeManagmentAppLachlan
             finish the emp switch case
         */
 
+        /*
+         * adv 2 $ 4 still no worky 
+        */
+
         static void Main(string[] args)
         {
 
