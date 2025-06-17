@@ -57,11 +57,11 @@ namespace employeeManagmentAppLachlan.Repositories
                         int wage = Convert.ToInt32(reader["Wage"]);
                         string firstName = reader["Firstname"].ToString();
                         string LastName = reader["Lastname"].ToString();
-                        DateTime HireDat = Convert.ToDateTime(reader["HireDate"]);
+                        DateTime HireDate = Convert.ToDateTime(reader["HireDate"]);
                         Console.WriteLine(wage);
                         Console.WriteLine(firstName);
                         Console.WriteLine(LastName);
-                        Console.WriteLine(HireDat);
+                        Console.WriteLine(HireDate);
                     }
                 }
             }
@@ -714,10 +714,13 @@ namespace employeeManagmentAppLachlan.Repositories
         public int RegisterEmployee(string username,string password)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Employee.tblEmployeesDetails(Username ,Password ) VALUES (@Username ,@Password); SELECT SCOPE_IDENTITY(); ", conn))
+            int Role = 1;
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Employee.tblEmployeesDetails(Username ,Password, RoleID ,Active  ) VALUES (@Username ,@Password ,@Active , @RoleID); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@Username ", username);
                 cmd.Parameters.AddWithValue("@Password", password);
+                cmd.Parameters.AddWithValue("@Active", Active);
+                cmd.Parameters.AddWithValue("@RoleID", Role);
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }

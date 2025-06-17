@@ -263,6 +263,11 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
+        public void DisplayadvancedQry()
+        {
+            storageManager.advancedquery();
+        }
+
         //displays the data for the table City
         public void DisplayCity(List<tblCityID> CityID)
         {

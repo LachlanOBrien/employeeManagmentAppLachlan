@@ -17,7 +17,6 @@ namespace employeeManagmentAppLachlan
         //to do list
         /*
             Make the querys for admins and employees
-            add the register funcation
             add the try catches where required
             finish the emp switch case
         */
@@ -39,9 +38,6 @@ namespace employeeManagmentAppLachlan
             bool loop = true;
             bool logInBool = true;
             string employeeChoice;
-
-
-            // LET ME COMMIT 
 
             storageManager.advancedquery();
 
@@ -83,19 +79,7 @@ namespace employeeManagmentAppLachlan
                      logInBool = true;
                  }
              } while (logInBool);
-            
-           
-            /*
-            Console.WriteLine("register function");// temp add a proper method 
-            Console.WriteLine("Enter A Username");
-            string RegUsername = view.GetInput();
-            Console.WriteLine("Enter A Password");
-            string RegPassword = view.GetInput();
-
-            int GenerateID = storageManager.RegisterEmployee(RegUsername,RegPassword);
-            view.DisplayMessage($"new Employee Created with ID {GenerateID}");
             storageManager.CloseConnection(); // closes the connection with the database.
-            */
         }
 
         // the main switch case for the program.
@@ -1364,17 +1348,17 @@ namespace employeeManagmentAppLachlan
             tblLocationCountry location1 = new tblLocationCountry(StreetID, StreetName, Active);
             int GenerateID = storageManager.InsertCountry(StreetName);
             view.DisplayMessage($"new Country Created with ID {GenerateID}");
+        }
 
-
-            try
-            {
-                storageManager.InsertCountry(StreetName);
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("The connections is Unsuccessfull");
-                Console.WriteLine(ex.Message);
-            }
+        private static void RegisterEmployee()
+        {
+            Console.WriteLine("register function");// temp add a proper method 
+            Console.WriteLine("Enter A Username");
+            string RegUsername = view.GetInput();
+            Console.WriteLine("Enter A Password");
+            string RegPassword = view.GetInput();
+            int GenerateID = storageManager.RegisterEmployee(RegUsername, RegPassword);
+            view.DisplayMessage($"new Employee Created with ID {GenerateID}");
         }
     }
 }
