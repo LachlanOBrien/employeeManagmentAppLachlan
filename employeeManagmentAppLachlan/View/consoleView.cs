@@ -14,7 +14,7 @@ namespace employeeManagmentAppLachlan.View
     {
         private static StorageManager storageManager;
         static int tableWidth = 232;
-
+        static string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db2v2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
         public void MainMenu()
         {
             Console.WriteLine("Welcome to the Employee Managment Menu");
@@ -274,43 +274,53 @@ namespace employeeManagmentAppLachlan.View
 
         public void DisplayAdvancedQry1()
         {
+            storageManager = new StorageManager(connectionString);
             storageManager.AdvancedQuery1();
         }
         public void DisplayAdvancedQry2()
         {
+            storageManager = new StorageManager(connectionString);
             storageManager.AdvancedQuery2();
         }
         public void DisplayAdvancedQry3()
         {
+            storageManager = new StorageManager(connectionString);
             storageManager.AdvancedQuery3();
         }
         public void DisplayAdvancedQry4()
         {
+            storageManager = new StorageManager(connectionString);
             storageManager.AdvancedQuery4();
         }
         public void DisplayAdvancedQry5()
         {
+            storageManager = new StorageManager(connectionString);
             storageManager.AdvancedQuery5();
         }
 
         public void DisplayComplexQry1()
         {
+            storageManager = new StorageManager(connectionString);
             storageManager.ComplexQuery1();
         }
         public void DisplayComplexQry2()
         {
+            storageManager = new StorageManager(connectionString);
             storageManager.ComplexQuery2();
         }
         public void DisplayComplexQry3()
         {
+            storageManager = new StorageManager(connectionString);
             storageManager.ComplexQuery3();
         }
         public void DisplayComplexQry4()
         {
+            storageManager = new StorageManager(connectionString);
             storageManager.ComplexQuery4();
         }
         public void DisplayComplexQry5()
         {
+            storageManager = new StorageManager(connectionString);
             storageManager.ComplexQuery5();
         }
 

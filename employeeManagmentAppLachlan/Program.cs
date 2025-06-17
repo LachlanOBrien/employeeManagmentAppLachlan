@@ -16,8 +16,8 @@ namespace employeeManagmentAppLachlan
         static int role;
         //to do list
         /*
-            Make the querys for admins and employees
-            add the try catches where required
+            fix the adv qry 2 & 4 not displaying data due to the bridging table not displaying.
+            add the validity check method 
             finish the emp switch case
         */
 
@@ -39,17 +39,20 @@ namespace employeeManagmentAppLachlan
             bool logInBool = true;
             string employeeChoice;
             string MainChoice;
-
-
-
+            
+            view.DisplayAdvancedQry2();
+            string test = Console.ReadLine();
+            view.DisplayAdvancedQry4();
+              test = Console.ReadLine();
             //temp log in / role function
             //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
             //role = Convert.ToInt32(Console.ReadLine());
             //SwitchMainAdmin(); 
-            view.MainMenu();
-            MainChoice = Console.ReadLine();
+            /*
             do
             {
+                view.MainMenu();
+                MainChoice = Console.ReadLine();
                 switch (MainChoice)
                 {
 
@@ -75,6 +78,7 @@ namespace employeeManagmentAppLachlan
                         break;
                 }
             } while (loop);
+            */
             storageManager.CloseConnection(); // closes the connection with the database.
         }
 

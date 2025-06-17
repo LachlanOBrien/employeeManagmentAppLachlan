@@ -109,7 +109,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
         public void AdvancedQuery2() // possibly need to get the sql working before this query will work due to the bridging tables
         {
-            string sqlString = "Select Em.FirstName, Em.LastName, Em.HireDate, LO.country   from Employee.tblEmployeesDetails as Em, Location.tblLocation as LO, Employee.tblEmployeeLocations AS EMLO where EMLO.LocationID = LO.LocationID   and EMLO.EmployeeID = Em.EmployeeID and (LO.Country = 'New Zealand' And Em.HireDate >= '2020-01-01') order by 1,2,3,4;";
+            string sqlString = "Select Em.FirstName, Em.LastName, Em.HireDate, LC.CountryName   from Employee.tblEmployeesDetails as Em, Location.tblLocation as LO, Employee.tblEmployeeLocations AS EMLO, Location.tblLocationCountry AS LC  where EMLO.LocationID = LO.LocationID   and EMLO.EmployeeID = Em.EmployeeID and LC.CountryID = LO.CountryID    and (LC.CountryName = 'New Zealand' And Em.HireDate >= '2020-01-01')  order by 1,2,3,4;";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -123,6 +123,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         string LastName = reader["Lastname"].ToString();
                         DateTime HireDate = Convert.ToDateTime(reader["HireDate"]);
                         string CountryName = reader["CountryName"].ToString();
+                        
                         PrintLine();
                         PrintRow($"{FirstName}", $"{LastName}", $"{HireDate}", $"{CountryName}");
                         PrintLine();
@@ -157,7 +158,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public void AdvancedQuery4()// possibly need to get the sql working before this query will work due to the bridging tables possibly need to change the where clause to change it from this to location to location country
             // smh need to link emp det > bridging table for location > location > coutry
         {
-            string sqlString = " Select EM.FirstName, EM.LastName, LA.country  from Employee.tblEmployeesDetails as EM,Location.tblLocation AS LA, Employee.tblEmployeeLocations AS LO  where EM.EmployeeID = LO.EmployeeID  and LO.LocationID = LA.LocationID  and (EM.Gender = 'F' and LA.country ='Australia')  Order by 1,2,3;  ";
+            string sqlString = " Select EM.FirstName, EM.LastName, LC.CountryName   from Employee.tblEmployeesDetails as EM,Location.tblLocation AS LO, Employee.tblEmployeeLocations AS EMLO, Location.tblLocationCountry as LC  Where EMLO.EmployeeID = EM.EmployeeID   and EMLO.LocationID = LO.LocationID  and LO.CountryID = LC.Active    and (EM.Gender = 'F' and LC.CountryName ='Australia') Order by 1,2,3;";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -180,7 +181,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
         public void AdvancedQuery5()// need to update all the job titles and table names possibly 
         {
-            string sqlString = " select EM.EmployeeID,EM.FirstName,EM.LastName,JT.JobtitleName  from Employee.tblEmployeesDetails as EM, Employee.tblJobTittles as JT where EM.JobID = JT.jobtitleID   and JobtitleName = ('Data Scientist')  order by 1,2,3,4;  ";
+            string sqlString = " select EM.EmployeeID,EM.FirstName,EM.LastName,JT.JobtitleName  from Employee.tblEmployeesDetails as EM,Employee.tblJobTitles as JT where EM.JobID = JT.jobtitleID   and JobtitleName = ('Data Scientist')  order by 1,2,3,4;  ";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -205,7 +206,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
         public void ComplexQuery1()
         {
-            string sqlString = "select Count(ED.EmployeeID) as totalEmployees ,JT.jobtitleName  from Employee.tblEmployeesDetails as ED, Employee.tblJobTittles as JT where ED.JobID = JT.JobTitleID   and JT.JobtitleName = 'Software Engineer'  group by JobtitleName order by totalEmployees, JT.JobtitleName; ";
+            string sqlString = "select Count(ED.EmployeeID) as totalEmployees ,JT.jobtitleName  from Employee.tblEmployeesDetails as ED, Employee.tblJobTitles as JT where ED.JobID = JT.JobTitleID   and JT.JobtitleName = 'Software Engineer'  group by JobtitleName order by totalEmployees, JT.JobtitleName; ";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -248,7 +249,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
         public void ComplexQuery3()
         {
-            string sqlString = "select Count(lo.LocationID) as totalLocation, LA.Country    from Location.tblLocation as LO, Location.tblLocationAdress as LA   where LO.LocationID = LA.LocationID and Country = 'United Kingdom'  group by LA.country  order by totalLocation; ";
+            string sqlString = "select Count(lo.LocationID) as totalLocation, LC.CountryName    from Location.tblLocation as LO, Location.tblLocationCountry as LC  where LO.CountryID = LC.CountryID and LC.CountryName = 'United Kingdom'      group by LC.CountryName order by totalLocation;";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -259,7 +260,7 @@ namespace employeeManagmentAppLachlan.Repositories
                     while (reader.Read())
                     {
                         string totalLocation = reader["totalLocation"].ToString();
-                        string Country = reader["Country"].ToString();
+                        string Country = reader["CountryName"].ToString();
                         PrintLine();
                         PrintRow($"{totalLocation}", $"{Country}");
                         PrintLine();
@@ -292,21 +293,21 @@ namespace employeeManagmentAppLachlan.Repositories
 
         public void ComplexQuery5()
         {
-            string sqlString = "select distinct count(JobtitleName) as total, Em.Wage   from Employee.tblJobTittles as JT, Employee.tblEmployeesDetails as ED where JT.jobtitleID = EW.JobtitleID  and ED.EmployeeID = EW.EmployeeID    and wage = '90000.00'  Group by EW.Wage   order by 1,2; ";
+            string sqlString = "select distinct count(JobTitleName ) as total, ED.Wage,JT.JobTitleName   from Employee.tblJobTitles as JT, Employee.tblEmployeesDetails as ED where JT.JobTitleID = ED.JobID  and wage >= '90000.00'  Group by ED.Wage, JT.JobTitleName  order by 1,3,2; ";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     PrintLine();
-                    PrintRow("total", " wage ");
+                    PrintRow("total", " wage ", " JobTitleName ");
                     while (reader.Read())
                     {
                         int total = Convert.ToInt32(reader["total"]);
                         int wage = Convert.ToInt32(reader["Wage"]);
-
+                        string JobTitleName = reader["JobTitleName"].ToString();
                         PrintLine();
-                        PrintRow($"{total}", $"{wage}");
+                        PrintRow($"{total}", $"{wage}", $"{JobTitleName}");
                         PrintLine();
                     }
                 }
