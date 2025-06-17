@@ -41,15 +41,11 @@ namespace employeeManagmentAppLachlan
             string employeeChoice;
             string MainChoice;
             
-            view.DisplayAdvancedQry2();
-            string test = Console.ReadLine();
-            view.DisplayAdvancedQry4();
-              test = Console.ReadLine();
             //temp log in / role function
             //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
             //role = Convert.ToInt32(Console.ReadLine());
             //SwitchMainAdmin(); 
-            /*
+            
             do
             {
                 view.MainMenu();
@@ -79,7 +75,7 @@ namespace employeeManagmentAppLachlan
                         break;
                 }
             } while (loop);
-            */
+            
             storageManager.CloseConnection(); // closes the connection with the database.
         }
 
@@ -101,89 +97,28 @@ namespace employeeManagmentAppLachlan
             {
                 do
                 {
-                    view.TblDisplayMenu();
-                    tblchoice = Console.ReadLine();
-                    switch (tblchoice)
+                    view.DisplayQryOrUpdate();
+                    string choiceQry = Console.ReadLine();
+                    switch (choiceQry)
                     {
                         case "1":
                             {
-                                //view.tblEmployeeContact();
-                                view.tblEmployeesDetails();
-                                // display details
+                                DisplayQrySwitch();
+                                loop = false;
                                 NotValidMain = false;
-                                displaySwitch1();
-
-
                             }
                             break;
                         case "2":
                             {
-                                view.tblEmployeeLocations();
-                                //display location
+                                DisplayUpdatesSwitch();
+                                loop = false;
                                 NotValidMain = false;
-                                displaySwitch2();
-
-                            }
-                            break;
-                        case "3":
-                            {
-                                view.tblRoleName();
-                                NotValidMain = false;
-                                displaySwitch3();
-
-                            }
-                            break;
-                        case "4":
-                            {
-                                view.tblDepartments();
-                                NotValidMain = false;
-                                displaySwitch4();
-
-                            }
-                            break;
-                        case "5":
-                            {
-                                view.tblJobTittles();
-                                NotValidMain = false;
-                                displaySwitch5();
-
-                            }
-                            break;
-                        case "6":
-                            {
-                                view.tblLocationCountry();
-                                NotValidMain = false;
-                                displaySwitch6();
-
-                            }
-                            break;
-                        case "7":
-                            {
-                                view.tblStreet();
-                                NotValidMain = false;
-                                displaySwitch7();
-
-                            }
-                            break;
-                        case "8":
-                            {
-                                view.tblSuburb();
-                                NotValidMain = false;
-                                displaySwitch8();
-                            }
-                            break;
-                        case "9":
-                            {
-                                view.tblCity();
-                                NotValidMain = false;
-                                displaySwitch9();
-
                             }
                             break;
                         default:
                             {
-                                Console.WriteLine("Invalid option please try again.");
-                                NotValidMain = false;
+                                Console.WriteLine("Please enter a valid Username and Password");
+                                loop = true;
                             }
                             break;
                     }
@@ -213,9 +148,6 @@ namespace employeeManagmentAppLachlan
                             NotValidMain = false;
                             break;
                     }
-
-
-
                 } while (MainMenuLoop);
             } while (loop);
         }
@@ -253,6 +185,182 @@ namespace employeeManagmentAppLachlan
                 }
             } while (NotValidMain = false);
         }
+
+        public static void DisplayUpdatesSwitch()
+        {
+            Console.Clear();
+            bool NotValidMain = false;
+            view.TblDisplayMenu();
+            string tblchoice = Console.ReadLine();
+            switch (tblchoice)
+            {
+                case "1":
+                    {
+                        //view.tblEmployeeContact();
+                        view.tblEmployeesDetails();
+                        // display details
+                        NotValidMain = false;
+                        displaySwitch1();
+
+
+                    }
+                    break;
+                case "2":
+                    {
+                        view.tblEmployeeLocations();
+                        //display location
+                        NotValidMain = false;
+                        displaySwitch2();
+
+                    }
+                    break;
+                case "3":
+                    {
+                        view.tblRoleName();
+                        NotValidMain = false;
+                        displaySwitch3();
+
+                    }
+                    break;
+                case "4":
+                    {
+                        view.tblDepartments();
+                        NotValidMain = false;
+                        displaySwitch4();
+
+                    }
+                    break;
+                case "5":
+                    {
+                        view.tblJobTittles();
+                        NotValidMain = false;
+                        displaySwitch5();
+
+                    }
+                    break;
+                case "6":
+                    {
+                        view.tblLocationCountry();
+                        NotValidMain = false;
+                        displaySwitch6();
+
+                    }
+                    break;
+                case "7":
+                    {
+                        view.tblStreet();
+                        NotValidMain = false;
+                        displaySwitch7();
+
+                    }
+                    break;
+                case "8":
+                    {
+                        view.tblSuburb();
+                        NotValidMain = false;
+                        displaySwitch8();
+                    }
+                    break;
+                case "9":
+                    {
+                        view.tblCity();
+                        NotValidMain = false;
+                        displaySwitch9();
+
+                    }
+                    break;
+                default:
+                    {
+                        Console.WriteLine("Invalid option please try again.");
+                        NotValidMain = false;
+                    }
+                    break;
+            }
+        }
+
+        public static void DisplayQrySwitch()
+        {
+            Console.Clear();
+            bool Loop = true;
+            do
+            {
+
+                view.DisplayQryOptions();
+                string Choice = Console.ReadLine();
+                switch (Choice)
+                {
+
+                    case "1":
+                        {
+                            storageManager.AdvancedQuery1();
+                            Loop = false;
+                        }
+                        break;
+                    case "2":
+                        {
+                            storageManager.AdvancedQuery2();
+                            Loop = false;
+                        }
+                        break;
+                    case "3":
+                        {
+                            storageManager.AdvancedQuery3();
+                            Loop = false;
+                        }
+                        break;
+                    case "4":
+                        {
+                            storageManager.AdvancedQuery4();
+                            Loop = false;
+                        }
+                        break;
+                    case "5":
+                        {
+                            storageManager.AdvancedQuery5();
+                            Loop = false;
+                        }
+                        break;
+                    case "6":
+                        {
+                            storageManager.ComplexQuery1();
+                            Loop = false;
+                        }
+                        break;
+                    case "7":
+                        {
+                            storageManager.ComplexQuery2();
+                            Loop = false;
+                        }
+                        break;
+                    case "8":
+                        {
+                            storageManager.ComplexQuery3();
+                            Loop = false;
+                        }
+                        break;
+                    case "9":
+                        {
+                            storageManager.ComplexQuery4();
+                            Loop = false;
+                        }
+                        break;
+                    case "10":
+                        {
+                            storageManager.ComplexQuery5();
+                            Loop = false;
+                        }
+                        break;
+                    default:
+                        {
+                            Console.WriteLine("Invalid option please try again.");
+                            Loop = true;
+                        }
+                        break;
+
+                }
+            } while (Loop);
+        }
+
         // displays the options for a table 
         public static void displaySwitch1()
         {

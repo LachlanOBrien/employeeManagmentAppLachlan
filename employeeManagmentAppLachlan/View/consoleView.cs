@@ -14,7 +14,6 @@ namespace employeeManagmentAppLachlan.View
     {
         private static StorageManager storageManager;
         static int tableWidth = 232;
-        static string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db2v2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
         public void MainMenu()
         {
             Console.WriteLine("Welcome to the Employee Managment Menu");
@@ -39,8 +38,32 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("8: Suburb");
             Console.WriteLine("9: City ");
         }
-       
-        
+
+        public void DisplayQryOrUpdate()
+        {
+            Console.WriteLine("What do you wish to do");
+            Console.WriteLine("Please choose an option from 1-2");
+            Console.WriteLine("1: Querys");
+            Console.WriteLine("Note that to view all the data from a table you must go to edit the data");
+            Console.WriteLine("2: Edit The Data");
+        }
+
+        public void DisplayQryOptions()
+        {
+            Console.WriteLine("What Query do you wish to View");
+            Console.WriteLine("Please choose an option from 1-10");
+            Console.WriteLine("1: Advanced Query 1");
+            Console.WriteLine("2: Advanced Query 2");
+            Console.WriteLine("3: Advanced Query 3");
+            Console.WriteLine("4: Advanced Query 4");
+            Console.WriteLine("5: Advanced Query 5");
+            Console.WriteLine("6: Complex Query 1");
+            Console.WriteLine("7: Complex Query 2");
+            Console.WriteLine("8: Complex Query 3");
+            Console.WriteLine("9: Complex Query 4");
+            Console.WriteLine("10: Complex Query 5");
+        }
+
         // displays the employee text  
         public void EmployeeDisplayMenu()
         {
@@ -269,59 +292,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                 }
             }
-        }
-
-
-        public void DisplayAdvancedQry1()
-        {
-            storageManager = new StorageManager(connectionString);
-            storageManager.AdvancedQuery1();
-        }
-        public void DisplayAdvancedQry2()
-        {
-            storageManager = new StorageManager(connectionString);
-            storageManager.AdvancedQuery2();
-        }
-        public void DisplayAdvancedQry3()
-        {
-            storageManager = new StorageManager(connectionString);
-            storageManager.AdvancedQuery3();
-        }
-        public void DisplayAdvancedQry4()
-        {
-            storageManager = new StorageManager(connectionString);
-            storageManager.AdvancedQuery4();
-        }
-        public void DisplayAdvancedQry5()
-        {
-            storageManager = new StorageManager(connectionString);
-            storageManager.AdvancedQuery5();
-        }
-
-        public void DisplayComplexQry1()
-        {
-            storageManager = new StorageManager(connectionString);
-            storageManager.ComplexQuery1();
-        }
-        public void DisplayComplexQry2()
-        {
-            storageManager = new StorageManager(connectionString);
-            storageManager.ComplexQuery2();
-        }
-        public void DisplayComplexQry3()
-        {
-            storageManager = new StorageManager(connectionString);
-            storageManager.ComplexQuery3();
-        }
-        public void DisplayComplexQry4()
-        {
-            storageManager = new StorageManager(connectionString);
-            storageManager.ComplexQuery4();
-        }
-        public void DisplayComplexQry5()
-        {
-            storageManager = new StorageManager(connectionString);
-            storageManager.ComplexQuery5();
         }
 
         //displays the data for the table City
