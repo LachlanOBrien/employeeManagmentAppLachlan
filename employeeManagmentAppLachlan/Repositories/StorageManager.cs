@@ -44,6 +44,8 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+
+        // displays the lines for the box that the data is displayed in
         static void PrintLine()
         {
             Console.WriteLine(new string('-', tableWidth));
@@ -79,22 +81,9 @@ namespace employeeManagmentAppLachlan.Repositories
         }
 
 
-        //displays the employees data
-        public void DisplayEmpEmployeeDetails(List<tblEmployeeDetails> details, int EmployeeID)
-        {
-            foreach (tblEmployeeDetails detail in details)
-            {
-                if (detail.employeeID == EmployeeID)
-                {
-                    PrintLine();
-                    PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
-                    PrintLine();
-                }
-            }
-        }
 
 
-        public void advancedquery1()
+        public void AdvancedQuery1()
         {
             string sqlString = "SELECT Em.FirstName, Em.LastName, Em.HireDate, Em.Wage FROM Employee.tblEmployeesDetails as EM  where Active = 1 and (Em.Wage >= 80000.00 and Em.HireDate >= '2018-01-01') order by Em.FirstName, Em.LastName, Em.Wage, Em.HireDate;";
 
@@ -112,6 +101,101 @@ namespace employeeManagmentAppLachlan.Repositories
                         DateTime HireDate = Convert.ToDateTime(reader["HireDate"]);
                         PrintLine();
                         PrintRow($"{firstName}",$"{LastName}",$"{HireDate}",$"{wage}");
+                        PrintLine();
+                    }
+                }
+            }
+        }
+
+        public void AdvancedQuery2() // possibly need to get the sql working before this query will work due to the bridging tables
+        {
+            string sqlString = "Select Em.FirstName, Em.LastName, Em.HireDate, LO.country   from Employee.tblEmployeesDetails as Em, Location.tblLocation as LO, Employee.tblEmployeeLocations AS EMLO where EMLO.LocationID = LO.LocationID   and EMLO.EmployeeID = Em.EmployeeID and (LO.Country = 'New Zealand' And Em.HireDate >= '2020-01-01') order by 1,2,3,4;";
+
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    PrintLine();
+                    PrintRow(" First Name ", " Last Name  ", "Hire Date ", " Country Name");
+                    while (reader.Read())
+                    {
+                        string FirstName = reader["Firstname"].ToString();
+                        string LastName = reader["Lastname"].ToString();
+                        DateTime HireDate = Convert.ToDateTime(reader["HireDate"]);
+                        string CountryName = reader["CountryName"].ToString();
+                        PrintLine();
+                        PrintRow($"{FirstName}", $"{LastName}", $"{HireDate}", $"{CountryName}");
+                        PrintLine();
+                    }
+                }
+            }
+        }
+
+        public void AdvancedQuery3()
+        {
+            string sqlString = "Select EM.EmployeeID, EM.Gender, EM.Wage from Employee.tblEmployeesDetails as EM where  (Gender = 'M') order by 1,2,3; ";
+
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    PrintLine();
+                    PrintRow(" Employee ID", " Gender", " Wage");
+                    while (reader.Read())
+                    {
+                        int Wage = Convert.ToInt32(reader["Wage"]);
+                        int EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
+                        string Gender = reader["Gender"].ToString();
+                        PrintLine();
+                        PrintRow($"{EmployeeID}", $"{Gender}", $"{Wage}");
+                        PrintLine();
+                    }
+                }
+            }
+        }
+
+        public void AdvancedQuery4()// possibly need to get the sql working before this query will work due to the bridging tables possibly need to change the where clause to change it from this to location to location country
+            // smh need to link emp det > bridging table for location > location > coutry
+        {
+            string sqlString = " Select EM.FirstName, EM.LastName, LA.country  from Employee.tblEmployeesDetails as EM,Location.tblLocation AS LA, Employee.tblEmployeeLocations AS LO  where EM.EmployeeID = LO.EmployeeID  and LO.LocationID = LA.LocationID  and (EM.Gender = 'F' and LA.country ='Australia')  Order by 1,2,3;  ";
+
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    PrintLine();
+                    PrintRow(" First Name", " Last Name ", " country");
+                    while (reader.Read())
+                    {
+                        string FirstName = reader["Firstname"].ToString();
+                        string LastName = reader["Lastname"].ToString();
+                        string country = reader["CountryName"].ToString();
+                        PrintLine();
+                        PrintRow($"{FirstName}", $"{LastName}", $"{country}");
+                        PrintLine();
+                    }
+                }
+            }
+        }
+
+        public void AdvancedQuery5()// need to update all the job titles and table names possibly 
+        {
+            string sqlString = " select EM.EmployeeID,EM.FirstName,EM.LastName,JT.JobtitleName  from Employee.tblEmployeesDetails as EM, Employee.tblJobTittles as JT where EM.JobID = JT.jobtitleID   and JobtitleName = ('Data Scientist')  order by 1,2,3,4;  ";
+
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    PrintLine();
+                    PrintRow("Employee ID", " First Name ", "Last Name ", "Last Name ");
+                    while (reader.Read())
+                    {
+                        string FirstName = reader["Firstname"].ToString();
+                        string LastName = reader["Lastname"].ToString();
+                        int EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
+                        string JobtitleName = reader["JobtitleName"].ToString();
+                        PrintLine();
+                        PrintRow($"{EmployeeID}", $"{FirstName}", $"{LastName}", $"{JobtitleName}");
                         PrintLine();
                     }
                 }
