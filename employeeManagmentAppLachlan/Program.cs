@@ -188,94 +188,99 @@ namespace employeeManagmentAppLachlan
 
         public static void DisplayUpdatesSwitch()
         {
-            Console.Clear();
             bool NotValidMain = false;
-            view.TblDisplayMenu();
-            string tblchoice = Console.ReadLine();
-            switch (tblchoice)
+            do
             {
-                case "1":
-                    {
-                        //view.tblEmployeeContact();
-                        view.tblEmployeesDetails();
-                        // display details
-                        NotValidMain = false;
-                        displaySwitch1();
+                Console.Clear();
+                NotValidMain = false;
+                view.TblDisplayMenu();
+                string tblchoice = Console.ReadLine();
+                switch (tblchoice)
+                {
+                    case "1":
+                        {
+                            //view.tblEmployeeContact();
+                            view.tblEmployeesDetails();
+                            // display details
+                            NotValidMain = false;
+                            displaySwitch1();
 
 
-                    }
-                    break;
-                case "2":
-                    {
-                        view.tblEmployeeLocations();
-                        //display location
-                        NotValidMain = false;
-                        displaySwitch2();
+                        }
+                        break;
+                    case "2":
+                        {
+                            view.tblEmployeeLocations();
+                            //display location
+                            NotValidMain = false;
+                            displaySwitch2();
 
-                    }
-                    break;
-                case "3":
-                    {
-                        view.tblRoleName();
-                        NotValidMain = false;
-                        displaySwitch3();
+                        }
+                        break;
+                    case "3":
+                        {
+                            view.tblRoleName();
+                            NotValidMain = false;
+                            displaySwitch3();
 
-                    }
-                    break;
-                case "4":
-                    {
-                        view.tblDepartments();
-                        NotValidMain = false;
-                        displaySwitch4();
+                        }
+                        break;
+                    case "4":
+                        {
+                            view.tblDepartments();
+                            NotValidMain = false;
+                            displaySwitch4();
 
-                    }
-                    break;
-                case "5":
-                    {
-                        view.tblJobTittles();
-                        NotValidMain = false;
-                        displaySwitch5();
+                        }
+                        break;
+                    case "5":
+                        {
+                            view.tblJobTittles();
+                            NotValidMain = false;
+                            displaySwitch5();
 
-                    }
-                    break;
-                case "6":
-                    {
-                        view.tblLocationCountry();
-                        NotValidMain = false;
-                        displaySwitch6();
+                        }
+                        break;
+                    case "6":
+                        {
+                            view.tblLocationCountry();
+                            NotValidMain = false;
+                            displaySwitch6();
 
-                    }
-                    break;
-                case "7":
-                    {
-                        view.tblStreet();
-                        NotValidMain = false;
-                        displaySwitch7();
+                        }
+                        break;
+                    case "7":
+                        {
+                            view.tblStreet();
+                            NotValidMain = false;
+                            displaySwitch7();
 
-                    }
-                    break;
-                case "8":
-                    {
-                        view.tblSuburb();
-                        NotValidMain = false;
-                        displaySwitch8();
-                    }
-                    break;
-                case "9":
-                    {
-                        view.tblCity();
-                        NotValidMain = false;
-                        displaySwitch9();
+                        }
+                        break;
+                    case "8":
+                        {
+                            view.tblSuburb();
+                            NotValidMain = false;
+                            displaySwitch8();
+                        }
+                        break;
+                    case "9":
+                        {
+                            view.tblCity();
+                            NotValidMain = false;
+                            displaySwitch9();
 
-                    }
-                    break;
-                default:
-                    {
-                        Console.WriteLine("Invalid option please try again.");
-                        NotValidMain = false;
-                    }
-                    break;
-            }
+                        }
+                        break;
+                    default:
+                        {
+                            Console.WriteLine("Invalid option please try again.");
+                            NotValidMain = true;
+                        }
+                        break;
+                }
+                
+            } while (NotValidMain);
         }
 
         public static void DisplayQrySwitch()
