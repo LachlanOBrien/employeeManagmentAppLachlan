@@ -133,13 +133,14 @@ namespace employeeManagmentAppLachlan
                         case "Y":
                             {
                                 MainMenuLoop = false;
+                                loop = true;
                             }
                             break;
                         case "N":
                             {
                                 Console.Clear();
                                 Console.WriteLine("Good-Bye");
-                                MainMenuLoop = false;
+                                MainMenuLoop = true;
                                 loop = false;
                             }
                             break;
@@ -280,11 +281,10 @@ namespace employeeManagmentAppLachlan
 
         public static void DisplayQrySwitch()
         {
-            Console.Clear();
             bool Loop = true;
             do
             {
-
+                Console.Clear();
                 view.DisplayQryOptions();
                 string Choice = Console.ReadLine();
                 switch (Choice)

@@ -41,6 +41,7 @@ namespace employeeManagmentAppLachlan.View
 
         public void DisplayQryOrUpdate()
         {
+            Console.Clear();
             Console.WriteLine("What do you wish to do");
             Console.WriteLine("Please choose an option from 1-2");
             Console.WriteLine("1: Querys");
