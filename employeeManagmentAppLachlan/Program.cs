@@ -45,7 +45,7 @@ namespace employeeManagmentAppLachlan
             //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
             //role = Convert.ToInt32(Console.ReadLine());
             //SwitchMainAdmin(); 
-            
+            /*
              do          //loops the log in function untill they enter a valid username or password
              {
                  Console.WriteLine("Enter your Username");
@@ -79,6 +79,8 @@ namespace employeeManagmentAppLachlan
                      logInBool = true;
                  }
              } while (logInBool);
+
+            */
             storageManager.CloseConnection(); // closes the connection with the database.
         }
 

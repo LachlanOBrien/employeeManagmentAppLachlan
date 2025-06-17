@@ -23,7 +23,7 @@ namespace employeeManagmentAppLachlan.Repositories
     {
         private SqlConnection conn;
         private static consoleView view;
-
+        static int tableWidth = 232;
         public StorageManager(string connectionString)
         {
             try
@@ -44,6 +44,56 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+        static void PrintLine()
+        {
+            Console.WriteLine(new string('-', tableWidth));
+        }
+
+        // displays the rows for the box that the data is displayed in 
+        static void PrintRow(params string[] columns)
+        {
+            int width = (tableWidth - columns.Length) / columns.Length;
+            string row = "|";
+
+            foreach (string column in columns)
+            {
+                row += AlignCentre(column, width) + "|";
+            }
+
+            Console.WriteLine(row);
+        }
+
+        //aligns the text in the boxes for the display methods
+        static string AlignCentre(string text, int width)
+        {
+            text = text.Length > width ? text.Substring(0, width - 3) + "..." : text;
+
+            if (string.IsNullOrEmpty(text))
+            {
+                return new string(' ', width);
+            }
+            else
+            {
+                return text.PadRight(width - (width - text.Length) / 2).PadLeft(width);
+            }
+        }
+
+
+        //displays the employees data
+        public void DisplayEmpEmployeeDetails(List<tblEmployeeDetails> details, int EmployeeID)
+        {
+            foreach (tblEmployeeDetails detail in details)
+            {
+                if (detail.employeeID == EmployeeID)
+                {
+                    PrintLine();
+                    PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
+                    PrintLine();
+                }
+            }
+        }
+
+
         public void advancedquery()
         {
             string sqlString = "SELECT Em.FirstName, Em.LastName, Em.HireDate, Em.Wage FROM Employee.tblEmployeesDetails as EM  where Active = 1 and (Em.Wage >= 80000.00 and Em.HireDate >= '2018-01-01') order by Em.FirstName, Em.LastName, Em.Wage, Em.HireDate;";
@@ -52,16 +102,17 @@ namespace employeeManagmentAppLachlan.Repositories
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
+                    PrintLine();
+                    PrintRow("First Name ", " Last Name", "Hire Date", " Wage");
                     while (reader.Read())
                     {
                         int wage = Convert.ToInt32(reader["Wage"]);
                         string firstName = reader["Firstname"].ToString();
                         string LastName = reader["Lastname"].ToString();
                         DateTime HireDate = Convert.ToDateTime(reader["HireDate"]);
-                        Console.WriteLine(wage);
-                        Console.WriteLine(firstName);
-                        Console.WriteLine(LastName);
-                        Console.WriteLine(HireDate);
+                        PrintLine();
+                        PrintRow($"{firstName}",$"{LastName}",$"{HireDate}",$"{wage}");
+                        PrintLine();
                     }
                 }
             }
