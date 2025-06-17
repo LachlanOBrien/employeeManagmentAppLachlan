@@ -16,14 +16,11 @@ namespace employeeManagmentAppLachlan
         static int role;
         //to do list
         /*
-            fix the adv qry 2 & 4 not displaying data due to the bridging table not displaying.
             add the validity check method 
             finish the emp switch case
         */
 
-        /*
-         * adv 2 $ 4 still no worky 
-        */
+
 
         static void Main(string[] args)
         {
