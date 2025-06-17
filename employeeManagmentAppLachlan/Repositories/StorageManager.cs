@@ -187,7 +187,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     PrintLine();
-                    PrintRow("Employee ID", " First Name ", "Last Name ", "Last Name ");
+                    PrintRow("Employee ID", " First Name ", "Last Name ", " Job title Name");
                     while (reader.Read())
                     {
                         string FirstName = reader["Firstname"].ToString();
@@ -201,6 +201,118 @@ namespace employeeManagmentAppLachlan.Repositories
                 }
             }
         }
+
+
+        public void ComplexQuery1()
+        {
+            string sqlString = "select Count(ED.EmployeeID) as totalEmployees ,JT.jobtitleName  from Employee.tblEmployeesDetails as ED, Employee.tblJobTittles as JT where ED.JobID = JT.JobTitleID   and JT.JobtitleName = 'Software Engineer'  group by JobtitleName order by totalEmployees, JT.JobtitleName; ";
+
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    PrintLine();
+                    PrintRow("total Employees", " jobtitleName ");
+                    while (reader.Read())
+                    {
+                        int totalEmployees = Convert.ToInt32(reader["totalEmployees"]);
+                        string jobtitleName = reader["jobtitleName"].ToString();
+                        PrintLine();
+                        PrintRow($"{totalEmployees}", $"{jobtitleName}");
+                        PrintLine();
+                    }
+                }
+            }
+        }
+
+        public void ComplexQuery2()
+        {
+            string sqlString = "select Round(AVG(Wage),2) as avgWage    from Employee.tblEmployeesDetails   order by avgWage; ";
+
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    PrintLine();
+                    PrintRow("avg Wage");
+                    while (reader.Read())
+                    {
+                        int avgWage = Convert.ToInt32(reader["avgWage"]);
+                        PrintLine();
+                        PrintRow($"{avgWage}");
+                        PrintLine();
+                    }
+                }
+            }
+        }
+
+        public void ComplexQuery3()
+        {
+            string sqlString = "select Count(lo.LocationID) as totalLocation, LA.Country    from Location.tblLocation as LO, Location.tblLocationAdress as LA   where LO.LocationID = LA.LocationID and Country = 'United Kingdom'  group by LA.country  order by totalLocation; ";
+
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    PrintLine();
+                    PrintRow("total Locations", " Country ");
+                    while (reader.Read())
+                    {
+                        string totalLocation = reader["totalLocation"].ToString();
+                        string Country = reader["Country"].ToString();
+                        PrintLine();
+                        PrintRow($"{totalLocation}", $"{Country}");
+                        PrintLine();
+                    }
+                }
+            }
+        }
+
+        public void ComplexQuery4()
+        {
+            string sqlString = "select count(EmployeeID) AS total, Gender   from Employee.tblEmployeesDetails as ED    where gender = 'M'   group by gender order by total; ";
+
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    PrintLine();
+                    PrintRow("total", "Gender");
+                    while (reader.Read())
+                    {
+                        int total = Convert.ToInt32(reader["total"]);
+                        string Gender = reader["Gender"].ToString();
+                        PrintLine();
+                        PrintRow($"{total}", $"{Gender}");
+                        PrintLine();
+                    }
+                }
+            }
+        }
+
+        public void ComplexQuery5()
+        {
+            string sqlString = "select distinct count(JobtitleName) as total, Em.Wage   from Employee.tblJobTittles as JT, Employee.tblEmployeesDetails as ED where JT.jobtitleID = EW.JobtitleID  and ED.EmployeeID = EW.EmployeeID    and wage = '90000.00'  Group by EW.Wage   order by 1,2; ";
+
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    PrintLine();
+                    PrintRow("total", " wage ");
+                    while (reader.Read())
+                    {
+                        int total = Convert.ToInt32(reader["total"]);
+                        int wage = Convert.ToInt32(reader["Wage"]);
+
+                        PrintLine();
+                        PrintRow($"{total}", $"{wage}");
+                        PrintLine();
+                    }
+                }
+            }
+        }
+
 
 
         //gets the employees id and returns it in the method
