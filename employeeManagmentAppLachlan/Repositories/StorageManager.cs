@@ -681,6 +681,17 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
+        public string UpdateEmpEmployeeDetails(string fieldChoice, int EmployeeID, string Change)
+        {
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeesDetails SET @fieldChoice = @Change Where EmployeeID = @EmployeeID", conn))
+            {
+                cmd.Parameters.AddWithValue("@fieldChoice", fieldChoice);
+                cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
+                cmd.Parameters.AddWithValue("@Change", Change);
+                return cmd.ExecuteNonQuery().ToString();
+            }
+        }
+
 
         //updates the Location table in the database
         public string UpdateLocation(string fieldChoice, int LocationID, string Change)

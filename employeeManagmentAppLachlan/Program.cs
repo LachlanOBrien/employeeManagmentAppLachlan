@@ -22,12 +22,24 @@ namespace employeeManagmentAppLachlan
 
             Console.WriteLine("Hello, World!");
             //scl connectionString
-            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DB2V2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DB2V2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             //home connectionString
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db2v2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db2v2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
+
+            //temp log in / role function
+            //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
+            //role = Convert.ToInt32(Console.ReadLine());
+            //SwitchMainAdmin(); 
+            MainMenu();
+            storageManager.CloseConnection(); // closes the connection with the database.
+        }
+
+        public static void MainMenu()
+        {
+
             bool NotValidMain = true;
             string tblchoice;
             string choice;
@@ -35,12 +47,6 @@ namespace employeeManagmentAppLachlan
             bool logInBool = true;
             string employeeChoice;
             string MainChoice;
-            
-            //temp log in / role function
-            //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
-            //role = Convert.ToInt32(Console.ReadLine());
-            //SwitchMainAdmin(); 
-            
             do // loops this until a valid option has been entered 
             {
                 view.MainMenu(); // displays the option for the user 
@@ -64,14 +70,12 @@ namespace employeeManagmentAppLachlan
                         break;
                     default:
                         {
-                            Console.WriteLine("Please enter a valid Username and Password");// gives the user a propper error message telling them to enter a valid username or password
+                            Console.WriteLine("Please enter a valid option");// gives the user a propper error message telling them to enter a valid username or password
                             logInBool = true;
                         }
                         break;
                 }
             } while (loop);
-            
-            storageManager.CloseConnection(); // closes the connection with the database.
         }
 
         // the main switch case for the program.
@@ -92,6 +96,7 @@ namespace employeeManagmentAppLachlan
             {
                 do
                 {
+                    Console.Clear();
                     view.DisplayQryOrUpdate();
                     string choiceQry = Console.ReadLine();
                     switch (choiceQry)
@@ -169,7 +174,12 @@ namespace employeeManagmentAppLachlan
                         break;
                     case "2":
                         {
-                            SwitchMainEmp(employeeID);
+                            UpdateEmpEmployeeDetails(EmployeeID);
+                        }
+                        break;
+                    case "3":
+                        {
+                            SwitchMainEmp(EmployeeID);
                         }
                         break;
                     default:
@@ -975,7 +985,7 @@ namespace employeeManagmentAppLachlan
                             view.DisplayMessage("Enter the Employee ID that relates to the Email you wish to update");
                             Console.WriteLine("(Refrence data above)");
                             int EmployeeID = view.GetIntInput();
-                            view.DisplayMessage($"What do you want to change {EmployeeID}'s Gender to:");
+                            view.DisplayMessage($"What do you want to change {EmployeeID}'s Email to:");
                             string Change = view.GetInput();
                             string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
@@ -990,7 +1000,75 @@ namespace employeeManagmentAppLachlan
                             view.DisplayMessage("Enter the Employee ID that relates to the Phonenumber you wish to update");
                             Console.WriteLine("(Refrence data above)");
                             int EmployeeID = view.GetIntInput();
+                            view.DisplayMessage($"What do you want to change {EmployeeID}'s Phone Number to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option please try again.");
+                        loop = true;
+                        break;
+                }
+            }
+            while (loop);
+        }
+
+        private static void UpdateEmpEmployeeDetails(int EmployeeID)
+        {
+            bool loop = true;
+            do
+            {
+                view.DisplayUpdateEmployeeDetails();
+                string FieldChoice = view.GetInput();
+                switch (FieldChoice) // change the grammar error in the switch cases of update to update to and change of to that relates to the 
+                {
+                    case "1":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "FirstName";
+                            view.DisplayMessage($"What do you want to change Your First Name to:");
+                            string FirstNameChange = view.GetInput();
+                            string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, FirstNameChange);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "2":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "LastName";
+                            view.DisplayMessage($"What do you want to change Your Last Name to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "3":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "Gender";
                             view.DisplayMessage($"What do you want to change {EmployeeID}'s Gender to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "4":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "Email";
+                            view.DisplayMessage($"What do you want to change your Email to:");
+                            string Change = view.GetInput();
+                            string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
+                            view.DisplayMessage($"Rows Affected: {rowsAffected}");
+                        }
+                        break;
+                    case "5":
+                        {
+                            loop = false;
+                            string FieldChoiceName = "Phonenumber";
+                            view.DisplayMessage($"What do you want to change Your Phone Number to:");
                             string Change = view.GetInput();
                             string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
@@ -1468,6 +1546,35 @@ namespace employeeManagmentAppLachlan
             string RegPassword = view.GetInput();
             int GenerateID = storageManager.RegisterEmployee(RegUsername, RegPassword);
             view.DisplayMessage($"new Employee Created with ID {GenerateID}");
+            bool loop = true;
+            string choice;
+            do
+            {
+                Console.WriteLine("do you wish to go to the Log in screen Enter Y/N");
+                choice = Console.ReadLine().ToUpper();
+                switch (choice)
+                {
+                    case "Y":
+                        {
+                            LogIn();
+                            loop = false;
+                        }
+                        break;
+                    case "N":
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Good-Bye");
+                           
+                            loop = false;
+                        }
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option please try again.");
+                        loop = false;
+                        break;
+                }
+            } while (loop);
+
         }
 
         private static void LogIn()
@@ -1482,6 +1589,7 @@ namespace employeeManagmentAppLachlan
 
             do          //loops the log in function untill they enter a valid username or password
              {
+                Console.Clear();
                  Console.WriteLine("Enter your Username");
                  string inputedUsername = Console.ReadLine();// gets the username
                  string Username = inputedUsername; // gets the username 
@@ -1491,7 +1599,7 @@ namespace employeeManagmentAppLachlan
                  Console.WriteLine("Please enter your Password");
                  string inputedPassword = Console.ReadLine(); // gets the inputted password
                  Console.Clear();
-                 if (inputedUsername == Username && inputedPassword == password) // checks if the employees username and password are valid 
+                 if (inputedUsername.Equals( Username) && inputedPassword.Equals( password)) // checks if the employees username and password are valid 
                  {
                      if (role == 1) // checks if they are an employee
                      {

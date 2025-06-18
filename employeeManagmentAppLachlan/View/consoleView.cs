@@ -1,5 +1,6 @@
 ﻿using employeeManagmentAppLachlan.Model;
 using employeeManagmentAppLachlan.Repositories;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace employeeManagmentAppLachlan.View
 {
-    public class consoleView  
+    public class consoleView
     {
         private static StorageManager storageManager;
         static int tableWidth = 232;
@@ -69,13 +70,16 @@ namespace employeeManagmentAppLachlan.View
         public void EmployeeDisplayMenu()
         {
             Console.WriteLine("Welcome to the Employee Menu");
-            Console.WriteLine("Please choose an option from 1-1");
+            Console.WriteLine("Please choose an option from 1-3");
             Console.WriteLine("1: View Your Infomation");
+            Console.WriteLine("2: Update your Infomatin");
+            Console.WriteLine("3: Return to main Menu");
         }
 
         //displays the options for the fields you can update in the table employee details 
         public void DisplayUpdateEmployeeDetails()
         {
+            Console.Clear();
             Console.WriteLine("What Feild do you wish to update");
             Console.WriteLine("Choose an option from 1-5");
             Console.WriteLine("1: First Name");
@@ -279,8 +283,8 @@ namespace employeeManagmentAppLachlan.View
                 return text.PadRight(width - (width - text.Length) / 2).PadLeft(width);
             }
         }
-        
-        
+
+
         //displays the employees data
         public void DisplayEmpEmployeeDetails(List<tblEmployeeDetails> details, int EmployeeID)
         {
@@ -298,7 +302,7 @@ namespace employeeManagmentAppLachlan.View
         //displays the data for the table City
         public void DisplayCity(List<tblCityID> CityID)
         {
-           
+
             PrintLine();
             PrintRow("City ID ", " City Name", "Active");
             /* Console.Clear();
@@ -383,7 +387,7 @@ namespace employeeManagmentAppLachlan.View
                 PrintLine();
                 PrintRow($"{jobTittle.jobtitleID}", $"{jobTittle.jobtitleName}", $"{jobTittle.active}");
                 PrintLine();
-               // Console.WriteLine($"{"Job title ID: " + jobTittle.jobtitleid}\t{"Job title Name: " + jobTittle.jobtitlename}");
+                // Console.WriteLine($"{"Job title ID: " + jobTittle.jobtitleid}\t{"Job title Name: " + jobTittle.jobtitlename}");
             }
         }
 
@@ -391,7 +395,7 @@ namespace employeeManagmentAppLachlan.View
         public void DisplayRoleNames(List<tblEmployeeRoleName> Roles)
         {
             PrintLine();
-            PrintRow("Role ID ", " Role Name"," Active");
+            PrintRow("Role ID ", " Role Name", " Active");
             foreach (tblEmployeeRoleName role in Roles)
             {
                 PrintLine();
@@ -439,13 +443,62 @@ namespace employeeManagmentAppLachlan.View
         // gets the input of an string variable 
         public string GetInput()
         {
-            return Console.ReadLine();
+            string input;
+            bool loop = true;
+            do
+            {
+                Console.WriteLine("Please enter you input");
+                input = Console.ReadLine();
+                if (input.IsNullOrEmpty())
+                {
+                    loop = true;
+                    Console.WriteLine("please enter a valid option");
+                }
+                else
+                {
+                    loop = false;
+                }
+            } while (loop);
+            
+            
+            return input;
         }
 
         //gets the input of an int variable 
         public int GetIntInput()
         {
-            return int.Parse(Console.ReadLine());
+            string input;
+            int IntInput = 0;
+            bool loop = true;
+            do
+            {
+
+                Console.WriteLine("Please enter a number");
+                input = Console.ReadLine();
+                bool number = IsAllDigits(input);
+                if (input.IsNullOrEmpty() | number == false)
+                {
+                    Console.WriteLine("please input a valid option");
+                    loop = true;
+                }
+                else
+                {
+                    IntInput = Convert.ToInt32(input);
+                    loop = false;
+                }
+            } while (loop);
+            return IntInput;
+        }
+
+
+        public bool IsAllDigits(string s)
+        {
+            foreach (char c in s)
+            {
+                if (!char.IsDigit(c))
+                    return false;
+            }
+            return true;
         }
     }
 }
