@@ -3,6 +3,7 @@ using Azure.Core.GeoJson;
 using employeeManagmentAppLachlan.Model;
 using employeeManagmentAppLachlan.View;
 using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -436,26 +437,59 @@ namespace employeeManagmentAppLachlan.Repositories
         {
             List<tblEmployeeDetails> employeeDetails = new List<tblEmployeeDetails>();
             string sqlString = "SELECT * FROM Employee.tblEmployeesDetails WHERE Active = 1";
+            string JobIDStr;
+            string PhoneNumberStr;
+            string WageStr;
+            bool isNullJobID = false;
+            bool isNullPhoneNumber = false;
+            bool isNullWage = false;
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
+                        JobIDStr = reader["JobID"].ToString();
+                        if (JobIDStr.IsNullOrEmpty())
+                        {
+                            isNullJobID = true;
+                        }
+                        PhoneNumberStr = reader["Phonenumber"].ToString();
+                        if (PhoneNumberStr.IsNullOrEmpty())
+                        {
+                            isNullPhoneNumber = true;
+                        }
+                        WageStr = reader["Wage"].ToString();
+                        if (WageStr.IsNullOrEmpty())
+                        {
+                            isNullWage = true;
+                        }
                         int EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
                         string Firstname = reader["Firstname"].ToString();
                         string Lastname = reader["Lastname"].ToString();
                         DateTime Hiredate = Convert.ToDateTime(reader["HireDate"]);
                         string Gender = reader["Gender"].ToString();
-                        string JobID = reader["JobID"].ToString();
+                        int JobID = 0;
+                        if (isNullJobID == false)
+                        {
+                            JobID = Convert.ToInt32(reader["JobID"]);
+                        }
                         int RoleID = Convert.ToInt32(reader["RoleID"]);
                         string Username = reader["Username"].ToString();
                         string Password = reader["Password"].ToString();
                         bool Active = Convert.ToBoolean(reader["Active"]);
                         string Email = reader["Email"].ToString();
-                        string PhoneNumber = reader["Phonenumber"].ToString();
-                        string Wage = reader["Wage"].ToString();
-                        employeeDetails.Add(new tblEmployeeDetails(EmployeeID, Firstname,  Lastname,  Hiredate,  Gender,  JobID,  RoleID,  Username, Password, Active,  Email,  PhoneNumber,  Wage));
+                        int PhoneNumber = 0;
+                        if (isNullPhoneNumber == false)
+                        {
+                            PhoneNumber = Convert.ToInt32(reader["Phonenumber"]);
+                        }
+                        int Wage = 0;
+                        if (isNullWage == false)
+                        {
+                            Wage = Convert.ToInt32(reader["Wage"]);
+                        }
+                        employeeDetails.Add(new tblEmployeeDetails(EmployeeID, Firstname, Lastname, Hiredate, Gender, JobID, RoleID, Username, Password, Active, Email, PhoneNumber, Wage));
                     }
                 }
             }
@@ -856,7 +890,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
 
         //creates a new EmployeeDetails in the database
-        public int InsertEmployeeDetails(string FirstName, string LastName, DateTime HireDate, string Gender, string JobID, int RoleID, string Username, string Password, string Email, string PhoneNumber, string Wage)
+        public int InsertEmployeeDetails(string FirstName, string LastName, DateTime HireDate, string Gender, int JobID, int RoleID, string Username, string Password, string Email, int PhoneNumber, int Wage)
         {
             bool Active = true;
             using (SqlCommand cmd = new SqlCommand($"INSERT INTO Employee.tblEmployeesDetails (FirstName, LastName, Hiredate, Gender, JobID, Username, Password, RoleID, Active, Email, Phonenumber, Wage) VALUES (@FirstName, @LastName, @HireDate, @Gender, @JobID, @Username, @Password, @RoleID, @Active, @Email, @Phonenumber, @Wage); SELECT SCOPE_IDENTITY(); ", conn))
