@@ -447,14 +447,14 @@ namespace employeeManagmentAppLachlan.Repositories
                         string Lastname = reader["Lastname"].ToString();
                         DateTime Hiredate = Convert.ToDateTime(reader["HireDate"]);
                         string Gender = reader["Gender"].ToString();
-                        int JobID = Convert.ToInt32(reader["JobID"]);
+                        string JobID = reader["JobID"].ToString();
                         int RoleID = Convert.ToInt32(reader["RoleID"]);
                         string Username = reader["Username"].ToString();
                         string Password = reader["Password"].ToString();
                         bool Active = Convert.ToBoolean(reader["Active"]);
                         string Email = reader["Email"].ToString();
-                        int PhoneNumber = Convert.ToInt32(reader["Phonenumber"]);
-                        int Wage = Convert.ToInt32(reader["Wage"]);
+                        string PhoneNumber = reader["Phonenumber"].ToString();
+                        string Wage = reader["Wage"].ToString();
                         employeeDetails.Add(new tblEmployeeDetails(EmployeeID, Firstname,  Lastname,  Hiredate,  Gender,  JobID,  RoleID,  Username, Password, Active,  Email,  PhoneNumber,  Wage));
                     }
                 }
@@ -856,7 +856,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
 
         //creates a new EmployeeDetails in the database
-        public int InsertEmployeeDetails(string FirstName, string LastName, DateTime HireDate, string Gender, int JobID, int RoleID, string Username, string Password, string Email, int PhoneNumber, int Wage)
+        public int InsertEmployeeDetails(string FirstName, string LastName, DateTime HireDate, string Gender, string JobID, int RoleID, string Username, string Password, string Email, string PhoneNumber, string Wage)
         {
             bool Active = true;
             using (SqlCommand cmd = new SqlCommand($"INSERT INTO Employee.tblEmployeesDetails (FirstName, LastName, Hiredate, Gender, JobID, Username, Password, RoleID, Active, Email, Phonenumber, Wage) VALUES (@FirstName, @LastName, @HireDate, @Gender, @JobID, @Username, @Password, @RoleID, @Active, @Email, @Phonenumber, @Wage); SELECT SCOPE_IDENTITY(); ", conn))
@@ -974,12 +974,14 @@ namespace employeeManagmentAppLachlan.Repositories
         {
             bool Active = true;
             int Role = 1;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Employee.tblEmployeesDetails(Username ,Password, RoleID ,Active  ) VALUES (@Username ,@Password ,@Active , @RoleID); SELECT SCOPE_IDENTITY(); ", conn))
+            DateTime date = DateTime.Now;
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Employee.tblEmployeesDetails(Username ,Password, RoleID ,Active ,HireDate ) VALUES (@Username ,@Password ,@Active , @RoleID,@HireDate); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@Username ", username);
                 cmd.Parameters.AddWithValue("@Password", password);
                 cmd.Parameters.AddWithValue("@Active", Active);
                 cmd.Parameters.AddWithValue("@RoleID", Role);
+                cmd.Parameters.AddWithValue("@HireDate", date);
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }

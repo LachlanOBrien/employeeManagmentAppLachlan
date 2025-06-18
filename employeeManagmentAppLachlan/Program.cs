@@ -1436,7 +1436,7 @@ namespace employeeManagmentAppLachlan
             view.DisplayMessage("F for a Female Employee \t M for a Male Employee");
             string Gender = view.GetInput().ToUpper();
             view.DisplayMessage("Enter the Job ID of the New Employee");
-            int JobID = view.GetIntInput();
+            string JobID = view.GetInput();
             view.DisplayMessage("Enter the Username of the New Employee");
             string Username = view.GetInput();
             view.DisplayMessage("Enter the Password of the New Employee ");
@@ -1447,9 +1447,9 @@ namespace employeeManagmentAppLachlan
             view.DisplayMessage("Enter the Email of the New Employee");
             string Email = view.GetInput();
             view.DisplayMessage("Enter the Phone Number of the New Employee");
-            int Phonenumber = view.GetIntInput();
+            string Phonenumber = view.GetInput();
             view.DisplayMessage("Enter the Wage for the New Employee");
-            int wage = view.GetIntInput();
+            string wage = view.GetInput();
             int EmployeeID = 0;
             tblEmployeeDetails location1 = new tblEmployeeDetails(EmployeeID, FirstName, LastName, HireDate, Gender, JobID, Role, Password, Username, Active, Email, Phonenumber, wage);
             int GenerateID = storageManager.InsertEmployeeDetails(FirstName, LastName, HireDate, Gender, JobID, Role, Password, Username, Email, Phonenumber, wage);
