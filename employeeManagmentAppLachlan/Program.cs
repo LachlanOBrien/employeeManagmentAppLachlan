@@ -22,9 +22,9 @@ namespace employeeManagmentAppLachlan
 
             Console.WriteLine("Hello, World!");
             //scl connectionString
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DB2V2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DB2V2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             //home connectionString
-            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db2v2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db2v2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
@@ -140,7 +140,7 @@ namespace employeeManagmentAppLachlan
                             {
                                 Console.Clear();
                                 Console.WriteLine("Good-Bye");
-                                MainMenuLoop = true;
+                                MainMenuLoop = false;
                                 loop = false;
                             }
                             break;
@@ -159,10 +159,10 @@ namespace employeeManagmentAppLachlan
             bool NotValidMain = false;
             int employeeID = EmployeeID;
             Console.Clear();
-            Console.WriteLine("HAHA pleb employee");
+            //Console.WriteLine("HAHA pleb employee");
             do
             {
-                view.EmployeeDisplayMenu();
+                view.EmpDisplayMenu();
                 Choice = Console.ReadLine();
                 switch (Choice)
                 {
@@ -177,11 +177,6 @@ namespace employeeManagmentAppLachlan
                             UpdateEmpEmployeeDetails(EmployeeID);
                         }
                         break;
-                    case "3":
-                        {
-                            SwitchMainEmp(EmployeeID);
-                        }
-                        break;
                     default:
                         {
                             Console.WriteLine("Invalid option please try again.");
@@ -189,6 +184,33 @@ namespace employeeManagmentAppLachlan
                         }
                         break;
                 }
+                bool MainMenuLoop = true;
+                do
+                {
+                    Console.WriteLine("Do you wish to go back to the main menu enter Y/N");
+                    string choiceloopans = Console.ReadLine().ToUpper();
+                    switch (choiceloopans)
+                    {
+                        case "Y":
+                            {
+                                MainMenuLoop = false;
+                                NotValidMain = true;
+                            }
+                            break;
+                        case "N":
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Good-Bye");
+                                MainMenuLoop = false;
+                                NotValidMain = false;
+                            }
+                            break;
+                        default:
+                            Console.WriteLine("Invalid option please try again.");
+                            NotValidMain = false;
+                            break;
+                    }
+                } while (MainMenuLoop);
             } while (NotValidMain = false);
         }
         // the main switch for the updates 
@@ -874,17 +896,23 @@ namespace employeeManagmentAppLachlan
         //updates the RoleName table in the database
         private static void UpdateRoleName()
         {
+            List<tblEmployeeRoleName> employee = storageManager.GetTblEmployeeRoleNames();
+            view.DisplayRoleNames(employee);
             view.DisplayMessage("Enter the Role Name to update");
+            Console.WriteLine("(Refrence data above)");
             string roleName = view.GetInput();
             view.DisplayMessage($"What do you want to change {roleName} to:");
             string RoleNameChange = view.GetInput();
             string rowsAffected = storageManager.UpdateRoleName(roleName, RoleNameChange);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-        //updates the JobTitle table in the database
+        //updates the JobTitle table in the database 
         private static void UpdateJobTitle()
         {
+            List<tblJobtitle> employee = storageManager.GetEmployeeTblJobTittles();
+            view.DisplaytblJobTittles(employee);
             view.DisplayMessage("Enter the Job Title to update");
+            Console.WriteLine("(Refrence data above)");
             string JobTitle = view.GetInput();
             view.DisplayMessage($"What do you want to change {JobTitle} to:");
             string JobTitleChange = view.GetInput();
@@ -894,7 +922,10 @@ namespace employeeManagmentAppLachlan
         //updates the LocationStreet table in the database
         private static void UpdateLocationStreet()
         {
+            List<tblStreetID> employee = storageManager.GetTblStreetIDs();
+            view.DisplayStreetID(employee);
             view.DisplayMessage("Enter the Street Name to update");
+            Console.WriteLine("(Refrence data above)");
             string StreetName = view.GetInput();
             view.DisplayMessage($"What do you want to change {StreetName} to:");
             string StreetNameChange = view.GetInput();
@@ -904,7 +935,10 @@ namespace employeeManagmentAppLachlan
         //updates the Country table in the database
         private static void UpdateLocationCountry()
         {
+            List<tblLocationCountry> employee = storageManager.GetTblLocationCountries();
+            view.DisplayCountry(employee);
             view.DisplayMessage("Enter the Country Name to update");
+            Console.WriteLine("(Refrence data above)");
             string CountryName = view.GetInput();
             view.DisplayMessage($"What do you want to change {CountryName} to:");
             string CountryNameChange = view.GetInput();
@@ -914,7 +948,10 @@ namespace employeeManagmentAppLachlan
         //updates the City table in the database
         private static void UpdateLocationCity()
         {
+            List<tblCityID> employee = storageManager.GetTblCityIDs();
+            view.DisplayCity(employee);
             view.DisplayMessage("Enter the City Name to update");
+            Console.WriteLine("(Refrence data above)");
             string CityName = view.GetInput();
             view.DisplayMessage($"What do you want to change {CityName} to:");
             string CityNameChange = view.GetInput();
@@ -1430,10 +1467,9 @@ namespace employeeManagmentAppLachlan
             string FirstName = view.GetInput();
             view.DisplayMessage("Enter the Last Name of the new Employee");
             string LastName = view.GetInput();
-            view.DisplayMessage("Enter the Hire Date of New Employee");
-            DateTime HireDate = Convert.ToDateTime(Console.ReadLine());
+            DateTime HireDate = DateTime.Now;
             view.DisplayMessage("Enter The Gender of the New Employee ");
-            view.DisplayMessage("F for a Female Employee \t M for a Male Employee");
+            view.DisplayMessage("F for a Female Employee  M for a Male Employee");
             string Gender = view.GetInput().ToUpper();
             view.DisplayMessage("Enter the Job ID of the New Employee");
             int JobID = view.GetIntInput();

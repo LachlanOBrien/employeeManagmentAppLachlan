@@ -76,6 +76,14 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("3: Return to main Menu");
         }
 
+        public void EmpDisplayMenu()
+        {
+            Console.WriteLine("Welcome to the Employee Menu");
+            Console.WriteLine("Please choose an option from 1-2");
+            Console.WriteLine("1: View Your Infomation");
+            Console.WriteLine("2: Update your Infomatin");
+        }
+
         //displays the options for the fields you can update in the table employee details 
         public void DisplayUpdateEmployeeDetails()
         {
@@ -106,7 +114,7 @@ namespace employeeManagmentAppLachlan.View
         public void DisplayUpdatesubrub()
         {
             Console.WriteLine("What Feild do you wish to update");
-            Console.WriteLine("Choose an option from 1-5");
+            Console.WriteLine("Choose an option from 1-2");
             Console.WriteLine("1: subrub Name");
             Console.WriteLine("2: Post Code");
         }
@@ -126,10 +134,10 @@ namespace employeeManagmentAppLachlan.View
         public void tblEmployeeLocations()
         {
             Console.Clear();
-            Console.WriteLine("Welcome to EmployeeLocations");
+            Console.WriteLine("Welcome to Locations");
             Console.WriteLine("Choose an option from 1-5");
             Console.WriteLine("Menu: ");
-            Console.WriteLine("1: View All records in Employee.tblEmployeeLocations");
+            Console.WriteLine("1: View All records in Locations.TblLocations");
             Console.WriteLine("2: Update an employee's location by employeeID");
             Console.WriteLine("3: Delete a Location by job title name");
             Console.WriteLine("4: Insert a new Location ");

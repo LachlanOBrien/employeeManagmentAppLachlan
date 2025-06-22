@@ -420,7 +420,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     while (reader.Read())
                     {
-                        string Departments = reader["Departments"].ToString();
+                        string Departments = reader["DepartmentName"].ToString();
                         int ManagersID = Convert.ToInt32(reader["ManagersID"]);
                         int DepartmentID = Convert.ToInt32(reader["DepartmentID"]);
                         bool Active = Convert.ToBoolean(reader["Active"]);
@@ -523,7 +523,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public List<tblJobtitle> GetEmployeeTblJobTittles()
         {
             List<tblJobtitle> jobTittles = new List<tblJobtitle>();
-            string sqlString = "SELECT * FROM Employee.tblJobTittles WHERE Active = 1";
+            string sqlString = "SELECT * FROM Employee.tblJobTitles WHERE Active = 1";
             using (SqlCommand cmd = new SqlCommand(sqlString,conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -875,7 +875,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int InsertLocation(string LocationName, int CountryID, int SuburbID, int StreetID, int CityID, int StreetNumber)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO Location.tblLocation (locationName, CountryID, SuburbID, StreetID, CityID, StreetNumber, Active) VALUES (@RoleName ,@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO Location.tblLocation (locationName, CountryID, SuburbID, StreetID, CityID, StreetNumber, Active) VALUES (@LocationName ,@CountryID  @SuburbID ,@StreetID ,@CityID ,@StreetNumber ); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@LocationName ", LocationName);
                 cmd.Parameters.AddWithValue("@CountryID  ", CountryID);
