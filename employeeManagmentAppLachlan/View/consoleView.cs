@@ -444,6 +444,7 @@ namespace employeeManagmentAppLachlan.View
                             loop = false;
                         }
                     }
+                    loopnum = 0;
                 }
                 
             }
