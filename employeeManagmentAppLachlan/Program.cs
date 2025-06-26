@@ -1,4 +1,5 @@
-﻿using employeeManagmentAppLachlan.Model;
+﻿using Azure;
+using employeeManagmentAppLachlan.Model;
 using employeeManagmentAppLachlan.Repositories;
 using employeeManagmentAppLachlan.View;
 using Microsoft.Data.SqlClient;
@@ -37,6 +38,16 @@ namespace employeeManagmentAppLachlan
             storageManager.CloseConnection(); // closes the connection with the database.
         }
 
+/*
+        public void pageFunction()
+        {
+            List<tblEmployeeDetails> employeeDetails = new List<tblEmployeeDetails>();
+            for (int i = 0; i < employeeDetails.Count; i++)
+            {
+                view.DisplayEmployeeDetails(employeeDetails);
+            }
+        }
+*/
         public static void MainMenu()
         {
 

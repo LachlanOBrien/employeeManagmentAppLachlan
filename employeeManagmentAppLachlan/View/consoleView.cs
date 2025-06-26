@@ -416,14 +416,36 @@ namespace employeeManagmentAppLachlan.View
         //displays the data for the table EmployeeDetails
         public void DisplayEmployeeDetails(List<tblEmployeeDetails> details)
         {
+            //do the method stated in the previous graph and need to get all the values and use the float b4 and a new value for a page x of x and able to see how many pages 
+            int loopnum = 0;
+            bool loop = true;
             PrintLine();
             PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
-            foreach (tblEmployeeDetails detail in details)
+            if (loop = true)
             {
-                PrintLine();
-                PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
-                PrintLine();
-                //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                foreach (tblEmployeeDetails detail in details)
+                {
+                    PrintLine();
+                    PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page");
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+                
             }
         }
 

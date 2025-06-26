@@ -494,7 +494,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         employeeDetails.Add(new tblEmployeeDetails(EmployeeID, Firstname, Lastname, Hiredate, Gender, JobID, RoleID, Username, Password, Active, Email, PhoneNumber, Wage));
                     }
                 }
-            }
+            } 
             return employeeDetails;
         }
 
