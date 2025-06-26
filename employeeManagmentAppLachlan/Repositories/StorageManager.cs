@@ -124,10 +124,12 @@ namespace employeeManagmentAppLachlan.Repositories
                         string LastName = reader["Lastname"].ToString();
                         DateTime HireDate = Convert.ToDateTime(reader["HireDate"]);
                         string CountryName = reader["CountryName"].ToString();
-                        
+                        int count = 0;
+                        count ++;
                         PrintLine();
                         PrintRow($"{FirstName}", $"{LastName}", $"{HireDate}", $"{CountryName}");
                         PrintLine();
+
                     }
                 }
             }
@@ -513,6 +515,9 @@ namespace employeeManagmentAppLachlan.Repositories
                         bool Active = Convert.ToBoolean(reader["Active"]);
                         EmployeeRole.Add(new tblEmployeeRoleName(RoleID, RoleName, Active));
                     }
+                    int count = EmployeeRole.Count;
+                    Console.WriteLine(count);
+                    //
                 }
             }
             return EmployeeRole;
