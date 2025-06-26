@@ -517,7 +517,7 @@ namespace employeeManagmentAppLachlan.Repositories
                     }
                     int count = EmployeeRole.Count;
                     Console.WriteLine(count);
-                    //
+                    //get the count then divides it by ten and declares as an float > checks if it is greater than 1> can try using that number as the amt of pages and display it in pages of 10. 
                 }
             }
             return EmployeeRole;
