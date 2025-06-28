@@ -92,6 +92,8 @@ namespace employeeManagmentAppLachlan
         // the main switch case for the program.
         public static void SwitchMainAdmin()
         {
+
+            Console.Clear();
             //int role = Role;
             bool NotValidMain = true;
             string tblchoice;
@@ -99,15 +101,12 @@ namespace employeeManagmentAppLachlan
             bool loop = true;
             bool logInBool = true;
             string employeeChoice;
-
             logInBool = false;
-            Console.Clear();
             Console.WriteLine("welcome admin");
             do
             {
                 do
                 {
-                    Console.Clear();
                     view.DisplayQryOrUpdate();
                     string choiceQry = Console.ReadLine();
                     switch (choiceQry)
@@ -130,6 +129,7 @@ namespace employeeManagmentAppLachlan
                             {
                                 Console.WriteLine("Please enter a valid Username and Password");
                                 loop = true;
+                                NotValidMain = true;
                             }
                             break;
                     }
@@ -167,34 +167,40 @@ namespace employeeManagmentAppLachlan
         public static void SwitchMainEmp(int EmployeeID)
         {
             string Choice;
-            bool NotValidMain = false;
+            bool NotValidMain = true;
+            bool loop = true;
             int employeeID = EmployeeID;
             Console.Clear();
             //Console.WriteLine("HAHA pleb employee");
             do
             {
-                view.EmpDisplayMenu();
-                Choice = Console.ReadLine();
-                switch (Choice)
+                do
                 {
-                    case "1":
-                        {
-                            List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
-                            view.DisplayEmpEmployeeDetailsPage(employee, employeeID);
-                        }
-                        break;
-                    case "2":
-                        {
-                            UpdateEmpEmployeeDetails(EmployeeID);
-                        }
-                        break;
-                    default:
-                        {
-                            Console.WriteLine("Invalid option please try again.");
-                            NotValidMain = false;
-                        }
-                        break;
-                }
+                    view.EmpDisplayMenu();
+                    Choice = Console.ReadLine();
+                    switch (Choice)
+                    {
+                        case "1":
+                            {
+                                List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
+                                view.DisplayEmpEmployeeDetailsPage(employee, employeeID);
+                                NotValidMain = false;
+                            }
+                            break;
+                        case "2":
+                            {
+                                UpdateEmpEmployeeDetails(EmployeeID);
+                                NotValidMain = false;
+                            }
+                            break;
+                        default:
+                            {
+                                Console.WriteLine("Invalid option please try again.");
+                                NotValidMain = true;
+                            }
+                            break;
+                    }
+                } while (NotValidMain);
                 bool MainMenuLoop = true;
                 do
                 {
@@ -222,7 +228,7 @@ namespace employeeManagmentAppLachlan
                             break;
                     }
                 } while (MainMenuLoop);
-            } while (NotValidMain = false);
+            } while (NotValidMain);
         }
         // the main switch for the updates 
         public static void DisplayUpdatesSwitch()
@@ -326,7 +332,6 @@ namespace employeeManagmentAppLachlan
             bool Loop = true;
             do
             {
-                Console.Clear();
                 view.DisplayQryOptions();
                 string Choice = Console.ReadLine();
                 switch (Choice)
