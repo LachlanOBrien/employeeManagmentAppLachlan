@@ -3,6 +3,7 @@ using employeeManagmentAppLachlan.Repositories;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics.Metrics;
 using System.IO;
 using System.Linq;
@@ -294,18 +295,51 @@ namespace employeeManagmentAppLachlan.View
 
 
         //displays the employees data
-        public void DisplayEmpEmployeeDetails(List<tblEmployeeDetails> details, int EmployeeID)
+        public void DisplayEmpEmployeeDetailsPage(List<tblEmployeeDetails> details, int EmployeeID)
         {
-            foreach (tblEmployeeDetails detail in details)
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = details.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            Console.Clear();
+            PrintLine();
+            PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
+            if (loop = true)
             {
-                if (detail.employeeID == EmployeeID)
+                foreach (tblEmployeeDetails detail in details)
                 {
-                    PrintLine();
-                    PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
-                    PrintLine();
+                    if (detail.employeeID == EmployeeID)
+                    {
+                        PrintLine();
+                        PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
+                        PrintLine();
+                        //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                        loopnum++;
+                        Console.WriteLine(loopnum);
+                        if (loopnum == 10)
+                        {
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            if (input.Equals("Y"))
+                            {
+                                loop = true;
+                                loopnum = 0;
+                                pageNum++;
+                            }
+                            else
+                            {
+                                loop = false;
+                            }
+                        }                   
+                    }
                 }
             }
         }
+
+
 
         //displays the data for the table City
         public void DisplayCity(List<tblCityID> CityID)
@@ -332,6 +366,48 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
+        public void DisplayCityPages(List<tblCityID> CityID)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = CityID.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow("City ID ", " City Name", "Active");
+            if (loop = true)
+            {
+                foreach (tblCityID City in CityID)
+                {
+                    PrintLine();
+                    PrintRow($"{City.cityID}", $"{City.cityName}", $"{City.active}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+
+
         //displays the data for the table Street
         public void DisplayStreetID(List<tblStreetID> streetID)
         {
@@ -344,6 +420,47 @@ namespace employeeManagmentAppLachlan.View
                 PrintLine();
             }
         }
+
+        public void DisplayStreetIDPages(List<tblStreetID> streetID)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = streetID.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow(" Street ID ", " Street Name", " Active");
+            if (loop = true)
+            {
+                foreach (tblStreetID street in streetID)
+                {
+                    PrintLine();
+                    PrintRow($"{street.streetID}", $"{street.streetName}", $"{street.active}");
+                    PrintLine();
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+
 
         //displays the data for the table Subrub
         public void DisplaySubrub(List<tblSubrubID> subrubID)
@@ -359,6 +476,48 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
+        public void DisplaySubrubPages(List<tblSubrubID> subrubID)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = subrubID.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow(" suburb ID ", " subrub Name", " post code", " Active");
+            if (loop = true)
+            {
+                foreach (tblSubrubID subrub in subrubID)
+                {
+                    PrintLine();
+                    PrintRow($"{subrub.suburbID}", $"{subrub.suburbName}", $"{subrub.postcode}", $"{subrub.active}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+
+
         //displays the data for the table Country
         public void DisplayCountry(List<tblLocationCountry> countryID)
         {
@@ -371,6 +530,47 @@ namespace employeeManagmentAppLachlan.View
                 PrintLine();
             }
         }
+
+        public void DisplayCountryPages(List<tblLocationCountry> countryID)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = countryID.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow("Country ID ", " Country Name", " Active");
+            if (loop = true)
+            {
+                foreach (tblLocationCountry country in countryID)
+                {
+                    PrintLine();
+                    PrintRow($"{country.countryId}", $"{country.countryName}", $"{country.active}");
+                    PrintLine();
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+
 
         //displays the data for the table Location
         public void DisplayLocation(List<tblLocation> locations)
@@ -385,6 +585,47 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
+        public void DisplayLocationPages(List<tblLocation> locations)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = locations.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow("Location ID ", " Location Name", " CountryID", " SuburbID", " StreetID", " CityID", " StreetNumber", " Active");
+            if (loop = true)
+            {
+                foreach (tblLocation location in locations)
+                {
+                    PrintLine();
+                    PrintRow($"{location.locationID}", $"{location.locationName}", $"{location.countryID}", $"{location.suburbID}", $"{location.streetID}", $"{location.cityID}", $"{location.streetNumber}", $"{location.active}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+
         //displays the data for the table JobTittles
         public void DisplaytblJobTittles(List<tblJobtitle> jobtitles)
         {
@@ -396,6 +637,46 @@ namespace employeeManagmentAppLachlan.View
                 PrintRow($"{jobTittle.jobtitleID}", $"{jobTittle.jobtitleName}", $"{jobTittle.active}");
                 PrintLine();
                 // Console.WriteLine($"{"Job title ID: " + jobTittle.jobtitleid}\t{"Job title Name: " + jobTittle.jobtitlename}");
+            }
+        }
+
+        public void DisplaytblJobTittlesPages(List<tblJobtitle> jobtitles)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = jobtitles.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow("jobtitle ID ", " jobtitlename", "Active ");
+            if (loop = true)
+            {
+                foreach (tblJobtitle jobTittle in jobtitles)
+                {
+                    PrintLine();
+                    PrintRow($"{jobTittle.jobtitleID}", $"{jobTittle.jobtitleName}", $"{jobTittle.active}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
             }
         }
 
@@ -413,12 +694,98 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
-        //displays the data for the table EmployeeDetails
-        public void DisplayEmployeeDetails(List<tblEmployeeDetails> details)
+        public void DisplayRoleNamesPages(List<tblEmployeeRoleName> Roles)
         {
-            //do the method stated in the previous graph and need to get all the values and use the float b4 and a new value for a page x of x and able to see how many pages 
             int loopnum = 0;
             bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = Roles.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow("Role ID ", " Role Name", " Active");
+            if (loop = true)
+            {
+                foreach (tblEmployeeRoleName role in Roles)
+                {
+                    PrintLine();
+                    PrintRow($"{role.roleID}", $"{role.roleName}", $"{role.active}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+
+            }
+        }
+        /*
+        public void ______(_______)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = ____.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow(_________);
+            if (loop = true)
+            {
+                foreach (______)
+                {
+                    PrintLine();
+                    PrintRow($"{detail.employeeID}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+        */
+
+        //displays the data for the table EmployeeDetails
+        public void DisplayEmployeeDetailsPages(List<tblEmployeeDetails> details)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = details.Count/10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal)+1;
+            Console.Clear();
             PrintLine();
             PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
             if (loop = true)
@@ -433,22 +800,41 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page");
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page "+ pageNum + " Of "+  totalPagesNum );
                         string input = GetInput();
                         if (input.Equals("Y"))
                         {
                             loop = true;
+                            loopnum = 0;
+                            pageNum ++;
                         }
                         else
                         {
                             loop = false;
                         }
                     }
-                    loopnum = 0;
                 }
                 
             }
         }
+
+        public void DisplayEmployeeDetails(List<tblEmployeeDetails> details)
+        {
+            Console.Clear();
+            PrintLine();
+            PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
+                foreach (tblEmployeeDetails detail in details)
+                {
+                    PrintLine();
+                    PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    
+                }
+        }
+
+
 
         //displays the data for the table Departments
         public void DisplayDepartments(List<tblDepartments> departments)
@@ -463,6 +849,43 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
+        public void DisplayDepartmentsPages(List<tblDepartments> departments)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = departments.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow(" department ", " managers ID ", " Department ID ", " Active");
+            if (loop = true)
+            {
+                foreach (tblDepartments department in departments)
+                {
+                    PrintLine();
+                    PrintRow($"{department.department}", $"{department.managersID}", $"{department.departmentID}", $"{department.active}");
+                    PrintLine();
+                    loopnum ++;
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
 
 
         // displays a message 
@@ -479,7 +902,7 @@ namespace employeeManagmentAppLachlan.View
             do
             {
                 Console.WriteLine("Please enter you input");
-                input = Console.ReadLine();
+                input = Console.ReadLine().ToUpper();
                 if (input.IsNullOrEmpty())
                 {
                     loop = true;

@@ -23,9 +23,9 @@ namespace employeeManagmentAppLachlan
 
             Console.WriteLine("Hello, World!");
             //scl connectionString
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DB2V2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DB2V2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             //home connectionString
-            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db2v2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db2v2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
@@ -180,7 +180,7 @@ namespace employeeManagmentAppLachlan
                     case "1":
                         {
                             List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
-                            view.DisplayEmpEmployeeDetails(employee, employeeID);
+                            view.DisplayEmpEmployeeDetailsPage(employee, employeeID);
                         }
                         break;
                     case "2":
@@ -416,7 +416,7 @@ namespace employeeManagmentAppLachlan
                     case "1":
                         {
                             List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
-                            view.DisplayEmployeeDetails(employee);
+                            view.DisplayEmployeeDetailsPages(employee);
                             Notvalid = false;
                         }
                         break;
@@ -471,7 +471,7 @@ namespace employeeManagmentAppLachlan
                     case "1":
                         {
                             List<tblLocation> locations = storageManager.GetTblLocations();
-                            view.DisplayLocation(locations);
+                            view.DisplayLocationPages(locations);
                             Notvalid = false;
                         }
                         break;
@@ -526,7 +526,7 @@ namespace employeeManagmentAppLachlan
                     case "1":
                         {
                             List<tblEmployeeRoleName> roleNames = storageManager.GetTblEmployeeRoleNames();
-                            view.DisplayRoleNames(roleNames);
+                            view.DisplayRoleNamesPages(roleNames);
                             //List<EmployeeTblEmployeesDetails> employee1 = storageManager.GetEmployeeTblEmployeesDetails();
                             //view.DisplaytblEmployeesDetails(employee1);
                             Notvalid = false;
@@ -583,7 +583,7 @@ namespace employeeManagmentAppLachlan
                     case "1":
                         {
                             List<tblDepartments> departments = storageManager.GetTblDepartments();
-                            view.DisplayDepartments(departments);
+                            view.DisplayDepartmentsPages(departments);
                             Notvalid = false;
                         }
                         break;
@@ -638,7 +638,7 @@ namespace employeeManagmentAppLachlan
                     case "1":
                         {
                             List<tblJobtitle> jobTittle = storageManager.GetEmployeeTblJobTittles();
-                            view.DisplaytblJobTittles(jobTittle);
+                            view.DisplaytblJobTittlesPages(jobTittle);
                             Notvalid = false;
                         }
                         break;
@@ -692,7 +692,7 @@ namespace employeeManagmentAppLachlan
                     case "1":
                         {
                             List<tblLocationCountry> countries = storageManager.GetTblLocationCountries();
-                            view.DisplayCountry(countries);
+                            view.DisplayCountryPages(countries);
                             Notvalid = false;
                         }
                         break;
@@ -747,7 +747,7 @@ namespace employeeManagmentAppLachlan
                     case "1":
                         {
                             List<tblStreetID> streetIDs = storageManager.GetTblStreetIDs();
-                            view.DisplayStreetID(streetIDs);
+                            view.DisplayStreetIDPages(streetIDs);
                             Notvalid = false;
                         }
                         break;
@@ -802,7 +802,7 @@ namespace employeeManagmentAppLachlan
                     case "1":
                         {
                             List<tblSubrubID> subrubIDs = storageManager.GetTblSubrubIDs();
-                            view.DisplaySubrub(subrubIDs);
+                            view.DisplaySubrubPages(subrubIDs);
                             Notvalid = false;
                         }
                         break;
@@ -857,7 +857,7 @@ namespace employeeManagmentAppLachlan
                     case "1":
                         {
                             List<tblCityID> cityIDs = storageManager.GetTblCityIDs();
-                            view.DisplayCity(cityIDs);
+                            view.DisplayCityPages(cityIDs);
                             Notvalid = false;
                         }
                         break;
