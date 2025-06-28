@@ -16,7 +16,7 @@ namespace employeeManagmentAppLachlan
         private static consoleView view;
         static int role;
 
-
+        // add pages to the qry option numbers 10,1,3
 
         static void Main(string[] args)
         {
