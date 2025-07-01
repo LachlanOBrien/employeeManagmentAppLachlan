@@ -61,7 +61,7 @@ namespace employeeManagmentAppLachlan
             do // loops this until a valid option has been entered 
             {
                 view.MainMenu(); // displays the option for the user 
-                MainChoice = Console.ReadLine(); // gets the users input 
+                MainChoice = view.GetInput(); // gets the users input 
                 switch (MainChoice)
                 {
 
@@ -108,7 +108,7 @@ namespace employeeManagmentAppLachlan
                 do
                 {
                     view.DisplayQryOrUpdate();
-                    string choiceQry = Console.ReadLine();
+                    string choiceQry = view.GetInput();
                     switch (choiceQry)
                     {
                         case "1":
@@ -121,6 +121,13 @@ namespace employeeManagmentAppLachlan
                         case "2":
                             {
                                 DisplayUpdatesSwitch();
+                                loop = false;
+                                NotValidMain = false;
+                            }
+                            break;
+                        case "3":
+                            {
+                                searchQrySwitch();
                                 loop = false;
                                 NotValidMain = false;
                             }
@@ -138,7 +145,7 @@ namespace employeeManagmentAppLachlan
                 do
                 {
                     Console.WriteLine("Do you wish to go back to the main menu enter Y/N");
-                    string choiceloopans = Console.ReadLine().ToUpper();
+                    string choiceloopans = view.GetInput().ToUpper();
                     switch (choiceloopans)
                     {
                         case "Y":
@@ -163,6 +170,332 @@ namespace employeeManagmentAppLachlan
                 } while (MainMenuLoop);
             } while (loop);
         }
+
+        public static void searchQrySwitch()
+        {
+            string Table = "";
+            string Field = "";
+            string choice = "";
+            bool NotValidMain = true;
+            bool loop = true;
+            string TableChoice;
+            string FieldChoice;
+            /*
+            Console.WriteLine("1. Table Employee Details ");
+            Console.WriteLine("2. Table Location ");
+            Console.WriteLine("3. Table Role Names ");
+            Console.WriteLine("4. Table Departments ");
+            Console.WriteLine("5. Table Job Titles ");
+            Console.WriteLine("6. Table Citys ");
+            Console.WriteLine("7. Table Country ");
+            Console.WriteLine("8. Table Streets ");
+            Console.WriteLine("9. Table Suburbs ");
+            */
+            do
+            {
+                view.DisplayTables();
+                TableChoice = view.GetInput();
+                switch (TableChoice)
+                {
+                    case "1":
+                        {
+                            NotValidMain = false;
+                            Table = "Employee.tblEmployeesDetails";
+                            do
+                            {
+                                //view.DisplayTableFields
+                                FieldChoice = view.GetInput();
+                                switch (FieldChoice)
+                                {
+                                    case "1":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            loop = true;
+                                        }
+                                        break;
+                                }
+                            } while (loop);
+                        }
+                        break;
+                    case "2":
+                        {
+                            NotValidMain = false;
+                            Table = "Location.tblLocation";
+                            do
+                            {
+                                //view.DisplayTableFields
+                                FieldChoice = view.GetInput();
+                                switch (FieldChoice)
+                                {
+                                    case "1":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            loop = true;
+                                        }
+                                        break;
+                                }
+                            } while (loop);
+                        }
+                        break;
+                    case "3":
+                        {
+                            NotValidMain = false;
+                            Table = "Employee.tblEmployeeRoleName";
+                            do
+                            {
+                                //view.DisplayTableFields
+                                FieldChoice = view.GetInput();
+                                switch (FieldChoice)
+                                {
+                                    case "1":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            loop = true;
+                                        }
+                                        break;
+                                }
+                            } while (loop);
+                        }
+                        break;
+                    case "4":
+                        {
+                            NotValidMain = false;
+                            Table = "Location.tblDepartments";
+                            do
+                            {
+                                //view.DisplayTableFields
+                                FieldChoice = view.GetInput();
+                                switch (FieldChoice)
+                                {
+                                    case "1":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            loop = true;
+                                        }
+                                        break;
+                                }
+                            } while (loop);
+                        }
+                        break;
+                    case "5":
+                        {
+                            NotValidMain = false;
+                            Table = "Employee.tblJobTitles";
+                            do
+                            {
+                                //view.DisplayTableFields
+                                FieldChoice = view.GetInput();
+                                switch (FieldChoice)
+                                {
+                                    case "1":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            loop = true;
+                                        }
+                                        break;
+                                }
+                            } while (loop);
+                        }
+                        break;
+                    case "6":
+                        {
+                            NotValidMain = false;
+                            Table = "location.tblLocationCity";
+                            do
+                            {
+                                //view.DisplayTableFields
+                                FieldChoice = view.GetInput();
+                                switch (FieldChoice)
+                                {
+                                    case "1":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            loop = true;
+                                        }
+                                        break;
+                                }
+                            } while (loop);
+                        }
+                        break;
+                    case "7":
+                        {
+                            NotValidMain = false;
+                            Table = "Location.tblLocationCountry";
+                            do
+                            {
+                                //view.DisplayTableFields
+                                FieldChoice = view.GetInput();
+                                switch (FieldChoice)
+                                {
+                                    case "1":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            loop = true;
+                                        }
+                                        break;
+                                }
+                            } while (loop);
+                        }
+                        break;
+                    case "8":
+                        {
+                            NotValidMain = false;
+                            Table = "Location.tblLocationStreet";
+                            do
+                            {
+                                //view.DisplayTableFields
+                                FieldChoice = view.GetInput();
+                                switch (FieldChoice)
+                                {
+                                    case "1":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            loop = true;
+                                        }
+                                        break;
+                                }
+                            } while (loop);
+                        }
+                        break;
+                    case "9":
+                        {
+                            NotValidMain = false;
+                            Table = "Location.tblLocationSuburb";
+                            do
+                            {
+                                //view.DisplayTableFields
+                                FieldChoice = view.GetInput();
+                                switch (FieldChoice)
+                                {
+                                    case "1":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    case "2":
+                                        {
+                                            loop = false;
+                                            Field = "";
+                                        }
+                                        break;
+                                    default:
+                                        {
+                                            Console.WriteLine("Invalid option please try again.");
+                                            loop = true;
+                                        }
+                                        break;
+                                }
+                            } while (loop);
+                        }
+                        break;
+                    default:
+                        {
+                            Console.WriteLine("Invalid option please try again.");
+                            NotValidMain = true;
+                        }
+                        break;
+                }
+            } while (NotValidMain);
+
+        }
+
         // the switch case for employees 
         public static void SwitchMainEmp(int EmployeeID)
         {
@@ -177,7 +510,7 @@ namespace employeeManagmentAppLachlan
                 do
                 {
                     view.EmpDisplayMenu();
-                    Choice = Console.ReadLine();
+                    Choice = view.GetInput();
                     switch (Choice)
                     {
                         case "1":
@@ -205,7 +538,7 @@ namespace employeeManagmentAppLachlan
                 do
                 {
                     Console.WriteLine("Do you wish to go back to the main menu enter Y/N");
-                    string choiceloopans = Console.ReadLine().ToUpper();
+                    string choiceloopans = view.GetInput().ToUpper();
                     switch (choiceloopans)
                     {
                         case "Y":
@@ -239,7 +572,7 @@ namespace employeeManagmentAppLachlan
                 Console.Clear();
                 NotValidMain = false;
                 view.TblDisplayMenu();
-                string tblchoice = Console.ReadLine();
+                string tblchoice = view.GetInput();
                 switch (tblchoice)
                 {
                     case "1":
@@ -333,7 +666,7 @@ namespace employeeManagmentAppLachlan
             do
             {
                 view.DisplayQryOptions();
-                string Choice = Console.ReadLine();
+                string Choice = view.GetInput();
                 switch (Choice)
                 {
 
@@ -415,7 +748,7 @@ namespace employeeManagmentAppLachlan
             bool Notvalid = true;
             do
             {
-                choice = Console.ReadLine();
+                choice = view.GetInput();
                 switch (choice)
                 {
                     case "1":
@@ -470,7 +803,7 @@ namespace employeeManagmentAppLachlan
             bool Notvalid = true;
             do
             {
-                choice = Console.ReadLine();
+                choice = view.GetInput();
                 switch (choice)
                 {
                     case "1":
@@ -525,7 +858,7 @@ namespace employeeManagmentAppLachlan
             bool Notvalid = true;
             do
             {
-                choice = Console.ReadLine();
+                choice = view.GetInput();
                 switch (choice)
                 {
                     case "1":
@@ -582,7 +915,7 @@ namespace employeeManagmentAppLachlan
             bool Notvalid = true;
             do
             {
-                choice = Console.ReadLine();
+                choice = view.GetInput();
                 switch (choice)
                 {
                     case "1":
@@ -637,7 +970,7 @@ namespace employeeManagmentAppLachlan
             bool Notvalid = true;
             do
             {
-                choice = Console.ReadLine();
+                choice = view.GetInput();
                 switch (choice)
                 {
                     case "1":
@@ -691,7 +1024,7 @@ namespace employeeManagmentAppLachlan
             bool Notvalid = true;
             do
             {
-                choice = Console.ReadLine();
+                choice = view.GetInput();
                 switch (choice)
                 {
                     case "1":
@@ -746,7 +1079,7 @@ namespace employeeManagmentAppLachlan
             bool Notvalid = true;
             do
             {
-                choice = Console.ReadLine();
+                choice = view.GetInput();
                 switch (choice)
                 {
                     case "1":
@@ -801,7 +1134,7 @@ namespace employeeManagmentAppLachlan
             bool Notvalid = true;
             do
             {
-                choice = Console.ReadLine();
+                choice = view.GetInput();
                 switch (choice)
                 {
                     case "1":
@@ -856,7 +1189,7 @@ namespace employeeManagmentAppLachlan
             bool Notvalid = true;
             do
             {
-                choice = Console.ReadLine();
+                choice = view.GetInput();
                 switch (choice)
                 {
                     case "1":
@@ -1602,7 +1935,7 @@ namespace employeeManagmentAppLachlan
             do
             {
                 Console.WriteLine("do you wish to go to the Log in screen Enter Y/N");
-                choice = Console.ReadLine().ToUpper();
+                choice = view.GetInput().ToUpper();
                 switch (choice)
                 {
                     case "Y":
@@ -1642,13 +1975,13 @@ namespace employeeManagmentAppLachlan
              {
                 Console.Clear();
                  Console.WriteLine("Enter your Username");
-                 string inputedUsername = Console.ReadLine();// gets the username
+                 string inputedUsername = view.GetInput();// gets the username
                  string Username = inputedUsername; // gets the username 
                  int EmployeeID = storageManager.getEmployeeID(inputedUsername);//gets the username 
                  string password = storageManager.getPassword(inputedUsername);//gets the password
                  role = storageManager.getRole(inputedUsername);// gets the role 
                  Console.WriteLine("Please enter your Password");
-                 string inputedPassword = Console.ReadLine(); // gets the inputted password
+                 string inputedPassword = view.GetInput(); // gets the inputted password
                  Console.Clear();
                  if (inputedUsername.Equals( Username) && inputedPassword.Equals( password)) // checks if the employees username and password are valid 
                  {

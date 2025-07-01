@@ -48,6 +48,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("1: Querys");
             Console.WriteLine("Note that to view all the data from a table you must go to edit the data");
             Console.WriteLine("2: Edit The Data");
+            Console.WriteLine("3: Search the Database for a specific field");
         }
 
         public void DisplayQryOptions()
@@ -256,6 +257,21 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("5: Return to the Main Menu");
         }
 
+        public void DisplayTables()
+        {
+            Console.WriteLine("Which table do you wish to view");
+            Console.WriteLine("Choose a table from 1-9");
+            Console.WriteLine("1. Table Employee Details ");
+            Console.WriteLine("2. Table Location ");
+            Console.WriteLine("3. Table Role Names ");
+            Console.WriteLine("4. Table Departments ");
+            Console.WriteLine("5. Table Job Titles ");
+            Console.WriteLine("6. Table Citys ");
+            Console.WriteLine("7. Table Country ");
+            Console.WriteLine("8. Table Streets ");
+            Console.WriteLine("9. Table Suburbs ");
+            
+        }
 
         // displays the lines for the box that the data is displayed in
         static void PrintLine()
