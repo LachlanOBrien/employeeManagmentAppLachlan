@@ -329,12 +329,11 @@ namespace employeeManagmentAppLachlan.Repositories
 
         public void searchQry(string Table, string Field, string choice)
         {
-            string sqlString = "$SELECT @FieldName FROM @TableName WHERE @FieldName = @Choice AND Active = 1";
+            string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
+
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
-                cmd.Parameters.AddWithValue("@FieldName", Field);
-                cmd.Parameters.AddWithValue("@TableName", Table);
                 cmd.Parameters.AddWithValue("@Choice", choice);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
