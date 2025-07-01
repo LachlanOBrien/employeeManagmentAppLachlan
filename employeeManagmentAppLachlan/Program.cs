@@ -38,16 +38,6 @@ namespace employeeManagmentAppLachlan
             storageManager.CloseConnection(); // closes the connection with the database.
         }
 
-/*
-        public void pageFunction()
-        {
-            List<tblEmployeeDetails> employeeDetails = new List<tblEmployeeDetails>();
-            for (int i = 0; i < employeeDetails.Count; i++)
-            {
-                view.DisplayEmployeeDetails(employeeDetails);
-            }
-        }
-*/
         public static void MainMenu()
         {
 
@@ -263,6 +253,18 @@ namespace employeeManagmentAppLachlan
                                         break;
                                 }
                             } while (loop);
+                            if (Field.Equals("HireDate"))
+                            {
+                                Console.WriteLine("what date do you wish to see ");
+                                Console.WriteLine("Use the format dd-mm-yyyy");
+                                choice = Console.ReadLine();
+                            }
+                            else
+                            {
+                                Console.WriteLine($"what {Field} do you wish to see:");
+                                choice = view.GetInput();
+                            }
+                            storageManager.searchQryEmpDet(Table, Field, choice);
                         }
                         break;
                     case "2":
@@ -326,6 +328,9 @@ namespace employeeManagmentAppLachlan
                                         break;
                                 }
                             } while (loop);
+                            Console.WriteLine($"what {Field} do you wish to see:");
+                            choice = view.GetInput();
+                            storageManager.searchQryLocation(Table, Field, choice);
                         }
                         break;
                     case "3":
@@ -359,6 +364,9 @@ namespace employeeManagmentAppLachlan
                                         break;
                                 }
                             } while (loop);
+                            Console.WriteLine($"what {Field} do you wish to see:");
+                            choice = view.GetInput();
+                            storageManager.searchQryRoleName(Table, Field, choice);
                         }
                         break;
                     case "4":
@@ -398,6 +406,9 @@ namespace employeeManagmentAppLachlan
                                         break;
                                 }
                             } while (loop);
+                            Console.WriteLine($"what {Field} do you wish to see:");
+                            choice = view.GetInput();
+                            storageManager.searchQryDepartments(Table, Field, choice);
                         }
                         break;
                     case "5":
@@ -431,6 +442,9 @@ namespace employeeManagmentAppLachlan
                                         break;
                                 }
                             } while (loop);
+                            Console.WriteLine($"what {Field} do you wish to see:");
+                            choice = view.GetInput();
+                            storageManager.searchQryJobTitles(Table, Field, choice);
                         }
                         break;
                     case "6":
@@ -464,6 +478,9 @@ namespace employeeManagmentAppLachlan
                                         break;
                                 }
                             } while (loop);
+                            Console.WriteLine($"what {Field} do you wish to see:");
+                            choice = view.GetInput();
+                            storageManager.searchQryCity(Table, Field, choice);
                         }
                         break;
                     case "7":
@@ -497,6 +514,9 @@ namespace employeeManagmentAppLachlan
                                         break;
                                 }
                             } while (loop);
+                            Console.WriteLine($"what {Field} do you wish to see:");
+                            choice = view.GetInput();
+                            storageManager.searchQryCountry(Table, Field, choice);
                         }
                         break;
                     case "8":
@@ -530,6 +550,9 @@ namespace employeeManagmentAppLachlan
                                         break;
                                 }
                             } while (loop);
+                            Console.WriteLine($"what {Field} do you wish to see:");
+                            choice = view.GetInput();
+                            storageManager.searchQryStreet(Table, Field, choice);
                         }
                         break;
                     case "9":
@@ -569,6 +592,9 @@ namespace employeeManagmentAppLachlan
                                         break;
                                 }
                             } while (loop);
+                            Console.WriteLine($"what {Field} do you wish to see:");
+                            choice = view.GetInput();
+                            storageManager.searchQrySuburb(Table, Field, choice);
                         }
                         break;
                     default:
@@ -579,18 +605,6 @@ namespace employeeManagmentAppLachlan
                         break;
                 }
             } while (NotValidMain);
-            if (Field.Equals("HireDate"))
-            {
-                Console.WriteLine("what date do you wish to see ");
-                Console.WriteLine("Use the format dd-mm-yyyy");
-                choice = Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine($"what {Field} do you wish to see:");
-                choice = view.GetInput();
-            }
-            storageManager.searchQry(Table,Field,choice);
         }
 
         // the switch case for employees 

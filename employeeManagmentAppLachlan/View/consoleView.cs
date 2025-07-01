@@ -875,7 +875,7 @@ namespace employeeManagmentAppLachlan.View
             int totalPagesNum = Convert.ToInt32(totalPagesDecimal)+1;
             Console.Clear();
             PrintLine();
-            PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
+            PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " wage");
             PrintLine();
             if (loop = true)
             {
