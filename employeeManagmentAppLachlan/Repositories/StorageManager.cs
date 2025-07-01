@@ -94,6 +94,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     PrintLine();
                     PrintRow("First Name ", " Last Name", "Hire Date", " Wage");
+                    PrintLine();
                     while (reader.Read())
                     {
                         int wage = Convert.ToInt32(reader["Wage"]);
@@ -118,6 +119,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     PrintLine();
                     PrintRow(" First Name ", " Last Name  ", "Hire Date ", " Country Name");
+                    PrintLine();
                     while (reader.Read())
                     {
                         string FirstName = reader["Firstname"].ToString();
@@ -145,6 +147,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     PrintLine();
                     PrintRow(" Employee ID", " Gender", " Wage");
+                    PrintLine();
                     while (reader.Read())
                     {
                         int Wage = Convert.ToInt32(reader["Wage"]);
@@ -169,6 +172,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     PrintLine();
                     PrintRow(" First Name", " Last Name ", " country");
+                    PrintLine();
                     while (reader.Read())
                     {
                         string FirstName = reader["Firstname"].ToString();
@@ -192,6 +196,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     PrintLine();
                     PrintRow("Employee ID", " First Name ", "Last Name ", " Job title Name");
+                    PrintLine();
                     while (reader.Read())
                     {
                         string FirstName = reader["Firstname"].ToString();
@@ -217,6 +222,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     PrintLine();
                     PrintRow("total Employees", " jobtitleName ");
+                    PrintLine();
                     while (reader.Read())
                     {
                         int totalEmployees = Convert.ToInt32(reader["totalEmployees"]);
@@ -239,6 +245,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     PrintLine();
                     PrintRow("avg Wage");
+                    PrintLine();
                     while (reader.Read())
                     {
                         int avgWage = Convert.ToInt32(reader["avgWage"]);
@@ -260,6 +267,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     PrintLine();
                     PrintRow("total Locations", " Country ");
+                    PrintLine();
                     while (reader.Read())
                     {
                         string totalLocation = reader["totalLocation"].ToString();
@@ -282,6 +290,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     PrintLine();
                     PrintRow("total", "Gender");
+                    PrintLine();
                     while (reader.Read())
                     {
                         int total = Convert.ToInt32(reader["total"]);
@@ -304,6 +313,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     PrintLine();
                     PrintRow("total", " wage ", " JobTitleName ");
+                    PrintLine();
                     while (reader.Read())
                     {
                         int total = Convert.ToInt32(reader["total"]);
@@ -311,6 +321,31 @@ namespace employeeManagmentAppLachlan.Repositories
                         string JobTitleName = reader["JobTitleName"].ToString();
                         PrintLine();
                         PrintRow($"{total}", $"{wage}", $"{JobTitleName}");
+                        PrintLine();
+                    }
+                }
+            }
+        }
+
+        public void searchQry(string Table, string Field, string choice)
+        {
+            string sqlString = "$SELECT @FieldName FROM @TableName WHERE @FieldName = @Choice AND Active = 1";
+
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                cmd.Parameters.AddWithValue("@FieldName", Field);
+                cmd.Parameters.AddWithValue("@TableName", Table);
+                cmd.Parameters.AddWithValue("@Choice", choice);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    PrintLine();
+                    PrintRow(Field);
+                    PrintLine();
+                    while (reader.Read())
+                    {
+                        string Result = reader[Field].ToString();
+                        PrintLine();
+                        PrintRow($"{Result}");
                         PrintLine();
                     }
                 }

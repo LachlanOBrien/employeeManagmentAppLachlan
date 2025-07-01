@@ -179,22 +179,15 @@ namespace employeeManagmentAppLachlan
             bool NotValidMain = true;
             bool loop = true;
             string TableChoice;
-            string FieldChoice;
-            /*
-            Console.WriteLine("1. Table Employee Details ");
-            Console.WriteLine("2. Table Location ");
-            Console.WriteLine("3. Table Role Names ");
-            Console.WriteLine("4. Table Departments ");
-            Console.WriteLine("5. Table Job Titles ");
-            Console.WriteLine("6. Table Citys ");
-            Console.WriteLine("7. Table Country ");
-            Console.WriteLine("8. Table Streets ");
-            Console.WriteLine("9. Table Suburbs ");
-            */
+            string FieldChoice; 
+            int TableChoiceInt;
+            int FieldChoiceInt;
+            Console.Clear ();
             do
             {
                 view.DisplayTables();
-                TableChoice = view.GetInput();
+                TableChoiceInt = view.GetIntInput();
+                TableChoice = TableChoiceInt.ToString();
                 switch (TableChoice)
                 {
                     case "1":
@@ -203,20 +196,63 @@ namespace employeeManagmentAppLachlan
                             Table = "Employee.tblEmployeesDetails";
                             do
                             {
-                                //view.DisplayTableFields
-                                FieldChoice = view.GetInput();
+                                view.DisplayEmployeeDetailsFields();
+                                FieldChoiceInt = view.GetIntInput();
+                                FieldChoice = FieldChoiceInt.ToString();
                                 switch (FieldChoice)
                                 {
                                     case "1":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "EmployeeID";
                                         }
                                         break;
                                     case "2":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "FirstName";
+                                        }
+                                        break;
+                                    case "3":
+                                        {
+                                            loop = false;
+                                            Field = "LastName";
+                                        }
+                                        break;
+                                    case "4":
+                                        {
+                                            loop = false;
+                                            Field = "HireDate";
+                                        }
+                                        break;
+                                    case "5":
+                                        {
+                                            loop = false;
+                                            Field = "JobID";
+                                        }
+                                        break;
+                                    case "6":
+                                        {
+                                            loop = false;
+                                            Field = "RoleID";
+                                        }
+                                        break;
+                                    case "7":
+                                        {
+                                            loop = false;
+                                            Field = "Email";
+                                        }
+                                        break;
+                                    case "8":
+                                        {
+                                            loop = false;
+                                            Field = "PhoneNumber";
+                                        }
+                                        break;
+                                    case "9":
+                                        {
+                                            loop = false;
+                                            Field = "Wage";
                                         }
                                         break;
                                     default:
@@ -235,20 +271,51 @@ namespace employeeManagmentAppLachlan
                             Table = "Location.tblLocation";
                             do
                             {
-                                //view.DisplayTableFields
-                                FieldChoice = view.GetInput();
+                                view.DisplayLocationFields();
+                                FieldChoiceInt = view.GetIntInput();
+                                FieldChoice = FieldChoiceInt.ToString();
                                 switch (FieldChoice)
                                 {
                                     case "1":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "LocationID";
                                         }
                                         break;
                                     case "2":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "LocationName";
+                                        }
+                                        break;
+                                    case "3":
+                                        {
+                                            loop = false;
+                                            Field = "CountryID";
+                                        }
+                                        break;
+                                    case "4":
+                                        {
+                                            loop = false;
+                                            Field = "SuburbID";
+                                        }
+                                        break;
+                                    case "5":
+                                        {
+                                            loop = false;
+                                            Field = "StreetID";
+                                        }
+                                        break;
+                                    case "6":
+                                        {
+                                            loop = false;
+                                            Field = "CityID";
+                                        }
+                                        break;
+                                    case "7":
+                                        {
+                                            loop = false;
+                                            Field = "StreetNumber";
                                         }
                                         break;
                                     default:
@@ -267,20 +334,21 @@ namespace employeeManagmentAppLachlan
                             Table = "Employee.tblEmployeeRoleName";
                             do
                             {
-                                //view.DisplayTableFields
-                                FieldChoice = view.GetInput();
+                                view.DisplayRoleNamesFields();
+                                FieldChoiceInt = view.GetIntInput();
+                                FieldChoice = FieldChoiceInt.ToString();
                                 switch (FieldChoice)
                                 {
                                     case "1":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "RoleID";
                                         }
                                         break;
                                     case "2":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "RoleName";
                                         }
                                         break;
                                     default:
@@ -299,20 +367,27 @@ namespace employeeManagmentAppLachlan
                             Table = "Location.tblDepartments";
                             do
                             {
-                                //view.DisplayTableFields
-                                FieldChoice = view.GetInput();
+                                view.DisplayDepartmentsFields();
+                                FieldChoiceInt = view.GetIntInput();
+                                FieldChoice = FieldChoiceInt.ToString();
                                 switch (FieldChoice)
                                 {
                                     case "1":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "DepartmentID";
                                         }
                                         break;
                                     case "2":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "DepartmentName";
+                                        }
+                                        break;
+                                    case "3":
+                                        {
+                                            loop = false;
+                                            Field = "ManagersID";
                                         }
                                         break;
                                     default:
@@ -331,20 +406,21 @@ namespace employeeManagmentAppLachlan
                             Table = "Employee.tblJobTitles";
                             do
                             {
-                                //view.DisplayTableFields
-                                FieldChoice = view.GetInput();
+                                view.DisplayJobTitlesFields();
+                                FieldChoiceInt = view.GetIntInput();
+                                FieldChoice = FieldChoiceInt.ToString();
                                 switch (FieldChoice)
                                 {
                                     case "1":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "JobTitleID";
                                         }
                                         break;
                                     case "2":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "JobTitleName";
                                         }
                                         break;
                                     default:
@@ -363,20 +439,21 @@ namespace employeeManagmentAppLachlan
                             Table = "location.tblLocationCity";
                             do
                             {
-                                //view.DisplayTableFields
-                                FieldChoice = view.GetInput();
+                                view.DisplayCitysFields();
+                                FieldChoiceInt = view.GetIntInput();
+                                FieldChoice = FieldChoiceInt.ToString();
                                 switch (FieldChoice)
                                 {
                                     case "1":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "CityID";
                                         }
                                         break;
                                     case "2":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "CityName";
                                         }
                                         break;
                                     default:
@@ -395,20 +472,21 @@ namespace employeeManagmentAppLachlan
                             Table = "Location.tblLocationCountry";
                             do
                             {
-                                //view.DisplayTableFields
-                                FieldChoice = view.GetInput();
+                                view.DisplayCountryFields();
+                                FieldChoiceInt = view.GetIntInput();
+                                FieldChoice = FieldChoiceInt.ToString();
                                 switch (FieldChoice)
                                 {
                                     case "1":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "CountryID";
                                         }
                                         break;
                                     case "2":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "CountryName";
                                         }
                                         break;
                                     default:
@@ -427,20 +505,21 @@ namespace employeeManagmentAppLachlan
                             Table = "Location.tblLocationStreet";
                             do
                             {
-                                //view.DisplayTableFields
-                                FieldChoice = view.GetInput();
+                                view.DisplayStreetsFields();
+                                FieldChoiceInt = view.GetIntInput();
+                                FieldChoice = FieldChoiceInt.ToString();
                                 switch (FieldChoice)
                                 {
                                     case "1":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "StreetID";
                                         }
                                         break;
                                     case "2":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "StreetName";
                                         }
                                         break;
                                     default:
@@ -459,20 +538,27 @@ namespace employeeManagmentAppLachlan
                             Table = "Location.tblLocationSuburb";
                             do
                             {
-                                //view.DisplayTableFields
-                                FieldChoice = view.GetInput();
+                                view.DisplaySuburbsFields();
+                                FieldChoiceInt = view.GetIntInput();
+                                FieldChoice = FieldChoiceInt.ToString();
                                 switch (FieldChoice)
                                 {
                                     case "1":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "SuburbID";
                                         }
                                         break;
                                     case "2":
                                         {
                                             loop = false;
-                                            Field = "";
+                                            Field = "Suburb";
+                                        }
+                                        break;
+                                    case "3":
+                                        {
+                                            loop = false;
+                                            Field = "PostCode";
                                         }
                                         break;
                                     default:
@@ -493,7 +579,18 @@ namespace employeeManagmentAppLachlan
                         break;
                 }
             } while (NotValidMain);
-
+            if (Field.Equals("HireDate"))
+            {
+                Console.WriteLine("what date do you wish to see ");
+                Console.WriteLine("Use the format dd-mm-yyyy");
+                choice = Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine($"what {Field} do you wish to see:");
+                choice = view.GetInput();
+            }
+            storageManager.searchQry(Table,Field,choice);
         }
 
         // the switch case for employees 

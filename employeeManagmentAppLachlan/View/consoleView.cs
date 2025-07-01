@@ -1,4 +1,5 @@
-﻿using employeeManagmentAppLachlan.Model;
+﻿using Azure;
+using employeeManagmentAppLachlan.Model;
 using employeeManagmentAppLachlan.Repositories;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -259,7 +260,7 @@ namespace employeeManagmentAppLachlan.View
 
         public void DisplayTables()
         {
-            Console.WriteLine("Which table do you wish to view");
+            Console.WriteLine("Which table do you wish to use");
             Console.WriteLine("Choose a table from 1-9");
             Console.WriteLine("1. Table Employee Details ");
             Console.WriteLine("2. Table Location ");
@@ -269,9 +270,106 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("6. Table Citys ");
             Console.WriteLine("7. Table Country ");
             Console.WriteLine("8. Table Streets ");
-            Console.WriteLine("9. Table Suburbs ");
-            
+            Console.WriteLine("9. Table Suburbs ");           
         }
+
+        public void DisplayEmployeeDetailsFields()
+        {
+            Console.WriteLine("Which Fields do you wish to use");
+            Console.WriteLine("Choose a Field from 1-9");
+            Console.WriteLine("1. Employee ID Field");
+            Console.WriteLine("2. First Name Field");
+            Console.WriteLine("3. Last Name Field");
+            Console.WriteLine("4. Hire Date Field");
+            Console.WriteLine("5. Job ID Field");
+            Console.WriteLine("6. Role ID Field");
+            Console.WriteLine("7. Email Field");
+            Console.WriteLine("8. Phone Number Field");
+            Console.WriteLine("9. Wage Field");
+        }
+
+        public void DisplayLocationFields()
+        {
+            Console.WriteLine("Which Fields do you wish to use");
+            Console.WriteLine("Choose a Field from 1-7");
+            Console.WriteLine("1. Location ID Field");
+            Console.WriteLine("2. Location Name Field");
+            Console.WriteLine("3. Country ID Field");
+            Console.WriteLine("4. Suburb ID Field");
+            Console.WriteLine("5. Street ID Field");
+            Console.WriteLine("6. City ID Field");
+            Console.WriteLine("7. Street Number Field");
+
+            /*
+            LocationID 
+            LocationName 
+            CountryID 
+            SuburbID 
+            StreetID 
+            CityID 
+            StreetNumber 
+            */
+        }
+
+        public void DisplayRoleNamesFields()
+        {
+            Console.WriteLine("Which Fields do you wish to use");
+            Console.WriteLine("Choose a Field from 1-2");
+            Console.WriteLine("1. Role ID Field");
+            Console.WriteLine("2. Role Name Field");
+        }
+
+        public void DisplayDepartmentsFields()
+        {
+            Console.WriteLine("Which Fields do you wish to use");
+            Console.WriteLine("Choose a Field from 1-3");
+            Console.WriteLine("1. Department ID Field");
+            Console.WriteLine("2. Department Name Field");
+            Console.WriteLine("3. Managers ID Field");
+        }
+
+        public void DisplayJobTitlesFields()
+        {
+            Console.WriteLine("Which Fields do you wish to use");
+            Console.WriteLine("Choose a Field from 1-2");
+            Console.WriteLine("1. Job Title ID Field");
+            Console.WriteLine("2. Job Title Name Field");
+        }
+
+        public void DisplayCitysFields()
+        {
+            Console.WriteLine("Which Fields do you wish to use");
+            Console.WriteLine("Choose a Field from 1-2");
+            Console.WriteLine("1. City ID Field");
+            Console.WriteLine("2. City Name Field");
+        }
+
+        public void DisplayCountryFields()
+        {
+            Console.WriteLine("Which Fields do you wish to use");
+            Console.WriteLine("Choose a Field from 1-2");
+            Console.WriteLine("1. Country ID Field");
+            Console.WriteLine("2. Country Name Field");
+        }
+
+        public void DisplayStreetsFields()
+        {
+            Console.WriteLine("Which Fields do you wish to use");
+            Console.WriteLine("Choose a Field from 1-2");
+            Console.WriteLine("1. Street ID Field");
+            Console.WriteLine("2. Street Name Field");      
+        }
+
+        public void DisplaySuburbsFields()
+        {
+            Console.WriteLine("Which Fields do you wish to use");
+            Console.WriteLine("Choose a Field from 1-3");
+            Console.WriteLine("1. Suburb ID Field");
+            Console.WriteLine("2. Suburb Name Field");
+            Console.WriteLine("3. Post Code Field");
+        }
+
+
 
         // displays the lines for the box that the data is displayed in
         static void PrintLine()
@@ -309,6 +407,7 @@ namespace employeeManagmentAppLachlan.View
         }
 
 
+
         //displays the employees data
         public void DisplayEmpEmployeeDetailsPage(List<tblEmployeeDetails> details, int EmployeeID)
         {
@@ -321,6 +420,7 @@ namespace employeeManagmentAppLachlan.View
             Console.Clear();
             PrintLine();
             PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
+            PrintLine();
             if (loop = true)
             {
                 foreach (tblEmployeeDetails detail in details)
@@ -362,6 +462,7 @@ namespace employeeManagmentAppLachlan.View
 
             PrintLine();
             PrintRow("City ID ", " City Name", "Active");
+            PrintLine();
             /* Console.Clear();
             PrintLine();
             PrintRow("Column 1", "Column 2", "Column 3", "Column 4");
@@ -391,6 +492,7 @@ namespace employeeManagmentAppLachlan.View
             int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
             PrintLine();
             PrintRow("City ID ", " City Name", "Active");
+            PrintLine();
             if (loop = true)
             {
                 foreach (tblCityID City in CityID)
@@ -428,6 +530,7 @@ namespace employeeManagmentAppLachlan.View
         {
             PrintLine();
             PrintRow(" Street ID ", " Street Name", " Active");
+            PrintLine();
             foreach (tblStreetID street in streetID)
             {
                 PrintLine();
@@ -446,6 +549,7 @@ namespace employeeManagmentAppLachlan.View
             int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
             PrintLine();
             PrintRow(" Street ID ", " Street Name", " Active");
+            PrintLine();
             if (loop = true)
             {
                 foreach (tblStreetID street in streetID)
@@ -482,6 +586,7 @@ namespace employeeManagmentAppLachlan.View
         {
             PrintLine();
             PrintRow(" suburb ID ", " subrub Name", " post code", " Active");
+            PrintLine();
             foreach (tblSubrubID subrub in subrubID)
             {
                 PrintLine();
@@ -501,6 +606,7 @@ namespace employeeManagmentAppLachlan.View
             int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
             PrintLine();
             PrintRow(" suburb ID ", " subrub Name", " post code", " Active");
+            PrintLine();
             if (loop = true)
             {
                 foreach (tblSubrubID subrub in subrubID)
@@ -538,6 +644,7 @@ namespace employeeManagmentAppLachlan.View
         {
             PrintLine();
             PrintRow("Country ID ", " Country Name", " Active");
+            PrintLine();
             foreach (tblLocationCountry country in countryID)
             {
                 PrintLine();
@@ -556,6 +663,7 @@ namespace employeeManagmentAppLachlan.View
             int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
             PrintLine();
             PrintRow("Country ID ", " Country Name", " Active");
+            PrintLine();
             if (loop = true)
             {
                 foreach (tblLocationCountry country in countryID)
@@ -592,6 +700,7 @@ namespace employeeManagmentAppLachlan.View
         {
             PrintLine();
             PrintRow("Location ID ", " Location Name", " CountryID", " SuburbID", " StreetID", " CityID", " StreetNumber", " Active");
+            PrintLine();
             foreach (tblLocation location in locations)
             {
                 PrintLine();
@@ -610,6 +719,7 @@ namespace employeeManagmentAppLachlan.View
             int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
             PrintLine();
             PrintRow("Location ID ", " Location Name", " CountryID", " SuburbID", " StreetID", " CityID", " StreetNumber", " Active");
+            PrintLine();
             if (loop = true)
             {
                 foreach (tblLocation location in locations)
@@ -646,6 +756,7 @@ namespace employeeManagmentAppLachlan.View
         {
             PrintLine();
             PrintRow("jobtitle ID ", " jobtitlename", "Active ");
+            PrintLine();
             foreach (tblJobtitle jobTittle in jobtitles)
             {
                 PrintLine();
@@ -665,6 +776,7 @@ namespace employeeManagmentAppLachlan.View
             int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
             PrintLine();
             PrintRow("jobtitle ID ", " jobtitlename", "Active ");
+            PrintLine();
             if (loop = true)
             {
                 foreach (tblJobtitle jobTittle in jobtitles)
@@ -700,6 +812,7 @@ namespace employeeManagmentAppLachlan.View
         {
             PrintLine();
             PrintRow("Role ID ", " Role Name", " Active");
+            PrintLine();
             foreach (tblEmployeeRoleName role in Roles)
             {
                 PrintLine();
@@ -719,6 +832,7 @@ namespace employeeManagmentAppLachlan.View
             int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
             PrintLine();
             PrintRow("Role ID ", " Role Name", " Active");
+            PrintLine();
             if (loop = true)
             {
                 foreach (tblEmployeeRoleName role in Roles)
@@ -749,47 +863,6 @@ namespace employeeManagmentAppLachlan.View
 
             }
         }
-        /*
-        public void ______(_______)
-        {
-            int loopnum = 0;
-            bool loop = true;
-            int pageNum = 1;
-            decimal totalPagesDecimal = ____.Count / 10;
-            Math.Truncate(totalPagesDecimal);
-            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
-            PrintLine();
-            PrintRow(_________);
-            if (loop = true)
-            {
-                foreach (______)
-                {
-                    PrintLine();
-                    PrintRow($"{detail.employeeID}");
-                    PrintLine();
-                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
-                    loopnum++;
-                    Console.WriteLine(loopnum);
-                    if (loopnum == 10)
-                    {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
-                        {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
-                    }
-                }
-            }
-        }
-        */
 
         //displays the data for the table EmployeeDetails
         public void DisplayEmployeeDetailsPages(List<tblEmployeeDetails> details)
@@ -803,6 +876,7 @@ namespace employeeManagmentAppLachlan.View
             Console.Clear();
             PrintLine();
             PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
+            PrintLine();
             if (loop = true)
             {
                 foreach (tblEmployeeDetails detail in details)
@@ -839,7 +913,8 @@ namespace employeeManagmentAppLachlan.View
             Console.Clear();
             PrintLine();
             PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
-                foreach (tblEmployeeDetails detail in details)
+            PrintLine();
+            foreach (tblEmployeeDetails detail in details)
                 {
                     PrintLine();
                     PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
@@ -856,6 +931,7 @@ namespace employeeManagmentAppLachlan.View
         {
             PrintLine();
             PrintRow(" department ", " managers ID ", " Department ID ", " Active");
+            PrintLine();
             foreach (tblDepartments department in departments)
             {
                 PrintLine();
@@ -874,6 +950,7 @@ namespace employeeManagmentAppLachlan.View
             int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
             PrintLine();
             PrintRow(" department ", " managers ID ", " Department ID ", " Active");
+            PrintLine();
             if (loop = true)
             {
                 foreach (tblDepartments department in departments)
@@ -916,7 +993,6 @@ namespace employeeManagmentAppLachlan.View
             bool loop = true;
             do
             {
-                Console.WriteLine("Please enter you input");
                 input = Console.ReadLine().ToUpper();
                 if (input.IsNullOrEmpty())
                 {
@@ -941,8 +1017,6 @@ namespace employeeManagmentAppLachlan.View
             bool loop = true;
             do
             {
-
-                Console.WriteLine("Please enter a number");
                 input = Console.ReadLine();
                 bool number = IsAllDigits(input);
                 if (input.IsNullOrEmpty() | number == false)
