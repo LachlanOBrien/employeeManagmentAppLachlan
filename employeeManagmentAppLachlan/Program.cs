@@ -796,6 +796,8 @@ namespace employeeManagmentAppLachlan
                         {
                             storageManager.AdvancedQuery1();
                             Loop = false;
+                            List<AdvQry1> employee = storageManager.AdvancedQuery1();
+                            view.DisplayAdvQry1(employee);
                         }
                         break;
                     case "2":
@@ -808,6 +810,8 @@ namespace employeeManagmentAppLachlan
                         {
                             storageManager.AdvancedQuery3();
                             Loop = false;
+                            List<AdvQry3> employee = storageManager.AdvancedQuery3();
+                            view.DisplayAdvQry3(employee);
                         }
                         break;
                     case "4":
@@ -850,6 +854,8 @@ namespace employeeManagmentAppLachlan
                         {
                             storageManager.ComplexQuery5();
                             Loop = false;
+                            List<ComplexQry5> employee = storageManager.ComplexQuery5();
+                            view.DisplayComplexQry5(employee);
                         }
                         break;
                     default:

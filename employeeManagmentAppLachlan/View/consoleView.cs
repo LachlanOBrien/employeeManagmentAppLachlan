@@ -1432,7 +1432,7 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
-        public void DisplayComplexQry3(List<ComplexQry5> complexQry5s)
+        public void DisplayComplexQry5(List<ComplexQry5> complexQry5s)
         {
             int loopnum = 0;
             bool loop = true;
