@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace employeeManagmentAppLachlan.Model
 {
-    public class tblJobtitle
+    public class SearchJobtitle
     {
         public int jobtitleID { get; set; }
         public string jobtitleName { get; set; }
         public bool active { get; set; }
 
-        public tblJobtitle(int JobtitleID, string JobtitleName, bool Active)
+        public SearchJobtitle(int JobtitleID, string JobtitleName, bool Active)
         {
             jobtitleID = JobtitleID;
             jobtitleName = JobtitleName;

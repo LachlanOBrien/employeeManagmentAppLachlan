@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace employeeManagmentAppLachlan.Model
 {
-    public class tblStreetID
+    public class SearchStreetID
     {
         public int streetID { get; set; }
         public string streetName { get; set; }
         public bool active { get; set; }
-        public tblStreetID(int StreetID, string StreetName, bool Active)
+        public SearchStreetID(int StreetID, string StreetName, bool Active)
         {
             streetID = StreetID;
             streetName = StreetName;

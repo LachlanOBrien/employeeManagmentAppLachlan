@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace employeeManagmentAppLachlan.Model
 {
-    public class tblLocation
+    public class SearchLocation
     {
         public int locationID { get; set; }
         public string locationName { get; set; }
@@ -17,7 +17,7 @@ namespace employeeManagmentAppLachlan.Model
         public int streetNumber { get; set; }
         public bool active { get; set; }
 
-        public tblLocation(int LocationID, string LocationName, int CountryID, int SuburbID, int StreetID, int CityID, int StreetNumber, bool Active)
+        public SearchLocation(int LocationID, string LocationName, int CountryID, int SuburbID, int StreetID, int CityID, int StreetNumber, bool Active)
         {
             locationID = LocationID;
             locationName = LocationName;

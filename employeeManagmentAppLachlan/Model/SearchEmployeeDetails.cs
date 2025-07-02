@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace employeeManagmentAppLachlan.Model
 {
-    public class tblEmployeeDetails
+    public class SearchEmployeeDetails
     {
         public int employeeID { get; set; }
         public string firstname { get; set; }
@@ -22,7 +22,7 @@ namespace employeeManagmentAppLachlan.Model
         public int phonenumber { get; set; }
         public int wage { get; set; }
 
-        public tblEmployeeDetails(int EmployeeID, string Firstname, string Lastname, DateTime Hiredate, string Gender, int JobID, int RoleID, string Username, string Password, bool Active, string Email, int PhoneNumber, int Wage)
+        public SearchEmployeeDetails(int EmployeeID, string Firstname, string Lastname, DateTime Hiredate, string Gender, int JobID, int RoleID, string Username, string Password, bool Active, string Email, int PhoneNumber, int Wage)
         {
             employeeID = EmployeeID;
             firstname = Firstname;

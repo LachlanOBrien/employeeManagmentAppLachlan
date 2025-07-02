@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace employeeManagmentAppLachlan.Model
 {
-    public class tblLocationCountry
+    public class SearchLocationCountry
     {
         public int countryId { get; set; }
         public string countryName { get; set; }
         public bool active { get; set; }
-        public tblLocationCountry(int CountryID, string Countryname, bool Active)
+        public SearchLocationCountry(int CountryID, string Countryname, bool Active)
         {
             countryId = CountryID;
             countryName = Countryname;
