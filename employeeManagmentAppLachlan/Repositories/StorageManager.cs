@@ -100,7 +100,7 @@ namespace employeeManagmentAppLachlan.Repositories
                         string firstName = reader["Firstname"].ToString();
                         string LastName = reader["Lastname"].ToString();
                         DateTime HireDate = Convert.ToDateTime(reader["HireDate"]);
-                        advQry1s.Add(new AdvQry1(wage, firstName, LastName, DateTime));
+                        advQry1s.Add(new AdvQry1(wage, firstName, LastName, HireDate));
                     }
                 }
             }
