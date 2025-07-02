@@ -85,29 +85,26 @@ namespace employeeManagmentAppLachlan.Repositories
 
 
         // gets the data from the advancedQuery1 and returns it as the return of the method 
-        public void AdvancedQuery1()
+        public List<AdvQry1> AdvancedQuery1()
         {
+            List<AdvQry1> advQry1s = new List<AdvQry1>();
             string sqlString = "SELECT Em.FirstName, Em.LastName, Em.HireDate, Em.Wage FROM Employee.tblEmployeesDetails as EM  where Active = 1 and (Em.Wage >= 80000.00 and Em.HireDate >= '2018-01-01') order by Em.FirstName, Em.LastName, Em.Wage, Em.HireDate;";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    PrintLine();
-                    PrintRow("First Name ", " Last Name", "Hire Date", " Wage");
-                    PrintLine();
                     while (reader.Read())
                     {
                         int wage = Convert.ToInt32(reader["Wage"]);
                         string firstName = reader["Firstname"].ToString();
                         string LastName = reader["Lastname"].ToString();
                         DateTime HireDate = Convert.ToDateTime(reader["HireDate"]);
-                        PrintLine();
-                        PrintRow($"{firstName}",$"{LastName}",$"{HireDate}",$"{wage}");
-                        PrintLine();
+                        advQry1s.Add(new AdvQry1(wage, firstName, LastName, DateTime));
                     }
                 }
             }
+            return advQry1s;
         }
         // gets the data from the advancedQuery2 and returns it as the return of the method 
         public void AdvancedQuery2() 
@@ -138,28 +135,25 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
         // gets the data from the advancedQuery3 and returns it as the return of the method 
-        public void AdvancedQuery3()
+        public List<AdvQry3> AdvancedQuery3()
         {
+            List<AdvQry3> advQry3s = new List<AdvQry3>();
             string sqlString = "Select EM.EmployeeID, EM.Gender, EM.Wage from Employee.tblEmployeesDetails as EM where  (Gender = 'M') order by 1,2,3; ";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    PrintLine();
-                    PrintRow(" Employee ID", " Gender", " Wage");
-                    PrintLine();
                     while (reader.Read())
                     {
                         int Wage = Convert.ToInt32(reader["Wage"]);
                         int EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
                         string Gender = reader["Gender"].ToString();
-                        PrintLine();
-                        PrintRow($"{EmployeeID}", $"{Gender}", $"{Wage}");
-                        PrintLine();
+                        advQry3s.Add(new AdvQry3(Wage, EmployeeID, Gender));
                     }
                 }
             }
+            return advQry3s;
         }
         // gets the data from the advancedQuery4 and returns it as the return of the method 
         public void AdvancedQuery4()
@@ -304,28 +298,25 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
         // gets the data from the ComplexQuery5 and returns it as the return of the method
-        public void ComplexQuery5()
+        public List<ComplexQry5> ComplexQuery5()
         {
+            List<ComplexQry5> complexQry5s = new List<ComplexQry5>();
             string sqlString = "select distinct count(JobTitleName ) as total, ED.Wage,JT.JobTitleName   from Employee.tblJobTitles as JT, Employee.tblEmployeesDetails as ED where JT.JobTitleID = ED.JobID  and wage >= '90000.00'  Group by ED.Wage, JT.JobTitleName  order by 1,3,2; ";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    PrintLine();
-                    PrintRow("total", " wage ", " JobTitleName ");
-                    PrintLine();
                     while (reader.Read())
                     {
                         int total = Convert.ToInt32(reader["total"]);
                         int wage = Convert.ToInt32(reader["Wage"]);
                         string JobTitleName = reader["JobTitleName"].ToString();
-                        PrintLine();
-                        PrintRow($"{total}", $"{wage}", $"{JobTitleName}");
-                        PrintLine();
+                        complexQry5s.Add(new ComplexQry5(total, wage, JobTitleName));
                     }
                 }
             }
+            return complexQry5s;
         }
 
 

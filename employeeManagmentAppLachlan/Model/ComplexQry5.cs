@@ -13,7 +13,7 @@ namespace employeeManagmentAppLachlan.Model
         public string jobTitleName { get; set; }
         public ComplexQry5(int Total, int Wage, string JobTitleName)
         {
-            wage = Wage;
+            total = Total;
             wage = Wage;
             jobTitleName = JobTitleName;
         }

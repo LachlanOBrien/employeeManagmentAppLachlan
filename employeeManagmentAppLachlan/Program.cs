@@ -522,8 +522,8 @@ namespace employeeManagmentAppLachlan
                             } while (loop);
                             Console.WriteLine($"what {Field} do you wish to see:");
                             choice = view.GetInput();
-                            List<SearchStreetID> streetIDs = storageManager.GetSearchQryStreet(Table, Field, choice);
-                            view.DisplaySearchStreetIDPages(streetIDs);
+                            List<SearchLocationCountry> streetIDs = storageManager.GetSearchQryCountry(Table, Field, choice);
+                            view.DisplaySearchCountryPages(streetIDs);
                         }
                         break;
                     case "8":

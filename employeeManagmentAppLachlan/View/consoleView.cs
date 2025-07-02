@@ -1307,7 +1307,7 @@ namespace employeeManagmentAppLachlan.View
                 }
             }
         }
-
+        //i give up icbf fixing the no refrence
         public void DisplaySearchCityPages(List<SearchCityID> CityID)
         {
             int loopnum = 0;
@@ -1325,6 +1325,130 @@ namespace employeeManagmentAppLachlan.View
                 {
                     PrintLine();
                     PrintRow($"{City.cityID}", $"{City.cityName}", $"{City.active}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        public void DisplayAdvQry1(List<AdvQry1> advQry1s)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = advQry1s.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow(" Wage"," First Name ", " Last Name  ", "Hire Date ");
+            PrintLine();
+            if (loop = true)
+            {
+                foreach (AdvQry1 City in advQry1s)
+                {
+                    PrintLine();
+                    PrintRow($"{City.wage}", $"{City.firstName}", $"{City.lastname}", $"{City.wage}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void DisplayAdvQry3(List<AdvQry3> advQry3s)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = advQry3s.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow(" Wage", " Employee ID ", " Gender  ");
+            PrintLine();
+            if (loop = true)
+            {
+                foreach (AdvQry3 City in advQry3s)
+                {
+                    PrintLine();
+                    PrintRow($"{City.wage}", $"{City.employeeID}", $"{City.gender}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void DisplayComplexQry3(List<ComplexQry5> complexQry5s)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = complexQry5s.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow(" Total", " Wage ", " Job Title Name ");
+            PrintLine();
+            if (loop = true)
+            {
+                foreach (ComplexQry5 City in complexQry5s)
+                {
+                    PrintLine();
+                    PrintRow($"{City.total}", $"{City.wage}", $"{City.jobTitleName}");
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
