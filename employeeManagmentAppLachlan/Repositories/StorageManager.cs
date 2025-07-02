@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlTypes;
 using System.Diagnostics.Metrics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -329,8 +330,9 @@ namespace employeeManagmentAppLachlan.Repositories
 
 
 
-        public void searchQryEmpDet(string Table, string Field, string choice)
+        public List<SearchEmployeeDetails> searchQryEmpDet(string Table, string Field, string choice)
         {
+            List<SearchEmployeeDetails> employeeDetails = new List<SearchEmployeeDetails>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
             string JobIDStr;
             string PhoneNumberStr;
@@ -343,9 +345,6 @@ namespace employeeManagmentAppLachlan.Repositories
                 cmd.Parameters.AddWithValue("@Choice", choice);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    PrintLine();
-                    PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " wage");
-                    PrintLine();
                     while (reader.Read())
                     {
                         JobIDStr = reader["JobID"].ToString();
@@ -388,16 +387,16 @@ namespace employeeManagmentAppLachlan.Repositories
                         {
                             Wage = Convert.ToInt32(reader["Wage"]);
                         }
-                        PrintLine();
-                        PrintRow($"{EmployeeID}", $"{Firstname}", $"{Lastname}", $"{Hiredate}", $"{Gender}", $"{JobID }", $"{RoleID}", $"{Active}", $"{Email}", $"{PhoneNumber}", $"{Wage}");
-                        PrintLine();
+                        employeeDetails.Add(new SearchEmployeeDetails(EmployeeID, Firstname, Lastname, Hiredate, Gender, JobID, RoleID, Username, Password, Active, Email, PhoneNumber, Wage));
                     }
                 }
             }
+            return employeeDetails;
         }
 
-        public void searchQryRoleName(string Table, string Field, string choice)
+        public List<SearchEmployeeRoleName> searchQryRoleName(string Table, string Field, string choice)
         {
+            List<SearchEmployeeRoleName> roleNames = new List<SearchEmployeeRoleName>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
@@ -405,24 +404,21 @@ namespace employeeManagmentAppLachlan.Repositories
                 cmd.Parameters.AddWithValue("@Choice", choice);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    PrintLine();
-                    PrintRow("Role ID ", " Role Name", " Active");
-                    PrintLine();
                     while (reader.Read())
                     {
                         int RoleID = Convert.ToInt32(reader["RoleID"]);
                         string RoleName = reader["RoleName"].ToString();
                         bool Active = Convert.ToBoolean(reader["Active"]);
-                        PrintLine();
-                        PrintRow($"{RoleID}", $"{RoleName}", $"{Active}");
-                        PrintLine();
+                        roleNames.Add(new SearchEmployeeRoleName(RoleID, RoleName,Active));
                     }
                 }
             }
+            return roleNames;
         }
 
-        public void searchQryLocation(string Table, string Field, string choice)
+        public List<SearchLocation> searchQryLocation(string Table, string Field, string choice)
         {
+            List<SearchLocation> locations = new List<SearchLocation>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
@@ -430,9 +426,6 @@ namespace employeeManagmentAppLachlan.Repositories
                 cmd.Parameters.AddWithValue("@Choice", choice);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    PrintLine();
-                    PrintRow("Location ID ", " Location Name", " CountryID", " SuburbID", " StreetID", " CityID", " StreetNumber", " Active");
-                    PrintLine();
                     while (reader.Read())
                     {
                         int LocationID = Convert.ToInt32(reader["LocationID"]);
@@ -443,16 +436,16 @@ namespace employeeManagmentAppLachlan.Repositories
                         int CityID = Convert.ToInt32(reader["CityID"]);
                         int StreetNumber = Convert.ToInt32(reader["StreetNumber"]);
                         bool Active = Convert.ToBoolean(reader["Active"]);
-                        PrintLine();
-                        PrintRow($"{LocationID}", $"{LocationName}", $"{CountryID}", $"{SuburbID}", $"{StreetID}", $"{CityID}", $"{StreetNumber}", $"{Active}");
-                        PrintLine();
+                        locations.Add(new SearchLocation(LocationID, LocationName, CountryID, SuburbID, StreetID, CityID, StreetNumber, Active));
                     }
                 }
             }
+            return locations;
         }
 
-        public void searchQryDepartments(string Table, string Field, string choice)
+        public List<SearchDepartments> searchQryDepartments(string Table, string Field, string choice)
         {
+            List<SearchDepartments> departments = new List<SearchDepartments>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
@@ -460,25 +453,22 @@ namespace employeeManagmentAppLachlan.Repositories
                 cmd.Parameters.AddWithValue("@Choice", choice);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    PrintLine();
-                    PrintRow(" department ", " managers ID ", " Department ID ", " Active");
-                    PrintLine();
                     while (reader.Read())
                     {
                         string Departments = reader["DepartmentName"].ToString();
                         int ManagersID = Convert.ToInt32(reader["ManagersID"]);
                         int DepartmentID = Convert.ToInt32(reader["DepartmentID"]);
                         bool Active = Convert.ToBoolean(reader["Active"]);
-                        PrintLine();
-                        PrintRow($"{DepartmentID}", $"{ManagersID}", $"{DepartmentID}", $"{Active}");
-                        PrintLine();
+                        departments.Add(new SearchDepartments(Departments, ManagersID, DepartmentID, Active));
                     }
                 }
             }
+            return departments;
         }
         
-        public void searchQryJobTitles(string Table, string Field, string choice)
+        public List<SearchJobtitle> searchQryJobTitles(string Table, string Field, string choice)
         {
+            List<SearchJobtitle> JobTitles = new List<SearchJobtitle>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
@@ -486,24 +476,21 @@ namespace employeeManagmentAppLachlan.Repositories
                 cmd.Parameters.AddWithValue("@Choice", choice);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    PrintLine();
-                    PrintRow("jobtitle ID ", " jobtitlename", "Active ");
-                    PrintLine();
                     while (reader.Read())
                     {
                         int jobtitleid = Convert.ToInt32(reader["jobtitleID"]); 
                         string JobtitleName = reader["JobtitleName"].ToString();
                         bool Active = Convert.ToBoolean(reader["Active"]);
-                        PrintLine();
-                        PrintRow($"{jobtitleid}", $"{JobtitleName}", $"{Active}");
-                        PrintLine();
+                        JobTitles.Add(new SearchJobtitle(jobtitleid, JobtitleName, Active));
                     }
                 }
             }
+            return JobTitles;
         }
 
-        public void searchQryStreet(string Table, string Field, string choice)
+        public List<SearchStreetID> searchQryStreet(string Table, string Field, string choice)
         {
+            List<SearchStreetID> Street = new List<SearchStreetID>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
@@ -511,24 +498,21 @@ namespace employeeManagmentAppLachlan.Repositories
                 cmd.Parameters.AddWithValue("@Choice", choice);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    PrintLine();
-                    PrintRow(" Street ID ", " Street Name", " Active");
-                    PrintLine();
                     while (reader.Read())
                     {
                         int StreetID = Convert.ToInt32(reader["StreetID"]);
                         string StreetName = reader["StreetName"].ToString();
                         bool Active = Convert.ToBoolean(reader["Active"]);
-                        PrintLine();
-                        PrintRow($"{StreetID}", $"{StreetName}", $"{Active}");
-                        PrintLine();
+                        Street.Add(new SearchStreetID(StreetID, StreetName, Active));
                     }
                 }
             }
+            return Street;  
         }
 
-        public void searchQrySuburb(string Table, string Field, string choice)
+        public List<SearchSubrubID> searchQrySuburb(string Table, string Field, string choice)
         {
+            List<SearchSubrubID> Suburb = new List<SearchSubrubID>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
@@ -536,25 +520,22 @@ namespace employeeManagmentAppLachlan.Repositories
                 cmd.Parameters.AddWithValue("@Choice", choice);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    PrintLine();
-                    PrintRow(" suburb ID ", " subrub Name", " post code", " Active");
-                    PrintLine();
                     while (reader.Read())
                     {
                         int SubrubID = Convert.ToInt32(reader["SuburbID"]);
                         string SuburbName = reader["Suburb"].ToString();
                         int Postcode = Convert.ToInt32(reader["PostCode"]);
                         bool Active = Convert.ToBoolean(reader["Active"]);
-                        PrintLine();
-                        PrintRow($"{SubrubID}", $"{SuburbName}", $"{Postcode}", $"{Active}");
-                        PrintLine();
+                        Suburb.Add(new SearchSubrubID(SubrubID, SuburbName, Postcode, Active));
                     }
                 }
             }
+            return Suburb;
         }
 
-        public void searchQryCity(string Table, string Field, string choice)
+        public List<SearchCityID> searchQryCity(string Table, string Field, string choice)
         {
+            List<SearchCityID> City = new List<SearchCityID>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
@@ -562,24 +543,21 @@ namespace employeeManagmentAppLachlan.Repositories
                 cmd.Parameters.AddWithValue("@Choice", choice);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    PrintLine();
-                    PrintRow("City ID ", " City Name", "Active");
-                    PrintLine();
                     while (reader.Read())
                     {
                         int CityID = Convert.ToInt32(reader["CityID"]);
                         string CityName = reader["CityName"].ToString();
                         bool Active = Convert.ToBoolean(reader["Active"]);
-                        PrintLine();
-                        PrintRow($"{CityID}", $"{CityName}", $"{Active}");
-                        PrintLine();
+                        City.Add(new SearchCityID(CityID, CityName, Active));
                     }
                 }
             }
+            return City;
         }
 
-        public void searchQryCountry(string Table, string Field, string choice)
+        public List<SearchLocationCountry> searchQryCountry(string Table, string Field, string choice)
         {
+            List<SearchLocationCountry> countries = new List<SearchLocationCountry>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
 
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
@@ -587,20 +565,16 @@ namespace employeeManagmentAppLachlan.Repositories
                 cmd.Parameters.AddWithValue("@Choice", choice);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    PrintLine();
-                    PrintRow("Country ID ", " Country Name", " Active");
-                    PrintLine();
                     while (reader.Read())
                     {
                         int CountryID = Convert.ToInt32(reader["CountryID"]);
                         string CountryName = reader["CountryName"].ToString();
                         bool Active = Convert.ToBoolean(reader["Active"]);
-                        PrintLine();
-                        PrintRow($"{CountryID}", $"{CountryName}", $"{Active}");
-                        PrintLine();
+                        countries.Add(new SearchLocationCountry(CountryID, CountryName, Active));
                     }
                 }
             }
+            return countries;
         }
 
 
