@@ -980,6 +980,376 @@ namespace employeeManagmentAppLachlan.View
         }
 
 
+
+        public void DisplaySearchDepartmentsPages(List<SearchDepartments> departments)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = departments.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow(" department ", " managers ID ", " Department ID ", " Active");
+            PrintLine();
+            if (loop = true)
+            {
+                foreach (SearchDepartments department in departments)
+                {
+                    PrintLine();
+                    PrintRow($"{department.department}", $"{department.managersID}", $"{department.departmentID}", $"{department.active}");
+                    PrintLine();
+                    loopnum++;
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void DisplaySearchEmployeeDetailsPages(List<SearchEmployeeDetails> details)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = details.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            Console.Clear();
+            PrintLine();
+            PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " wage");
+            PrintLine();
+            if (loop = true)
+            {
+                foreach (SearchEmployeeDetails detail in details)
+                {
+                    PrintLine();
+                    PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        public void DisplaySearchRoleNamesPages(List<SearchEmployeeRoleName> Roles)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = Roles.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow("Role ID ", " Role Name", " Active");
+            PrintLine();
+            if (loop = true)
+            {
+                foreach (SearchEmployeeRoleName role in Roles)
+                {
+                    PrintLine();
+                    PrintRow($"{role.roleID}", $"{role.roleName}", $"{role.active}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        public void DisplaySearchJobTittlesPages(List<SearchJobtitle> jobtitles)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = jobtitles.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow("jobtitle ID ", " jobtitlename", "Active ");
+            PrintLine();
+            if (loop = true)
+            {
+                foreach (SearchJobtitle jobTittle in jobtitles)
+                {
+                    PrintLine();
+                    PrintRow($"{jobTittle.jobtitleID}", $"{jobTittle.jobtitleName}", $"{jobTittle.active}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void DisplaySearchLocationPages(List<SearchLocation> locations)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = locations.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow("Location ID ", " Location Name", " CountryID", " SuburbID", " StreetID", " CityID", " StreetNumber", " Active");
+            PrintLine();
+            if (loop = true)
+            {
+                foreach (SearchLocation location in locations)
+                {
+                    PrintLine();
+                    PrintRow($"{location.locationID}", $"{location.locationName}", $"{location.countryID}", $"{location.suburbID}", $"{location.streetID}", $"{location.cityID}", $"{location.streetNumber}", $"{location.active}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void DisplaySearchCountryPages(List<SearchLocationCountry> countryID)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = countryID.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow("Country ID ", " Country Name", " Active");
+            PrintLine();
+            if (loop = true)
+            {
+                foreach (SearchLocationCountry country in countryID)
+                {
+                    PrintLine();
+                    PrintRow($"{country.countryId}", $"{country.countryName}", $"{country.active}");
+                    PrintLine();
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void DisplaySearchSubrubPages(List<SearchSubrubID> subrubID)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = subrubID.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow(" suburb ID ", " subrub Name", " post code", " Active");
+            PrintLine();
+            if (loop = true)
+            {
+                foreach (SearchSubrubID subrub in subrubID)
+                {
+                    PrintLine();
+                    PrintRow($"{subrub.suburbID}", $"{subrub.suburbName}", $"{subrub.postcode}", $"{subrub.active}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void DisplaySearchStreetIDPages(List<SearchStreetID> streetID)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = streetID.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow(" Street ID ", " Street Name", " Active");
+            PrintLine();
+            if (loop = true)
+            {
+                foreach (SearchStreetID street in streetID)
+                {
+                    PrintLine();
+                    PrintRow($"{street.streetID}", $"{street.streetName}", $"{street.active}");
+                    PrintLine();
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void DisplaySearchCityPages(List<SearchCityID> CityID)
+        {
+            int loopnum = 0;
+            bool loop = true;
+            int pageNum = 1;
+            decimal totalPagesDecimal = CityID.Count / 10;
+            Math.Truncate(totalPagesDecimal);
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
+            PrintLine();
+            PrintRow("City ID ", " City Name", "Active");
+            PrintLine();
+            if (loop = true)
+            {
+                foreach (SearchCityID City in CityID)
+                {
+                    PrintLine();
+                    PrintRow($"{City.cityID}", $"{City.cityName}", $"{City.active}");
+                    PrintLine();
+                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+                    loopnum++;
+                    Console.WriteLine(loopnum);
+                    if (loopnum == 10)
+                    {
+                        Console.WriteLine("do you wish to go to the next page Y/N");
+                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                        string input = GetInput();
+                        if (input.Equals("Y"))
+                        {
+                            loop = true;
+                            loopnum = 0;
+                            pageNum++;
+                        }
+                        else
+                        {
+                            loop = false;
+                        }
+                    }
+                }
+            }
+        }
+
+
         // displays a message 
         public void DisplayMessage(string message)
         {

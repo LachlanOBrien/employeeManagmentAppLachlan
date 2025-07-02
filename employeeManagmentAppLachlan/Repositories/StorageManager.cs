@@ -330,7 +330,7 @@ namespace employeeManagmentAppLachlan.Repositories
 
 
 
-        public List<SearchEmployeeDetails> searchQryEmpDet(string Table, string Field, string choice)
+        public List<SearchEmployeeDetails> GetSearchQryEmpDet(string Table, string Field, string choice)
         {
             List<SearchEmployeeDetails> employeeDetails = new List<SearchEmployeeDetails>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
@@ -394,7 +394,7 @@ namespace employeeManagmentAppLachlan.Repositories
             return employeeDetails;
         }
 
-        public List<SearchEmployeeRoleName> searchQryRoleName(string Table, string Field, string choice)
+        public List<SearchEmployeeRoleName> GetSearchQryRoleName(string Table, string Field, string choice)
         {
             List<SearchEmployeeRoleName> roleNames = new List<SearchEmployeeRoleName>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
@@ -416,7 +416,7 @@ namespace employeeManagmentAppLachlan.Repositories
             return roleNames;
         }
 
-        public List<SearchLocation> searchQryLocation(string Table, string Field, string choice)
+        public List<SearchLocation> GetSearchQryLocation(string Table, string Field, string choice)
         {
             List<SearchLocation> locations = new List<SearchLocation>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
@@ -443,7 +443,7 @@ namespace employeeManagmentAppLachlan.Repositories
             return locations;
         }
 
-        public List<SearchDepartments> searchQryDepartments(string Table, string Field, string choice)
+        public List<SearchDepartments> GetSearchQryDepartments(string Table, string Field, string choice)
         {
             List<SearchDepartments> departments = new List<SearchDepartments>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
@@ -466,7 +466,7 @@ namespace employeeManagmentAppLachlan.Repositories
             return departments;
         }
         
-        public List<SearchJobtitle> searchQryJobTitles(string Table, string Field, string choice)
+        public List<SearchJobtitle> GetSearchQryJobTitles(string Table, string Field, string choice)
         {
             List<SearchJobtitle> JobTitles = new List<SearchJobtitle>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
@@ -488,7 +488,7 @@ namespace employeeManagmentAppLachlan.Repositories
             return JobTitles;
         }
 
-        public List<SearchStreetID> searchQryStreet(string Table, string Field, string choice)
+        public List<SearchStreetID> GetSearchQryStreet(string Table, string Field, string choice)
         {
             List<SearchStreetID> Street = new List<SearchStreetID>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
@@ -510,7 +510,7 @@ namespace employeeManagmentAppLachlan.Repositories
             return Street;  
         }
 
-        public List<SearchSubrubID> searchQrySuburb(string Table, string Field, string choice)
+        public List<SearchSubrubID> GetSearchQrySuburb(string Table, string Field, string choice)
         {
             List<SearchSubrubID> Suburb = new List<SearchSubrubID>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
@@ -533,7 +533,7 @@ namespace employeeManagmentAppLachlan.Repositories
             return Suburb;
         }
 
-        public List<SearchCityID> searchQryCity(string Table, string Field, string choice)
+        public List<SearchCityID> GetSearchQryCity(string Table, string Field, string choice)
         {
             List<SearchCityID> City = new List<SearchCityID>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";
@@ -555,7 +555,7 @@ namespace employeeManagmentAppLachlan.Repositories
             return City;
         }
 
-        public List<SearchLocationCountry> searchQryCountry(string Table, string Field, string choice)
+        public List<SearchLocationCountry> GetSearchQryCountry(string Table, string Field, string choice)
         {
             List<SearchLocationCountry> countries = new List<SearchLocationCountry>();
             string sqlString = $"SELECT * FROM {Table} WHERE {Field} = @Choice AND Active = 1";

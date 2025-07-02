@@ -264,7 +264,9 @@ namespace employeeManagmentAppLachlan
                                 Console.WriteLine($"what {Field} do you wish to see:");
                                 choice = view.GetInput();
                             }
-                            storageManager.searchQryEmpDet(Table, Field, choice);
+                            List<SearchEmployeeDetails> employee = storageManager.GetSearchQryEmpDet(Table, Field, choice);
+                            view.DisplaySearchEmployeeDetailsPages(employee);
+
                         }
                         break;
                     case "2":
@@ -330,7 +332,8 @@ namespace employeeManagmentAppLachlan
                             } while (loop);
                             Console.WriteLine($"what {Field} do you wish to see:");
                             choice = view.GetInput();
-                            storageManager.searchQryLocation(Table, Field, choice);
+                            List<SearchLocation> locations = storageManager.GetSearchQryLocation(Table, Field, choice);
+                            view.DisplaySearchLocationPages(locations);
                         }
                         break;
                     case "3":
@@ -366,7 +369,8 @@ namespace employeeManagmentAppLachlan
                             } while (loop);
                             Console.WriteLine($"what {Field} do you wish to see:");
                             choice = view.GetInput();
-                            storageManager.searchQryRoleName(Table, Field, choice);
+                            List<SearchEmployeeRoleName> roleNames = storageManager.GetSearchQryRoleName(Table, Field, choice);
+                            view.DisplaySearchRoleNamesPages(roleNames);
                         }
                         break;
                     case "4":
@@ -408,7 +412,8 @@ namespace employeeManagmentAppLachlan
                             } while (loop);
                             Console.WriteLine($"what {Field} do you wish to see:");
                             choice = view.GetInput();
-                            storageManager.searchQryDepartments(Table, Field, choice);
+                            List<SearchDepartments> departments = storageManager.GetSearchQryDepartments(Table, Field, choice);
+                            view.DisplaySearchDepartmentsPages(departments);
                         }
                         break;
                     case "5":
@@ -444,7 +449,8 @@ namespace employeeManagmentAppLachlan
                             } while (loop);
                             Console.WriteLine($"what {Field} do you wish to see:");
                             choice = view.GetInput();
-                            storageManager.searchQryJobTitles(Table, Field, choice);
+                            List<SearchJobtitle> jobTittle = storageManager.GetSearchQryJobTitles(Table, Field, choice);
+                            view.DisplaySearchJobTittlesPages(jobTittle);
                         }
                         break;
                     case "6":
@@ -480,7 +486,9 @@ namespace employeeManagmentAppLachlan
                             } while (loop);
                             Console.WriteLine($"what {Field} do you wish to see:");
                             choice = view.GetInput();
-                            storageManager.searchQryCity(Table, Field, choice);
+                            List<SearchLocationCountry> countries = storageManager.GetSearchQryCountry(Table, Field, choice);
+                            view.DisplaySearchCountryPages(countries);
+
                         }
                         break;
                     case "7":
@@ -516,7 +524,8 @@ namespace employeeManagmentAppLachlan
                             } while (loop);
                             Console.WriteLine($"what {Field} do you wish to see:");
                             choice = view.GetInput();
-                            storageManager.searchQryCountry(Table, Field, choice);
+                            List<SearchStreetID> streetIDs = storageManager.GetSearchQryStreet(Table, Field, choice);
+                            view.DisplaySearchStreetIDPages(streetIDs);
                         }
                         break;
                     case "8":
@@ -551,8 +560,9 @@ namespace employeeManagmentAppLachlan
                                 }
                             } while (loop);
                             Console.WriteLine($"what {Field} do you wish to see:");
-                            choice = view.GetInput();
-                            storageManager.searchQryStreet(Table, Field, choice);
+                            choice = view.GetInput();                          
+                            List<SearchStreetID> subrubIDs = storageManager.GetSearchQryStreet(Table, Field, choice);
+                            view.DisplaySearchStreetIDPages(subrubIDs);
                         }
                         break;
                     case "9":
@@ -594,7 +604,10 @@ namespace employeeManagmentAppLachlan
                             } while (loop);
                             Console.WriteLine($"what {Field} do you wish to see:");
                             choice = view.GetInput();
-                            storageManager.searchQrySuburb(Table, Field, choice);
+                            storageManager.GetSearchQrySuburb(Table, Field, choice);
+                            List<SearchSubrubID> subrubIDs = storageManager.GetSearchQrySuburb(Table, Field, choice);
+                            view.DisplaySearchSubrubPages(subrubIDs);
+
                         }
                         break;
                     default:
