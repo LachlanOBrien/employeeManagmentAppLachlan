@@ -320,7 +320,7 @@ namespace employeeManagmentAppLachlan.Repositories
         }
 
 
-
+        // gets the data for the search method for the table Employee Details
         public List<SearchEmployeeDetails> GetSearchQryEmpDet(string Table, string Field, string choice)
         {
             List<SearchEmployeeDetails> employeeDetails = new List<SearchEmployeeDetails>();
@@ -384,7 +384,7 @@ namespace employeeManagmentAppLachlan.Repositories
             }
             return employeeDetails;
         }
-
+        // gets the data for the search method for the table RoleName
         public List<SearchEmployeeRoleName> GetSearchQryRoleName(string Table, string Field, string choice)
         {
             List<SearchEmployeeRoleName> roleNames = new List<SearchEmployeeRoleName>();
@@ -406,7 +406,7 @@ namespace employeeManagmentAppLachlan.Repositories
             }
             return roleNames;
         }
-
+        // gets the data for the search method for the table Location
         public List<SearchLocation> GetSearchQryLocation(string Table, string Field, string choice)
         {
             List<SearchLocation> locations = new List<SearchLocation>();
@@ -433,7 +433,7 @@ namespace employeeManagmentAppLachlan.Repositories
             }
             return locations;
         }
-
+        // gets the data for the search method for the table Departments
         public List<SearchDepartments> GetSearchQryDepartments(string Table, string Field, string choice)
         {
             List<SearchDepartments> departments = new List<SearchDepartments>();
@@ -456,7 +456,7 @@ namespace employeeManagmentAppLachlan.Repositories
             }
             return departments;
         }
-        
+        // gets the data for the search method for the table JobTitles
         public List<SearchJobtitle> GetSearchQryJobTitles(string Table, string Field, string choice)
         {
             List<SearchJobtitle> JobTitles = new List<SearchJobtitle>();
@@ -478,7 +478,7 @@ namespace employeeManagmentAppLachlan.Repositories
             }
             return JobTitles;
         }
-
+        // gets the data for the search method for the table Street
         public List<SearchStreetID> GetSearchQryStreet(string Table, string Field, string choice)
         {
             List<SearchStreetID> Street = new List<SearchStreetID>();
@@ -500,7 +500,7 @@ namespace employeeManagmentAppLachlan.Repositories
             }
             return Street;  
         }
-
+        // gets the data for the search method for the table Suburb
         public List<SearchSubrubID> GetSearchQrySuburb(string Table, string Field, string choice)
         {
             List<SearchSubrubID> Suburb = new List<SearchSubrubID>();
@@ -523,7 +523,7 @@ namespace employeeManagmentAppLachlan.Repositories
             }
             return Suburb;
         }
-
+        // gets the data for the search method for the table City
         public List<SearchCityID> GetSearchQryCity(string Table, string Field, string choice)
         {
             List<SearchCityID> City = new List<SearchCityID>();
@@ -545,7 +545,7 @@ namespace employeeManagmentAppLachlan.Repositories
             }
             return City;
         }
-
+        // gets the data for the search method for the table Country
         public List<SearchLocationCountry> GetSearchQryCountry(string Table, string Field, string choice)
         {
             List<SearchLocationCountry> countries = new List<SearchLocationCountry>();
@@ -971,17 +971,6 @@ namespace employeeManagmentAppLachlan.Repositories
             }
         }
 
-        public string UpdateEmpEmployeeDetails(string fieldChoice, int EmployeeID, string Change)
-        {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeesDetails SET @fieldChoice = @Change Where EmployeeID = @EmployeeID", conn))
-            {
-                cmd.Parameters.AddWithValue("@fieldChoice", fieldChoice);
-                cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
-                cmd.Parameters.AddWithValue("@Change", Change);
-                return cmd.ExecuteNonQuery().ToString();
-            }
-        }
-
 
         //updates the Location table in the database
         public string UpdateLocation(string fieldChoice, int LocationID, string Change)
@@ -1259,7 +1248,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
-
+        //registers new employees who use the regiser function 
         public int RegisterEmployee(string username,string password)
         {
             bool Active = true;

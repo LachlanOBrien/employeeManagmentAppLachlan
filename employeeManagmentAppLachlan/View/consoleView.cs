@@ -17,6 +17,7 @@ namespace employeeManagmentAppLachlan.View
     {
         private static StorageManager storageManager;
         static int tableWidth = 232;
+        // displays the text for the main menu 
         public void MainMenu()
         {
             Console.WriteLine("Welcome to the Employee Managment Menu");
@@ -24,7 +25,6 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("1: Log In");
             Console.WriteLine("2. Register");
         }
-
 
         // displays the admin menu  
         public void TblDisplayMenu()
@@ -41,7 +41,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("8: Suburb");
             Console.WriteLine("9: City ");
         }
-
+        //displays the text for the main switch case 
         public void DisplayQryOrUpdate()
         {
             Console.WriteLine("What do you wish to do");
@@ -51,7 +51,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("2: Edit The Data");
             Console.WriteLine("3: Search the Database for a specific field");
         }
-
+        //displays the text of the query options 
         public void DisplayQryOptions()
         {
             Console.WriteLine("What Query do you wish to View");
@@ -68,7 +68,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("10: Complex Query 5");
         }
 
-        // displays the employee text  
+        // displays the text for the employee view table 
         public void EmployeeDisplayMenu()
         {
             Console.WriteLine("Welcome to the Employee Menu");
@@ -76,14 +76,6 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("1: View Your Infomation");
             Console.WriteLine("2: Update your Infomatin");
             Console.WriteLine("3: Return to main Menu");
-        }
-
-        public void EmpDisplayMenu()
-        {
-            Console.WriteLine("Welcome to the Employee Menu");
-            Console.WriteLine("Please choose an option from 1-2");
-            Console.WriteLine("1: View Your Infomation");
-            Console.WriteLine("2: Update your Infomatin");
         }
 
         //displays the options for the fields you can update in the table employee details 
@@ -257,7 +249,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("4: Insert a new City");
             Console.WriteLine("5: Return to the Main Menu");
         }
-
+        //displays all the tables for the search field to dispaly
         public void DisplayTables()
         {
             Console.WriteLine("Which table do you wish to use");
@@ -272,7 +264,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("8. Table Streets ");
             Console.WriteLine("9. Table Suburbs ");           
         }
-
+        //displays the fields for the employee details fields for the search function 
         public void DisplayEmployeeDetailsFields()
         {
             Console.WriteLine("Which Fields do you wish to use");
@@ -287,7 +279,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("8. Phone Number Field");
             Console.WriteLine("9. Wage Field");
         }
-
+        //displays the fields for the Location fields for the search function 
         public void DisplayLocationFields()
         {
             Console.WriteLine("Which Fields do you wish to use");
@@ -310,7 +302,7 @@ namespace employeeManagmentAppLachlan.View
             StreetNumber 
             */
         }
-
+        //displays the fields for the RoleNames fields for the search function
         public void DisplayRoleNamesFields()
         {
             Console.WriteLine("Which Fields do you wish to use");
@@ -318,7 +310,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("1. Role ID Field");
             Console.WriteLine("2. Role Name Field");
         }
-
+        //displays the fields for the Departments fields for the search function
         public void DisplayDepartmentsFields()
         {
             Console.WriteLine("Which Fields do you wish to use");
@@ -327,7 +319,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("2. Department Name Field");
             Console.WriteLine("3. Managers ID Field");
         }
-
+        //displays the fields for the JobTitles fields for the search function
         public void DisplayJobTitlesFields()
         {
             Console.WriteLine("Which Fields do you wish to use");
@@ -335,7 +327,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("1. Job Title ID Field");
             Console.WriteLine("2. Job Title Name Field");
         }
-
+        //displays the fields for the Citys fields for the search function
         public void DisplayCitysFields()
         {
             Console.WriteLine("Which Fields do you wish to use");
@@ -343,7 +335,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("1. City ID Field");
             Console.WriteLine("2. City Name Field");
         }
-
+        //displays the fields for the Country fields for the search function
         public void DisplayCountryFields()
         {
             Console.WriteLine("Which Fields do you wish to use");
@@ -351,7 +343,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("1. Country ID Field");
             Console.WriteLine("2. Country Name Field");
         }
-
+        //displays the fields for the Streets fields for the search function
         public void DisplayStreetsFields()
         {
             Console.WriteLine("Which Fields do you wish to use");
@@ -359,7 +351,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("1. Street ID Field");
             Console.WriteLine("2. Street Name Field");      
         }
-
+        //displays the fields for the Suburbs fields for the search function
         public void DisplaySuburbsFields()
         {
             Console.WriteLine("Which Fields do you wish to use");
@@ -481,7 +473,7 @@ namespace employeeManagmentAppLachlan.View
                 PrintLine();
             }
         }
-
+        // displays the data for the table City with pagination 
         public void DisplayCityPages(List<tblCityID> CityID)
         {
             int loopnum = 0;
@@ -538,7 +530,7 @@ namespace employeeManagmentAppLachlan.View
                 PrintLine();
             }
         }
-
+        // displays the data for the table Street with pagination 
         public void DisplayStreetIDPages(List<tblStreetID> streetID)
         {
             int loopnum = 0;
@@ -595,7 +587,7 @@ namespace employeeManagmentAppLachlan.View
 
             }
         }
-
+        // displays the data for the table Subrub with pagination 
         public void DisplaySubrubPages(List<tblSubrubID> subrubID)
         {
             int loopnum = 0;
@@ -652,7 +644,7 @@ namespace employeeManagmentAppLachlan.View
                 PrintLine();
             }
         }
-
+        // displays the data for the table Country with pagination 
         public void DisplayCountryPages(List<tblLocationCountry> countryID)
         {
             int loopnum = 0;
@@ -708,7 +700,7 @@ namespace employeeManagmentAppLachlan.View
                 PrintLine();
             }
         }
-
+        // displays the data for the table Location with pagination 
         public void DisplayLocationPages(List<tblLocation> locations)
         {
             int loopnum = 0;
@@ -765,7 +757,7 @@ namespace employeeManagmentAppLachlan.View
                 // Console.WriteLine($"{"Job title ID: " + jobTittle.jobtitleid}\t{"Job title Name: " + jobTittle.jobtitlename}");
             }
         }
-
+        // displays the data for the table Job Tittles with pagination 
         public void DisplaytblJobTittlesPages(List<tblJobtitle> jobtitles)
         {
             int loopnum = 0;
@@ -807,7 +799,7 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
-        //displays the data for the table RoleNames
+        //displays the data for the table Role Names
         public void DisplayRoleNames(List<tblEmployeeRoleName> Roles)
         {
             PrintLine();
@@ -821,7 +813,7 @@ namespace employeeManagmentAppLachlan.View
                 //Console.WriteLine($"{"location ID: " + location.locationid}\t{"Departments: " + location.department}\t{"Managers ID: " + location.managersid}");
             }
         }
-
+        // displays the data for the table Role Names with pagination 
         public void DisplayRoleNamesPages(List<tblEmployeeRoleName> Roles)
         {
             int loopnum = 0;
@@ -864,7 +856,7 @@ namespace employeeManagmentAppLachlan.View
             }
         }
 
-        //displays the data for the table EmployeeDetails
+        //displays the data for the table Employee Details
         public void DisplayEmployeeDetailsPages(List<tblEmployeeDetails> details)
         {
             int loopnum = 0;
@@ -907,7 +899,7 @@ namespace employeeManagmentAppLachlan.View
                 
             }
         }
-
+        // displays the data for the table Employee Details with pagination 
         public void DisplayEmployeeDetails(List<tblEmployeeDetails> details)
         {
             Console.Clear();
@@ -939,7 +931,7 @@ namespace employeeManagmentAppLachlan.View
                 PrintLine();
             }
         }
-
+        // displays the data for the table Departments with pagination 
         public void DisplayDepartmentsPages(List<tblDepartments> departments)
         {
             int loopnum = 0;
@@ -980,7 +972,7 @@ namespace employeeManagmentAppLachlan.View
         }
 
 
-
+        // displays the result of the search function for Departments tables with pagination
         public void DisplaySearchDepartmentsPages(List<SearchDepartments> departments)
         {
             int loopnum = 0;
@@ -1019,7 +1011,7 @@ namespace employeeManagmentAppLachlan.View
                 }
             }
         }
-
+        // displays the result of the search function for EmployeeDetails tables with pagination
         public void DisplaySearchEmployeeDetailsPages(List<SearchEmployeeDetails> details)
         {
             int loopnum = 0;
@@ -1062,7 +1054,7 @@ namespace employeeManagmentAppLachlan.View
 
             }
         }
-
+        // displays the result of the search function for RoleNames tables with pagination
         public void DisplaySearchRoleNamesPages(List<SearchEmployeeRoleName> Roles)
         {
             int loopnum = 0;
@@ -1104,7 +1096,7 @@ namespace employeeManagmentAppLachlan.View
 
             }
         }
-
+        // displays the result of the search function for JobTittles tables with pagination
         public void DisplaySearchJobTittlesPages(List<SearchJobtitle> jobtitles)
         {
             int loopnum = 0;
@@ -1145,7 +1137,7 @@ namespace employeeManagmentAppLachlan.View
                 }
             }
         }
-
+        // displays the result of the search function for Location tables with pagination
         public void DisplaySearchLocationPages(List<SearchLocation> locations)
         {
             int loopnum = 0;
@@ -1186,7 +1178,7 @@ namespace employeeManagmentAppLachlan.View
                 }
             }
         }
-
+        // displays the result of the search function for Country tables with pagination
         public void DisplaySearchCountryPages(List<SearchLocationCountry> countryID)
         {
             int loopnum = 0;
@@ -1226,7 +1218,7 @@ namespace employeeManagmentAppLachlan.View
                 }
             }
         }
-
+        // displays the result of the search function for Subrub tables with pagination
         public void DisplaySearchSubrubPages(List<SearchSubrubID> subrubID)
         {
             int loopnum = 0;
@@ -1267,7 +1259,7 @@ namespace employeeManagmentAppLachlan.View
                 }
             }
         }
-
+        // displays the result of the search function for Street tables with pagination
         public void DisplaySearchStreetIDPages(List<SearchStreetID> streetID)
         {
             int loopnum = 0;
@@ -1307,7 +1299,7 @@ namespace employeeManagmentAppLachlan.View
                 }
             }
         }
-        //i give up icbf fixing the no refrence
+        // displays the result of the search function for City tables with pagination
         public void DisplaySearchCityPages(List<SearchCityID> CityID)
         {
             int loopnum = 0;
@@ -1350,6 +1342,7 @@ namespace employeeManagmentAppLachlan.View
         }
 
 
+        // dispalys the result of Advanced1 query with pagination 
         public void DisplayAdvQry1(List<AdvQry1> advQry1s)
         {
             int loopnum = 0;
@@ -1390,7 +1383,7 @@ namespace employeeManagmentAppLachlan.View
                 }
             }
         }
-
+        // dispalys the result of Advanced3 query with pagination 
         public void DisplayAdvQry3(List<AdvQry3> advQry3s)
         {
             int loopnum = 0;
@@ -1431,7 +1424,7 @@ namespace employeeManagmentAppLachlan.View
                 }
             }
         }
-
+        // dispalys the result of complex5 query with pagination 
         public void DisplayComplexQry5(List<ComplexQry5> complexQry5s)
         {
             int loopnum = 0;
@@ -1527,7 +1520,7 @@ namespace employeeManagmentAppLachlan.View
             return IntInput;
         }
 
-
+        //checks if a string contains numbers
         public bool IsAllDigits(string s)
         {
             foreach (char c in s)

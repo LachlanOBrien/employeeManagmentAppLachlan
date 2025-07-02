@@ -19,10 +19,7 @@ namespace employeeManagmentAppLachlan
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Hello, World!");
-            //scl connectionString
-            //string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=\"C:\\USERS\\AC147303\\ONEDRIVE - AVONDALE COLLEGE\\DOCUMENTS\\12TPI\\SQL\\DB\\DB2V2.MDF\";Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
-            //home connectionString
+            //Console.WriteLine("Hello, World!");
             string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db2v2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
             storageManager = new StorageManager(connectionString);
@@ -35,7 +32,7 @@ namespace employeeManagmentAppLachlan
             MainMenu();
             storageManager.CloseConnection(); // closes the connection with the database.
         }
-
+        //the main menu which displays when the program is enabled
         public static void MainMenu()
         {
 
@@ -158,7 +155,7 @@ namespace employeeManagmentAppLachlan
                 } while (MainMenuLoop);
             } while (loop);
         }
-
+        //the switch case for the search function in the admin view
         public static void searchQrySwitch()
         {
             string Table = "";
@@ -484,8 +481,8 @@ namespace employeeManagmentAppLachlan
                             } while (loop);
                             Console.WriteLine($"what {Field} do you wish to see:");
                             choice = view.GetInput();
-                            List<SearchLocationCountry> countries = storageManager.GetSearchQryCountry(Table, Field, choice);
-                            view.DisplaySearchCountryPages(countries);
+                            List<SearchCityID> countries = storageManager.GetSearchQryCity(Table, Field, choice);
+                            view.DisplaySearchCityPages(countries);
 
                         }
                         break;
@@ -602,7 +599,6 @@ namespace employeeManagmentAppLachlan
                             } while (loop);
                             Console.WriteLine($"what {Field} do you wish to see:");
                             choice = view.GetInput();
-                            storageManager.GetSearchQrySuburb(Table, Field, choice);
                             List<SearchSubrubID> subrubIDs = storageManager.GetSearchQrySuburb(Table, Field, choice);
                             view.DisplaySearchSubrubPages(subrubIDs);
 
@@ -626,12 +622,11 @@ namespace employeeManagmentAppLachlan
             bool loop = true;
             int employeeID = EmployeeID;
             Console.Clear();
-            //Console.WriteLine("HAHA pleb employee");
             do
             {
                 do
                 {
-                    view.EmpDisplayMenu();
+                    view.EmployeeDisplayMenu();
                     Choice = view.GetInput();
                     switch (Choice)
                     {
@@ -1527,7 +1522,7 @@ namespace employeeManagmentAppLachlan
             }
             while (loop);
         }
-
+        //updates the employee details for the employee switch side of the program 
         private static void UpdateEmpEmployeeDetails(int EmployeeID)
         {
             bool loop = true;
@@ -1866,7 +1861,7 @@ namespace employeeManagmentAppLachlan
             int rowsAffected = storageManager.DeleteJobtitle(JobTitleID);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
-        //Deletes a ---- in the database
+        //Deletes a street in the database
         private static void DeleteStreet()
         {
             List<tblStreetID> streetIDs = storageManager.GetTblStreetIDs();
@@ -2050,7 +2045,7 @@ namespace employeeManagmentAppLachlan
         }
 
 
-
+        // the register function for the employees 
         private static void RegisterEmployee()
         {
             Console.WriteLine("register function");// temp add a proper method 
@@ -2090,7 +2085,7 @@ namespace employeeManagmentAppLachlan
             } while (loop);
 
         }
-
+        // checks if the users log in was valid and either gives them the employee view or admin view based of their role 
         private static void LogIn()
         {
 
