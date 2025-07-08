@@ -962,11 +962,11 @@ namespace employeeManagmentAppLachlan.Repositories
         //updates the EmployeeDetails table in the database
         public string UpdateEmployeeDetails(string fieldChoice, int EmployeeID, string Change)
         {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeesDetails SET @fieldChoice = @Change Where EmployeeID = @EmployeeID", conn))
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeesDetails SET {fieldChoice} = @Change Where EmployeeID = @EmployeeID", conn))
             {
-                cmd.Parameters.AddWithValue("@fieldChoice", fieldChoice);
                 cmd.Parameters.AddWithValue("@EmployeeID", EmployeeID);
                 cmd.Parameters.AddWithValue("@Change", Change);
+                
                 return cmd.ExecuteNonQuery().ToString();
             }
         }

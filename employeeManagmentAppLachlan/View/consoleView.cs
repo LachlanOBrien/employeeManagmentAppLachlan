@@ -45,7 +45,7 @@ namespace employeeManagmentAppLachlan.View
         public void DisplayQryOrUpdate()
         {
             Console.WriteLine("What do you wish to do");
-            Console.WriteLine("Please choose an option from 1-2");
+            Console.WriteLine("Please choose an option from 1-3");
             Console.WriteLine("1: Querys");
             Console.WriteLine("Note that to view all the data from a table you must go to edit the data");
             Console.WriteLine("2: Edit The Data");
@@ -75,13 +75,11 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("Please choose an option from 1-3");
             Console.WriteLine("1: View Your Infomation");
             Console.WriteLine("2: Update your Infomatin");
-            Console.WriteLine("3: Return to main Menu");
         }
 
         //displays the options for the fields you can update in the table employee details 
         public void DisplayUpdateEmployeeDetails()
         {
-            Console.Clear();
             Console.WriteLine("What Feild do you wish to update");
             Console.WriteLine("Choose an option from 1-5");
             Console.WriteLine("1: First Name");
@@ -1363,7 +1361,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         Console.WriteLine("do you wish to go to the next page Y/N");
@@ -1404,7 +1401,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         Console.WriteLine("do you wish to go to the next page Y/N");
@@ -1445,7 +1441,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         Console.WriteLine("do you wish to go to the next page Y/N");

@@ -12,6 +12,13 @@ namespace employeeManagmentAppLachlan
 {
     public class Program //saved in onedrive>docc>12tpi>C#>oop>employeeManagmentAppLachlan OR .......oop>WorkPLS
     {                    // .mdf is saved in the DB folder onedrive>docc>12tpi>sql>DB
+        // pagnation doesnt WORK  fix is to put it in a do while and switch case with y and n as the cases 
+        // fix insert emp det
+        //fix the insert emp det gender accepting anything in the alaphabet
+        //fix the emp detials job id accepting everything 
+        //fix the emd detatils role accepting all 
+        // redo the inserts to only accept valid inputs in the testing 
+        // make the inserts only accept valid inputs 
         private static StorageManager storageManager;
         private static consoleView view;
         static int role;
@@ -779,6 +786,7 @@ namespace employeeManagmentAppLachlan
         // the switch cases for which qry the user wants to access 
         public static void DisplayQrySwitch()
         {
+            Console.Clear();
             bool Loop = true;
             do
             {
@@ -1526,11 +1534,12 @@ namespace employeeManagmentAppLachlan
         private static void UpdateEmpEmployeeDetails(int EmployeeID)
         {
             bool loop = true;
+            Console.Clear();
             do
             {
                 view.DisplayUpdateEmployeeDetails();
                 string FieldChoice = view.GetInput();
-                switch (FieldChoice) // change the grammar error in the switch cases of update to update to and change of to that relates to the 
+                switch (FieldChoice) 
                 {
                     case "1":
                         {
@@ -1583,8 +1592,10 @@ namespace employeeManagmentAppLachlan
                         }
                         break;
                     default:
-                        Console.WriteLine("Invalid option please try again.");
-                        loop = true;
+                        {
+                            Console.WriteLine("Invalid option please try again.");
+                            loop = true;
+                        }
                         break;
                 }
             }
@@ -2095,10 +2106,10 @@ namespace employeeManagmentAppLachlan
             bool loop = true;
             bool logInBool = true;
             string employeeChoice;
-
+            Console.Clear();
             do          //loops the log in function untill they enter a valid username or password
              {
-                Console.Clear();
+                
                  Console.WriteLine("Enter your Username");
                  string inputedUsername = view.GetInput();// gets the username
                  string Username = inputedUsername; // gets the username 
