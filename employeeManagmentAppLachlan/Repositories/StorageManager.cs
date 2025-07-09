@@ -1151,7 +1151,7 @@ namespace employeeManagmentAppLachlan.Repositories
                 cmd.Parameters.AddWithValue("@Active", Active);
                 cmd.Parameters.AddWithValue("@Email  ", Email);
                 cmd.Parameters.AddWithValue("@PhoneNumber   ", PhoneNumber);
-                cmd.Parameters.AddWithValue("@Active", Active);
+                cmd.Parameters.AddWithValue("@Wage", Wage);
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
