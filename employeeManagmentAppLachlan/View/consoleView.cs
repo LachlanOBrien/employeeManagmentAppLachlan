@@ -17,6 +17,8 @@ namespace employeeManagmentAppLachlan.View
     {
         private static StorageManager storageManager;
         static int tableWidth = 232;
+
+
         // displays the text for the main menu 
         public void MainMenu()
         {
@@ -492,22 +494,38 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);                       
                     }
                 }
             }
@@ -551,19 +569,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -609,19 +644,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -665,19 +717,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -722,19 +791,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -779,19 +865,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -835,19 +938,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
 
@@ -879,19 +999,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page "+ pageNum + " Of "+  totalPagesNum );
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum ++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
                 
@@ -951,19 +1088,36 @@ namespace employeeManagmentAppLachlan.View
                     loopnum ++;
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -992,19 +1146,36 @@ namespace employeeManagmentAppLachlan.View
                     loopnum++;
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -1034,19 +1205,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
 
@@ -1076,19 +1264,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
 
@@ -1118,19 +1323,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -1159,19 +1381,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -1199,19 +1438,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -1240,19 +1496,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -1280,19 +1553,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -1321,19 +1611,36 @@ namespace employeeManagmentAppLachlan.View
                     Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -1363,19 +1670,36 @@ namespace employeeManagmentAppLachlan.View
                     loopnum++;
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -1403,19 +1727,36 @@ namespace employeeManagmentAppLachlan.View
                     loopnum++;
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -1443,19 +1784,36 @@ namespace employeeManagmentAppLachlan.View
                     loopnum++;
                     if (loopnum == 10)
                     {
-                        Console.WriteLine("do you wish to go to the next page Y/N");
-                        Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
-                        string input = GetInput();
-                        if (input.Equals("Y"))
+                        bool loopDoWhile = true;
+                        do
                         {
-                            loop = true;
-                            loopnum = 0;
-                            pageNum++;
-                        }
-                        else
-                        {
-                            loop = false;
-                        }
+                            Console.WriteLine("do you wish to go to the next page Y/N");
+                            Console.WriteLine("You are on page " + pageNum + " Of " + totalPagesNum);
+                            string input = GetInput();
+                            switch (input)
+                            {
+                                case "Y":
+                                    {
+                                        loop = true;
+                                        loopnum = 0;
+                                        pageNum++;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                case "N":
+                                    {
+                                        loop = false;
+                                        loopDoWhile = false;
+                                    }
+                                    break;
+                                default:
+                                    {
+                                        Console.WriteLine("Invalid option please try again.");
+                                        loopDoWhile = true;
+                                    }
+                                    break;
+                            }
+                        } while (loopDoWhile);
                     }
                 }
             }

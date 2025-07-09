@@ -11,8 +11,7 @@ using System.Threading.Channels;
 namespace employeeManagmentAppLachlan
 {
     public class Program //saved in onedrive>docc>12tpi>C#>oop>employeeManagmentAppLachlan OR .......oop>WorkPLS
-    {                    // .mdf is saved in the DB folder onedrive>docc>12tpi>sql>DB
-        // pagnation doesnt WORK  fix is to put it in a do while and switch case with y and n as the cases 
+    {                    // .mdf is saved in the DB folder onedrive>docc>12tpi>sql>DB       
         // fix insert emp det
         //fix the insert emp det gender accepting anything in the alaphabet
         //fix the emp detials job id accepting everything 
