@@ -17,8 +17,6 @@ namespace employeeManagmentAppLachlan
         //allow nulls in the role id in the ddl 
         // same for job title 
         //remove the view all data from the edit and cascade the methods
-        // add console clear add the display edit qrys etc
-        // rename location in the select table to edit
         private static StorageManager storageManager;
         private static consoleView view;
         static int role;

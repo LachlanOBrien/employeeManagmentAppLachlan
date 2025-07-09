@@ -34,7 +34,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("Choose an option from 1-9");
             Console.WriteLine("View the tables:");
             Console.WriteLine("1: Employees Details ");
-            Console.WriteLine("2: Employee Locations ");
+            Console.WriteLine("2: Locations ");
             Console.WriteLine("3: Role Name ");
             Console.WriteLine("4: Departments ");
             Console.WriteLine("5: Job Titles ");
@@ -46,6 +46,7 @@ namespace employeeManagmentAppLachlan.View
         //displays the text for the main switch case 
         public void DisplayQryOrUpdate()
         {
+            Console.Clear();
             Console.WriteLine("What do you wish to do");
             Console.WriteLine("Please choose an option from 1-3");
             Console.WriteLine("1: Querys");
