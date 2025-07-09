@@ -19,6 +19,7 @@ namespace employeeManagmentAppLachlan
         //fix the emd detatils role accepting all 
         // redo the inserts to only accept valid inputs in the testing 
         // make the inserts only accept valid inputs 
+        //allow nulls in job title id in the ddl 
         private static StorageManager storageManager;
         private static consoleView view;
         static int role;

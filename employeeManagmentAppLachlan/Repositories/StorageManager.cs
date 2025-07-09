@@ -914,7 +914,7 @@ namespace employeeManagmentAppLachlan.Repositories
         //updates the JobTitl table in the database
         public string UpdateJobTitle(string JobTitle, string JobTitleChange)
         {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblJobTitles SET JobTitleName = @JobTitleChange Where JobTitle = @JobTitle", conn))
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblJobTitles SET JobTitleName = @JobTitleChange Where JobTitleID = @JobTitle", conn))
             {
                 cmd.Parameters.AddWithValue("@JobTitle", JobTitle);
                 cmd.Parameters.AddWithValue("@JobTitleChange", JobTitleChange);
@@ -1001,7 +1001,7 @@ namespace employeeManagmentAppLachlan.Repositories
         //updates the Department table in the database
         public string UpdateDept(string fieldChoice, int LocationID, string Change)
         {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblDepartments SET @fieldChoice = @Change Where LocationID = @LocationID", conn))
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblDepartments SET @fieldChoice = @Change Where DepartmentID = @LocationID", conn))
             {
                 cmd.Parameters.AddWithValue("@fieldChoice", fieldChoice);
                 cmd.Parameters.AddWithValue("@LocationID", LocationID);
@@ -1187,7 +1187,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int InsertDepartment(string DepartmentName, int ManagersID)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblDepartments  (DepartmentName ,Active ) VALUES (@RoleName ,@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblDepartments  (DepartmentName ,Active ,ManagersID ) VALUES (@DepartmentName ,@Active ,@ManagersID); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@DepartmentName ", DepartmentName);
                 cmd.Parameters.AddWithValue("@ManagersID  ", ManagersID);
