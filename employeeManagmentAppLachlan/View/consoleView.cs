@@ -1849,6 +1849,29 @@ namespace employeeManagmentAppLachlan.View
             return input;
         }
 
+        //gets the input of an string variable without making it uppercase so it can be used for inputs such as insert and updates 
+        public string GetInputNotUpper()
+        {
+            string input;
+            bool loop = true;
+            do
+            {
+                input = Console.ReadLine();
+                if (input.IsNullOrEmpty())
+                {
+                    loop = true;
+                    Console.WriteLine("please enter a valid option");
+                }
+                else
+                {
+                    loop = false;
+                }
+            } while (loop);
+
+
+            return input;
+        }
+
         //gets the input of an int variable 
         public int GetIntInput()
         {

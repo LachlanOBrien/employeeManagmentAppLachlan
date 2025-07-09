@@ -5,19 +5,14 @@ using employeeManagmentAppLachlan.View;
 using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
+using System.Linq;
 using System.Numerics;
 using System.Threading.Channels;
 
 namespace employeeManagmentAppLachlan
 {
     public class Program //saved in onedrive>docc>12tpi>C#>oop>employeeManagmentAppLachlan OR .......oop>WorkPLS
-    {                    // .mdf is saved in the DB folder onedrive>docc>12tpi>sql>DB       
-        // fix insert emp det
-        //fix the insert emp det gender accepting anything in the alaphabet
-        //fix the emp detials job id accepting everything 
-        //fix the emd detatils role accepting all 
-        // redo the inserts to only accept valid inputs in the testing 
-        // make the inserts only accept valid inputs 
+    {                    // .mdf is saved in the DB folder onedrive>docc>12tpi>sql>DB        
         //allow nulls in job title id in the ddl 
         private static StorageManager storageManager;
         private static consoleView view;
@@ -35,7 +30,7 @@ namespace employeeManagmentAppLachlan
             //temp log in / role function
             //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
             //role = Convert.ToInt32(Console.ReadLine());
-            //SwitchMainAdmin(); 
+            //SwitchMainAdmin();           
             MainMenu();
             storageManager.CloseConnection(); // closes the connection with the database.
         }
@@ -1379,9 +1374,9 @@ namespace employeeManagmentAppLachlan
             view.DisplayRoleNames(employee);
             view.DisplayMessage("Enter the Role Name to update");
             Console.WriteLine("(Refrence data above)");
-            string roleName = view.GetInput();
+            string roleName = view.GetInputNotUpper();
             view.DisplayMessage($"What do you want to change {roleName} to:");
-            string RoleNameChange = view.GetInput();
+            string RoleNameChange = view.GetInputNotUpper();
             string rowsAffected = storageManager.UpdateRoleName(roleName, RoleNameChange);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
@@ -1392,9 +1387,9 @@ namespace employeeManagmentAppLachlan
             view.DisplaytblJobTittles(employee);
             view.DisplayMessage("Enter the Job Title to update");
             Console.WriteLine("(Refrence data above)");
-            string JobTitle = view.GetInput();
+            string JobTitle = view.GetInputNotUpper();
             view.DisplayMessage($"What do you want to change {JobTitle} to:");
-            string JobTitleChange = view.GetInput();
+            string JobTitleChange = view.GetInputNotUpper();
             string rowsAffected = storageManager.UpdateJobTitle(JobTitle, JobTitleChange);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
@@ -1405,9 +1400,9 @@ namespace employeeManagmentAppLachlan
             view.DisplayStreetID(employee);
             view.DisplayMessage("Enter the Street Name to update");
             Console.WriteLine("(Refrence data above)");
-            string StreetName = view.GetInput();
+            string StreetName = view.GetInputNotUpper();
             view.DisplayMessage($"What do you want to change {StreetName} to:");
-            string StreetNameChange = view.GetInput();
+            string StreetNameChange = view.GetInputNotUpper();
             string rowsAffected = storageManager.UpdateLocationStreet(StreetName, StreetNameChange);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
@@ -1418,9 +1413,9 @@ namespace employeeManagmentAppLachlan
             view.DisplayCountry(employee);
             view.DisplayMessage("Enter the Country Name to update");
             Console.WriteLine("(Refrence data above)");
-            string CountryName = view.GetInput();
+            string CountryName = view.GetInputNotUpper();
             view.DisplayMessage($"What do you want to change {CountryName} to:");
-            string CountryNameChange = view.GetInput();
+            string CountryNameChange = view.GetInputNotUpper();
             string rowsAffected = storageManager.UpdateLocationCountry(CountryName, CountryNameChange);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
@@ -1431,9 +1426,9 @@ namespace employeeManagmentAppLachlan
             view.DisplayCity(employee);
             view.DisplayMessage("Enter the City Name to update");
             Console.WriteLine("(Refrence data above)");
-            string CityName = view.GetInput();
+            string CityName = view.GetInputNotUpper();
             view.DisplayMessage($"What do you want to change {CityName} to:");
-            string CityNameChange = view.GetInput();
+            string CityNameChange = view.GetInputNotUpper();
             string rowsAffected = storageManager.UpdateLocationCity(CityName, CityNameChange);
             view.DisplayMessage($"Rows Affected: {rowsAffected}");
         }
@@ -1457,7 +1452,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int EmployeeID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {EmployeeID}'s First Name to:");
-                            string FirstNameChange = view.GetInput();
+                            string FirstNameChange = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, FirstNameChange);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1472,7 +1467,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int EmployeeID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {EmployeeID}'s Last Name to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1487,7 +1482,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int EmployeeID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {EmployeeID}'s Gender to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1502,7 +1497,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int EmployeeID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {EmployeeID}'s Email to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1517,7 +1512,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int EmployeeID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {EmployeeID}'s Phone Number to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1546,7 +1541,7 @@ namespace employeeManagmentAppLachlan
                             loop = false;
                             string FieldChoiceName = "FirstName";
                             view.DisplayMessage($"What do you want to change Your First Name to:");
-                            string FirstNameChange = view.GetInput();
+                            string FirstNameChange = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, FirstNameChange);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1556,7 +1551,7 @@ namespace employeeManagmentAppLachlan
                             loop = false;
                             string FieldChoiceName = "LastName";
                             view.DisplayMessage($"What do you want to change Your Last Name to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1566,7 +1561,7 @@ namespace employeeManagmentAppLachlan
                             loop = false;
                             string FieldChoiceName = "Gender";
                             view.DisplayMessage($"What do you want to change {EmployeeID}'s Gender to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1576,7 +1571,7 @@ namespace employeeManagmentAppLachlan
                             loop = false;
                             string FieldChoiceName = "Email";
                             view.DisplayMessage($"What do you want to change your Email to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1586,7 +1581,7 @@ namespace employeeManagmentAppLachlan
                             loop = false;
                             string FieldChoiceName = "Phonenumber";
                             view.DisplayMessage($"What do you want to change Your Phone Number to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateEmployeeDetails(FieldChoiceName, EmployeeID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1621,7 +1616,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int LocationID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {LocationID}'s Name to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateLocation(FieldChoiceName, LocationID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1638,7 +1633,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int CityID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {CityID}'s ID to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateLocation(FieldChoiceName, CityID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1655,7 +1650,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int SuburbID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {SuburbID}'s ID to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateLocation(FieldChoiceName, SuburbID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1672,7 +1667,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int StreetID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {StreetID}'s ID to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateLocation(FieldChoiceName, StreetID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1689,7 +1684,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int CountryID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {CountryID}'s ID to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateLocation(FieldChoiceName, CountryID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1706,7 +1701,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int StreetNumber = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {StreetNumber}'s ID to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateLocation(FieldChoiceName, StreetNumber, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1739,7 +1734,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int LocationID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {LocationID}'s Name to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.Updatesubrub(FieldChoiceName, LocationID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1754,7 +1749,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int CityID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {CityID}'s ID to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.Updatesubrub(FieldChoiceName, CityID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1787,7 +1782,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int LocationID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {LocationID}'s Name to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateDept(FieldChoiceName, LocationID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1802,7 +1797,7 @@ namespace employeeManagmentAppLachlan
                             Console.WriteLine("(Refrence data above)");
                             int CityID = view.GetIntInput();
                             view.DisplayMessage($"What do you want to change {CityID}'s ID to:");
-                            string Change = view.GetInput();
+                            string Change = view.GetInputNotUpper();
                             string rowsAffected = storageManager.UpdateDept(FieldChoiceName, CityID, Change);
                             view.DisplayMessage($"Rows Affected: {rowsAffected}");
                         }
@@ -1924,16 +1919,84 @@ namespace employeeManagmentAppLachlan
         private static void InsertLocation()
         {
             bool Active = true;
+            bool loopCountryID = true;
+            bool loopCityID = true;
+            bool loopSuburbID = true;
+            bool loopstreetID = true;
             view.DisplayMessage("Enter the new Location Name");
-            string LocationName = view.GetInput();
-            view.DisplayMessage("Enter the Country ID's of the Location");
-            int CountryID = view.GetIntInput();
-            view.DisplayMessage("Enter the Suburb ID's of the Location");
-            int SuburbID = view.GetIntInput();
-            view.DisplayMessage("Enter the Street ID's of the Location");
-            int StreetID = view.GetIntInput();
-            view.DisplayMessage("Enter the City ID's of the Location");
-            int CityID = view.GetIntInput();
+            string LocationName = view.GetInputNotUpper();
+            int CountryID = 0;
+            do
+            {
+                List<int> CountryIDs = new List<int>();
+                CountryIDs = storageManager.getCountryIds();
+                view.DisplayMessage("Enter the Country ID's of the Location");
+                int CountryIDInput = view.GetIntInput();
+                if (CountryIDs.Contains(CountryIDInput))
+                {
+                    loopCountryID = false;
+                    CountryID = CountryIDInput;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid options");
+                }
+
+            } while (loopCountryID);
+            int SuburbID = 0;
+            do
+            {
+                List<int> SuburbIDs = new List<int>();
+                SuburbIDs = storageManager.getSubrubIds();
+                view.DisplayMessage("Enter the Suburb ID's of the Location");
+                int SuburbIDInput = view.GetIntInput();
+                if (SuburbIDs.Contains(SuburbIDInput))
+                {
+                    loopSuburbID = false;
+                    SuburbID = SuburbIDInput;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid options");
+                }
+
+            } while (loopSuburbID);
+            int StreetID = 0;
+            do
+            {
+                List<int> streetIDs = new List<int>();
+                streetIDs = storageManager.getStreetIds();
+                view.DisplayMessage("Enter the Street ID's of the Location");
+                int StreetIDInput = view.GetIntInput();
+                if (streetIDs.Contains(StreetIDInput))
+                {
+                    loopstreetID = false;
+                    StreetID = StreetIDInput;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid options");
+                }
+
+            } while (loopstreetID);
+            int CityID = 0;
+            do
+            {
+                List<int> CityIds = new List<int>();
+                CityIds = storageManager.getStreetIds();
+                view.DisplayMessage("Enter the City ID's of the Location");
+                int CityIDInput = view.GetIntInput();
+                if (CityIds.Contains(CityIDInput))
+                {
+                    loopCityID = false;
+                    CityID = CityIDInput;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid options");
+                }
+
+            } while (loopCityID);
             view.DisplayMessage("Enter the Street Number's of the Location");
             int StreetNumber = view.GetIntInput();
             int LocationID = 0;
@@ -1945,29 +2008,93 @@ namespace employeeManagmentAppLachlan
         private static void InsertEmployeeDetails()
         {
             bool Active = true;
+            bool loopRoleID= true;
+            bool loopJobID = true;
+            bool loopGender = true;
+            bool loopWage = true;
             view.DisplayMessage("Enter the First Name of the new Employee");
-            string FirstName = view.GetInput();
+            string FirstName = view.GetInputNotUpper();
             view.DisplayMessage("Enter the Last Name of the new Employee");
-            string LastName = view.GetInput();
+            string LastName = view.GetInputNotUpper();
             DateTime HireDate = DateTime.Now;
             view.DisplayMessage("Enter The Gender of the New Employee ");
             view.DisplayMessage("F for a Female Employee  M for a Male Employee");
-            string Gender = view.GetInput().ToUpper();
-            view.DisplayMessage("Enter the Job ID of the New Employee");
-            int JobID = view.GetIntInput();
+            string Gender = "";
+            do
+            {
+                view.DisplayMessage("Enter The Gender of the New Employee ");
+                view.DisplayMessage("F for a Female Employee  M for a Male Employee");
+                string Genderinput = view.GetInput();
+                if (Genderinput.Equals("F")||Genderinput.Equals("M"))
+                {
+                    Gender = Genderinput;
+                    loopGender = false;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid options");
+                }
+            } while (loopGender);
+            int JobID = 0;
+            do
+            {
+                List<int> JobIds = new List<int>();
+                JobIds = storageManager.getJobIds();
+                view.DisplayMessage("Enter the Job ID of the New Employee");
+                int JobIDinput = view.GetIntInput();
+                if (JobIds.Contains(JobIDinput))
+                {
+                    loopRoleID = false;
+                    JobID = JobIDinput;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid options");
+                }
+            } while (loopJobID);
             view.DisplayMessage("Enter the Username of the New Employee");
-            string Username = view.GetInput();
+            string Username = view.GetInputNotUpper();
             view.DisplayMessage("Enter the Password of the New Employee ");
-            string Password = view.GetInput();
+            string Password = view.GetInputNotUpper();
             view.DisplayMessage("Enter the Role Of the New Employee");
             view.DisplayMessage("1 For Employee\t 2 For Admin ");
-            int Role = view.GetIntInput();
+            int Role = 0;
+            do
+            {
+                List<int> RoleIds = new List<int>();
+                RoleIds = storageManager.getRoleIds();
+                view.DisplayMessage("Enter the Role Of the New Employee");
+                view.DisplayMessage("1 For Employee\t 2 For Admin ");
+                int RoleInput = view.GetIntInput();
+                if (RoleIds.Contains(RoleInput))
+                {
+                    loopRoleID = false;
+                    Role = RoleInput;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid options");
+                }
+            } while (loopRoleID);            
             view.DisplayMessage("Enter the Email of the New Employee");
-            string Email = view.GetInput();
+            string Email = view.GetInputNotUpper();
             view.DisplayMessage("Enter the Phone Number of the New Employee");
             int Phonenumber = view.GetIntInput();
-            view.DisplayMessage("Enter the Wage for the New Employee");
-            int wage = view.GetIntInput();
+            int wage = 0;
+            do
+            {
+                view.DisplayMessage("Enter the Wage for the New Employee");
+                int wageInput = view.GetIntInput();
+                if (wageInput > 0)
+                {
+                    loopWage = false;
+                    wage = wageInput;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid options");
+                }
+            } while (loopWage);
             int EmployeeID = 0;
             tblEmployeeDetails location1 = new tblEmployeeDetails(EmployeeID, FirstName, LastName, HireDate, Gender, JobID, Role, Password, Username, Active, Email, Phonenumber, wage);
             int GenerateID = storageManager.InsertEmployeeDetails(FirstName, LastName, HireDate, Gender, JobID, Role, Password, Username, Email, Phonenumber, wage);
@@ -1978,7 +2105,7 @@ namespace employeeManagmentAppLachlan
         {
             bool Active = true;
             view.DisplayMessage("Enter the new Role Name");
-            string StreetName = view.GetInput();
+            string StreetName = view.GetInputNotUpper();
             int StreetID = 0;
             tblEmployeeRoleName location1 = new tblEmployeeRoleName(StreetID, StreetName, Active);
             int GenerateID = storageManager.InsertRoleName(StreetName);
@@ -1989,7 +2116,7 @@ namespace employeeManagmentAppLachlan
         {
             bool Active = true;
             view.DisplayMessage("Enter the new Job Title Name");
-            string StreetName = view.GetInput();
+            string StreetName = view.GetInputNotUpper();
             int StreetID = 0;
             tblJobtitle location1 = new tblJobtitle(StreetID, StreetName, Active);
             int GenerateID = storageManager.InsertJobtitle(StreetName);
@@ -1999,13 +2126,29 @@ namespace employeeManagmentAppLachlan
         private static void InsertDepartment()
         {
             bool Active = true;
+            bool loopManagersID = true;
             view.DisplayMessage("Enter the new Department Name");
-            string StreetName = view.GetInput();
-            view.DisplayMessage("Enter the Manager's Employee ID of the Department");
-            int postcode = view.GetIntInput();
+            string StreetName = view.GetInputNotUpper();
+            int ManagersID = 0;
+            do
+            {
+                List<int> ManagersIDs = new List<int>();
+                ManagersIDs = storageManager.getemployeeIds();
+                view.DisplayMessage("Enter the Manager's Employee ID of the Department");
+                int ManagersIDInput = view.GetIntInput();
+                if (ManagersIDs.Contains(ManagersIDInput))
+                {
+                    loopManagersID = false;
+                    ManagersID = ManagersIDInput;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid options");
+                }
+            } while (loopManagersID);            
             int StreetID = 0;
-            tblDepartments location1 = new tblDepartments(StreetName, StreetID, postcode, Active);
-            int GenerateID = storageManager.InsertDepartment(StreetName, postcode);
+            tblDepartments location1 = new tblDepartments(StreetName, StreetID, ManagersID, Active);
+            int GenerateID = storageManager.InsertDepartment(StreetName, ManagersID);
             view.DisplayMessage($"new department Created with ID {GenerateID}");
         }
         //creates a new City in the database
@@ -2013,7 +2156,7 @@ namespace employeeManagmentAppLachlan
         {
             bool Active = true;
             view.DisplayMessage("Enter the new City Name");
-            string StreetName = view.GetInput();
+            string StreetName = view.GetInputNotUpper();
             int StreetID = 0;
             tblCityID location1 = new tblCityID(StreetID, StreetName, Active);
             int GenerateID = storageManager.InsertCity(StreetName);
@@ -2024,7 +2167,7 @@ namespace employeeManagmentAppLachlan
         {
             bool Active = true;
             view.DisplayMessage("Enter the new Street Name");
-            string StreetName = view.GetInput();
+            string StreetName = view.GetInputNotUpper();
             int StreetID = 0;
             tblStreetID location1 = new tblStreetID(StreetID, StreetName, Active);
             int GenerateID = storageManager.InsertStreet(StreetName);
@@ -2035,7 +2178,7 @@ namespace employeeManagmentAppLachlan
         {
             bool Active = true;
             view.DisplayMessage("Enter the new suburb Name");
-            string StreetName = view.GetInput();
+            string StreetName = view.GetInputNotUpper();
             view.DisplayMessage("Enter the Post Code of the suburb");
             int postcode = view.GetIntInput();
             int StreetID = 0;
@@ -2048,7 +2191,7 @@ namespace employeeManagmentAppLachlan
         {
             bool Active = true;
             view.DisplayMessage("Enter the new Country Name");
-            string StreetName = view.GetInput();
+            string StreetName = view.GetInputNotUpper();
             int StreetID = 0;
             tblLocationCountry location1 = new tblLocationCountry(StreetID, StreetName, Active);
             int GenerateID = storageManager.InsertCountry(StreetName);
@@ -2061,9 +2204,9 @@ namespace employeeManagmentAppLachlan
         {
             Console.WriteLine("register function");// temp add a proper method 
             Console.WriteLine("Enter A Username");
-            string RegUsername = view.GetInput();
+            string RegUsername = view.GetInputNotUpper();
             Console.WriteLine("Enter A Password");
-            string RegPassword = view.GetInput();
+            string RegPassword = view.GetInputNotUpper();
             int GenerateID = storageManager.RegisterEmployee(RegUsername, RegPassword);
             view.DisplayMessage($"new Employee Created with ID {GenerateID}");
             bool loop = true;
@@ -2111,7 +2254,7 @@ namespace employeeManagmentAppLachlan
              {
                 
                  Console.WriteLine("Enter your Username");
-                 string inputedUsername = view.GetInput();// gets the username
+                 string inputedUsername = view.GetInputNotUpper();// gets the username
                  string Username = inputedUsername; // gets the username 
                  int EmployeeID = storageManager.getEmployeeID(inputedUsername);//gets the username 
                  string password = storageManager.getPassword(inputedUsername);//gets the password

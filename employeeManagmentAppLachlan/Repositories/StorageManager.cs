@@ -1266,6 +1266,143 @@ namespace employeeManagmentAppLachlan.Repositories
         }
 
 
+
+
+
+        //gets the role id 
+        public List<int> getRoleIds()
+        {
+            string sqlString = "Select RoleID From Employee.tblEmployeeRoleName";
+            List<int> RoleIds = new List<int>();
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int roleID = Convert.ToInt32(reader["RoleID"]);
+                        RoleIds.Add(roleID);
+                    }
+                }
+            }
+            return RoleIds;
+        }
+
+        //gets the job id 
+        public List<int> getJobIds()
+        {
+            string sqlString = "Select JobTitleID From Employee.tblJobTitles";
+            List<int> JobIds = new List<int>();
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int JobTitleID = Convert.ToInt32(reader["JobTitleID"]);
+                        JobIds.Add(JobTitleID);
+                    }
+                }
+            }
+            return JobIds;
+        }
+
+        //gets the employeeIds
+        public List<int> getemployeeIds()
+        {
+            string sqlString = "Select EmployeeID From Employee.tblEmployeeDetails";
+            List<int> employeeIDs = new List<int>();
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int employeeID = Convert.ToInt32(reader["EmployeeID"]);
+                        employeeIDs.Add(employeeID);
+                    }
+                }
+            }
+            return employeeIDs;
+        }
+
+        //gets the StreetIds
+        public List<int> getStreetIds()
+        {
+            string sqlString = "Select StreetID From Location.tblStreet";
+            List<int> StreetIds = new List<int>();
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int StreetID = Convert.ToInt32(reader["StreetID"]);
+                        StreetIds.Add(StreetID);
+                    }
+                }
+            }
+            return StreetIds;
+        }
+
+        //gets the SubrubIds
+        public List<int> getSubrubIds()
+        {
+            string sqlString = "Select SuburbID From Location.tblSuburb";
+            List<int> SuburbIDs = new List<int>();
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int SuburbID = Convert.ToInt32(reader["SuburbID"]);
+                        SuburbIDs.Add(SuburbID);
+                    }
+                }
+            }
+            return SuburbIDs;
+        }
+
+        //gets the CityIds
+        public List<int> getCityIds()
+        {
+            string sqlString = "Select CityID From Location.tblCity";
+            List<int> CityIDs = new List<int>();
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int CityID = Convert.ToInt32(reader["CityID"]);
+                        CityIDs.Add(CityID);
+                    }
+                }
+            }
+            return CityIDs;
+        }
+
+        //gets the CountryIds
+        public List<int> getCountryIds()
+        {
+            string sqlString = "Select CountryID From Location.tblCountry";
+            List<int> CountryIDs = new List<int>();
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int CountryID = Convert.ToInt32(reader["CountryID"]);
+                        CountryIDs.Add(CountryID);
+                    }
+                }
+            }
+            return CountryIDs;
+        }
+
+
         //closes the connection if it is still open
         public void CloseConnection()
         {
