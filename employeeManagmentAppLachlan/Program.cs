@@ -859,6 +859,71 @@ namespace employeeManagmentAppLachlan
                             view.DisplayComplexQry5(employee);
                         }
                         break;
+                    case "11":
+                        {
+                            List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
+                            view.DisplayEmployeeDetailsPages(employee);
+                            Loop = false;
+                        }
+                        break;
+                    case "12":
+                        {
+                            List<tblLocation> locations = storageManager.GetTblLocations();
+                            view.DisplayLocationPages(locations);
+                            Loop = false;
+                        }
+                        break;
+                    case "13":
+                        {
+                            List<tblEmployeeRoleName> roleNames = storageManager.GetTblEmployeeRoleNames();
+                            view.DisplayRoleNamesPages(roleNames);
+                            //List<EmployeeTblEmployeesDetails> employee1 = storageManager.GetEmployeeTblEmployeesDetails();
+                            //view.DisplaytblEmployeesDetails(employee1);
+                            Loop = false;
+                        }
+                        break;
+                    case "14":
+                        {
+                            List<tblDepartments> departments = storageManager.GetTblDepartments();
+                            view.DisplayDepartmentsPages(departments);
+                            Loop = false;
+                        }
+                        break;
+                    case "15":
+                        {
+                            List<tblJobtitle> jobTittle = storageManager.GetEmployeeTblJobTittles();
+                            view.DisplaytblJobTittlesPages(jobTittle);
+                            Loop = false;
+                        }
+                        break;
+                    case "16":
+                        {
+                            List<tblLocationCountry> countries = storageManager.GetTblLocationCountries();
+                            view.DisplayCountryPages(countries);
+                            Loop = false;
+                        }
+                        break;
+                    case "17":
+                        {
+                            List<tblStreetID> streetIDs = storageManager.GetTblStreetIDs();
+                            view.DisplayStreetIDPages(streetIDs);
+                            Loop = false;
+                        }
+                        break;
+                    case "18":
+                        {
+                            List<tblSubrubID> subrubIDs = storageManager.GetTblSubrubIDs();
+                            view.DisplaySubrubPages(subrubIDs);
+                            Loop = false;
+                        }
+                        break;
+                    case "19":
+                        {
+                            List<tblCityID> cityIDs = storageManager.GetTblCityIDs();
+                            view.DisplayCityPages(cityIDs);
+                            Loop = false;
+                        }
+                        break;
                     default:
                         {
                             Console.WriteLine("Invalid option please try again.");
@@ -882,33 +947,26 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<tblEmployeeDetails> employee = storageManager.GetTblEmployeeDetails();
-                            view.DisplayEmployeeDetailsPages(employee);
-                            Notvalid = false;
-                        }
-                        break;
-                    case "2":
-                        {
                             UpdateEmployeeDetails();
                             Notvalid = false;
 
                         }
                         break;
-                    case "3":
+                    case "2":
                         {
                             DeleteEmployeeDetails();
                             Notvalid = false;
 
                         }
                         break;
-                    case "4":
+                    case "3":
                         {
                             InsertEmployeeDetails();
                             Notvalid = false;
 
                         }
                         break;
-                    case "5":
+                    case "4":
                         {
                             SwitchMainAdmin();
                             Notvalid = false;
@@ -937,33 +995,26 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<tblLocation> locations = storageManager.GetTblLocations();
-                            view.DisplayLocationPages(locations);
-                            Notvalid = false;
-                        }
-                        break;
-                    case "2":
-                        {
                             UpdateLocation();
                             Notvalid = false;
 
                         }
                         break;
-                    case "3":
+                    case "2":
                         {
                             DeleteLocation();
                             Notvalid = false;
 
                         }
                         break;
-                    case "4":
+                    case "3":
                         {
                             InsertLocation();
                             Notvalid = false;
 
                         }
                         break;
-                    case "5":
+                    case "4":
                         {
                             SwitchMainAdmin();
                             Notvalid = false;
@@ -992,35 +1043,26 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<tblEmployeeRoleName> roleNames = storageManager.GetTblEmployeeRoleNames();
-                            view.DisplayRoleNamesPages(roleNames);
-                            //List<EmployeeTblEmployeesDetails> employee1 = storageManager.GetEmployeeTblEmployeesDetails();
-                            //view.DisplaytblEmployeesDetails(employee1);
-                            Notvalid = false;
-                        }
-                        break;
-                    case "2":
-                        {
                             UpdateRoleName();
                             Notvalid = false;
 
                         }
                         break;
-                    case "3":
+                    case "2":
                         {
                             DeleteRoleName();
                             Notvalid = false;
 
                         }
                         break;
-                    case "4":
+                    case "3":
                         {
                             InsertRoleName();
                             Notvalid = false;
 
                         }
                         break;
-                    case "5":
+                    case "4":
                         {
                             SwitchMainAdmin();
                             Notvalid = false;
@@ -1049,33 +1091,26 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<tblDepartments> departments = storageManager.GetTblDepartments();
-                            view.DisplayDepartmentsPages(departments);
-                            Notvalid = false;
-                        }
-                        break;
-                    case "2":
-                        {
                             UpdateDept();
                             Notvalid = false;
 
                         }
                         break;
-                    case "3":
+                    case "2":
                         {
                             DeleteDepartment();
                             Notvalid = false;
 
                         }
                         break;
-                    case "4":
+                    case "3":
                         {
                             InsertDepartment();
                             Notvalid = false;
 
                         }
                         break;
-                    case "5":
+                    case "4":
                         {
                             SwitchMainAdmin();
                             Notvalid = false;
@@ -1104,33 +1139,26 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<tblJobtitle> jobTittle = storageManager.GetEmployeeTblJobTittles();
-                            view.DisplaytblJobTittlesPages(jobTittle);
-                            Notvalid = false;
-                        }
-                        break;
-                    case "2":
-                        {
                             UpdateJobTitle();
                             Notvalid = false;
 
                         }
                         break;
-                    case "3":
+                    case "2":
                         {
                             DeleteJobtitle();
                             Notvalid = false;
 
                         }
                         break;
-                    case "4":
+                    case "3":
                         {
                             InsertJobtitle();
                             Notvalid = false;
 
                         }
                         break;
-                    case "5":
+                    case "4":
                         {
                             SwitchMainAdmin();
                             Notvalid = false;
@@ -1158,33 +1186,26 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<tblLocationCountry> countries = storageManager.GetTblLocationCountries();
-                            view.DisplayCountryPages(countries);
-                            Notvalid = false;
-                        }
-                        break;
-                    case "2":
-                        {
                             UpdateLocationCountry();
                             Notvalid = false;
 
                         }
                         break;
-                    case "3":
+                    case "2":
                         {
                             DeleteCountry();
                             Notvalid = false;
 
                         }
                         break;
-                    case "4":
+                    case "3":
                         {
                             InsertCountry();
                             Notvalid = false;
 
                         }
                         break;
-                    case "5":
+                    case "4":
                         {
                             SwitchMainAdmin();
                             Notvalid = false;
@@ -1213,33 +1234,26 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<tblStreetID> streetIDs = storageManager.GetTblStreetIDs();
-                            view.DisplayStreetIDPages(streetIDs);
-                            Notvalid = false;
-                        }
-                        break;
-                    case "2":
-                        {
                             UpdateLocationStreet();
                             Notvalid = false;
 
                         }
                         break;
-                    case "3":
+                    case "2":
                         {
                             DeleteStreet();
                             Notvalid = false;
 
                         }
                         break;
-                    case "4":
+                    case "3":
                         {
                             InsertStreet();
                             Notvalid = false;
 
                         }
                         break;
-                    case "5":
+                    case "4":
                         {
                             SwitchMainAdmin();
                             Notvalid = false;
@@ -1268,33 +1282,26 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<tblSubrubID> subrubIDs = storageManager.GetTblSubrubIDs();
-                            view.DisplaySubrubPages(subrubIDs);
-                            Notvalid = false;
-                        }
-                        break;
-                    case "2":
-                        {
                             Updatesubrub();
                             Notvalid = false;
 
                         }
                         break;
-                    case "3":
+                    case "2":
                         {
                             DeleteSuburb();
                             Notvalid = false;
 
                         }
                         break;
-                    case "4":
+                    case "3":
                         {
                             InsertSuburb();
                             Notvalid = false;
 
                         }
                         break;
-                    case "5":
+                    case "4":
                         {
                             SwitchMainAdmin();
                             Notvalid = false;
@@ -1323,33 +1330,26 @@ namespace employeeManagmentAppLachlan
                 {
                     case "1":
                         {
-                            List<tblCityID> cityIDs = storageManager.GetTblCityIDs();
-                            view.DisplayCityPages(cityIDs);
-                            Notvalid = false;
-                        }
-                        break;
-                    case "2":
-                        {
                             UpdateLocationCity();
                             Notvalid = false;
 
                         }
                         break;
-                    case "3":
+                    case "2":
                         {
                             DeleteCity();
                             Notvalid = false;
 
                         }
                         break;
-                    case "4":
+                    case "3":
                         {
                             InsertCity();
                             Notvalid = false;
 
                         }
                         break;
-                    case "5":
+                    case "4":
                         {
                             SwitchMainAdmin();
                             Notvalid = false;
