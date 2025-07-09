@@ -13,10 +13,6 @@ namespace employeeManagmentAppLachlan
 {
     public class Program //saved in onedrive>docc>12tpi>C#>oop>employeeManagmentAppLachlan OR .......oop>WorkPLS
     {                    // .mdf is saved in the DB folder onedrive>docc>12tpi>sql>DB        
-        //allow nulls in job title id in the ddl 
-        //allow nulls in the role id in the ddl 
-        // same for job title 
-        //remove the view all data from the edit and cascade the methods
         private static StorageManager storageManager;
         private static consoleView view;
         static int role;
