@@ -900,60 +900,65 @@ namespace employeeManagmentAppLachlan.Repositories
 
 
         //updates the RoleName table in the database
-        public string UpdateRoleName(string RoleName,string RoleNameChange)
+        public string UpdateRoleName(string fieldChoice, int EmployeeID, string Change)
         {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeeRoleName SET RoleName = @RoleNameChange Where RoleName = @RoleName", conn))
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblEmployeeRoleName SET {fieldChoice} = @RoleNameChange Where RoleID = @RoleID",  conn))
             {
-                cmd.Parameters.AddWithValue("@RoleName", RoleName);
-                cmd.Parameters.AddWithValue("@RoleNameChange", RoleNameChange);
+                cmd.Parameters.AddWithValue("@RoleID", EmployeeID);
+                cmd.Parameters.AddWithValue("@RoleName", fieldChoice);
+                cmd.Parameters.AddWithValue("@RoleNameChange", Change);
                 return cmd.ExecuteNonQuery().ToString();
             }
         }
 
 
         //updates the JobTitl table in the database
-        public string UpdateJobTitle(string JobTitle, string JobTitleChange)
+        public string UpdateJobTitle(string fieldChoice, int EmployeeID, string Change)
         {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblJobTitles SET JobTitleName = @JobTitleChange Where JobTitleID = @JobTitle", conn))
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Employee.tblJobTitles SET {fieldChoice} = @JobTitleChange Where JobTitleID = @RoleID", conn))
             {
-                cmd.Parameters.AddWithValue("@JobTitle", JobTitle);
-                cmd.Parameters.AddWithValue("@JobTitleChange", JobTitleChange);
+                cmd.Parameters.AddWithValue("@RoleID", EmployeeID);
+                cmd.Parameters.AddWithValue("@JobTitle", fieldChoice);
+                cmd.Parameters.AddWithValue("@JobTitleChange", Change);
                 return cmd.ExecuteNonQuery().ToString();
             }
         }
 
 
         //updates the LocationCountry table in the database
-        public string UpdateLocationCountry(string CountryName, string CountryNameChange)
+        public string UpdateLocationCountry(string fieldChoice, int EmployeeID, string Change)
         {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationCountry SET CountryName = @CountryName Where CountryName = @CountryName", conn))
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationCountry SET {fieldChoice} = @CountryName Where CountryID = @RoleID", conn))
             {
-                cmd.Parameters.AddWithValue("@CountryName", CountryName);
-                cmd.Parameters.AddWithValue("@CountryNameChange", CountryNameChange);
+                cmd.Parameters.AddWithValue("@RoleID", EmployeeID);
+                cmd.Parameters.AddWithValue("@CountryName", fieldChoice);
+                cmd.Parameters.AddWithValue("@CountryNameChange", Change);
                 return cmd.ExecuteNonQuery().ToString();
             }
         }
 
 
         //updates the LocationStreet table in the database
-        public string UpdateLocationStreet(string StreetName, string StreetNameChange)
+        public string UpdateLocationStreet(string fieldChoice, int EmployeeID, string Change)
         {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationStreet SET StreetName = @StreetName Where StreetName = @StreetName", conn))
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationStreet SET {fieldChoice} = @StreetName Where StreetID = @RoleID", conn))
             {
-                cmd.Parameters.AddWithValue("@StreetName", StreetName);
-                cmd.Parameters.AddWithValue("@StreetNameChange", StreetNameChange);
+                cmd.Parameters.AddWithValue("@RoleID", EmployeeID);
+                cmd.Parameters.AddWithValue("@StreetName", fieldChoice);
+                cmd.Parameters.AddWithValue("@StreetNameChange", Change);
                 return cmd.ExecuteNonQuery().ToString();
             }
         }
 
 
         //updates the LocationCity table in the database
-        public string UpdateLocationCity(string CityName, string CityNameChange)
+        public string UpdateLocationCity(string fieldChoice, int EmployeeID, string Change)
         {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationStreet SET CityName = @CityName Where CityName = @CityName", conn))
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationCity SET {fieldChoice} = @CityName Where CityID = @RoleID", conn))
             {
-                cmd.Parameters.AddWithValue("@CityName", CityName);
-                cmd.Parameters.AddWithValue("@CityNameChange", CityNameChange);
+                cmd.Parameters.AddWithValue("@RoleID", EmployeeID);
+                cmd.Parameters.AddWithValue("@CityName", fieldChoice);
+                cmd.Parameters.AddWithValue("@CityNameChange", Change);
                 return cmd.ExecuteNonQuery().ToString();
             }
         }
@@ -988,7 +993,7 @@ namespace employeeManagmentAppLachlan.Repositories
         //updates the subrub table in the database
         public string Updatesubrub(string fieldChoice, int LocationID, string Change)
         {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationSubrub SET @fieldChoice = @Change Where LocationID = @LocationID", conn))
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationSuburb SET @fieldChoice = @Change Where SuburbID = @LocationID", conn))
             {
                 cmd.Parameters.AddWithValue("@fieldChoice", fieldChoice);
                 cmd.Parameters.AddWithValue("@LocationID", LocationID);
@@ -1070,7 +1075,7 @@ namespace employeeManagmentAppLachlan.Repositories
         //Deletes a Street in the database
         public int DeleteStreet(int StreetID)
         {
-            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationStreet SET Active = 0 WHERE StreetID  = @JobTitlStreetIDeID ", conn))
+            using (SqlCommand cmd = new SqlCommand($"UPDATE Location.tblLocationStreet SET Active = 0 WHERE StreetID  = @StreetID ", conn))
             {
                 cmd.Parameters.AddWithValue("@StreetID ", StreetID);
                 return cmd.ExecuteNonQuery();
@@ -1120,7 +1125,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int InsertLocation(string LocationName, int CountryID, int SuburbID, int StreetID, int CityID, int StreetNumber)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO Location.tblLocation (locationName, CountryID, SuburbID, StreetID, CityID, StreetNumber, Active) VALUES (@LocationName ,@CountryID  @SuburbID ,@StreetID ,@CityID ,@StreetNumber ); SELECT SCOPE_IDENTITY(); ", conn))
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO Location.tblLocation (locationName, CountryID, SuburbID, StreetID, CityID, StreetNumber, Active) VALUES (@LocationName ,@CountryID,  @SuburbID ,@StreetID ,@CityID ,@StreetNumber ,@Active); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@LocationName ", LocationName);
                 cmd.Parameters.AddWithValue("@CountryID  ", CountryID);
@@ -1161,7 +1166,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int InsertRoleName(string RoleName)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblEmployeeRoleName (RoleName ,Active ) VALUES (@RoleName ,@Active); SELECT SCOPE_IDENTITY(); ", conn))
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Employee.tblEmployeeRoleName (RoleName ,Active ) VALUES (@RoleName ,@Active); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@RoleName ", RoleName);
                 cmd.Parameters.AddWithValue("@Active", Active);
@@ -1227,7 +1232,7 @@ namespace employeeManagmentAppLachlan.Repositories
         public int InsertSuburb(string Suburb, int PostCode)
         {
             bool Active = true;
-            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationSuburb  (Suburb ,Active ,PostCode ) VALUES (@StreetName,@Active),(@PostCode); SELECT SCOPE_IDENTITY(); ", conn))
+            using (SqlCommand cmd = new SqlCommand($"INSERT INTO  Location.tblLocationSuburb  (Suburb ,Active ,PostCode ) VALUES (@Suburb,@Active,@PostCode); SELECT SCOPE_IDENTITY(); ", conn))
             {
                 cmd.Parameters.AddWithValue("@Suburb", Suburb);
                 cmd.Parameters.AddWithValue("@Active", Active);
@@ -1310,7 +1315,7 @@ namespace employeeManagmentAppLachlan.Repositories
         //gets the employeeIds
         public List<int> getemployeeIds()
         {
-            string sqlString = "Select EmployeeID From Employee.tblEmployeeDetails";
+            string sqlString = "Select EmployeeID From Employee.tblEmployeesDetails";
             List<int> employeeIDs = new List<int>();
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -1329,7 +1334,7 @@ namespace employeeManagmentAppLachlan.Repositories
         //gets the StreetIds
         public List<int> getStreetIds()
         {
-            string sqlString = "Select StreetID From Location.tblStreet";
+            string sqlString = "Select StreetID From Location.tblLocationStreet";
             List<int> StreetIds = new List<int>();
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -1348,7 +1353,7 @@ namespace employeeManagmentAppLachlan.Repositories
         //gets the SubrubIds
         public List<int> getSubrubIds()
         {
-            string sqlString = "Select SuburbID From Location.tblSuburb";
+            string sqlString = "Select SuburbID From Location.tblLocationSuburb";
             List<int> SuburbIDs = new List<int>();
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -1367,7 +1372,7 @@ namespace employeeManagmentAppLachlan.Repositories
         //gets the CityIds
         public List<int> getCityIds()
         {
-            string sqlString = "Select CityID From Location.tblCity";
+            string sqlString = "Select CityID From Location.tbllocationCity";
             List<int> CityIDs = new List<int>();
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -1386,7 +1391,7 @@ namespace employeeManagmentAppLachlan.Repositories
         //gets the CountryIds
         public List<int> getCountryIds()
         {
-            string sqlString = "Select CountryID From Location.tblCountry";
+            string sqlString = "Select CountryID From Location.tblLocationCountry";
             List<int> CountryIDs = new List<int>();
             using (SqlCommand cmd = new SqlCommand(sqlString, conn))
             {
@@ -1395,6 +1400,44 @@ namespace employeeManagmentAppLachlan.Repositories
                     while (reader.Read())
                     {
                         int CountryID = Convert.ToInt32(reader["CountryID"]);
+                        CountryIDs.Add(CountryID);
+                    }
+                }
+            }
+            return CountryIDs;
+        }
+
+        //gets the DepartmentsIds
+        public List<int> getDepartmentsIds()
+        {
+            string sqlString = "Select DepartmentID From Location.tblLocationDepartments";
+            List<int> CountryIDs = new List<int>();
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int CountryID = Convert.ToInt32(reader["DepartmentID"]);
+                        CountryIDs.Add(CountryID);
+                    }
+                }
+            }
+            return CountryIDs;
+        }
+
+        //gets the LocationIds
+        public List<int> getLocationIds()
+        {
+            string sqlString = "Select LocationID From Location.tblLocation";
+            List<int> CountryIDs = new List<int>();
+            using (SqlCommand cmd = new SqlCommand(sqlString, conn))
+            {
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int CountryID = Convert.ToInt32(reader["LocationID"]);
                         CountryIDs.Add(CountryID);
                     }
                 }

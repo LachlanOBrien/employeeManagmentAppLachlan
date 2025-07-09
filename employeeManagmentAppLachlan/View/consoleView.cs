@@ -424,7 +424,6 @@ namespace employeeManagmentAppLachlan.View
                         PrintLine();
                         //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                         loopnum++;
-                        Console.WriteLine(loopnum);
                         if (loopnum == 10)
                         {
                             Console.WriteLine("do you wish to go to the next page Y/N");
@@ -566,7 +565,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintRow($"{street.streetID}", $"{street.streetName}", $"{street.active}");
                     PrintLine();
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -641,7 +639,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -714,7 +711,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintRow($"{country.countryId}", $"{country.countryName}", $"{country.active}");
                     PrintLine();
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -788,7 +784,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -862,7 +857,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -935,7 +929,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -996,7 +989,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -1202,7 +1194,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -1261,7 +1252,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -1320,7 +1310,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -1378,7 +1367,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -1435,7 +1423,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintRow($"{country.countryId}", $"{country.countryName}", $"{country.active}");
                     PrintLine();
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -1493,7 +1480,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -1550,7 +1536,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintRow($"{street.streetID}", $"{street.streetName}", $"{street.active}");
                     PrintLine();
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -1608,7 +1593,6 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
-                    Console.WriteLine(loopnum);
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
