@@ -58,25 +58,25 @@ namespace employeeManagmentAppLachlan.View
         {
             Console.WriteLine("What Query do you wish to View");
             Console.WriteLine("Please choose an option from 1-10");
-            Console.WriteLine("1:  Advanced Query 1");
-            Console.WriteLine("2:  Advanced Query 2");
-            Console.WriteLine("3:  Advanced Query 3");
-            Console.WriteLine("4:  Advanced Query 4");
-            Console.WriteLine("5:  Advanced Query 5");
-            Console.WriteLine("6:  Complex Query 1");
-            Console.WriteLine("7:  Complex Query 2");
-            Console.WriteLine("8:  Complex Query 3");
-            Console.WriteLine("9:  Complex Query 4");
-            Console.WriteLine("10: Complex Query 5");
-            Console.WriteLine("11: simple Query 1");
-            Console.WriteLine("12: simple Query 2");
-            Console.WriteLine("13: simple Query 3");
-            Console.WriteLine("14: simple Query 4");
-            Console.WriteLine("15: simple Query 5");
-            Console.WriteLine("16: simple Query 6");
-            Console.WriteLine("17: simple Query 7");
-            Console.WriteLine("18: simple Query 8");
-            Console.WriteLine("19: simple Query 9");
+            Console.WriteLine("1:  Employees with a wage higher than 80k and hired before 2018-01-01");
+            Console.WriteLine("2:  Employees from the United Kingdom and hired before 2019-03-09");
+            Console.WriteLine("3:  Employees who are males");
+            Console.WriteLine("4:  Employees working in the US");
+            Console.WriteLine("5:  Employees whoes role is Data Scientist");
+            Console.WriteLine("6:  Total Amount of employees whoes job is Software Engineer");
+            Console.WriteLine("7:  Average wage of employees");
+            Console.WriteLine("8:  Total amount of employees who work in the United Kingdom");
+            Console.WriteLine("9:  Total amount of male employees");
+            Console.WriteLine("10: List of jobs that pay higher than 80k");
+            Console.WriteLine("11: List of all data in the Employee Detaisl Table");
+            Console.WriteLine("12: List of all data in the Location Table");
+            Console.WriteLine("13: List of all data in the Role Name Table");
+            Console.WriteLine("14: List of all data in the Department Table");
+            Console.WriteLine("15: List of all data in the Job Title Table");
+            Console.WriteLine("16: List of all data in the Country Table");
+            Console.WriteLine("17: List of all data in the Street Table");
+            Console.WriteLine("18: List of all data in the Suburb Table");
+            Console.WriteLine("19: List of all data in the City Table");
 
         }
 
@@ -141,9 +141,9 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("Welcome to Locations");
             Console.WriteLine("Choose an option from 1-4");
             Console.WriteLine("Menu: ");
-            Console.WriteLine("1: Update an employee's location by employeeID");
-            Console.WriteLine("2: Delete a Location by job title name");
-            Console.WriteLine("3: Insert a new Location ");
+            Console.WriteLine("1: Update a location by Location ID");
+            Console.WriteLine("2: Delete a Location by Location ID");
+            Console.WriteLine("3: Create a new Location ");
             Console.WriteLine("4: Return to the Main Menu");
         }
 
@@ -156,7 +156,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("Menu: ");
             Console.WriteLine("1: Update an employee's details by employeeID");
             Console.WriteLine("2: Delete an Employee by Employee ID");
-            Console.WriteLine("3: Insert an new Employee ");
+            Console.WriteLine("3: Create a new Employee ");
             Console.WriteLine("4: Return to the Main Menu");
         }
 
@@ -164,12 +164,12 @@ namespace employeeManagmentAppLachlan.View
         public void tblJobTittles()
         {
             Console.Clear();
-            Console.WriteLine("Welcome to tblJobTitles");
+            Console.WriteLine("Welcome to table Job Titles");
             Console.WriteLine("Choose an option from 1-4");
             Console.WriteLine("Menu: ");
-            Console.WriteLine("1: Update a job title by jobtitleID");
-            Console.WriteLine("2: Delete a job title by job title name");
-            Console.WriteLine("3: Insert a new job title ");
+            Console.WriteLine("1: Update a job title by job title ID");
+            Console.WriteLine("2: Delete a job title by job title ID");
+            Console.WriteLine("3: Create a new job title ");
             Console.WriteLine("4: Return to the Main Menu");
         }
 
@@ -177,12 +177,12 @@ namespace employeeManagmentAppLachlan.View
         public void tblDepartments()
         {
             Console.Clear();
-            Console.WriteLine("Welcome to tblDepartments");
+            Console.WriteLine("Welcome to table Departments");
             Console.WriteLine("Choose an option from 1-4");
             Console.WriteLine("Menu: ");
-            Console.WriteLine("1: Update a Departments by DepartmentsID");
-            Console.WriteLine("2: Delete a Departments by Departments name");
-            Console.WriteLine("3: Insert a new Departments ");
+            Console.WriteLine("1: Update a Departments by Departments ID");
+            Console.WriteLine("2: Delete a Departments by Departments ID");
+            Console.WriteLine("3: Create a new Departments ");
             Console.WriteLine("4: Return to the Main Menu");
         }
 
@@ -190,12 +190,12 @@ namespace employeeManagmentAppLachlan.View
         public void tblRoleName()
         {
             Console.Clear();
-            Console.WriteLine("Welcome to tbl Role Name");
+            Console.WriteLine("Welcome to table Role Name");
             Console.WriteLine("Choose an option from 1-4");
             Console.WriteLine("Menu: ");
-            Console.WriteLine("1: Update a Role by RoleID");
-            Console.WriteLine("2: Delete a Role by Rolename");
-            Console.WriteLine("3: Insert a new Role ");
+            Console.WriteLine("1: Update a Role by Role ID");
+            Console.WriteLine("2: Delete a Role by Role ID");
+            Console.WriteLine("3: Create a new Role ");
             Console.WriteLine("4: Return to the Main Menu");
         }
 
@@ -203,12 +203,12 @@ namespace employeeManagmentAppLachlan.View
         public void tblLocationCountry()
         {
             Console.Clear();
-            Console.WriteLine("Welcome to tbl Location Country");
+            Console.WriteLine("Welcome to table Country");
             Console.WriteLine("Choose an option from 1-4");
             Console.WriteLine("Menu: ");
-            Console.WriteLine("1: Update a country by countryID");
-            Console.WriteLine("2: Delete a Country by Country name");
-            Console.WriteLine("3: Insert a new Country");
+            Console.WriteLine("1: Update a country by Country ID");
+            Console.WriteLine("2: Delete a Country by Country ID");
+            Console.WriteLine("3: Create a new Country");
             Console.WriteLine("4: Return to the Main Menu");
         }
 
@@ -216,12 +216,12 @@ namespace employeeManagmentAppLachlan.View
         public void tblStreet()
         {
             Console.Clear();
-            Console.WriteLine("Welcome to tbl Street ");
+            Console.WriteLine("Welcome to table Street ");
             Console.WriteLine("Choose an option from 1-4");
             Console.WriteLine("Menu: ");
-            Console.WriteLine("1: Update a Street by StreetID");
+            Console.WriteLine("1: Update a Street by Street ID");
             Console.WriteLine("2: Delete a Street by Street ID");
-            Console.WriteLine("3: Insert a new Street");
+            Console.WriteLine("3: Create a new Street");
             Console.WriteLine("4: Return to the Main Menu");
         }
 
@@ -229,12 +229,12 @@ namespace employeeManagmentAppLachlan.View
         public void tblSuburb()
         {
             Console.Clear();
-            Console.WriteLine("Welcome to tbl Suburb ");
+            Console.WriteLine("Welcome to table Suburb ");
             Console.WriteLine("Choose an option from 1-4");
             Console.WriteLine("Menu: ");
-            Console.WriteLine("1: Update a Suburb by SuburbID");
+            Console.WriteLine("1: Update a Suburb by Suburb ID");
             Console.WriteLine("2: Delete a Suburb by Suburb ID");
-            Console.WriteLine("3: Insert a new Suburb");
+            Console.WriteLine("3: Create a new Suburb");
             Console.WriteLine("4: Return to the Main Menu");
         }
 
@@ -242,14 +242,13 @@ namespace employeeManagmentAppLachlan.View
         public void tblCity()
         {
             Console.Clear();
-            Console.WriteLine("Welcome to tbl City ");
-            Console.WriteLine("Choose an option from 1-5");
+            Console.WriteLine("Welcome to table City ");
+            Console.WriteLine("Choose an option from 1-4");
             Console.WriteLine("Menu: ");
-            Console.WriteLine("1: View All records in tbl City");
-            Console.WriteLine("2: Update a City by CityID");
-            Console.WriteLine("3: Delete a new City by City Name");
-            Console.WriteLine("4: Insert a new City");
-            Console.WriteLine("5: Return to the Main Menu");
+            Console.WriteLine("1: Update a City by City ID");
+            Console.WriteLine("2: Delete a new City by City ID");
+            Console.WriteLine("3: Create a new City");
+            Console.WriteLine("4: Return to the Main Menu");
         }
         //displays all the tables for the search field to dispaly
         public void DisplayTables()
@@ -1757,14 +1756,14 @@ namespace employeeManagmentAppLachlan.View
             Math.Truncate(totalPagesDecimal);
             int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
             PrintLine();
-            PrintRow(" Total", " Wage ", " Job Title Name ");
+            PrintRow( " Wage ", " Job Title Name ");
             PrintLine();
             if (loop = true)
             {
                 foreach (ComplexQry5 City in complexQry5s)
                 {
                     PrintLine();
-                    PrintRow($"{City.total}", $"{City.wage}", $"{City.jobTitleName}");
+                    PrintRow( $"{City.wage}", $"{City.jobTitleName}");
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;

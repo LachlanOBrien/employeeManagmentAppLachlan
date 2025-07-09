@@ -309,10 +309,9 @@ namespace employeeManagmentAppLachlan.Repositories
                 {
                     while (reader.Read())
                     {
-                        int total = Convert.ToInt32(reader["total"]);
                         int wage = Convert.ToInt32(reader["Wage"]);
                         string JobTitleName = reader["JobTitleName"].ToString();
-                        complexQry5s.Add(new ComplexQry5(total, wage, JobTitleName));
+                        complexQry5s.Add(new ComplexQry5( wage, JobTitleName));
                     }
                 }
             }
