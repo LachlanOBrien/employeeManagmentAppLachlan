@@ -57,7 +57,7 @@ namespace employeeManagmentAppLachlan.View
         public void DisplayQryOptions()
         {
             Console.WriteLine("What Query do you wish to View");
-            Console.WriteLine("Please choose an option from 1-10");
+            Console.WriteLine("Please choose an option from 1-19");
             Console.WriteLine("1:  Employees with a wage higher than 80k and hired before 2018-01-01");
             Console.WriteLine("2:  Employees from the United Kingdom and hired before 2019-03-09");
             Console.WriteLine("3:  Employees who are males");
@@ -68,7 +68,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("8:  Total amount of employees who work in the United Kingdom");
             Console.WriteLine("9:  Total amount of male employees");
             Console.WriteLine("10: List of jobs that pay higher than 80k");
-            Console.WriteLine("11: List of all data in the Employee Detaisl Table");
+            Console.WriteLine("11: List of all data in the Employee Details Table");
             Console.WriteLine("12: List of all data in the Location Table");
             Console.WriteLine("13: List of all data in the Role Name Table");
             Console.WriteLine("14: List of all data in the Department Table");
@@ -1032,7 +1032,7 @@ namespace employeeManagmentAppLachlan.View
         {
             Console.Clear();
             PrintLine();
-            PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " Location wage");
+            PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " wage");
             PrintLine();
             foreach (tblEmployeeDetails detail in details)
                 {

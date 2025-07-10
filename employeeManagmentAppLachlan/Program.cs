@@ -29,7 +29,7 @@ namespace employeeManagmentAppLachlan
             //temp log in / role function
             //Console.WriteLine("enter the role you wish to be 1 for employee 2 for admin");
             //role = Convert.ToInt32(Console.ReadLine());
-            //SwitchMainAdmin();           
+            //SwitchMainAdmin();
             MainMenu();
             storageManager.CloseConnection(); // closes the connection with the database.
         }
