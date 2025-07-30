@@ -263,7 +263,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("6. Table Citys ");
             Console.WriteLine("7. Table Country ");
             Console.WriteLine("8. Table Streets ");
-            Console.WriteLine("9. Table Suburbs ");           
+            Console.WriteLine("9. Table Suburbs ");
         }
         //displays the fields for the employee details fields for the search function 
         public void DisplayEmployeeDetailsFields()
@@ -350,7 +350,7 @@ namespace employeeManagmentAppLachlan.View
             Console.WriteLine("Which Fields do you wish to use");
             Console.WriteLine("Choose a Field from 1-2");
             Console.WriteLine("1. Street ID Field");
-            Console.WriteLine("2. Street Name Field");      
+            Console.WriteLine("2. Street Name Field");
         }
         //displays the fields for the Suburbs fields for the search function
         public void DisplaySuburbsFields()
@@ -440,7 +440,7 @@ namespace employeeManagmentAppLachlan.View
                             {
                                 loop = false;
                             }
-                        }                   
+                        }
                     }
                 }
             }
@@ -525,7 +525,7 @@ namespace employeeManagmentAppLachlan.View
                                     }
                                     break;
                             }
-                        } while (loopDoWhile);                       
+                        } while (loopDoWhile);
                     }
                 }
             }
@@ -974,9 +974,9 @@ namespace employeeManagmentAppLachlan.View
             int loopnum = 0;
             bool loop = true;
             int pageNum = 1;
-            decimal totalPagesDecimal = details.Count/10;
+            decimal totalPagesDecimal = details.Count / 10;
             Math.Truncate(totalPagesDecimal);
-            int totalPagesNum = Convert.ToInt32(totalPagesDecimal)+1;
+            int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
             Console.Clear();
             PrintLine();
             PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " wage");
@@ -1024,7 +1024,7 @@ namespace employeeManagmentAppLachlan.View
                         } while (loopDoWhile);
                     }
                 }
-                
+
             }
         }
         // displays the data for the table Employee Details with pagination 
@@ -1035,13 +1035,13 @@ namespace employeeManagmentAppLachlan.View
             PrintRow("employee ID ", " first Name", " last Name", " Hire Date ", " gender ", " job ID ", "role ", "active", "  email", " phone number ", " wage");
             PrintLine();
             foreach (tblEmployeeDetails detail in details)
-                {
-                    PrintLine();
-                    PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
-                    PrintLine();
-                    //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
-                    
-                }
+            {
+                PrintLine();
+                PrintRow($"{detail.employeeID}", $"{detail.firstname}", $"{detail.lastname}", $"{detail.hireDate}", $"{detail.gender}", $"{detail.jobID}", $"{detail.roleID}", $"{detail.active}", $"{detail.email}", $"{detail.phonenumber}", $"{detail.wage}");
+                PrintLine();
+                //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
+
+            }
         }
 
 
@@ -1078,7 +1078,7 @@ namespace employeeManagmentAppLachlan.View
                     PrintLine();
                     PrintRow($"{department.department}", $"{department.managersID}", $"{department.departmentID}", $"{department.active}");
                     PrintLine();
-                    loopnum ++;
+                    loopnum++;
                     if (loopnum == 10)
                     {
                         bool loopDoWhile = true;
@@ -1642,7 +1642,7 @@ namespace employeeManagmentAppLachlan.View
             Math.Truncate(totalPagesDecimal);
             int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
             PrintLine();
-            PrintRow(" Wage"," First Name ", " Last Name  ", "Hire Date ");
+            PrintRow(" Wage", " First Name ", " Last Name  ", "Hire Date ");
             PrintLine();
             if (loop = true)
             {
@@ -1756,14 +1756,14 @@ namespace employeeManagmentAppLachlan.View
             Math.Truncate(totalPagesDecimal);
             int totalPagesNum = Convert.ToInt32(totalPagesDecimal) + 1;
             PrintLine();
-            PrintRow( " Wage ", " Job Title Name ");
+            PrintRow(" Wage ", " Job Title Name ");
             PrintLine();
             if (loop = true)
             {
                 foreach (ComplexQry5 City in complexQry5s)
                 {
                     PrintLine();
-                    PrintRow( $"{City.wage}", $"{City.jobTitleName}");
+                    PrintRow($"{City.wage}", $"{City.jobTitleName}");
                     PrintLine();
                     //Console.WriteLine($"{"Location ID: " + location.Location_ID}\t{"Location Name: " + location.Location_Name}");
                     loopnum++;
@@ -1829,8 +1829,8 @@ namespace employeeManagmentAppLachlan.View
                     loop = false;
                 }
             } while (loop);
-            
-            
+
+
             return input;
         }
 
@@ -1890,6 +1890,28 @@ namespace employeeManagmentAppLachlan.View
                     return false;
             }
             return true;
+        }
+
+        public string WithinBoundary(string prompt, int min, int max)
+        {
+            bool loopDaMethod = true;
+            string validInput = "";
+            do
+            {
+                Console.WriteLine(prompt);
+                string input = GetInput();
+                int inputLength = input.Length;
+                if (inputLength >= min && inputLength <= max)
+                {
+                   validInput = input;
+                   loopDaMethod = false;
+                }
+                else
+                {
+                    Console.WriteLine($"Please enter an input between:{min} and {max} characters long");
+                }
+            } while (loopDaMethod);
+            return validInput;
         }
     }
 }

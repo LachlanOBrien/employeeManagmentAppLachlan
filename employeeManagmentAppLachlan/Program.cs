@@ -21,7 +21,12 @@ namespace employeeManagmentAppLachlan
         {
 
             //Console.WriteLine("Hello, World!");
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db2v2;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            string mdfPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "db2v2.mdf");
+            //string mdfPath = Path("..\\db2v2.mdf");
+            //string projectRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, @"..\..\..\"));
+            //string mdfPath = Path.Combine(projectRoot, "db2v2.mdf");
+            Console.WriteLine(mdfPath);
+            string connectionString = $@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename ={mdfPath}; Integrated Security = True; Connect Timeout = 30;";
 
             storageManager = new StorageManager(connectionString);
             view = new consoleView();
@@ -2242,8 +2247,7 @@ namespace employeeManagmentAppLachlan
             bool loopCityID = true;
             bool loopSuburbID = true;
             bool loopstreetID = true;
-            view.DisplayMessage("Enter the new Location Name");
-            string LocationName = view.GetInputNotUpper();
+            string LocationName = view.WithinBoundary("Enter the new Location Name", 5, 40);
             int CountryID = 0;
             do
             {
