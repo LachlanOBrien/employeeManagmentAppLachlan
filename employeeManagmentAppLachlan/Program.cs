@@ -5,6 +5,7 @@ using employeeManagmentAppLachlan.View;
 using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Numerics;
 using System.Threading.Channels;
@@ -2247,6 +2248,7 @@ namespace employeeManagmentAppLachlan
             bool loopCityID = true;
             bool loopSuburbID = true;
             bool loopstreetID = true;
+            bool loopStreetNumber = true;
             string LocationName = view.WithinBoundary("Enter the new Location Name", 5, 40);
             int CountryID = 0;
             do
@@ -2320,6 +2322,21 @@ namespace employeeManagmentAppLachlan
                 }
 
             } while (loopCityID);
+            int streetNumber = 0;
+            do
+            {
+                view.DisplayMessage("Enter the Street Number's of the Location");
+                int streetNumberInput = view.GetIntInput();
+                if (streetNumberInput > 0 && streetNumberInput < 300)
+                {
+                    loopStreetNumber = false;
+                    streetNumber = streetNumberInput;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid options");
+                }
+            } while (loopStreetNumber);
             view.DisplayMessage("Enter the Street Number's of the Location");
             int StreetNumber = view.GetIntInput();
             int LocationID = 0;
@@ -2335,10 +2352,10 @@ namespace employeeManagmentAppLachlan
             bool loopJobID = true;
             bool loopGender = true;
             bool loopWage = true;
-            view.DisplayMessage("Enter the First Name of the new Employee");
-            string FirstName = view.GetInputNotUpper();
-            view.DisplayMessage("Enter the Last Name of the new Employee");
-            string LastName = view.GetInputNotUpper();
+            bool loopEmail = true;
+            bool loopPhonenumber = true;    
+            string FirstName = view.WithinBoundary("Enter the First Name of the new Employee", 2, 20);
+            string LastName = view.WithinBoundary("Enter the Last Name of the new Employee", 2, 20);
             DateTime HireDate = DateTime.Now;
             string Gender = "";
             do
@@ -2373,10 +2390,8 @@ namespace employeeManagmentAppLachlan
                     Console.WriteLine("Please enter a valid options");
                 }
             } while (loopJobID);
-            view.DisplayMessage("Enter the Username of the New Employee");
-            string Username = view.GetInputNotUpper();
-            view.DisplayMessage("Enter the Password of the New Employee ");
-            string Password = view.GetInputNotUpper();
+            string Username = view.WithinBoundary("Enter the Username of the New Employee", 2, 20);
+            string Password = view.WithinBoundary("Enter the Password of the New Employee ", 2, 20);
             int Role = 0;
             do
             {
@@ -2394,11 +2409,38 @@ namespace employeeManagmentAppLachlan
                 {
                     Console.WriteLine("Please enter a valid options");
                 }
-            } while (loopRoleID);            
-            view.DisplayMessage("Enter the Email of the New Employee");
-            string Email = view.GetInputNotUpper();
-            view.DisplayMessage("Enter the Phone Number of the New Employee");
-            int Phonenumber = view.GetIntInput();
+            } while (loopRoleID);
+            string Email = "";
+            do
+            {
+                view.DisplayMessage("Enter the Email of the New Employee");
+                string EmailInput = view.GetInputNotUpper();
+                if (EmailInput.Contains("@"))
+                {
+                    loopRoleID = false;
+                    Email = EmailInput;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid options");
+                }
+            } while (loopEmail);
+            int Phonenumber = 0;
+            do
+            {
+                view.DisplayMessage("Enter the Phone Number of the New Employee using the format 021 123 1234");
+                int PhonenumberInput = view.GetIntInput();
+                int PhonenumberInputLength = PhonenumberInput.ToString().Length;
+                if (PhonenumberInputLength >= 9 && PhonenumberInputLength<= 12)
+                {
+                    loopPhonenumber = false;
+                    Phonenumber = PhonenumberInput;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid options");
+                }
+            } while (loopPhonenumber);
             int wage = 0;
             do
             {
