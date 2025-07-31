@@ -2577,8 +2577,8 @@ namespace employeeManagmentAppLachlan
             string Email = "";
             do
             {
-                view.DisplayMessage("Enter the Email of the New Employee");
-                string EmailInput = view.GetInputNotUpper();
+                
+                string EmailInput = view.WithinBoundaryWithoutInvalid("Enter the Email of the New Employee",2,20);
                 if (EmailInput.Contains("@"))
                 {
                     loopRoleID = false;
@@ -2783,8 +2783,8 @@ namespace employeeManagmentAppLachlan
             do          //loops the log in function untill they enter a valid username or password
              {
                 
-                 Console.WriteLine("Enter your Username");
-                 string inputedUsername = view.GetInputNotUpper();// gets the username
+                 
+                 string inputedUsername = view.WithinBoundary("Enter your Username",2,20);// gets the username
                  string Username = inputedUsername; // gets the username 
                  int EmployeeID = storageManager.getEmployeeID(inputedUsername);//gets the username 
                  string password = storageManager.getPassword(inputedUsername);//gets the password
