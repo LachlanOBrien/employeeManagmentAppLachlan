@@ -1834,7 +1834,26 @@ namespace employeeManagmentAppLachlan.View
             return input;
         }
 
-        
+        //gets the input of an string variable without making it uppercase so it can be used for inputs such as insert and updates 
+        public string GetInputNotUpper()
+        {
+            string input;
+            bool loop = true;
+            do
+            {
+                input = Console.ReadLine();
+                if (input.IsNullOrEmpty()| !input.All(char.IsLetterOrDigit))
+                {
+                    loop = true;
+                    Console.WriteLine("please enter a valid option");
+                }
+                else
+                {
+                    loop = false;
+                }
+            } while (loop);
+            return input;
+        }
 
         //gets the input of an int variable 
         public int GetIntInput()
@@ -1881,7 +1900,7 @@ namespace employeeManagmentAppLachlan.View
             do
             {
                 Console.WriteLine(prompt);
-                string input = GetInput();
+                string input = GetInputNotUpper();
                 int inputLength = input.Length;
                 if (inputLength >= min && inputLength <= max)
                 {
@@ -1919,7 +1938,7 @@ namespace employeeManagmentAppLachlan.View
             do
             {
                 Console.WriteLine(prompt);
-                string input = GetInput();
+                string input = GetInputNotUpper();
                 int inputLength = input.Length;
                 if (inputLength >= min && inputLength <= max)
                 {
