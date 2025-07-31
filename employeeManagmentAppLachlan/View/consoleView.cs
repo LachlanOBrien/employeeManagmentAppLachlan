@@ -1842,7 +1842,7 @@ namespace employeeManagmentAppLachlan.View
             do
             {
                 input = Console.ReadLine();
-                if (input.IsNullOrEmpty())
+                if (input.IsNullOrEmpty()| !input.All(char.IsLetterOrDigit))
                 {
                     loop = true;
                     Console.WriteLine("please enter a valid option");
@@ -1852,8 +1852,6 @@ namespace employeeManagmentAppLachlan.View
                     loop = false;
                 }
             } while (loop);
-
-
             return input;
         }
 
@@ -1924,6 +1922,39 @@ namespace employeeManagmentAppLachlan.View
                     loopContainsSpecialCharacter = false;
                 }
                 if (loopBoundary && loopIsEmpty && loopContainsSpecialCharacter == false)
+                {
+                    loopTheMethod = false;
+                }
+            } while (loopTheMethod);
+            return validInput;
+        }
+
+        public string WithinBoundaryWithoutInvalid(string prompt, int min, int max)
+        {
+            bool loopBoundary = true;
+            bool loopIsEmpty = true;
+            bool loopTheMethod = true;
+            string validInput = "";
+            do
+            {
+                Console.WriteLine(prompt);
+                string input = GetInput();
+                int inputLength = input.Length;
+                if (inputLength >= min && inputLength <= max)
+                {
+                    validInput = input;
+                    loopBoundary = false;
+                }
+                else
+                {
+                    Console.WriteLine($"Please enter an input between: {min} and {max} characters long");
+                }
+                if (input.IsNullOrEmpty())
+                {
+                    Console.WriteLine("Please enter something");
+                    loopIsEmpty = false;
+                }
+                if (loopBoundary && loopIsEmpty == false)
                 {
                     loopTheMethod = false;
                 }
