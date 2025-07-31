@@ -49,14 +49,14 @@ namespace employeeManagmentAppLachlan.View
             Console.Clear();
             Console.WriteLine("What do you wish to do");
             Console.WriteLine("Please choose an option from 1-3");
-            Console.WriteLine("1: Querys");
+            Console.WriteLine("1: Reports");
             Console.WriteLine("2: Edit The Data");
             Console.WriteLine("3: Search the Database for a specific field");
         }
         //displays the text of the query options 
         public void DisplayQryOptions()
         {
-            Console.WriteLine("What Query do you wish to View");
+            Console.WriteLine("What Reports do you wish to View");
             Console.WriteLine("Please choose an option from 1-19");
             Console.WriteLine("1:  Employees with a wage higher than 80k and hired before 2018-01-01");
             Console.WriteLine("2:  Employees from the United Kingdom and hired before 2019-03-09");
@@ -1894,7 +1894,10 @@ namespace employeeManagmentAppLachlan.View
 
         public string WithinBoundary(string prompt, int min, int max)
         {
-            bool loopDaMethod = true;
+            bool loopBoundary = true;
+            bool loopIsEmpty = true;
+            bool loopContainsSpecialCharacter = true;
+            bool loopTheMethod = true;
             string validInput = "";
             do
             {
@@ -1903,14 +1906,28 @@ namespace employeeManagmentAppLachlan.View
                 int inputLength = input.Length;
                 if (inputLength >= min && inputLength <= max)
                 {
-                   validInput = input;
-                   loopDaMethod = false;
+                    validInput = input;
+                    loopBoundary = false;
                 }
                 else
                 {
-                    Console.WriteLine($"Please enter an input between:{min} and {max} characters long");
+                    Console.WriteLine($"Please enter an input between: {min} and {max} characters long");
                 }
-            } while (loopDaMethod);
+                if (input.IsNullOrEmpty())
+                {
+                    Console.WriteLine("Please enter something");
+                    loopIsEmpty = false;
+                }
+                if (!input.All(char.IsLetterOrDigit))
+                {
+                    Console.WriteLine("Please enter characters and numbers only");
+                    loopContainsSpecialCharacter = false;
+                }
+                if (loopBoundary && loopIsEmpty && loopContainsSpecialCharacter == false)
+                {
+                    loopTheMethod = false;
+                }
+            } while (loopTheMethod);
             return validInput;
         }
     }

@@ -13,9 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="db2v2.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="db2v2.ldf" />
     <Content Include="db2v2.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -2322,7 +2322,7 @@ namespace employeeManagmentAppLachlan
                 }
 
             } while (loopCityID);
-            int streetNumber = 0;
+            int StreetNumber = 0;
             do
             {
                 view.DisplayMessage("Enter the Street Number's of the Location");
@@ -2330,15 +2330,13 @@ namespace employeeManagmentAppLachlan
                 if (streetNumberInput > 0 && streetNumberInput < 300)
                 {
                     loopStreetNumber = false;
-                    streetNumber = streetNumberInput;
+                    StreetNumber = streetNumberInput;
                 }
                 else
                 {
                     Console.WriteLine("Please enter a valid options");
                 }
             } while (loopStreetNumber);
-            view.DisplayMessage("Enter the Street Number's of the Location");
-            int StreetNumber = view.GetIntInput();
             int LocationID = 0;
             tblLocation location1 = new tblLocation(LocationID, LocationName, CountryID, SuburbID, StreetID, CityID, StreetNumber, Active);
             int GenerateID = storageManager.InsertLocation(LocationName, CountryID, SuburbID, StreetID, CityID, StreetNumber);
@@ -2476,8 +2474,7 @@ namespace employeeManagmentAppLachlan
         private static void InsertJobtitle()
         {
             bool Active = true;
-            view.DisplayMessage("Enter the new Job Title Name");
-            string StreetName = view.GetInputNotUpper();
+            string StreetName = view.WithinBoundary("Enter the new Job Title Name", 2, 20);
             int StreetID = 0;
             tblJobtitle location1 = new tblJobtitle(StreetID, StreetName, Active);
             int GenerateID = storageManager.InsertJobtitle(StreetName);
@@ -2488,8 +2485,7 @@ namespace employeeManagmentAppLachlan
         {
             bool Active = true;
             bool loopManagersID = true;
-            view.DisplayMessage("Enter the new Department Name");
-            string StreetName = view.GetInputNotUpper();
+            string StreetName = view.WithinBoundary("Enter the new Department Name", 2, 40);
             int ManagersID = 0;
             do
             {
@@ -2516,8 +2512,7 @@ namespace employeeManagmentAppLachlan
         private static void InsertCity()
         {
             bool Active = true;
-            view.DisplayMessage("Enter the new City Name");
-            string StreetName = view.GetInputNotUpper();
+            string StreetName = view.WithinBoundary("Enter the new City Name", 2, 20);
             int StreetID = 0;
             tblCityID location1 = new tblCityID(StreetID, StreetName, Active);
             int GenerateID = storageManager.InsertCity(StreetName);
@@ -2527,8 +2522,7 @@ namespace employeeManagmentAppLachlan
         private static void InsertStreet()
         {
             bool Active = true;
-            view.DisplayMessage("Enter the new Street Name");
-            string StreetName = view.GetInputNotUpper();
+            string StreetName = view.WithinBoundary("Enter the new Street Name", 2, 20);
             int StreetID = 0;
             tblStreetID location1 = new tblStreetID(StreetID, StreetName, Active);
             int GenerateID = storageManager.InsertStreet(StreetName);
@@ -2538,10 +2532,23 @@ namespace employeeManagmentAppLachlan
         private static void InsertSuburb()
         {
             bool Active = true;
-            view.DisplayMessage("Enter the new suburb Name");
-            string StreetName = view.GetInputNotUpper();
-            view.DisplayMessage("Enter the Post Code of the suburb");
-            int postcode = view.GetIntInput();
+            bool looppostcode = true;
+            string StreetName = view.WithinBoundary("Enter the new suburb Name", 2, 20); 
+            int postcode = 0;
+            do
+            {
+                view.DisplayMessage("Enter the Street Number's of the Location");
+                int postcodeInput = view.GetIntInput();
+                if (postcodeInput > 0 && postcodeInput < 9999)
+                {
+                    looppostcode = false;
+                    postcode = postcodeInput;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid options");
+                }
+            } while (looppostcode);
             int StreetID = 0;
             tblSubrubID location1 = new tblSubrubID(StreetID, StreetName, postcode, Active);
             int GenerateID = storageManager.InsertSuburb(StreetName, postcode);
@@ -2552,7 +2559,8 @@ namespace employeeManagmentAppLachlan
         {
             bool Active = true;
             view.DisplayMessage("Enter the new Country Name");
-            string StreetName = view.GetInputNotUpper();
+            string StreetNames = view.GetInputNotUpper();
+            string StreetName = view.WithinBoundary("Enter the new Country Name", 2, 20);    
             int StreetID = 0;
             tblLocationCountry location1 = new tblLocationCountry(StreetID, StreetName, Active);
             int GenerateID = storageManager.InsertCountry(StreetName);
@@ -2563,12 +2571,10 @@ namespace employeeManagmentAppLachlan
         // the register function for the employees 
         private static void RegisterEmployee()
         {
-            Console.WriteLine("register function");// temp add a proper method 
-            Console.WriteLine("Enter A Username");
-            string RegUsername = view.GetInputNotUpper();
-            Console.WriteLine("Enter A Password");
-            string RegPassword = view.GetInputNotUpper();
-            int GenerateID = storageManager.RegisterEmployee(RegUsername, RegPassword);
+            Console.WriteLine("register function");
+            string Username = view.WithinBoundary("Enter the Username of the New Employee", 2, 20);
+            string Password = view.WithinBoundary("Enter the Password of the New Employee ", 2, 20);
+            int GenerateID = storageManager.RegisterEmployee(Username, Password);
             view.DisplayMessage($"new Employee Created with ID {GenerateID}");
             bool loop = true;
             string choice;
