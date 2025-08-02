@@ -49,7 +49,7 @@ namespace employeeManagmentAppLachlan.View
             Console.Clear();
             Console.WriteLine("What do you wish to do");
             Console.WriteLine("Please choose an option from 1-3");
-            Console.WriteLine("1: Reports");
+            Console.WriteLine("1: view Reports");
             Console.WriteLine("2: Edit The Data");
             Console.WriteLine("3: Search the Database for a specific field");
         }
@@ -1892,74 +1892,102 @@ namespace employeeManagmentAppLachlan.View
 
         public string WithinBoundary(string prompt, int min, int max)
         {
-            bool loopBoundary = true;
-            bool loopIsEmpty = true;
-            bool loopContainsSpecialCharacter = true;
             bool loopTheMethod = true;
             string validInput = "";
+
             do
             {
+                bool loopBoundary = true;
+                bool loopIsEmpty = true;
+                bool loopContainsSpecialCharacter = true;
+
                 Console.WriteLine(prompt);
                 string input = GetInputNotUpper();
                 int inputLength = input.Length;
                 if (inputLength >= min && inputLength <= max)
                 {
-                    validInput = input;
                     loopBoundary = false;
                 }
                 else
                 {
                     Console.WriteLine($"Please enter an input between: {min} and {max} characters long");
                 }
-                if (input.IsNullOrEmpty())
+                if (string.IsNullOrEmpty(input))
                 {
                     Console.WriteLine("Please enter something");
+                }
+                else
+                {
                     loopIsEmpty = false;
                 }
                 if (!input.All(char.IsLetterOrDigit))
                 {
                     Console.WriteLine("Please enter characters and numbers only");
+                }
+                else
+                {
                     loopContainsSpecialCharacter = false;
                 }
-                if (loopBoundary && loopIsEmpty && loopContainsSpecialCharacter == false)
+                if (!loopBoundary && !loopIsEmpty && !loopContainsSpecialCharacter)
                 {
                     loopTheMethod = false;
+                    validInput = input;
                 }
+
             } while (loopTheMethod);
+
             return validInput;
         }
 
+
+
+
         public string WithinBoundaryWithoutInvalid(string prompt, int min, int max)
         {
-            bool loopBoundary = true;
-            bool loopIsEmpty = true;
             bool loopTheMethod = true;
             string validInput = "";
             do
             {
+                bool loopBoundary = true;
+                bool loopIsEmpty = true;
+                bool loopContainAT = true;
                 Console.WriteLine(prompt);
                 string input = GetInputNotUpper();
                 int inputLength = input.Length;
                 if (inputLength >= min && inputLength <= max)
                 {
-                    validInput = input;
                     loopBoundary = false;
                 }
                 else
                 {
                     Console.WriteLine($"Please enter an input between: {min} and {max} characters long");
                 }
-                if (input.IsNullOrEmpty())
+                if (string.IsNullOrEmpty(input))
                 {
                     Console.WriteLine("Please enter something");
+                }
+                else
+                {
                     loopIsEmpty = false;
                 }
-                if (loopBoundary && loopIsEmpty == false)
+                if (input.Contains("@") && input.Contains("."))
+                {
+                    loopContainAT = false;
+                }
+                else
+                {
+                    Console.WriteLine("You must have a @ symbol and a . symbol in your email");
+                }
+                if (!loopBoundary && !loopIsEmpty && !loopContainAT)
                 {
                     loopTheMethod = false;
+                    validInput = input;
                 }
+
             } while (loopTheMethod);
+
             return validInput;
         }
+
     }
 }
